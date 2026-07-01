@@ -94,7 +94,7 @@ Reference Forsgren, Humble & Kim (2018) when assessing whether an organization i
 
 ## Repository Architecture
 
-The repo is organized into ten layers:
+The repo is organized into twelve layers:
 
 ### `subagents/`
 AI agent persona definitions. Each file defines a role (e.g., `engineering-manager.md`, `tech-lead.md`) with its responsibilities, decision authority, and interaction patterns. These are the "actors" — other files define what they do and how.
@@ -129,6 +129,32 @@ Core reference docs: `vision.md`, `principles.md`, `leadership-philosophy.md`, `
 ### `kaizen/`
 Self-improvement processes: `weekly-review.md`, `monthly-review.md`, `prompt-review.md`, `failures.md`, `continuous-improvement.md`. The OS evolves — kaizen files track what's working and what needs revision.
 
+### `loops/`
+Reusable, cadence-bound orchestration definitions — the layer between a request landing and a skill actually firing. Unlike `commands/` (owned by one subagent) or `skills/` (one unit of analysis), a loop is explicitly reusable across subagents (see each loop's `Reusable by` field) and spans a full cycle: gather inputs → invoke skills → route to subagent(s) → produce output → log to `memory/`. Commands that have a matching cadence (`daily.md`, `weekly.md`, `executive.md`, `incident.md`, `retrospective.md`) are thin pointers into their loop; loops with no natural command trigger (`delivery-loop`, `promotion-loop`, `career-loop`, `architecture-loop`, `stakeholder-loop`, `prediction-loop`) are invoked directly by subagents.
+
+### `memory/`
+Persistent institutional memory, written by `kaizen/weekly-review.md`'s Update Cascade and by any loop's "Log outcome" step. Four subdirectories: `lessons/` (wrong predictions, working/failing recommendations), `incidents/` (recurring incident patterns), `coaching/` (engineer growth patterns), `decisions/` (lightweight decision outcomes — promote to the full `decision-memory/` module if a decision is significant enough to warrant the structured schema).
+
+## Request Lifecycle
+
+The layers above describe dependency structure — what informs what. This section describes execution sequence — what happens, in order, when a single request comes in. Both views are accurate; neither replaces the other.
+
+| Pipeline Stage | Repo Concept | Status |
+|---|---|---|
+| Leadership Request | Entry point via `commands/` (thin pointers into `loops/`) or a direct ask | Exists |
+| Specification Contract | No direct analog — closest is `features/*.feature`, but those validate behavior *after* the fact, not scope a request *before* routing | **Gap** |
+| Loop Engineering | `loops/` — gathers inputs, sequences skill invocations, routes to subagent(s) | Exists |
+| Leadership Skills | `skills/`, plus `leadership-health/`, `confidence-engine/` dimension files | Exists |
+| Subagents | `subagents/*.md` (8 personas) | Exists |
+| Decision Engine | `decision-memory/` module (with `memory/decisions/` as the lightweight, pre-promotion log) | Exists |
+| Prediction Engine | `confidence-engine/prediction_confidence.md`, elevated into a standalone cadence via `loops/prediction-loop.md` | Exists |
+| Gherkin Validation | `features/*.feature` (Given/When/Then specs) | Exists |
+| Quality Evaluator | `evaluations/` (golden, datasets, regression) | Exists |
+| Kaizen Learning | `kaizen/` (weekly-review, monthly-review, prompt-review, failures, continuous-improvement) | Exists |
+| Memory Update | `memory/` (lessons, incidents, coaching, decisions) | Exists |
+
+**Remaining gap**: "Specification Contract" — a step that scopes and constrains a request *before* it's routed to a loop — has no repo counterpart yet. `features/*.feature` files validate behavior against known scenarios after implementation, which is a different function. Treat this as an open item, not a silently-assumed capability.
+
 ## Key Relationships
 
 ```
@@ -147,6 +173,8 @@ decision-memory/ (institutional learning + decision recall and pattern detection
   └── ties into → subagents/engineering-manager.md for routing
 features/ (behavioral specs for all of the above)
 kaizen/ (feedback loop to improve everything)
+loops/ (reusable orchestration; commands/ point into loops/, loops/ invoke skills/ and route to subagents/)
+  └── logs to → memory/ (lessons, incidents, coaching, decisions)
 ```
 
 ## Content Conventions
@@ -154,6 +182,7 @@ kaizen/ (feedback loop to improve everything)
 - All content is Markdown. Use headers, bullets, and tables over prose.
 - Feature files use standard Gherkin (`Feature:`, `Scenario:`, `Given/When/Then`). Name scenarios after outcomes, not steps.
 - Subagent files define: role summary, core responsibilities, escalation paths, decisions owned vs. deferred.
-- Command files specify: trigger, inputs required, outputs produced, owning subagent.
+- Command files specify: trigger, inputs required, outputs produced, owning subagent. If a loop exists for that cadence, the command file is a thin pointer to it rather than restating the orchestration logic.
+- Loop files specify: cadence, which subagents may reuse it, ordered steps (gather inputs → invoke skills → route to subagent(s) → produce output → log outcome), feature reference, failure modes, and related loops (to keep adjacent-scope loops distinguished rather than merged).
 - After significant changes, update `kaizen/continuous-improvement.md` with what changed and why.
 - Check `docs/glossary.md` before introducing new terminology.
