@@ -1,0 +1,94 @@
+# Vision
+
+---
+
+## Why This OS Exists
+
+Engineering management is one of the highest-leverage roles in a technology organization. A great engineering manager unblocks ten engineers. An absent or unprepared one creates drag for all of them.
+
+Yet most engineering managers operate without a system. They carry context in their heads, run 1:1s from memory, write status updates from scratch each week, and respond to incidents without a playbook. Under pressure — which is most of the time — the important work (team health, career development, long-term architecture) gets displaced by the urgent work (the ticket, the meeting, the fire).
+
+This OS exists to close that gap.
+
+It systematizes the repeatable so the manager can focus on the irreplaceable. It captures context so nothing is lost to turnover or memory. It embeds the right questions so judgment calls are better informed. And it improves itself through the same feedback loops it recommends for the teams it serves.
+
+**The problem this solves is not a shortage of management frameworks. It is a shortage of management practice.** This OS bridges the two.
+
+---
+
+## Mission
+
+> Enable engineering managers to lead with consistency, clarity, and confidence — at any scale, under any pressure, across any team.
+
+This means:
+- **Consistency**: The same quality of decision-making on a bad week as on a good one
+- **Clarity**: Stakeholders always know what is happening and why
+- **Confidence**: Recommendations grounded in evidence, risks named, tradeoffs explained
+
+---
+
+## Long-Term Roadmap
+
+The OS matures in three phases. Each phase builds on the last.
+
+### Phase 1 — Foundation *(current)*
+Establish the core vocabulary, principles, and artifacts that define the management practice.
+
+- [ ] Core docs complete (`vision`, `principles`, `leadership-philosophy`, `operating-model`, `decision-framework`, `engineering-playbook`)
+- [ ] All seven subagents defined with responsibilities and decision boundaries
+- [ ] Command library covers daily, weekly, executive, incident, and retrospective workflows
+- [ ] Templates cover the six highest-frequency artifacts (1:1, sprint review, executive status, roadmap, promotion, incident review)
+- [ ] All five integrations configured (GitHub, Jira, Slack, Datadog, PagerDuty)
+
+### Phase 2 — Intelligence
+Make the OS proactive rather than reactive. It surfaces signals before they become problems.
+
+- [ ] Early-warning features for delivery drift, burnout signals, and team health trends
+- [ ] Automated weekly digest pulling from integrations (velocity, alert noise, PR cycle time)
+- [ ] Confidence-scored risk register updated continuously from team signals
+- [ ] Pattern library: documented playbooks for the 10 most common EM scenarios (missed sprint, key person departure, scope creep, inter-team conflict, hiring freeze)
+
+### Phase 3 — Institutional Memory
+Turn individual management practice into organizational knowledge.
+
+- [ ] OS is fully transferable — a new EM can onboard to a team via this system in < 1 week
+- [ ] Kaizen archive surfaces patterns across quarters, not just within them
+- [ ] OS adapts to org-level changes (reorgs, strategy pivots, leadership transitions) without losing continuity
+
+---
+
+## Leadership Philosophy
+
+These are the beliefs that this OS is built on. They are not neutral. Other managers may hold different beliefs; this system reflects these ones.
+
+**Management is a craft, not a role.**
+Being an engineering manager is not a title that comes with authority. It is a skill that is practiced, refined, and sometimes failed at. Craft improves through deliberate reflection — which is what the kaizen layer of this OS is for.
+
+**The team is the product.**
+An engineering manager does not ship software. The team ships software. The manager's job is to make the team more capable, more cohesive, and more resilient over time. Every decision is evaluated against that standard.
+
+**Speed is a lagging indicator.**
+Teams do not become fast by trying to be fast. They become fast by becoming safe: safe to fail, safe to raise problems, safe to say no to bad scope. Psychological safety precedes velocity. This OS invests in the preconditions of speed, not speed itself.
+
+**Transparency is a competitive advantage.**
+Teams that know what is expected, how they are performing, and where the organization is going make better decisions at every level. Managers who hoard context create fragile, dependent teams. This OS defaults to sharing.
+
+**Improvement requires honesty about failure.**
+The kaizen layer of this OS exists because practice without reflection is just habit. The `failures.md` file is not punitive — it is diagnostic. An OS that only records successes is a vanity project.
+
+---
+
+## Expected Outcomes
+
+A manager using this OS fully should observe the following within 90 days:
+
+| Outcome | Signal | Metric |
+|---|---|---|
+| Stakeholder trust increases | Fewer escalations, more proactive updates accepted | Executive escalation rate ↓ |
+| Team delivery becomes more predictable | Stakeholders stop asking "where are we?" | Sprint commitment accuracy ≥ 85% |
+| 1:1s are more impactful | Engineers raise blockers before they compound | Blocker lead time ↓ |
+| Incidents resolve faster | Clearer escalation, faster communication | MTTR (P1/P2) ↓ |
+| Manager bandwidth increases | Less time on synthesis, more on judgment | Self-reported strategic time ↑ |
+| Knowledge survives turnover | Onboarding time decreases | New EM time-to-context ↓ |
+
+**The ultimate outcome**: an engineering manager who is indispensable because of their judgment — not because they are the only one who knows what is going on.
