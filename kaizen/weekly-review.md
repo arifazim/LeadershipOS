@@ -83,7 +83,7 @@ What enabled the growth: {{coaching, opportunity, autonomy, challenge}}
 Should this pattern be captured in the OS? {{Yes / No}}
 
 OS UPDATE NEEDED? {{Yes / No}}
-If yes: → log in memory/coaching/ with the pattern that produced growth
+If yes: → log in memory/career/ or memory/mentoring/ (whichever fits: the person's trajectory vs. the coaching approach that worked) with the pattern that produced growth
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 Q6. WHICH INCIDENTS REPEATED?
@@ -96,7 +96,9 @@ If No: why not? {{never prioritized / owner left / complexity}}
 
 OS UPDATE NEEDED? {{Yes / No}}
 If yes: → update incidents.feature with @critical @recurring scenario
-         → log in memory/incidents/ as a pattern
+         → log the pattern in kaizen/failures.md, not memory/ (incident recurrence is ops
+           tracking, not a leadership/relational pattern — see memory/schema.md's "What This
+           Module Is Not")
          → escalate open action items to next sprint as P0
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -178,10 +180,16 @@ STEP 3 — SKILLS (affects agent outputs)
 └── Preserve the skill's golden output file — update it only if the new output is clearly better
 
 STEP 4 — MEMORY (records the outcome of the above)
-├── Add lessons to memory/lessons/{{YYYY-MM-DD}}-lessons.md
-├── Update memory/incidents/ if incidents repeated
-├── Update memory/coaching/ if engineer growth was observed
-└── Update memory/decisions/ if a decision outcome was tracked
+├── Add a MEMORY ENTRY (per memory/schema.md) to the relevant domain — executive/, stakeholders/,
+│   career/, conflicts/, mentoring/, promotions/, architecture/, roadmaps/, customer-feedback/,
+│   or decision-history/ — not a generic "lessons" file; every entry belongs to exactly one domain
+├── Incident recurrence goes in kaizen/failures.md, not memory/ (memory/ is leadership/relational
+│   patterns only — see memory/schema.md's "What This Module Is Not")
+├── Engineer growth observed → memory/career/ or memory/mentoring/ depending on whether the
+│   entry is about the person's trajectory or the coaching approach that worked
+└── Decision outcome tracked → memory/decision-history/ (leadership-lesson angle) and/or
+    decision-memory/ (formal record) — cross-link both if the decision was significant enough
+    for a full decision-memory/ record
 
 STEP 5 — EVALUATIONS (validation — confirm changes didn't break anything)
 ├── Run regression scenarios for every skill that was updated

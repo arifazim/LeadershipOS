@@ -20,7 +20,7 @@ Run the sprint planning → execution → review cycle per `docs/engineering-pla
 2. **Invoke skills** — `skills/delivery/review-sprint.md`
 3. **Route to subagent(s)** — `delivery-manager`; escalate to `engineering-manager` if the review surfaces a people or incident issue outside delivery's scope
 4. **Produce output** — `templates/sprint-review.md`
-5. **Log outcome** — Compare against `evaluations/golden/sprint-review-{healthy,critical}.md`; log any scope trade-off decision to `memory/decisions/`
+5. **Log outcome** — Compare against `evaluations/golden/sprint-review-{healthy,critical}.md`; log any scope trade-off decision to `memory/decision-history/` (matches its own Query Routing Table: "What happened when we tried [approach] before?")
 
 ## Feature Reference
 

@@ -200,18 +200,16 @@ v1.0  Production        ░░░░░░░░░░░░░░░░░░�
 
 **What this means**: An EM who runs v0.5 has an OS that remembers. It knows which engineers are on growth trajectories, which incident patterns are recurring, which recommendations worked and which failed. The system improves between sessions, not just within them.
 
+**Staleness note**: This deliverables list was never updated when `memory/` was actually built — the real module (`memory/memory.md`, `memory/schema.md`) shipped with a richer 10-domain design (`executive/`, `stakeholders/`, `career/`, `conflicts/`, `mentoring/`, `promotions/`, `architecture/`, `roadmaps/`, `customer-feedback/`, `decision-history/`) than the simple `lessons/incidents/coaching/decisions` structure below. Checkboxes are corrected to reflect what actually exists; do not re-create the simpler structure — it would duplicate the real module.
+
 ### Deliverables
 
-- [ ] `memory/lessons/` — Weekly lessons from kaizen reviews (one file per week)
-- [ ] `memory/incidents/` — Incident pattern log (recurring failures tracked by service/root-cause)
-- [ ] `memory/coaching/` — Per-engineer growth trajectory (anonymized or named per EM preference)
-- [ ] `memory/decisions/` — Decision outcome tracking (was the decision right? what happened?)
-- [ ] `memory/retrospectives/` — Retro output summaries (themes, action items, completion rates)
-- [ ] `memory/architecture/` — Architecture decision outcomes (did the ADR prove correct?)
-- [ ] Memory index file (`memory/INDEX.md`) — what is stored and how to retrieve it
-- [ ] Memory retrieval protocol — how subagents query memory before producing output
-- [ ] Integration between weekly kaizen review and memory update
-- [ ] Memory decay rules — how old memories are archived or weighted down
+- [x] Leadership memory module with domain-specific pattern capture — delivered as `memory/{executive,stakeholders,career,conflicts,mentoring,promotions,architecture,roadmaps,customer-feedback,decision-history}/`, superseding the `lessons/incidents/coaching/decisions` structure originally planned here
+- [ ] `memory/retrospectives/` — Retro output summaries (themes, action items, completion rates) — directory reserved, not yet formalized in `memory/schema.md`'s Domain Prefixes table
+- [x] Memory index/routing — delivered as `memory/memory.md`'s Query Routing Table (functions as the planned `memory/INDEX.md`)
+- [ ] Memory retrieval protocol — how subagents query memory before producing output (schema defines the Query Protocol; no subagent yet enforces querying before output)
+- [ ] Integration between weekly kaizen review and memory update — partially delivered via `kaizen/weekly-review.md`'s Update Cascade Step 4 and `memory/memory.md`'s Monthly Review Protocol; not yet verified end-to-end with real data
+- [ ] Memory decay rules — how old memories are archived or weighted down — `memory/schema.md`'s Maintenance Rules cover staleness review but not archival/decay mechanics
 - [ ] 12 weeks of live kaizen reviews completed and logged
 
 ### Entry Criteria

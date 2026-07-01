@@ -70,4 +70,4 @@ Two pairs of loops cover adjacent ground and are deliberately split rather than 
 
 ## Logging
 
-Every loop's "Log outcome" step writes to `memory/` (lessons, incidents, coaching, or decisions, depending on what the loop surfaced) and, if the outcome reveals the OS itself should change, to `kaizen/continuous-improvement.md` per the normal kaizen process.
+Every loop's "Log outcome" step writes to whichever `memory/` domain fits (`executive/`, `stakeholders/`, `career/`, `conflicts/`, `mentoring/`, `promotions/`, `architecture/`, `roadmaps/`, `customer-feedback/`, `decision-history/`, or `retrospectives/`) per `memory/schema.md`'s entry format — never to a generic file. Operational recurrence (incidents, process blockers) belongs in `kaizen/failures.md`, not `memory/` — that module is leadership/relational patterns only. If the outcome reveals the OS itself should change, log to `kaizen/continuous-improvement.md` per the normal kaizen process.

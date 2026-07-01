@@ -133,7 +133,7 @@ Self-improvement processes: `weekly-review.md`, `monthly-review.md`, `quarterly-
 Reusable, cadence-bound orchestration definitions — the layer between a request landing and a skill actually firing. Unlike `commands/` (owned by one subagent) or `skills/` (one unit of analysis), a loop is explicitly reusable across subagents (see each loop's `Reusable by` field) and spans a full cycle: gather inputs → invoke skills → route to subagent(s) → produce output → log to `memory/`. Commands that have a matching cadence (`daily.md`, `weekly.md`, `executive.md`, `incident.md`, `retrospective.md`) are thin pointers into their loop; loops with no natural command trigger (`delivery-loop`, `promotion-loop`, `career-loop`, `architecture-loop`, `stakeholder-loop`, `prediction-loop`) are invoked directly by subagents.
 
 ### `memory/`
-Persistent institutional memory, written by `kaizen/weekly-review.md`'s Update Cascade and by any loop's "Log outcome" step. Four subdirectories: `lessons/` (wrong predictions, working/failing recommendations), `incidents/` (recurring incident patterns), `coaching/` (engineer growth patterns), `decisions/` (lightweight decision outcomes — promote to the full `decision-memory/` module if a decision is significant enough to warrant the structured schema).
+"Leadership Memory: Master Recall Engine" — captures relationship dynamics, communication effectiveness, and organizational behavior across ten domains (`executive/`, `stakeholders/`, `career/`, `conflicts/`, `mentoring/`, `promotions/`, `architecture/`, `roadmaps/`, `customer-feedback/`, `decision-history/`), plus `retrospectives/` (reserved per `ROADMAP.md`'s v0.5 plan, not yet formalized in `memory/schema.md`). `memory/memory.md` is the master pad — cross-domain pattern detection and query routing. `memory/schema.md` defines the universal entry format (domain-prefixed IDs, confidence levels Single instance → Emerging → Established → Refuted, a four-category tagging taxonomy) and explicitly states this module does not replace `decision-memory/` (formal decision records), `analytics/` (scored dashboards), or `skills/performance/` (structured assessment) — those stay separate and cross-link in. Written by `kaizen/weekly-review.md`'s Update Cascade and by any loop's "Log outcome" step, using the domain that matches what was observed — never a generic file.
 
 ### `contracts/`
 Specification contracts — a strict schema (Name, Inputs, Required Outputs, Failure Conditions, Quality Checks, Version) that formalizes what most skills and subagents already express narratively across their Purpose/Inputs/Output/Confidence Score/Failure Modes sections. `skill.contract.md` and `subagent.contract.md` are universal templates; `prediction.contract.md`, `dashboard.contract.md`, `meeting.contract.md`, `executive.contract.md`, and `presentation.contract.md` are filled, worked examples for those domains. A contract's Failure Conditions are preconditions that block execution entirely — distinct from a skill's Failure Modes, which describe how it can go wrong while running.
@@ -149,12 +149,12 @@ The layers above describe dependency structure — what informs what. This secti
 | Loop Engineering | `loops/` — gathers inputs, sequences skill invocations, routes to subagent(s) | Exists |
 | Leadership Skills | `skills/`, plus `leadership-health/`, `confidence-engine/` dimension files | Exists |
 | Subagents | `subagents/*.md` (8 personas) | Exists |
-| Decision Engine | `decision-memory/` module (with `memory/decisions/` as the lightweight, pre-promotion log) | Exists |
+| Decision Engine | `decision-memory/` module (with `memory/decision-history/` as the leadership-lesson angle on the same decisions — cross-linked, not duplicated) | Exists |
 | Prediction Engine | `confidence-engine/prediction_confidence.md`, elevated into a standalone cadence via `loops/prediction-loop.md` | Exists |
 | Gherkin Validation | `features/*.feature` (Given/When/Then specs) | Exists |
 | Quality Evaluator | `evaluations/` (golden, datasets, regression) | Exists |
 | Kaizen Learning | `kaizen/` (weekly-review, monthly-review, prompt-review, failures, continuous-improvement) | Exists |
-| Memory Update | `memory/` (lessons, incidents, coaching, decisions) | Exists |
+| Memory Update | `memory/` (10-domain leadership recall engine — executive, stakeholders, career, conflicts, mentoring, promotions, architecture, roadmaps, customer-feedback, decision-history) | Exists |
 
 Every stage in the original pipeline now maps to a real repo path. `contracts/` covers only 5 filled domains plus the 2 universal templates today — most skills and subagents still express their contract narratively rather than as an explicit `contracts/*.md` file. Treat the schema as established, not yet applied repo-wide.
 
@@ -177,7 +177,7 @@ decision-memory/ (institutional learning + decision recall and pattern detection
 features/ (behavioral specs for all of the above)
 kaizen/ (feedback loop to improve everything)
 loops/ (reusable orchestration; commands/ point into loops/, loops/ invoke skills/ and route to subagents/)
-  └── logs to → memory/ (lessons, incidents, coaching, decisions)
+  └── logs to → memory/ (10-domain leadership recall engine — distinct from decision-memory/, cross-links to it)
 contracts/ (specification schema; skills/ and subagents/ point to their contract instead of restating it)
 ```
 

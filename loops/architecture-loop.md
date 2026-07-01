@@ -20,7 +20,7 @@ Run an architecture decision or review: surface the technical risk, produce the 
 2. **Invoke skills** — architecture risk assessment (routed through `tech-lead` to `architecture-reviewer` for ADR-level review, per `subagents/engineering-manager.md`'s routing table)
 3. **Route to subagent(s)** — `tech-lead` first; `architecture-reviewer` for the ADR review itself
 4. **Produce output** — ADR-level review output; `skills/presentation/architecture-review-deck.md` if the result needs to go to an executive or cross-team audience
-5. **Log outcome** — `memory/decisions/` — architectural decisions are exactly the kind of decision worth tracking for later recall; consider promoting to `decision-memory/` given architectural decisions are rarely cheaply reversible
+5. **Log outcome** — `memory/architecture/` (exact domain match) for the leadership/risk-pattern angle; also promote to `decision-memory/` for the formal decision record, since architectural decisions are rarely cheaply reversible — cross-link both entries per `memory/schema.md`'s cross-domain linking convention
 
 ## Feature Reference
 

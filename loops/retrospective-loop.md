@@ -19,7 +19,7 @@ Improve the system, not vent about it — per `docs/engineering-playbook.md`'s "
 2. **Invoke skills** — `skills/conflict/blameless-retrospectives.md` for incident-triggered retros; sprint-process retros use the "Running Retrospectives" structure directly
 3. **Route to subagent(s)** — `delivery-manager` (sprint retro) or `incident-manager` (incident retro); `engineering-manager` if the retro surfaces a cross-team systemic issue
 4. **Produce output** — Action items with named owners; no dedicated template exists yet — closest is `templates/sprint-review.md`'s structure, adapted
-5. **Log outcome** — Action items tracked; if unresolved by the next cycle, escalate per `kaizen/weekly-review.md` Q6/Q7. Log any durable process lesson to `memory/lessons/`
+5. **Log outcome** — Action items tracked; if unresolved by the next cycle, escalate per `kaizen/weekly-review.md` Q6/Q7. Log any durable relational or process lesson to `memory/retrospectives/` — this domain exists in the `memory/` module (per `ROADMAP.md`'s v0.5 plan) but is not yet formalized in `memory/schema.md`'s Domain Prefixes table; use the RETRO prefix informally until that's added, and cross-link to `memory/conflicts/` if the retro surfaced interpersonal friction
 
 ## Feature Reference
 

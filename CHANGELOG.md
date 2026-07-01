@@ -16,12 +16,16 @@ Changes are grouped as:
 
 ## [Unreleased] — v0.5 Memory
 
+### Added (not previously logged here — see ROADMAP.md staleness note under v0.5)
+- **Leadership Memory Module** (`memory/`) — 10-domain relational/organizational pattern capture, superseding the simpler structure originally planned below
+  - Master pad: `memory/memory.md` — cross-domain pattern detection, query routing table, monthly review protocol
+  - Schema: `memory/schema.md` — universal entry format, domain prefixes, four-category tagging taxonomy, confidence levels (Single instance/Emerging/Established/Refuted)
+  - Domains: `executive/`, `stakeholders/`, `career/`, `conflicts/`, `mentoring/`, `promotions/`, `architecture/`, `roadmaps/`, `customer-feedback/`, `decision-history/`
+  - Explicitly distinct from and cross-linked with `decision-memory/` (formal decision records), `analytics/`, and `skills/performance/`
+
 ### Planned
-- `memory/lessons/` — Weekly lesson log structure
-- `memory/incidents/` — Incident pattern tracking
-- `memory/coaching/` — Per-engineer growth trajectories
-- `memory/decisions/` — Decision outcome log
-- Memory retrieval protocol for subagents
+- `memory/retrospectives/` — Retro output summaries (directory reserved, not yet in schema)
+- Memory retrieval protocol enforced at the subagent level (schema defines the protocol; not yet enforced)
 - Memory decay and archival rules
 
 ### Added

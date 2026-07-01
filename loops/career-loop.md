@@ -20,7 +20,7 @@ Run the multi-year career-direction conversation — what the person wants (IC/m
 2. **Invoke skills** — `skills/people/career-development.md` (direction/horizon conversation); `skills/career/promotion/career-roadmap.md` (tactical gap-driven project sequencing, once a direction is set)
 3. **Route to subagent(s)** — `engineering-coach`
 4. **Produce output** — Updated career-development notes feeding the next `templates/one-on-one.md` cycle
-5. **Log outcome** — `memory/coaching/` if a durable growth pattern emerged
+5. **Log outcome** — `memory/career/` if a durable growth pattern emerged, cross-linked to `memory/mentoring/` if coaching is what enabled it
 
 ## Feature Reference
 

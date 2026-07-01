@@ -58,7 +58,7 @@ Root cause: Ignored signal — QA signal was present but under-weighted in the r
 OS UPDATE NEEDED? Yes
   → Increase QA-signal weight in the release-readiness skill
   → Update prediction thresholds in confidence-engine/prediction_confidence.md
-  → Log to memory/lessons/
+  → Log to memory/roadmaps/ (estimation/forecast-risk domain)
 ```
 
 This example is the canonical illustration of why prediction review exists as its own file: the prediction itself was correct — the gap was that the OS's confidence in a correct, ignored prediction didn't translate into a strong enough recommendation to block the ship decision. That's a calibration problem between "predicted correctly" and "influenced the outcome," which only shows up when predictions are tracked over time, not sprint by sprint.

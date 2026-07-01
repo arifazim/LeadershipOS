@@ -19,7 +19,7 @@ Run the full incident lifecycle — detection through post-mortem action-item tr
 2. **Invoke skills** — incident triage and post-mortem skills under `skills/` operations (analysis depth scales with severity)
 3. **Route to subagent(s)** — `incident-manager`; `tech-lead` if root cause is architectural (may hand off to `architecture-reviewer`)
 4. **Produce output** — `templates/incident-review.md`
-5. **Log outcome** — `memory/incidents/` — always check this first before writing a new entry, to catch a repeat; if the root cause matches a prior entry, escalate per `kaizen/weekly-review.md` Q6 ("escalate open action items to next sprint as P0")
+5. **Log outcome** — Incident recurrence tracking lives in `kaizen/failures.md` (check there first, not `memory/`, per `memory/schema.md`'s "What This Module Is Not" — leadership memory is not an ops-incident tracker). If the root cause matches a prior entry, escalate per `kaizen/weekly-review.md` Q6 ("escalate open action items to next sprint as P0"). Only write to `memory/architecture/` if the incident reveals an architectural risk-underestimation pattern worth leadership-level recall.
 
 ## Feature Reference
 
@@ -28,7 +28,7 @@ Run the full incident lifecycle — detection through post-mortem action-item tr
 ## Failure Modes
 
 - **Action item drift**: post-mortem action items logged but never tracked to completion — this loop's Step 5 exists specifically to close that gap
-- **Root-cause repeat blindness**: treating a recurring incident as new because `memory/incidents/` wasn't checked first
+- **Root-cause repeat blindness**: treating a recurring incident as new because `kaizen/failures.md` wasn't checked first
 
 ## Related Loops
 

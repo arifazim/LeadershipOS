@@ -20,7 +20,7 @@ Map stakeholder influence/interest, track relationship health, and detect organi
 2. **Invoke skills** — `skills/organizational/stakeholder-analysis.md` (canonical; a pending consolidation merge folds `skills/executive/stakeholder-map.md`'s relationship-health axis into this file — once that lands, this is the only stakeholder-mapping skill). Cross-check against `political-signals/political-signals.md` if a risk signal is present.
 3. **Route to subagent(s)** — `product-partner`; escalate to `engineering-manager` if a political-signal risk score is elevated
 4. **Produce output** — Stakeholder map + engagement plan (no dedicated template yet — output lives inline in the skill's own format)
-5. **Log outcome** — `memory/decisions/` if a stakeholder-driven trade-off was made; cross-reference `political-signals/` if a risk signal was the trigger
+5. **Log outcome** — `memory/stakeholders/` (exact domain match) always; cross-link to `memory/decision-history/` if a stakeholder-driven trade-off was made, and to `political-signals/` if a risk signal was the trigger
 
 ## Feature Reference
 

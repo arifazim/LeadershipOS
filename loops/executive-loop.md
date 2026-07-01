@@ -20,7 +20,7 @@ Produce executive-ready communication that leads with the recommendation and con
 2. **Invoke skills** — `skills/executive/executive-status-report.md`; `skills/executive/executive-risk-report.md` if risk framing is the ask; `skills/executive/board-level-summary.md` if the audience is the board
 3. **Route to subagent(s)** — `executive-summary`; pulls synthesized input from `delivery-manager`/`engineering-manager` if multiple domains are in scope
 4. **Produce output** — `templates/executive-status.md`
-5. **Log outcome** — Log to `memory/decisions/` if the executive ask resulted in a commitment or trade-off; otherwise no memory write needed
+5. **Log outcome** — Log to `memory/executive/` (primary domain for "how did [executive] respond to X?" per its own Query Routing Table), cross-linked to `memory/decision-history/` if the ask resulted in a commitment or trade-off; otherwise no memory write needed
 
 ## Feature Reference
 

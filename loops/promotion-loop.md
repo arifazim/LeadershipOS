@@ -19,7 +19,7 @@ Execute one specific promotion cycle for a candidate: assess readiness, build th
 2. **Invoke skills** — `skills/career/promotion/promotion-readiness.md` (self/IC-side score), `skills/performance/promotion-readiness.md` (EM-side monitoring signals), `skills/career/promotion/promotion-evidence.md`, `skills/career/promotion/impact-tracker.md`, `skills/people/promotion.md` (packet-building and calibration navigation)
 3. **Route to subagent(s)** — `engineering-coach`; escalate to `engineering-manager` for calibration advocacy
 4. **Produce output** — `templates/promotion.md` (currently an empty stub — see the deferred completion-debt project; until populated, use `subagents/engineering-coach.md`'s Promotion Case output contract directly)
-5. **Log outcome** — `memory/coaching/` regardless of outcome; if the case was denied, log the specific gap to inform the next cycle
+5. **Log outcome** — `memory/promotions/` (primary domain, per its own Query Routing Table: "What evidence do I have for [engineer]'s promotion?") regardless of outcome, cross-linked to `memory/career/`; if the case was denied, log the specific gap to inform the next cycle
 
 ## Feature Reference
 
