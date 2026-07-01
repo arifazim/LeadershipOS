@@ -3,6 +3,8 @@
 **Domain**: Executive Confidence — Forecasting
 **Owner**: `subagents/engineering-manager.md`
 **Cadence**: Monthly or end of quarter
+**Contract**: `contracts/prediction.contract.md`
+**Loop**: `loops/prediction-loop.md` (standalone, cadence-bound invocation)
 
 ---
 

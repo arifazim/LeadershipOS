@@ -3,6 +3,7 @@
 **Domain**: Delivery
 **Owner**: `subagents/delivery-manager.md`
 **Cadence**: End of every sprint, before retrospective
+**Contract**: `contracts/skill.contract.md` (worked example)
 
 ---
 

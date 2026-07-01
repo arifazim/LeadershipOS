@@ -94,7 +94,7 @@ Reference Forsgren, Humble & Kim (2018) when assessing whether an organization i
 
 ## Repository Architecture
 
-The repo is organized into twelve layers:
+The repo is organized into thirteen layers:
 
 ### `subagents/`
 AI agent persona definitions. Each file defines a role (e.g., `engineering-manager.md`, `tech-lead.md`) with its responsibilities, decision authority, and interaction patterns. These are the "actors" — other files define what they do and how.
@@ -135,6 +135,9 @@ Reusable, cadence-bound orchestration definitions — the layer between a reques
 ### `memory/`
 Persistent institutional memory, written by `kaizen/weekly-review.md`'s Update Cascade and by any loop's "Log outcome" step. Four subdirectories: `lessons/` (wrong predictions, working/failing recommendations), `incidents/` (recurring incident patterns), `coaching/` (engineer growth patterns), `decisions/` (lightweight decision outcomes — promote to the full `decision-memory/` module if a decision is significant enough to warrant the structured schema).
 
+### `contracts/`
+Specification contracts — a strict schema (Name, Inputs, Required Outputs, Failure Conditions, Quality Checks, Version) that formalizes what most skills and subagents already express narratively across their Purpose/Inputs/Output/Confidence Score/Failure Modes sections. `skill.contract.md` and `subagent.contract.md` are universal templates; `prediction.contract.md`, `dashboard.contract.md`, `meeting.contract.md`, `executive.contract.md`, and `presentation.contract.md` are filled, worked examples for those domains. A contract's Failure Conditions are preconditions that block execution entirely — distinct from a skill's Failure Modes, which describe how it can go wrong while running.
+
 ## Request Lifecycle
 
 The layers above describe dependency structure — what informs what. This section describes execution sequence — what happens, in order, when a single request comes in. Both views are accurate; neither replaces the other.
@@ -142,7 +145,7 @@ The layers above describe dependency structure — what informs what. This secti
 | Pipeline Stage | Repo Concept | Status |
 |---|---|---|
 | Leadership Request | Entry point via `commands/` (thin pointers into `loops/`) or a direct ask | Exists |
-| Specification Contract | No direct analog — closest is `features/*.feature`, but those validate behavior *after* the fact, not scope a request *before* routing | **Gap** |
+| Specification Contract | `contracts/` — defines Inputs/Required Outputs/Failure Conditions/Quality Checks per skill or subagent, scoping what a request needs before it's valid to route | Exists |
 | Loop Engineering | `loops/` — gathers inputs, sequences skill invocations, routes to subagent(s) | Exists |
 | Leadership Skills | `skills/`, plus `leadership-health/`, `confidence-engine/` dimension files | Exists |
 | Subagents | `subagents/*.md` (8 personas) | Exists |
@@ -153,7 +156,7 @@ The layers above describe dependency structure — what informs what. This secti
 | Kaizen Learning | `kaizen/` (weekly-review, monthly-review, prompt-review, failures, continuous-improvement) | Exists |
 | Memory Update | `memory/` (lessons, incidents, coaching, decisions) | Exists |
 
-**Remaining gap**: "Specification Contract" — a step that scopes and constrains a request *before* it's routed to a loop — has no repo counterpart yet. `features/*.feature` files validate behavior against known scenarios after implementation, which is a different function. Treat this as an open item, not a silently-assumed capability.
+Every stage in the original pipeline now maps to a real repo path. `contracts/` covers only 5 filled domains plus the 2 universal templates today — most skills and subagents still express their contract narratively rather than as an explicit `contracts/*.md` file. Treat the schema as established, not yet applied repo-wide.
 
 ## Key Relationships
 
@@ -175,6 +178,7 @@ features/ (behavioral specs for all of the above)
 kaizen/ (feedback loop to improve everything)
 loops/ (reusable orchestration; commands/ point into loops/, loops/ invoke skills/ and route to subagents/)
   └── logs to → memory/ (lessons, incidents, coaching, decisions)
+contracts/ (specification schema; skills/ and subagents/ point to their contract instead of restating it)
 ```
 
 ## Content Conventions
@@ -184,5 +188,6 @@ loops/ (reusable orchestration; commands/ point into loops/, loops/ invoke skill
 - Subagent files define: role summary, core responsibilities, escalation paths, decisions owned vs. deferred.
 - Command files specify: trigger, inputs required, outputs produced, owning subagent. If a loop exists for that cadence, the command file is a thin pointer to it rather than restating the orchestration logic.
 - Loop files specify: cadence, which subagents may reuse it, ordered steps (gather inputs → invoke skills → route to subagent(s) → produce output → log outcome), feature reference, failure modes, and related loops (to keep adjacent-scope loops distinguished rather than merged).
+- Contract files specify: Name, Owner, Inputs (Required/Optional), Required Outputs, Failure Conditions (preconditions that block execution), Quality Checks (post-hoc output validation), Version. New contracts must be grounded in a real, existing flagship skill or subagent file — never written from scratch without one.
 - After significant changes, update `kaizen/continuous-improvement.md` with what changed and why.
 - Check `docs/glossary.md` before introducing new terminology.

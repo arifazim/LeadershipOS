@@ -3,6 +3,7 @@
 **Domain**: Meeting Intelligence
 **Owner**: `subagents/engineering-manager.md`
 **Cadence**: Before every meeting is scheduled or accepted
+**Contract**: `contracts/meeting.contract.md` (worked example)
 
 ---
 

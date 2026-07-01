@@ -3,6 +3,7 @@
 **Domain**: Executive
 **Owner**: `subagents/executive-summary.md`
 **Cadence**: Quarterly (board meetings) + on-demand (fundraising, M&A, major incidents)
+**Contract**: `contracts/presentation.contract.md` (worked example)
 
 ---
 

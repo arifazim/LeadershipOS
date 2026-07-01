@@ -4,6 +4,7 @@
 **Layer**: Orchestrator (top-level)
 **Calls**: delivery-manager, tech-lead, engineering-coach, product-partner, incident-manager, executive-summary
 **Called By**: User directly
+**Contract**: `contracts/subagent.contract.md` (worked example)
 
 ---
 

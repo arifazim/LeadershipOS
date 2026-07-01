@@ -3,6 +3,7 @@
 **Domain**: Leadership
 **Owner**: `subagents/engineering-manager.md`
 **Cadence**: Monthly, quarterly, or on-demand
+**Contract**: `contracts/dashboard.contract.md`
 
 ---
 

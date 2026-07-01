@@ -3,6 +3,7 @@
 **Domain**: Executive
 **Owner**: `subagents/executive-summary.md`
 **Cadence**: Weekly (VP audience) or biweekly (SVP/CTO audience)
+**Contract**: `contracts/executive.contract.md` (worked example)
 
 ---
 
