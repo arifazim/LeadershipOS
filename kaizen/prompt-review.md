@@ -26,13 +26,7 @@ Status: [Open | Fixed | Accepted]
 {{Precise diagnosis — not "it was vague" but "the Recommendation section named a process change without naming an owner or deadline, violating the Output Contract"}}
 
 ### Root Cause in the Prompt
-Choose one:
-- [ ] Missing instruction — the prompt never covered this case
-- [ ] Ambiguous instruction — the prompt was unclear about this case
-- [ ] Conflicting instruction — two parts of the prompt gave contradictory guidance
-- [ ] Wrong constraint — a Never/Always rule produced the wrong behavior here
-- [ ] Missing failure mode — the skill's Failure Modes didn't cover this case
-- [ ] Scope violation — the agent did work outside its defined scope
+Choose one from `kaizen/root-cause.md` (typically one of): Missing instruction | Ambiguous instruction | Conflicting instruction | Wrong constraint | Missing failure mode | Scope violation
 
 ### The Fix
 

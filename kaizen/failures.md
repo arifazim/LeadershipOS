@@ -32,7 +32,7 @@ Source: Weekly Kaizen Q{{N}} — Week of {{date}}
 - Both: {{explain}}
 
 ### Root Cause
-{{The system condition that produced this failure — not the person, not the event}}
+{{Exactly one category from kaizen/root-cause.md — not free text. If none fit, propose a new category there rather than describing it here.}}
 
 ### Change Required
 - File to update: {{path}}
@@ -64,15 +64,9 @@ How will we know the fix worked?
 
 ---
 
-## Patterns
+## Pattern Analysis
 
-*Updated monthly during `kaizen/monthly-review.md`. Identifies recurring failure themes.*
-
-| Pattern | Occurrences | Root Cause | Status |
-|---|---|---|---|
-| — | — | — | — |
-
-**How to identify a pattern**: If the same root cause appears in 3 or more failure entries, it is a pattern. Patterns require a systemic fix, not a one-off update.
+Pattern detection across this log now lives in `kaizen/failure-analysis.md`, run monthly — it reads every entry above and looks for a root-cause category (per `kaizen/root-cause.md`) repeating 3+ times. This file stays the raw entry log only; do not re-add a Patterns table here.
 
 ---
 

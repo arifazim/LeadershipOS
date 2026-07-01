@@ -49,27 +49,7 @@ Tag each change with one of these to enable pattern analysis:
 
 ## Quarterly Rollup
 
-At the end of each quarter, summarize the changelog into a rollup entry:
-
-```
-## Q{{N}} {{YEAR}} Rollup
-
-Changes this quarter: {{count}}
-Most common change category: {{tag}}
-Principles revised: {{count — if 0, ask whether principles are being tested}}
-Thresholds changed: {{count}} ({{N}} tightened, {{N}} relaxed)
-Failures closed: {{count}}
-Failures opened: {{count}}
-Open failures at quarter end: {{count}}
-
-Trend: {{Is the OS improving? Are failures declining? Are thresholds stabilizing? Write 2–3 sentences.}}
-
-Most impactful change this quarter:
-{{Describe the one change that most improved OS quality or manager effectiveness}}
-
-What the OS still cannot do:
-{{Capability gap that remains — what the OS consistently gets wrong or cannot cover}}
-```
+At the end of each quarter, run `kaizen/quarterly-review.md` — it holds the full process (monthly-review audit, pattern rollup, principle revision decision, OS health trend) and produces the archive entry format that gets appended here.
 
 ---
 

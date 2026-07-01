@@ -32,11 +32,11 @@ Time spent: {{minutes}}
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 Q1. WHAT PREDICTION WAS WRONG?
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-Prediction made: {{what the OS, a subagent, or the EM predicted would happen}}
-What actually happened: {{the real outcome}}
-Root cause of the wrong prediction: {{why was it wrong — bad data, wrong model, missing signal}}
-Confidence level at time of prediction: {{High / Medium / Low}}
-Was the confidence level appropriate? {{Yes / No — explain}}
+Log this in kaizen/prediction-review.md's Weekly Log Entry instead of here — that file
+holds the full prediction-tracking process (root-cause categorization against
+kaizen/root-cause.md, calibration rollup). Paste its one-line summary below:
+
+Summary: {{one line from kaizen/prediction-review.md's weekly entry}}
 
 OS UPDATE NEEDED? {{Yes / No}}
 If yes, what changes: {{which file, which section, what specifically}}
@@ -102,10 +102,10 @@ If yes: → update incidents.feature with @critical @recurring scenario
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 Q7. WHAT SHOULD THE PLAYBOOK CHANGE?
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-Section of docs/engineering-playbook.md that proved wrong or incomplete: {{section name}}
-What happened that the playbook didn't account for: {{situation}}
-Proposed change: {{what should be added, removed, or reworded}}
-Confidence that this change is correct: {{High / Medium / Low}}
+Log this in kaizen/playbook-review.md's Weekly Log Entry instead of here. Paste its
+one-line summary below:
+
+Summary: {{one line from kaizen/playbook-review.md's weekly entry}}
 
 OS UPDATE NEEDED? {{Yes / No}}
 If yes: → update docs/engineering-playbook.md directly if High confidence
@@ -114,11 +114,10 @@ If yes: → update docs/engineering-playbook.md directly if High confidence
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 Q8. SHOULD ANY SKILL BE UPDATED?
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-Skill that produced incorrect, incomplete, or poorly calibrated output: {{skill path}}
-Input provided: {{what data was given to the skill}}
-Output produced: {{what the skill returned}}
-Correct output should have been: {{what it should have returned}}
-Which section of the skill was wrong: {{Purpose / Inputs / Analysis / Decision Tree / Output / Confidence Score / Failure Modes}}
+Log this in kaizen/skill-review.md's Weekly Log Entry instead of here. Paste its
+one-line summary below:
+
+Summary: {{one line from kaizen/skill-review.md's weekly entry}}
 
 OS UPDATE NEEDED? {{Yes / No}}
 If yes: → update the specific section of the skill file
@@ -159,27 +158,30 @@ If yes: → log in kaizen/prompt-review.md with full diagnosis
 
 Execute updates in this order. Do not skip steps. Do not reverse the order.
 
+Reordered from the original Memory-first sequence: memory now records the outcome of the other updates rather than preceding them — a lesson is only worth recording once the playbook/prompt/skill layer it applies to has actually been fixed.
+
 ```
-STEP 1 — MEMORY (lowest risk, informs everything below)
+STEP 1 — PLAYBOOKS (highest impact — affects the reference standard)
+├── Update docs/engineering-playbook.md for High-confidence changes only (see kaizen/playbook-review.md)
+├── Update docs/principles.md only if a principle proved wrong in practice (quarterly decision — see kaizen/quarterly-review.md Part 3)
+└── Log the change in kaizen/continuous-improvement.md with the week's reference
+
+STEP 2 — PROMPTS (affects agent behavior)
+├── Update subagent Constraints section for new Never/Always rules
+├── Update subagent Output Contract if format was wrong — and bump contracts/subagent.contract.md's Version if the Output Contract itself changed shape
+└── Log all prompt changes in kaizen/prompt-review.md
+
+STEP 3 — SKILLS (affects agent outputs)
+├── Update the specific section identified in kaizen/skill-review.md
+├── Update the Failure Modes section if a new failure mode was discovered
+├── Bump the skill's contracts/*.md Version if Required Outputs or Failure Conditions changed
+└── Preserve the skill's golden output file — update it only if the new output is clearly better
+
+STEP 4 — MEMORY (records the outcome of the above)
 ├── Add lessons to memory/lessons/{{YYYY-MM-DD}}-lessons.md
 ├── Update memory/incidents/ if incidents repeated
 ├── Update memory/coaching/ if engineer growth was observed
 └── Update memory/decisions/ if a decision outcome was tracked
-
-STEP 2 — SKILLS (medium risk — affects agent outputs)
-├── Update the specific section identified in Q8
-├── Update the Failure Modes section if a new failure mode was discovered
-└── Preserve the skill's golden output file — update it only if the new output is clearly better
-
-STEP 3 — PROMPTS (medium risk — affects agent behavior)
-├── Update subagent Constraints section for new Never/Always rules
-├── Update subagent Output Contract if format was wrong
-└── Log all prompt changes in kaizen/prompt-review.md
-
-STEP 4 — PLAYBOOKS (higher impact — affects the reference standard)
-├── Update docs/engineering-playbook.md for High-confidence changes only
-├── Update docs/principles.md only if a principle proved wrong in practice
-└── Log the change in kaizen/continuous-improvement.md with the week's reference
 
 STEP 5 — EVALUATIONS (validation — confirm changes didn't break anything)
 ├── Run regression scenarios for every skill that was updated

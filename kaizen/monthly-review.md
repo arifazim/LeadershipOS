@@ -35,25 +35,7 @@ If No: where did it break down?
 
 ## Part 2 — Failure Pattern Analysis (20 min)
 
-Review all entries added to `kaizen/failures.md` this month.
-
-```
-Failures opened this month: {{count}}
-Failures closed this month: {{count}}
-Failures open > 30 days: {{count}} — these require a decision: fix now or accept as known limitation
-
-Failure types this month:
-- Prediction failures: {{count}}
-- Recommendation failures: {{count}}
-- Threshold failures: {{count}}
-- Skill failures: {{count}}
-- Subagent failures: {{count}}
-- Process failures: {{count}}
-
-Most common failure type: {{type}}
-Root cause of the pattern: {{why is this type recurring}}
-Systemic fix required: {{Yes / No — if Yes, what}}
-```
+Run `kaizen/failure-analysis.md` — the full monthly pattern-analysis process now lives there, reading across `kaizen/failures.md`'s entries using the `kaizen/root-cause.md` taxonomy. Paste its summary output here for the archive record.
 
 ---
 
@@ -61,24 +43,7 @@ Systemic fix required: {{Yes / No — if Yes, what}}
 
 This is the most important part of the monthly review. It asks: is the OS's confidence system calibrated?
 
-For each significant prediction the OS made this month, record the outcome:
-
-```
-| Prediction | Confidence Stated | Actual Outcome | Calibration |
-|---|---|---|---|
-| {{description}} | {{High/Medium/Low}} | {{what happened}} | {{Accurate / Overconfident / Underconfident}} |
-```
-
-Calibration summary:
-- High confidence predictions that were correct: {{N of N stated as High}}
-- Medium confidence predictions that were correct: {{N of N stated as Medium}}
-- Low confidence predictions that were correct: {{N of N stated as Low}}
-
-**If High confidence predictions are wrong more than 20% of the time**: the confidence scoring in those skills is overconfident. Adjust positive modifiers down.
-
-**If Low confidence predictions are consistently right**: the scoring is underconfident. Adjust negative modifiers up.
-
-Update the Confidence Score section of any skill where calibration is off by > 20%.
+Run `kaizen/prediction-review.md`'s Monthly Calibration Analysis section — it now holds the full process (calibration table, summary thresholds, confidence-modifier adjustment rule). Paste its summary output here for the archive record.
 
 ---
 
@@ -125,17 +90,7 @@ A principle that has not been tested in 3 months is not guiding decisions — it
 
 ## Part 6 — Skill Usage Audit (10 min)
 
-```
-Skills invoked this month: {{list}}
-Skills NOT invoked in > 4 weeks: {{list}}
-```
-
-For each skill not used in > 4 weeks:
-- Is it because the situation hasn't arisen? (Acceptable — keep, note in log)
-- Is it because the team doesn't know it exists? (Fix: add to relevant command)
-- Is it because it was tried and abandoned? (Fix: investigate, update or archive)
-
-A skill that nobody invokes is a liability, not an asset — it creates maintenance overhead without value.
+Run `kaizen/skill-review.md`'s Monthly Usage Audit section — it now holds the full process (usage tally, the "why isn't it used" decision tree, and the contract-drift check). Paste its summary output here for the archive record.
 
 ---
 
@@ -182,4 +137,4 @@ Priority 3: {{what}} — {{why}} — {{owner}} — {{done by}}
 
 ## Archive
 
-Add the month's summary to `kaizen/continuous-improvement.md` as a quarterly rollup entry (at end of Q3 and Q4) or a monthly summary row.
+Add the month's summary to `kaizen/continuous-improvement.md` as a monthly summary row. At the end of each quarter, run `kaizen/quarterly-review.md` instead of this file — it rolls up all three months and produces the Quarterly Rollup archive entry.
