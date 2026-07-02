@@ -1,4 +1,4 @@
-# Feature: Political Signals Assessment
+Feature: Political Signals Assessment
   As an Engineering Manager
   I want to detect organizational risk patterns and respond ethically
   So that I can protect the team and organization without manipulation

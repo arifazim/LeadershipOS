@@ -1,4 +1,4 @@
-# Feature: Decision Memory
+Feature: Decision Memory
   As an Engineering Manager
   I want to record, recall, and learn from past decisions
   So that the organization does not repeat mistakes and does build on past learning
