@@ -1,4 +1,4 @@
-# Skill: Promotion Readiness
+# Skill: Promotion Readiness Tracking
 
 **Domain**: Performance Management
 **Owner**: `subagents/engineering-manager.md`

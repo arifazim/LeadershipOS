@@ -35,7 +35,7 @@ Develop engineers from individual contributors into technical leaders — not by
 |---|---|
 | **Cross-functional partner feedback** | What non-engineers say about working with this person on technical decisions |
 | **Delegation maturity scores** | From `skills/mentoring/delegation.md` — Level 4 in primary domain is a prerequisite signal |
-| **Promotion readiness assessment** | From `skills/performance/promotion-readiness.md` — technical leadership maps to Leadership/Influence dimension |
+| **Promotion readiness assessment** | From `skills/performance/promotion-readiness-tracking.md` — technical leadership maps to Leadership/Influence dimension |
 
 ---
 
@@ -438,7 +438,7 @@ Promotion case status: {{Not started / In development / Submitted / Declined / A
 - `skills/mentoring/growth-tracking.md` — Technical leadership dimension scores feed growth tracking
 - `skills/mentoring/mentor-plan.md` — Mentoring assignment (Dimension 3) designed here
 - `skills/people/career-development.md` — Career aspiration determines whether TL development is the right investment
-- `skills/performance/promotion-readiness.md` — Leadership/Influence dimension of promotion readiness scored from TL dimensions
+- `skills/performance/promotion-readiness-tracking.md` — Leadership/Influence dimension of promotion readiness scored from TL dimensions
 - `skills/performance/calibration.md` — Calibration-ready evidence for leadership dimension built from this profile
 
 ## Related Skills
@@ -446,7 +446,7 @@ Promotion case status: {{Not started / In development / Submitted / Declined / A
 | Skill | Relationship |
 |---|---|
 | `skills/mentoring/delegation.md` | Level 4–5 delegation maturity is the operational proxy for technical leadership scope |
-| `skills/performance/promotion-readiness.md` | Technical leadership composite → Leadership/Influence PR dimension |
+| `skills/performance/promotion-readiness-tracking.md` | Technical leadership composite → Leadership/Influence PR dimension |
 | `skills/performance/calibration.md` | TL behavioral evidence is the strongest calibration evidence for leadership claims |
 | `skills/people/career-development.md` | Career aspiration must align before TL development investment |
 | `skills/mentoring/growth-tracking.md` | TL dimension scores are tracked in the growth tracking dashboard monthly |

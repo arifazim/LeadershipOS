@@ -410,7 +410,7 @@ Last month score: {{N}} | This month: {{N}} | Direction: {{Improving 🟢 | Stab
 - `skills/people/engagement.md` — Engagement score is the leading indicator that feeds retention risk Factor 1–3
 - `skills/people/motivation.md` — Motivation shifts feed factors 1, 3, and 6 of the retention risk model
 - `skills/performance/high-performer.md` — High performer flight risk is the most expensive variant; elevated urgency
-- `skills/performance/promotion-readiness.md` — Overdue promotion (Signal 5) is the most actionable retention root cause
+- `skills/performance/promotion-readiness-tracking.md` — Overdue promotion (Signal 5) is the most actionable retention root cause
 
 ## Related Skills
 
@@ -418,5 +418,5 @@ Last month score: {{N}} | This month: {{N}} | Direction: {{Improving 🟢 | Stab
 |---|---|
 | `skills/people/engagement.md` | Engagement decline is the primary leading indicator of retention risk |
 | `skills/performance/high-performer.md` | High performer attrition is the most asymmetric risk; requires dedicated monitoring |
-| `skills/performance/promotion-readiness.md` | Overdue promotion is the most common and most fixable retention root cause |
+| `skills/performance/promotion-readiness-tracking.md` | Overdue promotion is the most common and most fixable retention root cause |
 | `skills/people/career-development.md` | Career stagnation is the most common Factor 1 driver |

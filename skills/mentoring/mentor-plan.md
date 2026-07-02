@@ -34,7 +34,7 @@ Design and sustain a mentoring relationship that produces measurable skill growt
 | Input | Description |
 |---|---|
 | **Mentee's prior mentoring history** | What has worked or failed in previous mentoring relationships |
-| **Promotion readiness score** | From `skills/performance/promotion-readiness.md` — to anchor mentoring goals to concrete advancement criteria |
+| **Promotion readiness score** | From `skills/performance/promotion-readiness-tracking.md` — to anchor mentoring goals to concrete advancement criteria |
 | **Growth plan** | From `skills/people/growth-plans.md` — mentoring should complement, not duplicate, the existing IDP |
 | **Peer input** | What teammates observe that the mentee may not see in themselves |
 
@@ -158,7 +158,7 @@ Root cause of low effectiveness:
 
 Promotion readiness linkage:
   Map mentoring goals directly to promotion readiness dimensions from
-  skills/performance/promotion-readiness.md — Technical / Scope / Communication /
+  skills/performance/promotion-readiness-tracking.md — Technical / Scope / Communication /
   Leadership / Track Record
   At each quarterly review: Which promotion readiness dimensions have advanced?
   If mentoring goals don't map to any promotion dimension: misaligned investment
@@ -234,7 +234,7 @@ What does the mentor plan assessment reveal?
 ├── PROMOTION READINESS NOT ADVANCING
 │   └── Map mentoring goals to promotion readiness dimensions
 │       If goals don't map: redesign goals around the readiness gap
-│       Cross-check with skills/performance/promotion-readiness.md
+│       Cross-check with skills/performance/promotion-readiness-tracking.md
 
 ├── MENTORING RELATIONSHIP AT 6-MONTH MILESTONE
 │   └── Re-contracting conversation:
@@ -336,7 +336,7 @@ Right mentor for next chapter: {{EM / Domain expert / Peer / External}}
 - `skills/mentoring/growth-tracking.md` — Skill progression scoring and coaching effectiveness measurement
 - `skills/mentoring/coaching-style.md` — Selecting and adapting the right approach per session
 - `skills/people/coaching.md` — GROW model and coaching modes (coaching ≠ mentoring; both matter)
-- `skills/performance/promotion-readiness.md` — Mapping mentoring goals to promotion readiness dimensions
+- `skills/performance/promotion-readiness-tracking.md` — Mapping mentoring goals to promotion readiness dimensions
 - `skills/people/career-development.md` — Career trajectory context that mentoring should serve
 
 ## Related Skills
@@ -347,4 +347,4 @@ Right mentor for next chapter: {{EM / Domain expert / Peer / External}}
 | `skills/mentoring/growth-tracking.md` | Coaching effectiveness is measured here; results feed back to mentor plan quarterly |
 | `skills/mentoring/coaching-style.md` | Style selection shapes which mentoring approach is deployed per session |
 | `skills/people/coaching.md` | Coaching is a subset of what mentoring includes; GROW model shared |
-| `skills/performance/promotion-readiness.md` | Mentoring goals should map directly to promotion readiness dimensions |
+| `skills/performance/promotion-readiness-tracking.md` | Mentoring goals should map directly to promotion readiness dimensions |

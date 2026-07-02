@@ -241,5 +241,5 @@ OVERDUE FLAG: {{Y/N}} — at readiness 42+ since {{date}}
 - `memory/schema.md` — Universal entry format
 - `memory/memory.md` — Cross-domain pattern detection
 - `analytics/career-dashboard.md` — Career progression index and promotion pipeline
-- `skills/performance/promotion-readiness.md` — Readiness scoring methodology
+- `skills/performance/promotion-readiness-tracking.md` — Readiness scoring methodology
 - `skills/performance/calibration.md` — Calibration preparation skill

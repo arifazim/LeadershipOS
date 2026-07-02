@@ -26,7 +26,7 @@ Give the EM a complete, scored view of every direct report across five people di
 | `skills/people/burnout.md` (Maslach 0–9) | Burnout Score |
 | `skills/performance/retention-risk.md` (6-factor, 0–30) | Retention Risk Score |
 | `skills/mentoring/growth-tracking.md` (skill progression 1–5) | Coaching Effectiveness |
-| `skills/performance/promotion-readiness.md` (5-dimension, 0–50) | Career Progression Index |
+| `skills/performance/promotion-readiness-tracking.md` (5-dimension, 0–50) | Career Progression Index |
 | `skills/people/one-on-one.md` (theme tracker, 4-session log) | 1:1 Signal Quality |
 
 ---
@@ -66,7 +66,7 @@ SKILL VELOCITY TREND (supplementary):
 ### Metric 2 — Career Progression Index (0–100, team-level)
 
 ```
-Source: skills/performance/promotion-readiness.md + career development signals
+Source: skills/performance/promotion-readiness-tracking.md + career development signals
 
 5 CAREER PROGRESSION FACTORS (0–20 each):
 
@@ -342,7 +342,7 @@ Dominant retention factor across team: {{career/comp/work/mgr/team/org}}
 - `skills/people/engagement.md` — Engagement score source
 - `skills/people/burnout.md` — Burnout score source
 - `skills/performance/retention-risk.md` — Retention risk score source
-- `skills/performance/promotion-readiness.md` — Career progression source
+- `skills/performance/promotion-readiness-tracking.md` — Career progression source
 - `skills/mentoring/growth-tracking.md` — Coaching effectiveness source
 - `analytics/career-dashboard.md` — Career progression detail; people dashboard feeds into
 

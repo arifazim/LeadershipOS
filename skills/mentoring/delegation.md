@@ -272,7 +272,7 @@ What does the delegation maturity assessment reveal?
 └── MATURITY LEVEL 4→5 TRANSITION
     └── This is a significant career transition — requires organizational change, not just task change
         Stakeholder introduction: the engineer must be visible to the calibration group
-        Connect to: skills/performance/promotion-readiness.md for the formal promotion case
+        Connect to: skills/performance/promotion-readiness-tracking.md for the formal promotion case
         Connect to: skills/mentoring/technical-leadership.md for the leadership dimension
 ```
 
@@ -349,7 +349,7 @@ Date     | Work delegated | Level | Key decision observed | Learning surfaced | 
 - `skills/mentoring/mentor-plan.md` — Delegation assignments connect to mentoring goals
 - `skills/mentoring/technical-leadership.md` — Level 4→5 maturity connects to technical leadership growth
 - `skills/people/motivation.md` — Will assessment (Factor 2) draws from motivation profile
-- `skills/performance/promotion-readiness.md` — Level 4 maturity in primary domain is a promotion readiness signal
+- `skills/performance/promotion-readiness-tracking.md` — Level 4 maturity in primary domain is a promotion readiness signal
 - `skills/people/growth-plans.md` — Delegation assignments are the 70% experience component of growth plans
 
 ## Related Skills
@@ -359,5 +359,5 @@ Date     | Work delegated | Level | Key decision observed | Learning surfaced | 
 | `skills/mentoring/growth-tracking.md` | Skill readiness (Factor 1) sourced from growth tracking; delegation outcomes feed skill progression |
 | `skills/people/motivation.md` | Will assessment (Factor 2) draws from motivation profile |
 | `skills/mentoring/technical-leadership.md` | Level 4–5 maturity growth is technical leadership development |
-| `skills/performance/promotion-readiness.md` | Level 4 in primary domain is evidence for promotion readiness Scope dimension |
+| `skills/performance/promotion-readiness-tracking.md` | Level 4 in primary domain is evidence for promotion readiness Scope dimension |
 | `skills/people/growth-plans.md` | Delegation is the primary vehicle for the 70% experience component |

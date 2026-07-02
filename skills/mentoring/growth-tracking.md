@@ -35,7 +35,7 @@ Track skill progression with precision — not impression — so that mentoring 
 |---|---|
 | **Prior skill scores** | Previous month's scores — required for velocity calculation |
 | **Peer observations** | What teammates observe in real work (code reviews, design discussions, cross-team interactions) |
-| **Promotion readiness assessment** | From `skills/performance/promotion-readiness.md` — growth tracking feeds this directly |
+| **Promotion readiness assessment** | From `skills/performance/promotion-readiness-tracking.md` — growth tracking feeds this directly |
 
 ---
 
@@ -302,7 +302,7 @@ What does the growth tracking assessment reveal?
 │       Act within 2 weeks of pattern detection, not at month-end review
 
 ├── SKILL SCORES ADVANCING TOWARD PROMOTION THRESHOLD
-│   └── Connect to promotion readiness tracker (skills/performance/promotion-readiness.md)
+│   └── Connect to promotion readiness tracker (skills/performance/promotion-readiness-tracking.md)
 │       Map growth tracking scores to promotion dimensions
 │       Build calibration-ready evidence: specific instance + context + impact for each dimension
 │       Begin pre-calibration visibility building if person is invisible to the calibration group
@@ -315,7 +315,7 @@ What does the growth tracking assessment reveal?
 
 └── ALL SKILLS AT LEVEL 3+ FOR TARGET LEVEL
     └── Assessment: Is this person operating above their current level?
-        If yes: Begin promotion readiness case (skills/performance/promotion-readiness.md)
+        If yes: Begin promotion readiness case (skills/performance/promotion-readiness-tracking.md)
         If not yet submitted: flight risk signal (skills/performance/retention-risk.md)
 ```
 
@@ -404,7 +404,7 @@ Leadership: "In {{context}}, they demonstrated {{behavior}} — Level {{N}} evid
 - `skills/mentoring/mentee-plan.md` — Monthly self-assessment data feeds growth tracking
 - `skills/mentoring/coaching-style.md` — Approach change is the first intervention when velocity stalls
 - `skills/mentoring/delegation.md` — Deliberate practice created through delegation feeds skill progression
-- `skills/performance/promotion-readiness.md` — Growth tracking scores feed promotion readiness directly
+- `skills/performance/promotion-readiness-tracking.md` — Growth tracking scores feed promotion readiness directly
 - `skills/performance/calibration.md` — Calibration-ready evidence built here; used in calibration session
 
 ## Related Skills
@@ -412,7 +412,7 @@ Leadership: "In {{context}}, they demonstrated {{behavior}} — Level {{N}} evid
 | Skill | Relationship |
 |---|---|
 | `skills/mentoring/mentor-plan.md` | Mentoring agreement goals are the tracking targets; effectiveness feeds back to mentor plan |
-| `skills/performance/promotion-readiness.md` | Growth scores map directly to promotion readiness dimensions |
+| `skills/performance/promotion-readiness-tracking.md` | Growth scores map directly to promotion readiness dimensions |
 | `skills/performance/calibration.md` | Behavioral evidence logged here is usable in calibration sessions |
 | `skills/mentoring/coaching-style.md` | When velocity stalls, style shift is the first intervention |
 | `skills/people/burnout.md` | Regression in skill scores may signal burnout — cross-check before adjusting growth targets |

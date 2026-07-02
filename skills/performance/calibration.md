@@ -379,4 +379,4 @@ Forward expectation set: {{Specific — what the next cycle requires}}
 |---|---|
 | `skills/people/performance-review.md` | Calibration is the group version of the performance review; shares the dimension framework |
 | `skills/performance/high-performer.md` | Hidden high performers require deliberate advocacy in calibration |
-| `skills/performance/promotion-readiness.md` | Calibration and promotion readiness are co-located in the same cycle |
+| `skills/performance/promotion-readiness-tracking.md` | Calibration and promotion readiness are co-located in the same cycle |

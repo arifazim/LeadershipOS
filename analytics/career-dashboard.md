@@ -22,7 +22,7 @@ Give the EM a single view of every direct report's career momentum — promotion
 
 | Source | Metric Fed |
 |---|---|
-| `skills/performance/promotion-readiness.md` (0–50) | Career Progression Index |
+| `skills/performance/promotion-readiness-tracking.md` (0–50) | Career Progression Index |
 | `skills/mentoring/growth-tracking.md` (skill velocity) | Growth Velocity Component |
 | `skills/people/career-development.md` (aspiration mapping) | Aspiration Alignment Component |
 | `skills/performance/calibration.md` (calibration outcomes) | Calibration Accuracy Component |
@@ -320,7 +320,7 @@ Hidden HP flag: {{Names where upward divergence occurred}} → sponsorship gap
 
 ## References
 
-- `skills/performance/promotion-readiness.md` — Career progression source
+- `skills/performance/promotion-readiness-tracking.md` — Career progression source
 - `skills/people/career-development.md` — Aspiration mapping source
 - `skills/mentoring/growth-tracking.md` — Growth velocity source
 - `skills/performance/calibration.md` — Calibration accuracy source
@@ -331,6 +331,6 @@ Hidden HP flag: {{Names where upward divergence occurred}} → sponsorship gap
 | Skill | Relationship |
 |---|---|
 | `analytics/people-dashboard.md` | Career progression index feeds the people dashboard; career dashboard provides the detail |
-| `skills/performance/promotion-readiness.md` | The primary data source for the promotion pipeline |
+| `skills/performance/promotion-readiness-tracking.md` | The primary data source for the promotion pipeline |
 | `skills/people/career-development.md` | Aspiration map and track identification |
 | `skills/performance/calibration.md` | Calibration accuracy tracks EM assessment quality |

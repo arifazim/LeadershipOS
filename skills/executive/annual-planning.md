@@ -4,6 +4,8 @@
 **Owner**: `subagents/engineering-manager.md`
 **Cadence**: Annual (October–November for calendar-year companies; adapt to fiscal year)
 
+**Not to be confused with**: `skills/strategy/annual-planning.md` — this is the board/leadership-facing ask (headcount and budget request, quarterly confidence narrative); the strategy version is the underlying capacity/sequencing model this file's ask is built from. Run the strategy version first.
+
 ---
 
 ## Purpose

@@ -4,6 +4,8 @@
 **Owner**: `subagents/engineering-manager.md`
 **Cadence**: Annual (Q4 for next fiscal year) + Mid-year replan if company strategy shifts materially
 
+**Not to be confused with**: `skills/executive/annual-planning.md` — this is the capacity/sequencing model (headcount math, initiative-to-capacity fit); the executive version is the board/leadership-facing ask built from this file's output. Build the plan here first, then invoke the executive version to present it.
+
 ---
 
 ## Purpose
