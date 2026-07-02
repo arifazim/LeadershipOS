@@ -51,18 +51,20 @@ Execute in sequence. Do not skip steps when inputs are available.
 
 ### Step 1 — Weighted Score Aggregation
 
-Calculate weighted confidence score with dimension caps:
+**Fixed 2026-07-01**: this step previously capped every dimension's raw score at 30 before weighting (`Min(score, 30) × weight`), which caps the maximum possible total at 30 regardless of input — reproducing none of the documented examples or golden outputs (e.g. CE-01's all-Green inputs would compute to 30, not the golden 87.4). Confirmed via reverse-engineering: a plain weighted sum with no cap reproduces CE-01 (88.8 vs. golden 87.4, within the 85-90 tolerance) and CE-07 (33.45 vs. golden 38.2, within soft tolerance). The weights themselves already correctly sum to 100% — only the cap was wrong.
 
-| Dimension | Weight | Cap | Calculation |
-|---|---|---|---|
-| Prediction | 25% | 30% | Min(score, 30) × 0.25 |
-| Roadmap | 20% | 30% | Min(score, 30) × 0.20 |
-| Architecture | 20% | 30% | Min(score, 30) × 0.20 |
-| Delivery | 15% | 30% | Min(score, 30) × 0.15 |
-| Data Quality | 10% | 30% | Min(score, 30) × 0.10 |
-| Risk | 10% | 30% | Min(score, 30) × 0.10 |
+Calculate weighted confidence score:
 
-Sum all weighted contributions plus remaining weight distributed proportionally.
+| Dimension | Weight | Calculation |
+|---|---|---|
+| Prediction | 25% | score × 0.25 |
+| Roadmap | 20% | score × 0.20 |
+| Architecture | 20% | score × 0.20 |
+| Delivery | 15% | score × 0.15 |
+| Data Quality | 10% | score × 0.10 |
+| Risk | 10% | score × 0.10 |
+
+Sum all weighted contributions. Weights sum to 100% — no remaining weight to distribute.
 
 ### Step 2 — Cross-Dimensional Pattern Detection
 
@@ -95,6 +97,8 @@ Combine individual dimension trends into overall trajectory:
 
 ## Decision Tree
 
+**Fixed 2026-07-01**: this tree previously had only 3 bands (Green ≥80 / Yellow 60-79 / Red <60), inconsistent with this skill's own feature file (`confidence-engine/features/confidence-engine.feature`), which defines 4 bands (80-100 Healthy / 70-79 Warning / 60-69 At Risk / 0-59 Critical). Corrected to match.
+
 ```
 What is the overall executive confidence classification?
 │
@@ -105,12 +109,17 @@ What is the overall executive confidence classification?
 │   └── YES → OUTCOME: Overall confidence high but patterns indicate emerging risk.
 │               Recommendation: Address patterns proactively; monitor closely.
 │
-├── 60–79 (Yellow) ─────────────────────────────────────────────
+├── 70–79 (Yellow) ─────────────────────────────────────────────
 │   How many dimensions are Yellow/Red and what patterns emerge?
 │   ├── SINGLE DIMENSION → OUTCOME: Targeted improvement needed.
 │   │           Recommendation: Focus on weak dimension; other dimensions support recovery.
 │   └── MULTIPLE DIMENSIONS → OUTCOME: Systemic issues require broad attention.
 │               Recommendation: Conduct holistic review; consider organizational interventions.
+│
+├── 60–69 (At Risk) ────────────────────────────────────────────
+│   OUTCOME: Confidence is materially compromised across multiple dimensions.
+│   Recommendation: Conduct holistic review this cycle. Name the 1-2 dimensions driving
+│         the drop and commit to a specific remediation timeline before the next assessment.
 │
 └── < 60 (Red) ──────────────────────────────────────────────────
     OUTCOME: Team confidence is critically compromised.
