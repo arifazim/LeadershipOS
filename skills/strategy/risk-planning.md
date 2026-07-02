@@ -58,30 +58,15 @@ Identify risks across six categories. Run all six — partial risk registers cre
 
 ### Step 2 — Score Each Risk
 
+Use the shared probability scale, formula, and severity bands from `docs/glossary.md` → Risk Scoring: Probability × Impact. This skill's domain-specific Impact levels:
+
 ```
-For each identified risk:
-
-Probability:
-  0.1 = Rare (few precedents, strong controls in place)
-  0.3 = Possible (could occur; limited controls)
-  0.5 = Likely (has occurred before; conditions present)
-  0.7 = Probable (conditions strongly present; pattern established)
-  0.9 = Near-certain (expected to occur without intervention)
-
-Impact (on delivery or business outcome):
+Impact (on delivery or business outcome, portfolio level):
   1 = Negligible — minor inconvenience, no delivery impact
   2 = Minor — small delay or rework; manageable
-  3 = Moderate — significant delay (>1 sprint) or ARR impact ($10K–$100K)
-  4 = Major — quarter-level miss or ARR impact ($100K–$500K)
+  3 = Moderate — significant delay (>1 sprint) or ARR impact ($10K-$100K)
+  4 = Major — quarter-level miss or ARR impact ($100K-$500K)
   5 = Critical — year-level miss, existential business impact, or >$500K ARR
-
-Expected loss = Probability × Impact
-
-Risk severity:
-  0.1–1.0: Low — monitor
-  1.1–2.5: Medium — mitigation plan recommended
-  2.6–4.0: High — mitigation plan required this quarter
-  4.1–5.0: Critical — immediate mitigation; escalate to leadership
 ```
 
 ### Step 3 — Connect Risks to Roadmap Items
@@ -236,6 +221,7 @@ TOP RISKS REQUIRING ACTION
 - `skills/strategy/succession-planning.md` — Organizational risk mitigation for key-person dependency
 - `skills/strategy/capacity-planning.md` — Delivery and organizational risk affects capacity projections
 - `skills/product/product-risk.md` — Product-level risks complement strategic risk register
+- `docs/glossary.md` — Shared probability/impact/severity scoring rubric
 
 ## Related Skills
 

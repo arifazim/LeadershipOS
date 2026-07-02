@@ -59,19 +59,15 @@ Every feature carries a risk portfolio. Run all six risk types:
 
 ### Step 2 — Score Each Risk
 
+Use the shared probability scale, formula, and severity bands from `docs/glossary.md` → Risk Scoring: Probability × Impact. This skill's domain-specific Impact levels:
+
 ```
-For each identified risk:
-  Probability: 0.1 (rare) | 0.3 (possible) | 0.5 (likely) | 0.7 (probable) | 0.9 (near-certain)
-  Impact:      1 (minor inconvenience) | 2 (delay or scope reduction) |
-               3 (significant value loss) | 4 (feature fails to deliver value) |
-               5 (strategic damage or major ARR impact)
-
-Expected loss = Probability × Impact
-
-  Score 0.1–1.0:  Low — monitor
-  Score 1.1–2.5:  Medium — mitigation recommended
-  Score 2.6–4.0:  High — mitigation required before commit
-  Score 4.1–5.0:  Critical — re-evaluate feature or add spike/validation before building
+Impact (feature/initiative level):
+  1 = Minor inconvenience
+  2 = Delay or scope reduction
+  3 = Significant value loss
+  4 = Feature fails to deliver value
+  5 = Strategic damage or major ARR impact
 ```
 
 ### Step 3 — Auto-Detect High-Risk Patterns
@@ -269,6 +265,7 @@ Rationale: Risk-adjusted value ($25K/month) still exceeds engineering cost at ra
 - `skills/product/moscow-prioritization.md` — High-risk items may be reclassified to Should/Could
 - `skills/cross-functional/legal-review.md` — Compliance risk triggers legal review
 - `skills/cross-functional/security-partnership.md` — Technical/compliance risk with security dimension
+- `docs/glossary.md` — Shared probability/impact/severity scoring rubric
 
 ## Related Skills
 

@@ -130,6 +130,8 @@ Informal veto (non-Approver blocking):
 
 ### Step 4 — Assess the Five Organizational Signals in Decision Context
 
+The five signals are defined canonically in `political-signals/political-signals.md` — this step applies each to the decision-authority layer specifically:
+
 ```
 Signal 1 — Frequent decision reversals
   Decision network cause: Informed party who should have been Consulted
@@ -269,6 +271,7 @@ PATTERN FLAGS
 - `skills/organizational/stakeholder-analysis.md` — Stakeholder roles translate to DACI roles
 - `skills/organizational/influence-map.md` — Informal influences affect who is actually consulted
 - `skills/organizational/conflict-prediction.md` — Ownership ambiguity in decision network predicts conflict
+- `political-signals/political-signals.md` — Canonical definitions of the five organizational signals
 
 ## Related Skills
 

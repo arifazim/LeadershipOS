@@ -76,15 +76,17 @@ engineering will be asked to execute decisions that don't reflect technical real
 
 ### Step 3 — Assess the Five Organizational Signals
 
+The five signals are defined canonically in `political-signals/political-signals.md` — this step applies each to the informal-influence layer specifically:
+
 ```
 Signal 1 — Frequent decision reversals
-  Influence map signal: A decision was made without input from an informal influencer
+  Influence map cause: A decision was made without input from an informal influencer
   who then reversed it after being informed. The informal channel was bypassed.
   Detection: Track which decisions reverse. Who became aware of the decision after reversal?
   Response: Map who needs to be in the information flow, not just the formal decision meeting.
 
 Signal 2 — Exclusion from key meetings
-  Influence map signal: Engineering is absent from pre-decision meetings where
+  Influence map cause: Engineering is absent from pre-decision meetings where
   technical feasibility and framing are established.
   Detection: Decisions arrive to engineering pre-framed without technical input.
              "We've decided to build X. How long will it take?"
@@ -92,17 +94,17 @@ Signal 2 — Exclusion from key meetings
   not territorial: "Earlier technical input improves the options you have to consider."
 
 Signal 3 — Ownership ambiguity
-  Influence map signal: Two informal influencers have competing framings of the same problem.
+  Influence map cause: Two informal influencers have competing framings of the same problem.
   Detection: Inconsistent direction from different leaders; both citing different "priorities."
   Response: Surface the contradiction transparently to the shared authority above both.
 
 Signal 4 — Escalation patterns
-  Influence map signal: Someone is routing around their formal chain to use informal influence.
+  Influence map cause: Someone is routing around their formal chain to use informal influence.
   Detection: Issues re-emerge at higher levels after seeming resolved at lower levels.
   Response: Address the root concern directly; don't compete with the informal channel.
 
 Signal 5 — Misaligned incentives
-  Influence map signal: Informal influencers are optimizing for outcomes that conflict with
+  Influence map cause: Informal influencers are optimizing for outcomes that conflict with
   the engineering initiative.
   Detection: Influencer's framing of the issue consistently frames engineering as the blocker.
   Response: Find common ground at the level of shared outcomes; engage directly.
@@ -241,6 +243,7 @@ Action: {{Transparent step to build inclusion — not workaround}}
 - `skills/organizational/stakeholder-analysis.md` — Formal stakeholder map overlaid by informal influence
 - `skills/organizational/decision-network.md` — How informal influence shapes the formal decision process
 - `skills/organizational/political-risk.md` — Influence gaps become political risks when initiatives are at stake
+- `political-signals/political-signals.md` — Canonical definitions of the five organizational signals
 
 ## Related Skills
 

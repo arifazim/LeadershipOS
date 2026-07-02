@@ -21,6 +21,20 @@ This skill answers three questions:
 
 ---
 
+## The Five Organizational Signals (canonical definitions)
+
+Referenced by `skills/organizational/{stakeholder-analysis,influence-map,decision-network,political-risk}.md` — each of those files applies these same five signals through its own domain lens (stakeholder engagement, informal influence, decision authority, political risk) rather than restating the definitions. Full detection logic and scoring lives in the corresponding dimension skill.
+
+| Signal | Definition | Full dimension skill |
+|---|---|---|
+| **1 — Frequent decision reversals** | A decision is made without a key party's input, then reversed after they learn of it | `skills/political-signals/decision_reversals.md` |
+| **2 — Exclusion from key meetings** | A stakeholder affected by a decision is missing from the meeting where it's made | `skills/political-signals/meeting_exclusion.md` |
+| **3 — Ownership ambiguity** | It's unclear who owns an outcome, so parties give contradictory direction | `skills/political-signals/ownership_ambiguity.md` |
+| **4 — Escalation patterns** | Concerns are re-raised at a higher level instead of being resolved at the level they were first raised | `skills/political-signals/escalation_patterns.md` |
+| **5 — Misaligned incentives** | A stakeholder's success metrics are in structural tension with the initiative's goals | `skills/political-signals/incentive_misalignment.md` |
+
+---
+
 ## Inputs
 
 ### Required

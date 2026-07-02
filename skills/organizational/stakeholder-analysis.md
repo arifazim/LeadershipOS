@@ -107,39 +107,15 @@ Low influence, Low interest (Monitor):
 
 ### Step 5 — Identify the Five Organizational Signals
 
-For each stakeholder interaction history, check for these signals:
+For each stakeholder interaction history, check for the five signals defined in `political-signals/political-signals.md` (canonical definitions — do not restate them here). Stakeholder-specific response per signal:
 
-```
-Signal 1 — Frequent decision reversals
-  Has this stakeholder reversed decisions previously made about this initiative?
-  Pattern: Decision made → stakeholder uninvolved → decision reversed after
-  Root cause: Stakeholder was not consulted before the decision; created ownership conflict
-  Response: Include them earlier; make the decision process visible before it closes
-
-Signal 2 — Exclusion from key meetings
-  Is this stakeholder missing from meetings where decisions affecting them are made?
-  Pattern: Stakeholder learns of decisions after the fact; expresses surprise or frustration
-  Root cause: Meeting invitation list not mapped to initiative impact
-  Response: Audit who is in the room; proactively add missing voices
-
-Signal 3 — Ownership ambiguity
-  Is it unclear who owns the outcome between this stakeholder and others?
-  Pattern: Two stakeholders give contradictory direction; team doesn't know who to follow
-  Root cause: Accountability not explicitly assigned; assumed, not agreed
-  Response: Name the decision owner explicitly; get alignment before proceeding
-
-Signal 4 — Escalation patterns
-  Does this stakeholder frequently escalate above their manager or yours?
-  Pattern: Concerns raised at team level, then re-raised at VP+ without resolution at lower level
-  Root cause: Team-level engagement not satisfying their concern; may indicate unresolved issue
-  Response: Address the concern at the level it was first raised before escalation recurs
-
-Signal 5 — Misaligned incentives
-  Are this stakeholder's success metrics in tension with the initiative's goals?
-  Pattern: Stakeholder consistently deprioritizes or complicates work that benefits others
-  Root cause: Their performance evaluation rewards something different
-  Response: Name the incentive gap explicitly; seek structural alignment, not compliance
-```
+| Signal | Response for this stakeholder |
+|---|---|
+| Frequent decision reversals | Include them earlier; make the decision process visible before it closes |
+| Exclusion from key meetings | Audit who is in the room; proactively add missing voices |
+| Ownership ambiguity | Name the decision owner explicitly; get alignment before proceeding |
+| Escalation patterns | Address the concern at the level it was first raised before escalation recurs |
+| Misaligned incentives | Name the incentive gap explicitly; seek structural alignment, not compliance |
 
 ---
 
@@ -283,6 +259,7 @@ ALLIES TO ACTIVATE
 - `skills/organizational/alignment-health.md` — Ongoing health check for stakeholder alignment
 - `skills/executive/vp-one-on-one.md` — Managing the VP gatekeeper relationship specifically
 - `docs/engineering-playbook.md` → Stakeholders section, Managing Across section
+- `political-signals/political-signals.md` — Canonical definitions of the five organizational signals
 
 ## Related Skills
 

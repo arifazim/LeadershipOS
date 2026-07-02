@@ -93,24 +93,15 @@ Risk 7 — Organizational isolation
 
 ### Step 2 — Score Each Political Risk
 
+Use the shared probability scale, formula, and severity bands from `docs/glossary.md` → Risk Scoring: Probability × Impact. This skill's domain-specific Impact levels:
+
 ```
-For each identified risk:
-  Probability: 0.1 | 0.3 | 0.5 | 0.7 | 0.9
-  
-  Impact on engineering effectiveness:
-    1 = Minor friction; manageable
-    2 = Delivery impact; requires EM time to manage
-    3 = Significant: budget, headcount, or strategic initiative at risk
-    4 = Major: team effectiveness compromised; trust damaged at org level
-    5 = Existential: engineering's organizational position threatened
-
-Expected political risk = Probability × Impact
-
-Risk level:
-  0.1–1.0: Low — monitor
-  1.1–2.5: Medium — transparent engagement recommended
-  2.6–4.0: High — address this quarter
-  4.1–5.0: Critical — address now; escalate if beyond EM authority
+Impact on engineering effectiveness:
+  1 = Minor friction; manageable
+  2 = Delivery impact; requires EM time to manage
+  3 = Significant: budget, headcount, or strategic initiative at risk
+  4 = Major: team effectiveness compromised; trust damaged at org level
+  5 = Existential: engineering's organizational position threatened
 ```
 
 ### Step 3 — Map to Ethical Responses Only
@@ -145,6 +136,8 @@ For each risk type, the ethical response:
 ```
 
 ### Step 4 — Detect the Five Signals as Political Risk Triggers
+
+The five signals are defined canonically in `political-signals/political-signals.md` — this step maps each to the political-risk types from Step 1:
 
 ```
 Signal 1 — Frequent decision reversals
@@ -310,6 +303,8 @@ This skill is the integration layer for all organizational dynamics skills:
 - `skills/organizational/executive-priorities.md` — Priority mismatch creates volatility and influence risks
 - `skills/organizational/change-resistance.md` — Unmanaged resistance creates reputation risk
 - `skills/organizational/alignment-health.md` — Low alignment health is the leading indicator of political risk
+- `docs/glossary.md` — Shared probability/impact/severity scoring rubric
+- `political-signals/political-signals.md` — Canonical definitions of the five organizational signals
 
 ## Related Skills
 
