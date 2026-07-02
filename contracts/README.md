@@ -28,6 +28,10 @@ Most skills and subagents in this repo already have rich Purpose/Inputs/Output/C
 | `executive.contract.md` | Filled | `skills/executive/*.md` (board-level-summary.md's deck variant is governed by `presentation.contract.md` instead) |
 | `presentation.contract.md` | Filled | `skills/presentation/*.md` + `skills/executive/board-level-summary.md` |
 
+## Feature Coverage
+
+`contracts/features/contracts.feature` validates that Failure Conditions actually block invalid invocation (missing inputs, low confidence), that Quality Checks catch malformed output (missing confidence level, details before summary), and that a contract's Version is bumped when its Required Outputs change.
+
 ## How This Relates to `loops/`
 
 A loop's Step 2 ("Invoke skills") calls a skill that has a contract. The loop defines *when and in what sequence* a skill fires; the contract defines *what that skill needs and must produce* regardless of who's calling it. Neither replaces the other.

@@ -61,6 +61,10 @@ Every loop file follows this shape:
 | `stakeholder-loop.md` | Per initiative, ongoing | `product-partner` |
 | `prediction-loop.md` | Weekly/monthly, or before forecasts | `executive-summary` |
 
+## Feature Coverage
+
+`loops/features/loops.feature` validates routing correctness (a loop reaches its primary subagent), disambiguation (adjacent loops like sprint-loop/delivery-loop don't both fire for the same request), and memory-logging correctness — matching the Gherkin validation convention every other module in this repo uses.
+
 ## Disambiguated Pairs
 
 Two pairs of loops cover adjacent ground and are deliberately split rather than merged — each loop's `Related Loops` section names the boundary explicitly so the distinction doesn't erode over time:
