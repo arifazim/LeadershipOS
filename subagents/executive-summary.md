@@ -4,6 +4,7 @@
 **Layer**: Output (leaf node)
 **Calls**: nothing
 **Called By**: engineering-manager, delivery-manager, incident-manager, architecture-reviewer
+**Loops**: `loops/executive-loop.md` (primary), `loops/prediction-loop.md` (primary)
 
 ---
 

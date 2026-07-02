@@ -4,6 +4,7 @@
 **Layer**: Specialist
 **Calls**: architecture-reviewer
 **Called By**: engineering-manager
+**Loops**: `loops/architecture-loop.md` (primary)
 
 ---
 

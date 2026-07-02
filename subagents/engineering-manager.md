@@ -5,6 +5,7 @@
 **Calls**: delivery-manager, tech-lead, engineering-coach, product-partner, incident-manager, executive-summary
 **Called By**: User directly
 **Contract**: `contracts/subagent.contract.md` (worked example)
+**Loops**: `loops/daily-leadership-loop.md` (primary); also invokes any specialist's loop directly when a cross-domain situation requires it (see `loops/README.md`)
 
 ---
 

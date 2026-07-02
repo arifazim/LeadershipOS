@@ -4,6 +4,7 @@
 **Layer**: Specialist (deep specialist — called by tech-lead, not engineering-manager directly)
 **Calls**: nothing
 **Called By**: tech-lead
+**Loops**: `loops/architecture-loop.md` (participant — reviews within the loop `tech-lead` invokes)
 
 ---
 

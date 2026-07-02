@@ -4,6 +4,7 @@
 **Layer**: Specialist
 **Calls**: executive-summary (via engineering-manager)
 **Called By**: engineering-manager
+**Loops**: `loops/stakeholder-loop.md` (primary)
 
 ---
 

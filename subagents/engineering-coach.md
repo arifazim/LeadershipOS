@@ -4,6 +4,7 @@
 **Layer**: Specialist
 **Calls**: nothing
 **Called By**: engineering-manager
+**Loops**: `loops/career-loop.md` (primary), `loops/promotion-loop.md` (primary)
 
 ---
 

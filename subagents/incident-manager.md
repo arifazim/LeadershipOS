@@ -4,6 +4,7 @@
 **Layer**: Specialist
 **Calls**: executive-summary
 **Called By**: engineering-manager, delivery-manager
+**Loops**: `loops/incident-loop.md` (primary), `loops/retrospective-loop.md`
 
 ---
 
