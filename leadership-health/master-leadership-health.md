@@ -62,21 +62,23 @@ If more than 4 dimensions are Speculative or Low, pause the synthesis and collec
 
 Apply the following weights to compute the holistic leadership health score. No single dimension may exceed 25% of the total weight.
 
+**Fixed 2026-07-01**: this table previously summed to 157% (a real bug caught by the first-ever regression run — see `evaluations/regression/leadership-health-results.md`). Weights below are the original table proportionally rescaled to sum to 100%, preserving the original relative emphasis exactly — confirmed by recomputing LH-01 (golden: 86.4) which reproduces 86.4 exactly under the corrected weights.
+
 | Pillar | Dimension | Weight | % of Total |
 |---|---|---|---|
-| Trust & Relationships | executive_trust_score | 0.20 | 20% |
-| Trust & Relationships | stakeholder_alignment | 0.20 | 20% |
-| Trust & Relationships | organizational_clarity | 0.15 | 15% |
-| Trust & Relationships | political_awareness | 0.10 | 10% |
-| Communication & Influence | communication_effectiveness | 0.15 | 15% |
-| Communication & Influence | influence_score | 0.08 | 8% |
-| Communication & Influence | meeting_quality | 0.07 | 7% |
-| Execution & Ownership | delegation_score | 0.12 | 12% |
-| Execution & Ownership | decision_quality | 0.12 | 12% |
-| Execution & Ownership | ownership_index | 0.08 | 8% |
-| Execution & Ownership | execution_clarity | 0.10 | 10% |
-| Team Development | coaching_score | 0.12 | 12% |
-| Team Development | team_autonomy | 0.08 | 8% |
+| Trust & Relationships | executive_trust_score | 0.127 | 12.7% |
+| Trust & Relationships | stakeholder_alignment | 0.127 | 12.7% |
+| Trust & Relationships | organizational_clarity | 0.096 | 9.6% |
+| Trust & Relationships | political_awareness | 0.064 | 6.4% |
+| Communication & Influence | communication_effectiveness | 0.096 | 9.6% |
+| Communication & Influence | influence_score | 0.051 | 5.1% |
+| Communication & Influence | meeting_quality | 0.045 | 4.5% |
+| Execution & Ownership | delegation_score | 0.076 | 7.6% |
+| Execution & Ownership | decision_quality | 0.076 | 7.6% |
+| Execution & Ownership | ownership_index | 0.051 | 5.1% |
+| Execution & Ownership | execution_clarity | 0.064 | 6.4% |
+| Team Development | coaching_score | 0.076 | 7.6% |
+| Team Development | team_autonomy | 0.051 | 5.1% |
 
 **Calculation**:
 ```
@@ -143,8 +145,16 @@ Select the top 3 dimensions as development priorities for the next quarter.
 
 Use this tree to determine the overall leadership health classification and primary action.
 
+**Fixed 2026-07-01**: this tree previously had only 3 bands (Green ≥80 / Yellow 60-79 / Red <60), missing the "At Risk" band that this skill's own feature file (`leadership-health/features/leadership-health.feature`) and every other diagnostic module in this repo (`confidence-engine/`, `political-signals/`) already use. Corrected to the same 4-band convention (80-100 Green / 60-79 Yellow / 40-59 At Risk / 0-39 Red), with an explicit pattern-escalation rule added to preserve the golden critical scenario's classification (score 44.5, which falls in the At Risk band by number alone, but is correctly Red once 3 active cross-dimensional patterns are accounted for).
+
 ```
-What is the holistic score?
+Escalation check (apply before banding): are 3 or more cross-dimensional patterns active?
+├── YES → Escalate one severity tier below what the raw score alone would produce
+│         (e.g. a score in the At Risk band becomes Red). Multiple compounding systemic
+│         patterns indicate risk beyond what any single score reflects.
+└── NO  → Use the raw score band directly.
+
+What is the holistic score (after the escalation check above)?
 │
 ├── ≥ 80 (Green) ────────────────────────────────────────
 │   How many cross-dimensional patterns are active?
@@ -182,7 +192,13 @@ What is the holistic score?
 │             Recommendation: Immediate intervention required.
 │             Escalate to manager. Consider role adjustment or coaching engagement.
 │
-└── < 60 (Red) ──────────────────────────────────────────
+├── 40–59 (At Risk) ─────────────────────────────────────
+│   OUTCOME: Multiple dimensions are underperforming; leadership effectiveness is
+│         materially compromised but not yet in crisis.
+│   Recommendation: Structured intervention required this quarter, not next.
+│         Engage manager or coach immediately. Do not wait for the next full assessment.
+│
+└── 0–39 (Red) ──────────────────────────────────────────
     OUTCOME: Leadership health is critical.
     Recommendation: Immediate action required.
     Escalate to manager and HR.

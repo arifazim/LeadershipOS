@@ -108,6 +108,7 @@ If completion rate < 85% or DORA metrics are At Risk/Critical, identify the prim
 - **Capacity shortfall**: Team capacity was reduced by unplanned events (illness, interviews, incidents, on-call).
 - **Dependency failure**: External team or service did not deliver what was required.
 - **Goal misalignment**: Sprint goal shifted mid-sprint due to stakeholder change.
+- **Planning failure**: Sprint goal missed despite high story-point completion — the wrong stories were selected relative to the goal during planning (see Step 1).
 
 Assign **one primary cause**. Multiple causes may be true; naming the dominant one is required for action.
 
@@ -164,10 +165,17 @@ Was the sprint goal achieved?
     │                       Add explicit dependency tracking to next sprint planning.
     │                       Reference `docs/engineering-playbook.md → Managing Across`.
     │
-    └── GOAL MISALIGNMENT
-        └── Recommendation: Mid-sprint goal changes indicate stakeholder expectation failure.
-                            Run a `skills/stakeholder/align-priorities.md` session before next sprint.
-                            Surface in executive update.
+    ├── GOAL MISALIGNMENT
+    │   └── Recommendation: Mid-sprint goal changes indicate stakeholder expectation failure.
+    │                       Run a `skills/stakeholder/align-priorities.md` session before next sprint.
+    │                       Surface in executive update.
+    │
+    └── PLANNING FAILURE
+        └── Recommendation: Review how the sprint goal was translated into story selection
+                            during planning. Require an explicit goal-to-story traceability
+                            check before sprint start — every committed story should name
+                            which goal it advances. Do not let high completion rate mask
+                            this as a healthy sprint; the goal is the primary measure.
 ```
 
 ---
