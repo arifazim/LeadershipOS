@@ -95,7 +95,38 @@ A full-project audit run immediately after (same day) specifically re-checked `l
 - Feature change: none yet — no `.feature` scenario encodes "verify before creating a new top-level directory" as a checkable behavior
 - Golden output: n/a
 
-*Failures where the fix has been applied and verified. Move entries here when Status = Fixed.*
+## FAIL-002 — Four diagnostic modules shipped without ever running their own golden outputs
+
+Date: 2026-07-01
+Type: Threshold
+Severity: High
+Status: Fixed
+Source: First-ever regression run across all 4 diagnostic modules + sprint-review (`evaluations/regression/{sprint-review,leadership-health,confidence-engine,political-signals,decision-memory}-results.md`)
+
+### What Failed
+Every diagnostic module with a weighted holistic score (`leadership-health`, `confidence-engine`, `political-signals`) had a Decision Tree with only 3 severity bands (Green/Yellow/Red), silently missing the "At Risk" band that each module's own feature file and regression dataset require. `confidence-engine` additionally had a formula bug (`Min(score, 30)` cap) that made ~97% of the possible score range unreachable. `decision-memory` (no weighted formula) had the analogous gap in a different shape: its severity/frequency taxonomy was never explicitly mapped to the Green/Yellow/At Risk/Red status labels the dataset assumes.
+
+### What Was Available Earlier
+Each module's own golden output files (`evaluations/golden/*/`) would have caught this immediately — running even one golden scenario against `confidence-engine/executive_confidence.md`'s literal formula would have produced 30 instead of 87.4. `ROADMAP.md` v0.1/v0.4 had "First regression run executed and results logged" as an open exit criterion for months; no regression run had ever been executed.
+
+### OS vs. Execution
+- OS fault: Yes — each skill file's own formula/decision tree was wrong, not just its usage.
+- Execution fault: Yes, separately — the golden outputs and regression datasets existed and were never actually run against the skills they were written to validate.
+
+### Root Cause
+Missing signal, repeated across 4 independently-authored modules — strong evidence this is a systemic process gap (no regression execution step in the build process), not 4 unrelated coincidences. All 4 modules were likely authored by generating the skill file, the feature file, the dataset, and the golden output in the same pass without ever cross-checking them against each other.
+
+### Change Required
+- Files updated: `leadership-health/master-leadership-health.md` (weight table + Decision Tree), `confidence-engine/executive_confidence.md` (Step 1 formula + Decision Tree), `political-signals/political-signals.md` (Decision Tree), `decision-memory/decision-memory.md` (added explicit Status Mapping), `skills/delivery/review-sprint.md` (added missing "Planning Failure" root cause).
+- Confidence in fix: High for the 3 banding fixes and the cap-formula fix (each verified by reproducing golden scores within tolerance). Medium for confidence-engine's CE-05/CE-06 scenarios, which remain a soft-fail pending further calibration (see `evaluations/regression/confidence-engine-results.md`).
+
+### Verification
+All 7 scenarios pass for sprint-review, leadership-health, political-signals, and decision-memory. Confidence-engine passes 5/7 cleanly with 2 flagged soft-fails requiring follow-up.
+
+### Linked Updates
+- Skill change: see Change Required above (5 files)
+- Feature change: none — the feature files were already correct; the skill files were wrong relative to them
+- Golden output: none changed — all skill fixes were calibrated to reproduce existing golden outputs, not the reverse
 
 ---
 

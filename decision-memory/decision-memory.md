@@ -126,6 +126,17 @@ Is this a new decision?
     └── NO → Continue with current decision
 ```
 
+### Status Mapping
+
+**Added 2026-07-01** (first regression run found this mapping was never made explicit, even though the regression dataset and golden outputs assume it): `DECISION MEMORY STATUS` derives from pattern severity and frequency (per `schema.md`'s Pattern Classification), not a numeric formula:
+
+| Pattern State | Frequency | Status |
+|---|---|---|
+| No patterns detected, or Warning-severity process pattern (e.g. estimation/scope, not a failure) | First occurrence | Green |
+| Warning-severity pattern | Recurring, non-failure context | Yellow |
+| Failure pattern (Similar failure, Optimism bias, etc.) | Recurring (2x) | At Risk |
+| Failure pattern | Repeated (3x+) or Critical severity | Red |
+
 ---
 
 ## Output
