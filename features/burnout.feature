@@ -16,13 +16,13 @@ Feature: Team Wellbeing and Burnout Risk
   # ─── Healthy ──────────────────────────────────────────────────────────────
 
   @healthy @regression
-  Scenario: Team Health Green — all signals positive
+  Scenario: Team Health Healthy — all signals positive
     Given no engineers have raised wellbeing concerns in 1:1s
     And velocity is stable within 10% of the 4-sprint average
     And on-call burden is < 3 actionable off-hours pages per week
     And no attrition risk has been signaled
     When the engineering coach assesses team wellbeing
-    Then team health is "Green"
+    Then team health is "Healthy"
     And recommendation is "Sustain — maintain 1:1 cadence and monitor"
     And confidence is "High"
 
@@ -34,7 +34,7 @@ Feature: Team Wellbeing and Burnout Risk
     And velocity shows a minor decline of < 10%
     And the concern is isolated to one individual
     When the engineering coach assesses team wellbeing
-    Then team health is "Yellow"
+    Then team health is "Warning"
     And recommendation is "Follow up in next 1:1 — understand root cause before taking action"
     And coaching questions are generated for the follow-up
     And confidence is "Medium"
@@ -45,7 +45,7 @@ Feature: Team Wellbeing and Burnout Risk
     And engineers have mentioned on-call fatigue in 1:1s
     And the pattern has persisted for > 1 week
     When the engineering coach assesses team wellbeing
-    Then team health is "Yellow"
+    Then team health is "Warning"
     And recommendation is "Escalate to incident manager — reliability investment needed to reduce burden"
     And confidence is "High"
     And the incident manager is notified
@@ -55,7 +55,7 @@ Feature: Team Wellbeing and Burnout Risk
     Given no career or growth discussion has occurred for one or more engineers in > 6 weeks
     And those engineers have not indicated development goals recently
     When the engineering coach assesses team wellbeing
-    Then team health is "Yellow"
+    Then team health is "Warning"
     And recommendation is "Schedule a dedicated career conversation — not an agenda item, a full session"
     And confidence is "Medium"
 
@@ -102,7 +102,7 @@ Feature: Team Wellbeing and Burnout Risk
     And velocity has declined > 20% for 2 or more consecutive sprints
     And on-call burden is in the Critical range
     When the engineering coach assesses team wellbeing
-    Then team health is "Red"
+    Then team health is "Critical"
     And recommendation is "Immediate intervention — stop adding work, reduce commitments, address root cause this week"
     And the engineering manager is notified with urgency
     And an immediate action is created for "1:1 with each at-risk engineer within 48 hours"
@@ -131,9 +131,9 @@ Feature: Team Wellbeing and Burnout Risk
 
     Examples:
       | engineers_flagging | velocity_decline | oncall_pages | health_status |
-      | 0                  | 0                | 1            | Green         |
-      | 1                  | 5                | 2            | Yellow        |
+      | 0                  | 0                | 1            | Healthy       |
+      | 1                  | 5                | 2            | Warning       |
       | 1                  | 12               | 4            | At Risk       |
       | 2                  | 15               | 3            | At Risk       |
-      | 2                  | 22               | 6            | Red           |
-      | 3                  | 25               | 7            | Red           |
+      | 2                  | 22               | 6            | Critical      |
+      | 3                  | 25               | 7            | Critical      |

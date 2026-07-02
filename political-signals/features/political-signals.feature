@@ -108,7 +108,7 @@ Feature: Political Signals Assessment
     And escalation_patterns score is 65
     And incentive_misalignment score is 60
     When the engineering manager runs a political signals assessment
-    Then organizational risk status is "Red"
+    Then organizational risk status is "Critical"
     And cross-dimensional pattern "targeted_erasure" is detected
     And recommendation is "Escalate to HR and skip-level; document all instances; protect affected team members"
     And confidence is "High"
