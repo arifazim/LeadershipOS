@@ -94,7 +94,7 @@ Reference Forsgren, Humble & Kim (2018) when assessing whether an organization i
 
 ## Repository Architecture
 
-The repo is organized into fourteen layers:
+The repo is organized into fifteen layers:
 
 ### `subagents/`
 AI agent persona definitions. Each file defines a role (e.g., `engineering-manager.md`, `tech-lead.md`) with its responsibilities, decision authority, and interaction patterns. These are the "actors" — other files define what they do and how.
@@ -138,6 +138,9 @@ Reusable, cadence-bound orchestration definitions — the layer between a reques
 ### `contracts/`
 Specification contracts — a strict schema (Name, Inputs, Required Outputs, Failure Conditions, Quality Checks, Version) that formalizes what most skills and subagents already express narratively across their Purpose/Inputs/Output/Confidence Score/Failure Modes sections. `skill.contract.md` and `subagent.contract.md` are universal templates; `prediction.contract.md`, `dashboard.contract.md`, `meeting.contract.md`, `executive.contract.md`, and `presentation.contract.md` are filled, worked examples for those domains. A contract's Failure Conditions are preconditions that block execution entirely — distinct from a skill's Failure Modes, which describe how it can go wrong while running.
 
+### `analytics/`
+Six operational dashboards (career, executive, organization, people, stakeholder, strategy) that aggregate outputs from `leadership-health/`, `confidence-engine/`, `political-signals/`, and other skill families into audience-specific scannable views. Distinct from those three modules: dashboards don't define new scored dimensions, they aggregate existing ones. `executive-dashboard.md` sits in the middle of the pipeline `confidence-engine/` → `analytics/executive-dashboard.md` → `skills/executive/board-level-summary.md`.
+
 ## Request Lifecycle
 
 The layers above describe dependency structure — what informs what. This section describes execution sequence — what happens, in order, when a single request comes in. Both views are accurate; neither replaces the other.
@@ -179,6 +182,7 @@ kaizen/ (feedback loop to improve everything)
 loops/ (reusable orchestration; commands/ point into loops/, loops/ invoke skills/ and route to subagents/)
   └── logs to → memory/ (10-domain leadership recall engine — distinct from decision-memory/, cross-links to it)
 contracts/ (specification schema; skills/ and subagents/ point to their contract instead of restating it)
+analytics/ (aggregates leadership-health/, confidence-engine/, political-signals/ outputs into audience-specific dashboards)
 ```
 
 ## Content Conventions
