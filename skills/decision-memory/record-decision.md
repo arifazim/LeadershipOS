@@ -4,6 +4,8 @@
 **Owner**: `subagents/engineering-manager.md`
 **Cadence**: On-demand — immediately after any decision with potential future reference value
 
+**Boundary with `skills/meetings/decision-log.md`**: decision-log.md is the front-door capture that fires live, in the meeting, with a lightweight 3-field minimum (decision, decision maker, date/context). This skill is invoked to *promote* a decision already captured there (or a significant decision from any other source) into the full 8-field institutional-memory record with quality scoring and pattern detection — not every logged decision warrants that. Use the significance threshold in `decision-memory/decision-memory.md` Step 1 to decide whether a logged decision should be promoted here.
+
 ---
 
 ## Purpose

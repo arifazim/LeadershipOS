@@ -4,6 +4,8 @@
 **Owner**: `subagents/engineering-manager.md`
 **Cadence**: Real-time capture during meetings + 24-hour review post-meeting + Monthly decision audit
 
+**Boundary with `skills/decision-memory/record-decision.md`**: this skill is the front-door capture — it fires live, in the meeting, with a lightweight minimum (decision, decision maker, date/context). `record-decision.md` is invoked afterward to promote a decision captured here into the full institutional-memory record (8 fields, quality scoring, pattern detection) when it meets the significance threshold in `decision-memory/decision-memory.md` Step 1 — not every logged decision needs that.
+
 ---
 
 ## Purpose
