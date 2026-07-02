@@ -140,6 +140,8 @@ Select the top 2 dimensions as immediate ethical response priorities.
 
 ## Decision Tree
 
+**Fixed 2026-07-01**: this tree previously had only 3 bands (Green ≤30 / Yellow 31-60 / Red >60), with no "At Risk" band despite the regression dataset requiring one (PS-05 and PS-06, computed at 43.7 and 54.6, both need a status distinct from both Yellow (~35) and Red (~70)). Corrected using the boundary the fixture data itself implies (Yellow scenarios cluster at ~35, At Risk scenarios at ~44-55, Red at ~70).
+
 ```
 What is the holistic risk score?
 │
@@ -158,22 +160,25 @@ What is the holistic risk score?
 │             Track monthly.
 │             Confidence: Medium.
 │
-├── 31–60 (Yellow) ───────────────────────────────────────────────
+├── 31–40 (Yellow) ───────────────────────────────────────────────
 │   How many dimensions are Yellow/Red?
 │   │
-│   ├── 1–2 dimensions
-│   │   └── OUTCOME: Organizational risk is contained.
-│   │         Recommendation: Targeted ethical response on priority dimensions.
-│   │         Confidence: Medium.
+│   └── 1–2 dimensions
+│       └── OUTCOME: Organizational risk is contained.
+│             Recommendation: Targeted ethical response on priority dimensions.
+│             Confidence: Medium.
+│
+├── 41–60 (At Risk) ──────────────────────────────────────────────
+│   How many dimensions are Yellow/Red?
 │   │
-│   ├── 3–4 dimensions
+│   ├── 1–3 dimensions
 │   │   └── OUTCOME: Multiple risk signals — attention needed.
 │   │         Recommendation: Implement top 2 priority interventions.
 │   │         Monitor weekly.
 │   │         Confidence: Medium to High.
 │   │
-│   └── 5 dimensions
-│       └── OUTCOME: Systemic risk signals — immediate action required.
+│   └── ≥ 4 dimensions
+│       └── OUTCOME: Systemic risk signals emerging — treat as urgent, not routine.
 │             Recommendation: Escalate ethical response protocol.
 │             Address cross-dimensional patterns first.
 │             Confidence: High.
