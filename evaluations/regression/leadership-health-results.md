@@ -2,7 +2,7 @@
 
 Triggered by: [Weekly kaizen / Skill update / Threshold change / Manual]
 Skill version: {{commit or date of last change to the skill file}}
-Dataset: evaluations/datasets/leadership-health-scenarios.md
+Dataset: evaluations/datasets/leadership-health/leadership-health-scenarios.md
 
 ## Results
 
