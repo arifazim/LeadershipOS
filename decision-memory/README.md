@@ -171,7 +171,7 @@ The module detects repeated patterns across decisions:
 |---|---|
 | `skills/leadership-health/decision_quality.md` | Decision outcomes feed into leadership quality assessment |
 | `confidence-engine/executive_confidence.md` | Decision track record builds executive confidence |
-| `political-signals/decision_reversals.md` | Detected reversals cross-reference with decision memory |
+| `skills/political-signals/decision_reversals.md` | Detected reversals cross-reference with decision memory |
 | `skills/delivery/review-sprint.md` | Sprint retrospective includes decision recall |
 | `skills/operations/postmortem.md` | Post-mortems reference similar past incidents |
 | `docs/principles.md` | Principle 9: Learn from Every Failure — decision memory operationalizes this |

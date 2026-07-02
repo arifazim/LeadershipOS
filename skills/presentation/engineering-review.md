@@ -229,7 +229,7 @@ Questions for the team: {{1–2 discussion questions to open dialogue}}
 
 - `docs/engineering-playbook.md` → Incidents, Retrospectives sections
 - `skills/delivery/review-sprint.md` — Sprint-level data source for this review
-- `skills/people/assess-burnout.md` — Team health signal for the health section
+- `skills/people/burnout.md` — Team health signal for the health section
 
 ## Related Skills
 
@@ -237,5 +237,5 @@ Questions for the team: {{1–2 discussion questions to open dialogue}}
 |---|---|
 | `skills/delivery/review-sprint.md` | Sprint data that feeds the delivery section |
 | `skills/presentation/architecture-review-deck.md` | Technical architecture section may warrant its own review |
-| `skills/people/assess-burnout.md` | Team health assessment feeding into the review |
+| `skills/people/burnout.md` | Team health assessment feeding into the review |
 | `skills/executive/executive-status-report.md` | Executive-facing version of the same period's information |

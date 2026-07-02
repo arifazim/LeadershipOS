@@ -36,9 +36,9 @@ This module transforms decision-making from a series of isolated events into an 
 
 | Sub-Skill | Input Contribution |
 |---|---|
-| `decision-memory/record-decision.md` | Complete decision record with alternatives, rationale, stakeholders |
-| `decision-memory/recall-decisions.md` | Relevant historical decisions matching context query |
-| `decision-memory/detect-patterns.md` | Pattern analysis across decision history |
+| `skills/decision-memory/record-decision.md` | Complete decision record with alternatives, rationale, stakeholders |
+| `skills/decision-memory/recall-decisions.md` | Relevant historical decisions matching context query |
+| `skills/decision-memory/detect-patterns.md` | Pattern analysis across decision history |
 
 ---
 
@@ -274,7 +274,7 @@ Conditions under which this synthesis produces unreliable output. Identify and f
 - `decision-memory/schema.md` — Decision record format specification
 - `skills/leadership-health/decision_quality.md` — Decision quality dimension uses decision memory as evidence
 - `confidence-engine/executive_confidence.md` — Decision outcomes feed into confidence assessment
-- `political-signals/decision_reversals.md` — Decision reversals cross-reference with decision memory
+- `skills/political-signals/decision_reversals.md` — Decision reversals cross-reference with decision memory
 - `skills/delivery/review-sprint.md` — Integration point for sprint retrospective decision recall
 - `skills/operations/postmortem.md` — Incident post-mortems reference similar past incidents
 
@@ -284,9 +284,9 @@ Conditions under which this synthesis produces unreliable output. Identify and f
 
 | Skill | Relationship |
 |---|---|
-| `decision-memory/record-decision.md` | Captures new decisions with full context and alternatives |
-| `decision-memory/recall-decisions.md` | Retrieves relevant historical decisions by context |
-| `decision-memory/detect-patterns.md` | Finds repeated patterns across decision history |
+| `skills/decision-memory/record-decision.md` | Captures new decisions with full context and alternatives |
+| `skills/decision-memory/recall-decisions.md` | Retrieves relevant historical decisions by context |
+| `skills/decision-memory/detect-patterns.md` | Finds repeated patterns across decision history |
 | `skills/leadership-health/decision_quality.md` | Decision outcomes and quality feed into EM assessment |
 | `confidence-engine/executive_confidence.md` | Decision quality and learning build executive confidence |
-| `political-signals/decision_reversals.md` | Decision reversals are tracked against original records |
+| `skills/political-signals/decision_reversals.md` | Decision reversals are tracked against original records |

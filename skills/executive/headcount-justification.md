@@ -264,4 +264,4 @@ Review point: Q2 2026 QBR.
 | `skills/executive/investment-proposal.md` | General investment case; headcount is a specialized form |
 | `skills/executive/engineering-budget.md` | Headcount is the largest budget line |
 | `skills/executive/annual-planning.md` | Annual plan is where most headcount is justified |
-| `skills/people/assess-burnout.md` | Burnout assessment feeds retention risk in headcount justification |
+| `skills/people/burnout.md` | Burnout assessment feeds retention risk in headcount justification |

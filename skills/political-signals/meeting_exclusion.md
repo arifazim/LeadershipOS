@@ -320,9 +320,9 @@ The confidence score reflects how much to trust this assessment. Apply modifiers
 
 | Skill | Relationship |
 |---|---|
-| `political-signals/decision_reversals.md` | Targeted reversals often follow exclusion patterns |
-| `political-signals/escalation_patterns.md` | Bypass escalation often follows exclusion |
-| `political-signals/ownership_ambiguity.md` | Unclear ownership creates meeting confusion |
-| `political-signals/incentive_misalignment.md` — Exclusion can signal incentive misalignment |
+| `skills/political-signals/decision_reversals.md` | Targeted reversals often follow exclusion patterns |
+| `skills/political-signals/escalation_patterns.md` | Bypass escalation often follows exclusion |
+| `skills/political-signals/ownership_ambiguity.md` | Unclear ownership creates meeting confusion |
+| `skills/political-signals/incentive_misalignment.md` — Exclusion can signal incentive misalignment |
 | `political-signals/political-signals.md` | This dimension feeds into the holistic risk score |
 | `confidence-engine/executive_confidence.md` | Meeting exclusion undermines confidence in inclusion |

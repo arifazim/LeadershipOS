@@ -3,7 +3,10 @@
     "allow": [
       "Bash(git add *)",
       "Bash(git commit -m ' *)",
-      "Bash(git rm *)"
+      "Bash(git rm *)",
+      "Bash(xargs -0 perl -i -pe ' *)",
+      "Bash(grep -rn \"[^s/]\\(decision-memory/\\\\\\(record-decision\\\\|recall-decisions\\\\|detect-patterns\\\\\\)\\\\.md\\)\" --include=\"*.md\" .)",
+      "Bash(grep -rn \"[^s/]\\(political-signals/\\\\\\(decision_reversals\\\\|escalation_patterns\\\\|incentive_misalignment\\\\|meeting_exclusion\\\\|ownership_ambiguity\\\\\\)\\\\.md\\)\" --include=\"*.md\" .)"
     ]
   }
 }

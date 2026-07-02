@@ -307,7 +307,7 @@ The confidence score reflects how much to trust this political awareness assessm
 - `influence_score.md` — Closely related — political awareness enables effective influence
 | `stakeholder_alignment.md` — Closely related — alignment requires political navigation |
 | `communication_effectiveness.md` — Closely related — communication is a political tool |
-| `skills/stakeholder/manage-expectations.md` — Stakeholder management (complementary) |
+| `skills/stakeholder/manage-expectations.md` (planned — not yet built) — Stakeholder management (complementary) |
 | Pfeffer — *Power: Why Some People Have It and Others Don't* (2010): Organizational power dynamics |
 | Heifetz — *Leadership on the Line* (2002): Navigating political resistance to change |
 
@@ -322,6 +322,6 @@ The confidence score reflects how much to trust this political awareness assessm
 | `communication_effectiveness.md` | Closely related — communication is a primary political tool |
 | `master-leadership-health.md` | This dimension feeds into the holistic leadership health score |
 | `executive_trust_score.md` | Trust affects political relationships |
-| `skills/stakeholder/manage-expectations.md` | Stakeholder management (complementary) |
-| `skills/strategy/align-priorities.md` | Strategic planning requires political awareness |
+| `skills/stakeholder/manage-expectations.md` (planned — not yet built) | Stakeholder management (complementary) |
+| `skills/strategy/align-priorities.md` (planned — not yet built) | Strategic planning requires political awareness |
 | `decision_quality.md` | Organizational context affects decision options |

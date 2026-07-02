@@ -4,7 +4,7 @@ Feature: Delivery Health
   So that I can identify systemic improvements and accurately report to stakeholders
 
   # Executor: subagents/delivery-manager.md
-  # Skill:    skills/delivery/review-quarter.md
+  # Skill:    skills/delivery/review-quarter.md (planned — not yet built; skills/delivery/review-sprint.md is the per-sprint equivalent)
   # Cadence:  Weekly (DORA snapshot) + Quarterly (full review)
   # Reference: Forsgren, Humble & Kim — Accelerate (2018)
 

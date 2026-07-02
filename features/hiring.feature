@@ -4,7 +4,7 @@ Feature: Hiring Pipeline Health
   So that I can hire effectively without losing strong candidates to a slow process
 
   # Executor: subagents/engineering-manager.md
-  # Skill:    skills/people/assess-hiring-pipeline.md
+  # Skill:    skills/people/assess-hiring-pipeline.md (planned — not yet built)
   # Cadence:  Weekly (open reqs) + Per event (offer, start, 30-day check)
 
   Background:

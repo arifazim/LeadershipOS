@@ -326,6 +326,6 @@ Conditions under which this skill produces unreliable output. Identify and flag 
 | `skills/delivery/plan-sprint.md` | Uses this skill's output as the primary input to next sprint planning |
 | `skills/delivery/review-quarter.md` | Aggregates sprint reviews into a quarterly delivery narrative |
 | `skills/operations/postmortem.md` | If incidents occurred this sprint, run this in parallel |
-| `skills/people/assess-burnout.md` | Invoke when team satisfaction is Red or when on-call burden is elevated |
-| `skills/communication/write-executive-update.md` | Takes this skill's Executive Summary as its primary input |
+| `skills/people/burnout.md` | Invoke when team satisfaction is Red or when on-call burden is elevated |
+| `skills/executive/executive-communication.md` | Takes this skill's Executive Summary as its primary input |
 | `skills/delivery/manage-risk.md` | If systemic risks are identified, invoke to build or update the risk register |

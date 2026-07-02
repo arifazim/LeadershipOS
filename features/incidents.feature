@@ -4,7 +4,7 @@ Feature: Incident Response
   So that customer impact is minimized and every failure produces a system improvement
 
   # Executor: subagents/incident-manager.md
-  # Skill:    skills/operations/postmortem.md
+  # Skill:    skills/operations/postmortem.md (planned — not yet built; skills/operations/ is reserved for it)
   # Cadence:  On-demand (incident) + Weekly (on-call health)
   # Priority: P1/P2 incidents pre-empt all other agent activity
 

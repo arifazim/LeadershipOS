@@ -173,6 +173,8 @@ Decision IDs are auto-assigned when a decision is recorded and never reused.
 
 ## Storage Conventions
 
+**Current state**: no decision has been recorded yet, so `decision-memory/records/` doesn't exist on disk — it is created on first use by `skills/decision-memory/record-decision.md`, not pre-provisioned.
+
 - Decisions are stored as individual Markdown files in `decision-memory/records/`
 - Filename format: `DEC-YYYY-NNN.md`
 - Cross-references use short ID format: `DEC-2024-014` links to `decision-memory/records/DEC-2024-014.md`
@@ -183,4 +185,4 @@ Decision IDs are auto-assigned when a decision is recorded and never reused.
 
 ## Example Record
 
-See `decision-memory/examples/` for complete example records at each quality level.
+**Planned — not yet built.** `decision-memory/examples/` does not exist yet; no decisions have been recorded to draw examples from. `decision-memory.md`'s own Examples A and B (in its Examples section) illustrate the expected shape until real examples exist here.

@@ -307,7 +307,7 @@ The confidence score reflects how much to trust this clarity assessment. Apply m
 - `docs/engineering-playbook.md` → *Organizational Design*, *Role Clarity*, *Decision Rights*, *Running Effective Meetings*
 - `skills/delivery/review-sprint.md` — Template for structure, confidence scoring, and failure modes
 - `skills/organization/design-team.md` — Team structure and role definition methodology
-- `skills/strategy/align-priorities.md` — Goal alignment and communication
+- `skills/strategy/align-priorities.md` (planned — not yet built) — Goal alignment and communication
 - RACI methodology — *Responsible, Accountable, Consulted, Informed* framework for decision rights mapping
 
 ---
@@ -317,7 +317,7 @@ The confidence score reflects how much to trust this clarity assessment. Apply m
 | Skill | Relationship |
 |---|---|
 | `skills/organization/design-team.md` | Team structure and role definition |
-| `skills/strategy/align-priorities.md` | Goal alignment and communication |
+| `skills/strategy/align-priorities.md` (planned — not yet built) | Goal alignment and communication |
 | `master-leadership-health.md` | This dimension feeds into the holistic leadership health score |
 | `delegation_score.md` | Closely related — unclear decision rights directly limits delegation |
 | `team_autonomy.md` | Closely related — autonomy requires clear boundaries |

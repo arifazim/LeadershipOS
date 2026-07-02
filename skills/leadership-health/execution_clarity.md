@@ -17,7 +17,7 @@ This skill answers three questions:
 
 **Invoke this skill when**: Before a planning cycle, after a delivery surprise, when team members report confusion about priorities, or before a quarterly review.
 
-**Do not invoke this skill for**: Measuring team priority alignment (use `skills/strategy/align-priorities.md`), measuring organizational role clarity (use `organizational_clarity.md`), or measuring sprint delivery (use `skills/delivery/review-sprint.md`).
+**Do not invoke this skill for**: Measuring team priority alignment (use `skills/strategy/align-priorities.md` (planned — not yet built)), measuring organizational role clarity (use `organizational_clarity.md`), or measuring sprint delivery (use `skills/delivery/review-sprint.md`).
 
 ---
 
@@ -316,7 +316,7 @@ The confidence score reflects how much to trust this execution clarity assessmen
 - `docs/principles.md` — Principle 12: *Measure Outcomes*; Principle 3: *Default to Transparency*
 - `docs/engineering-playbook.md` → *Planning*, *Project Management*, *Goal Setting*
 - `skills/delivery/review-sprint.md` — Template for structure, confidence scoring, and failure modes
-| `skills/strategy/align-priorities.md` — Internal priority alignment (complementary) |
+| `skills/strategy/align-priorities.md` (planned — not yet built) — Internal priority alignment (complementary) |
 | `stakeholder_alignment.md` — Closely related — stakeholder expectations must align with execution priorities |
 | `organizational_clarity.md` — Closely related — clarity enables execution |
 | `communication_effectiveness.md` — Closely related — communication quality affects priority comprehension |
@@ -330,7 +330,7 @@ The confidence score reflects how much to trust this execution clarity assessmen
 
 | Skill | Relationship |
 |---|---|
-| `skills/strategy/align-priorities.md` | Internal priority alignment (complementary) |
+| `skills/strategy/align-priorities.md` (planned — not yet built) | Internal priority alignment (complementary) |
 | `stakeholder_alignment.md` | Closely related — stakeholder expectations must align with execution priorities |
 | `organizational_clarity.md` | Closely related — clarity enables execution |
 | `communication_effectiveness.md` | Closely related — communication quality affects priority comprehension |

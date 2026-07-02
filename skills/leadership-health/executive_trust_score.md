@@ -304,7 +304,7 @@ The confidence score reflects how much to trust this trust assessment. Apply mod
 | Skill | Relationship |
 |---|---|
 | `skills/delivery/review-sprint.md` | Template for this skill's structure and confidence scoring |
-| `skills/communication/write-executive-update.md` | Executive updates are a primary input to this dimension |
+| `skills/executive/executive-communication.md` | Executive updates are a primary input to this dimension |
 | `master-leadership-health.md` | This dimension feeds into the holistic leadership health score |
 | `skills/stakeholder/align-priorities.md` | Stakeholder alignment is a related but distinct dimension |
 | `skills/people/assess-engagement.md` | Team engagement assessment (complementary to executive trust) |

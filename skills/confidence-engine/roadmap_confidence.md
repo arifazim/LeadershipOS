@@ -282,7 +282,7 @@ Each recommendation MUST include Confidence % and Supporting Evidence in the for
 |---|---|
 | `skills/confidence-engine/prediction_confidence.md` | Uses prediction data as input for milestone forecasting |
 | `skills/confidence-engine/delivery_confidence.md` | Correlates with roadmap execution outcomes |
-| `skills/strategy/align-priorities.md` | Roadmap confidence informs priority reprioritization |
+| `skills/strategy/align-priorities.md` (planned — not yet built) | Roadmap confidence informs priority reprioritization |
 | `skills/risk/manage-risk.md` | High roadmap risk triggers risk mitigation workflows |
 | `skills/communication/stakeholder-update.md` | Roadmap confidence is core input for executive updates |
 | `confidence-engine/executive_confidence.md` | This dimension feeds into the master confidence score |

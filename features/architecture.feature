@@ -4,7 +4,7 @@ Feature: Architecture Decision Health
   So that the team's architecture is traceable, intentional, and low-risk
 
   # Executor: subagents/tech-lead.md → subagents/architecture-reviewer.md
-  # Skill:    skills/architecture/assess-decision.md
+  # Skill:    skills/architecture/assess-decision.md (planned — not yet built; skills/architecture/ is reserved for it)
   # Cadence:  On-demand (decision events) + Quarterly (risk audit)
 
   Background:

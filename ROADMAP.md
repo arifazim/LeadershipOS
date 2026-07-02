@@ -73,15 +73,15 @@ v1.0  Production        ░░░░░░░░░░░░░░░░░░�
 - [ ] `skills/operations/postmortem.md` — Blameless post-mortem facilitation
 - [ ] `skills/operations/assess-oncall.md` — On-call health review
 - [ ] `skills/operations/triage-alert.md` — Alert noise assessment
-- [ ] `skills/people/prepare-one-on-one.md` — 1:1 preparation
-- [ ] `skills/people/assess-burnout.md` — Wellbeing signal evaluation
+- [ ] `skills/people/one-on-one.md` — 1:1 preparation
+- [ ] `skills/people/burnout.md` — Wellbeing signal evaluation
 - [ ] `skills/people/build-growth-plan.md` — Career development plan
 - [ ] `skills/people/build-promotion-case.md` — Promotion evidence builder
 - [ ] `skills/people/prepare-feedback.md` — SBI feedback preparation
 - [ ] `skills/people/assess-hiring-pipeline.md` — Hiring funnel health
 - [ ] `skills/architecture/assess-decision.md` — ADR evaluation
 - [ ] `skills/quality/assess-tech-debt.md` — Debt classification and prioritization
-- [ ] `skills/communication/write-executive-update.md` — Status communication
+- [ ] `skills/executive/executive-communication.md` — Status communication
 - [ ] `skills/product/prioritize-backlog.md` — RICE/ICE prioritization
 - [ ] `skills/product/align-stakeholders.md` — Expectation management
 - [ ] `skills/product/update-roadmap.md` — Roadmap refresh

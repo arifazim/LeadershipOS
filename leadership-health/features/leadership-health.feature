@@ -4,7 +4,7 @@ Feature: Leadership Health Assessment
   So that I can identify risk areas and prioritize development actions
 
   # Executor: subagents/engineering-manager.md
-  # Skill:    skills/leadership/master-leadership-health.md
+  # Skill:    leadership-health/master-leadership-health.md
   # Cadence:  Monthly or quarterly
 
   Background:

@@ -391,7 +391,7 @@ Conditions under which this skill produces unreliable output. Identify and flag 
 - `CLAUDE.md` — Confidence scoring scale; leadership competency frameworks
 - `skills/delivery/review-sprint.md` — Template for this skill's structure and scoring conventions
 - `skills/people/performance-review.md` — Integration point for 360 and self-assessment inputs
-- `skills/communication/write-executive-update.md` — Integration point for executive narrative
+- `skills/executive/executive-communication.md` — Integration point for executive narrative
 - Google — *Project Oxygen* (2018): Google's research on effective engineering manager behaviors
 - Goleman — *Leadership That Gets Results* (2000): Six leadership styles and their emotional intelligence applications
 - `skills/leadership-health/generate-dashboard.md` — Converts this assessment into a visual dashboard
@@ -405,11 +405,11 @@ Conditions under which this skill produces unreliable output. Identify and flag 
 |---|---|
 | `skills/delivery/review-sprint.md` | Template for this skill's structure, confidence scoring, and failure modes |
 | `skills/people/performance-review.md` | Uses leadership health scores as evidence in 360 and self-assessment sections |
-| `skills/communication/write-executive-update.md` | Uses stakeholder alignment and communication effectiveness in executive narratives |
-| `skills/strategy/align-priorities.md` | Uses stakeholder alignment and execution clarity as inputs to strategic planning |
-| `skills/people/develop-career.md` | Uses coaching score and team autonomy to identify development opportunities |
-| `skills/people/assess-burnout.md` | Cross-references ownership index and coaching score for engagement risk |
-| `skills/operations/postmortem.md` | Decision quality and execution clarity dimensions correlate with incident outcomes |
+| `skills/executive/executive-communication.md` | Uses stakeholder alignment and communication effectiveness in executive narratives |
+| `skills/strategy/align-priorities.md` (planned — not yet built) | Uses stakeholder alignment and execution clarity as inputs to strategic planning |
+| `skills/people/career-development.md` | Uses coaching score and team autonomy to identify development opportunities |
+| `skills/people/burnout.md` | Cross-references ownership index and coaching score for engagement risk |
+| `skills/operations/postmortem.md` (planned — not yet built; skills/operations/ is reserved for it) | Decision quality and execution clarity dimensions correlate with incident outcomes |
 | `skills/leadership-health/generate-dashboard.md` | Converts this skill's output into a visual scannable dashboard |
 | `templates/leadership-health-dashboard.md` | Template for the visual dashboard artifact |
 | All `leadership-health/*` skills | Individual dimension assessments feed into this master synthesis |

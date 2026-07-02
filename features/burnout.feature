@@ -4,7 +4,7 @@ Feature: Team Wellbeing and Burnout Risk
   So that I can intervene early and protect the team's long-term sustainability
 
   # Executor: subagents/engineering-coach.md
-  # Skill:    skills/people/assess-burnout.md
+  # Skill:    skills/people/burnout.md
   # Cadence:  Weekly (signal review) + Every 1:1 (individual check)
   # Framework: SPACE — Satisfaction and Wellbeing dimension
 

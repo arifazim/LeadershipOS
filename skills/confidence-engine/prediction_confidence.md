@@ -265,7 +265,7 @@ Each recommendation MUST include Confidence % and Supporting Evidence in the for
 - `docs/engineering-playbook.md` → *Running Sprint Planning*, *Estimation*, *Risk*
 - `CLAUDE.md` — Confidence scoring scale; DORA metric frameworks
 - `skills/delivery/review-sprint.md` — Sprint analysis methodology and completion rate interpretation
-- `skills/delivery/track-sprint.md` — Mid-sprint prediction tracking
+- `skills/delivery/track-sprint.md` (planned — not yet built) — Mid-sprint prediction tracking
 - `integrations/jira.md` — Jira data extraction for sprint metrics
 - `integrations/github.md` — GitHub PR and deployment data
 
@@ -277,7 +277,7 @@ Each recommendation MUST include Confidence % and Supporting Evidence in the for
 |---|---|
 | `skills/delivery/review-sprint.md` | Uses this skill's output to explain delivery variance |
 | `skills/delivery/manage-risk.md` | If dependency failure is root cause, invoke for risk mitigation |
-| `skills/strategy/align-priorities.md` | Roadmap confidence uses prediction data as input |
+| `skills/strategy/align-priorities.md` (planned — not yet built) | Roadmap confidence uses prediction data as input |
 | `confidence-engine/executive_confidence.md` | This dimension feeds into the master confidence score |
 | `skills/confidence-engine/delivery_confidence.md` | Correlates with prediction confidence — compare outputs |
 | All `confidence-engine/*` skills | Individual assessments feed into executive synthesis |

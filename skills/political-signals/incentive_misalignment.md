@@ -324,9 +324,9 @@ The confidence score reflects how much to trust this assessment. Apply modifiers
 
 | Skill | Relationship |
 |---|---|
-| `political-signals/decision_reversals.md` | Incentive misalignment can drive strategic pivots to show "progress" |
-| `political-signals/meeting_exclusion.md` | Exclusion signals incentive misalignment in stakeholder treatment |
-| `political-signals/ownership_ambiguity.md` | Unclear ownership affects how incentives are assigned |
-| `political-signals/escalation_patterns.md` — Misaligned incentives drive competitive escalation |
+| `skills/political-signals/decision_reversals.md` | Incentive misalignment can drive strategic pivots to show "progress" |
+| `skills/political-signals/meeting_exclusion.md` | Exclusion signals incentive misalignment in stakeholder treatment |
+| `skills/political-signals/ownership_ambiguity.md` | Unclear ownership affects how incentives are assigned |
+| `skills/political-signals/escalation_patterns.md` — Misaligned incentives drive competitive escalation |
 | `political-signals/political-signals.md` | This dimension feeds into the holistic risk score |
 | `confidence-engine/quality_confidence.md` | Incentive misalignment undermines quality outcomes |

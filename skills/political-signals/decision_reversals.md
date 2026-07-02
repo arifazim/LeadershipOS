@@ -319,10 +319,10 @@ The confidence score reflects how much to trust this assessment. Apply modifiers
 
 | Skill | Relationship |
 |---|---|
-| `political-signals/meeting_exclusion.md` | Meeting exclusion often accompanies targeted reversals |
-| `political-signals/escalation_patterns.md` | Bypass escalation often follows opaque decision reversals |
-| `political-signals/ownership_ambiguity.md` | Unclear ownership creates decision instability |
-| `political-signals/incentive_misalignment.md` | Incentive misalignment can drive strategic pivots |
+| `skills/political-signals/meeting_exclusion.md` | Meeting exclusion often accompanies targeted reversals |
+| `skills/political-signals/escalation_patterns.md` | Bypass escalation often follows opaque decision reversals |
+| `skills/political-signals/ownership_ambiguity.md` | Unclear ownership creates decision instability |
+| `skills/political-signals/incentive_misalignment.md` | Incentive misalignment can drive strategic pivots |
 | `political-signals/political-signals.md` | This dimension feeds into the holistic risk score |
 | `confidence-engine/executive_confidence.md` | Decision reversals directly impact executive confidence |
 | `skills/leadership-health/decision_quality.md` — Related: decision quality in leadership context |

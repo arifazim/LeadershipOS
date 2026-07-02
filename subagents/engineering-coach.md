@@ -68,8 +68,8 @@ Invoke the Engineering Coach when:
 
 | Skill | When to Invoke |
 |---|---|
-| `skills/people/prepare-one-on-one.md` | Preparing for an upcoming 1:1 |
-| `skills/people/assess-burnout.md` | Wellbeing concern or satisfaction signal is Yellow/Red |
+| `skills/people/one-on-one.md` | Preparing for an upcoming 1:1 |
+| `skills/people/burnout.md` | Wellbeing concern or satisfaction signal is Yellow/Red |
 | `skills/people/build-growth-plan.md` | Career development plan needed |
 | `skills/people/build-promotion-case.md` | Building evidence for promotion calibration |
 | `skills/people/prepare-feedback.md` | Corrective or developmental feedback conversation |

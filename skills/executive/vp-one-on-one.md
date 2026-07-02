@@ -192,4 +192,4 @@ FOLLOW-UP NEEDED: {{Yes / No — what and when}}
 | `skills/executive/executive-status-report.md` | Send this async before the 1:1 so the meeting isn't wasted on status |
 | `skills/executive/executive-risk-report.md` | When a risk warrants a standalone communication, not just a verbal mention |
 | `skills/executive/investment-proposal.md` | When your ask involves budget or headcount |
-| `skills/people/prepare-one-on-one.md` | The analog for managing down — apply the same preparation discipline |
+| `skills/people/one-on-one.md` | The analog for managing down — apply the same preparation discipline |

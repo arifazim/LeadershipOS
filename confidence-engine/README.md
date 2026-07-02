@@ -115,7 +115,7 @@ Dimension skills live under `skills/confidence-engine/`, matching the convention
 |---|---|
 | `skills/delivery/review-sprint.md` | Delivery confidence uses sprint analysis as primary input |
 | `skills/operations/postmortem.md` | Risk confidence and architecture confidence use incident data |
-| `skills/strategy/align-priorities.md` | Roadmap confidence feeds into strategic planning |
+| `skills/strategy/align-priorities.md` (planned — not yet built) | Roadmap confidence feeds into strategic planning |
 | `skills/executive/executive-status-report.md` | Executive confidence scores provide the "can we trust them" narrative |
 | `integrations/github.md` | GitHub data feeds prediction, delivery, and architecture confidence |
 | `integrations/jira.md` | Jira data feeds prediction, delivery, and roadmap confidence |

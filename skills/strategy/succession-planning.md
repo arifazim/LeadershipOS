@@ -148,8 +148,8 @@ What does the succession assessment reveal?
 │       Track 1: Retention — address the root cause if addressable
 │       Track 2: Succession — begin transfer regardless of retention outcome
 │       Do NOT: Wait to see if they leave before starting succession
-│       → Invoke: skills/people/prepare-one-on-one.md for retention conversation
-│       → Invoke: skills/people/assess-burnout.md if disengagement is the signal
+│       → Invoke: skills/people/one-on-one.md for retention conversation
+│       → Invoke: skills/people/burnout.md if disengagement is the signal
 
 ├── PROMOTION CANDIDATE (readiness score 60–79)
 │   └── Create 6-month development plan targeting 80+ readiness score
@@ -250,7 +250,7 @@ FLAGS
 - `skills/strategy/risk-planning.md` — Key-person risk feeds the organizational risk category
 - `skills/people/build-growth-plan.md` — Development plans for succession gaps
 - `skills/people/build-promotion-case.md` — Readiness score feeds promotion timing
-- `skills/people/prepare-one-on-one.md` — Retention conversation for high flight-risk individuals
+- `skills/people/one-on-one.md` — Retention conversation for high flight-risk individuals
 
 ## Related Skills
 

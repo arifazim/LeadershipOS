@@ -90,9 +90,9 @@ Dimensions are grouped into four leadership pillars:
 |---|---|
 | `skills/people/performance-review.md` | Leadership health scores provide evidence for 360 and self-assessment sections |
 | `skills/delivery/review-sprint.md` | Execution and decision quality dimensions correlate with sprint outcomes |
-| `skills/communication/write-executive-update.md` | Communication effectiveness and stakeholder alignment inform executive narratives |
-| `skills/strategy/align-priorities.md` | Stakeholder alignment and execution clarity feed into strategic planning inputs |
-| `skills/people/develop-career.md` | Coaching score and team autonomy identify development opportunities for reports |
+| `skills/executive/executive-communication.md` | Communication effectiveness and stakeholder alignment inform executive narratives |
+| `skills/strategy/align-priorities.md` (planned — not yet built) | Stakeholder alignment and execution clarity feed into strategic planning inputs |
+| `skills/people/career-development.md` | Coaching score and team autonomy identify development opportunities for reports |
 | `docs/engineering-playbook.md` | All dimensions reference playbook principles for calibration |
 | `skills/leadership-health/generate-dashboard.md` | Converts master assessment into visual scannable dashboard |
 | `templates/leadership-health-dashboard.md` | Dashboard artifact template for sharing and tracking |

@@ -321,9 +321,9 @@ The confidence score reflects how much to trust this assessment. Apply modifiers
 
 | Skill | Relationship |
 |---|---|
-| `political-signals/meeting_exclusion.md` | Exclusion often triggers bypass escalation |
-| `political-signals/decision_reversals.md` | Decision reversals drive escalation for clarity |
-| `political-signals/ownership_ambiguity.md` | Unclear ownership triggers unnecessary escalation |
-| `political-signals/incentive_misalignment.md` — Misaligned incentives drive competitive escalation |
+| `skills/political-signals/meeting_exclusion.md` | Exclusion often triggers bypass escalation |
+| `skills/political-signals/decision_reversals.md` | Decision reversals drive escalation for clarity |
+| `skills/political-signals/ownership_ambiguity.md` | Unclear ownership triggers unnecessary escalation |
+| `skills/political-signals/incentive_misalignment.md` — Misaligned incentives drive competitive escalation |
 | `political-signals/political-signals.md` | This dimension feeds into the holistic risk score |
 | `confidence-engine/executive_confidence.md` | Escalation patterns directly impact confidence in org process |

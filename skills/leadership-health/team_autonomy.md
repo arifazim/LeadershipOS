@@ -17,7 +17,7 @@ This skill answers three questions:
 
 **Invoke this skill when**: After a team restructuring, when team frustration about EM control is reported, or before a promotion conversation.
 
-**Do not invoke this skill for**: Measuring ownership in execution (use `ownership_index.md`), measuring delegation (use `delegation_score.md`), or individual capability assessment (use `skills/people/assess-capability.md`).
+**Do not invoke this skill for**: Measuring ownership in execution (use `ownership_index.md`), measuring delegation (use `delegation_score.md`), or individual capability assessment (use `skills/people/assess-capability.md` (planned — not yet built)).
 
 ---
 
@@ -329,5 +329,5 @@ The confidence score reflects how much to trust this autonomy assessment. Apply 
 | `organizational_clarity.md` | Decision rights clarity enables autonomy |
 | `coaching_score.md` | Coaching develops capability for autonomous decision-making |
 | `decision_quality.md` | Autonomy affects who makes decisions and how well |
-| `skills/people/assess-capability.md` | Capability assessment (input to autonomy calibration) |
-| `skills/strategy/align-priorities.md` | Priority alignment affects autonomy scope |
+| `skills/people/assess-capability.md` (planned — not yet built) | Capability assessment (input to autonomy calibration) |
+| `skills/strategy/align-priorities.md` (planned — not yet built) | Priority alignment affects autonomy scope |

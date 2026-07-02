@@ -17,7 +17,7 @@ This skill answers three questions:
 
 **Invoke this skill when**: Team velocity is constrained, EM reports being overloaded, after a team restructuring, or before a promotion conversation.
 
-**Do not invoke this skill for**: Measuring team autonomy in execution (use `team_autonomy.md`), individual capability assessment (use `skills/people/assess-capability.md`), or workload management (use `skills/delivery/manage-capacity.md`).
+**Do not invoke this skill for**: Measuring team autonomy in execution (use `team_autonomy.md`), individual capability assessment (use `skills/people/assess-capability.md` (planned — not yet built)), or workload management (use `skills/delivery/manage-capacity.md` (planned — not yet built)).
 
 ---
 
@@ -314,8 +314,8 @@ The confidence score reflects how much to trust this delegation assessment. Appl
 - `docs/principles.md` — Principle 6: *Decisions at the Right Level*
 - `docs/engineering-playbook.md` → *Managing Teams*, *Decision Rights*, *Coaching and Development*
 - `skills/delivery/review-sprint.md` — Template for structure, confidence scoring, and failure modes
-- `skills/people/assess-capability.md` — Team capability assessment methodology
-- `skills/people/develop-career.md` — Coaching for capability development
+- `skills/people/assess-capability.md` (planned — not yet built) — Team capability assessment methodology
+- `skills/people/career-development.md` — Coaching for capability development
 - Maxwell — *The 21 Irrefutable Laws of Leadership* (2007): Law of Empowerment — only secure leaders give power to others
 - Blanchard — *The One Minute Manager Meets the Monkey* (1989): Managing responsibility and avoiding bottlenecking
 
@@ -325,8 +325,8 @@ The confidence score reflects how much to trust this delegation assessment. Appl
 
 | Skill | Relationship |
 |---|---|
-| `skills/people/assess-capability.md` | Team capability assessment (input to this dimension) |
-| `skills/people/develop-career.md` | Coaching for capability development |
+| `skills/people/assess-capability.md` (planned — not yet built) | Team capability assessment (input to this dimension) |
+| `skills/people/career-development.md` | Coaching for capability development |
 | `master-leadership-health.md` | This dimension feeds into the holistic leadership health score |
 | `team_autonomy.md` | Closely related — delegation is a prerequisite for autonomy |
 | `decision_quality.md` | Closely related — delegation affects who makes decisions and how well |

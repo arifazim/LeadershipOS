@@ -17,7 +17,7 @@ This skill answers three questions:
 
 **Invoke this skill when**: Team velocity is constrained by EM involvement, after incidents where the team waited for direction, or before a promotion conversation.
 
-**Do not invoke this skill for**: Measuring delegation (use `delegation_score.md`), measuring autonomy in technical decisions (use `team_autonomy.md`), or measuring individual initiative (use `skills/people/assess-capability.md`).
+**Do not invoke this skill for**: Measuring delegation (use `delegation_score.md`), measuring autonomy in technical decisions (use `team_autonomy.md`), or measuring individual initiative (use `skills/people/assess-capability.md` (planned — not yet built)).
 
 ---
 
@@ -298,7 +298,7 @@ The confidence score reflects how much to trust this ownership assessment. Apply
 - `delegation_score.md` — Closely related — delegation is a prerequisite for ownership
 - `team_autonomy.md` — Closely related — autonomy requires ownership behaviors
 - `skills/operations/postmortem.md` — Incident ownership assessment (complementary)
-- `skills/strategy/align-priorities.md` — Project initiation and planning (complementary)
+- `skills/strategy/align-priorities.md` (planned — not yet built) — Project initiation and planning (complementary)
 - Lencioni — *The Five Dysfunctions of a Team* (2002): Accountability as a team discipline
 
 ---
@@ -312,6 +312,6 @@ The confidence score reflects how much to trust this ownership assessment. Apply
 | `master-leadership-health.md` | This dimension feeds into the holistic leadership health score |
 | `decision_quality.md` | Ownership affects who makes decisions and how well |
 | `skills/operations/postmortem.md` | Incident ownership assessment |
-| `skills/strategy/align-priorities.md` | Project initiation and planning |
+| `skills/strategy/align-priorities.md` (planned — not yet built) | Project initiation and planning |
 | `coaching_score.md` | Coaching develops ownership capabilities |
 | `organizational_clarity.md` | Clarity enables ownership behaviors |

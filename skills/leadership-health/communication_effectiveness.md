@@ -17,7 +17,7 @@ This skill answers three questions:
 
 **Invoke this skill when**: After a significant communication event (executive update, all-hands, roadmap announcement), when stakeholder confusion is reported, or before a quarterly review.
 
-**Do not invoke this skill for**: Individual 1:1 communication quality (use `skills/people/assess-engagement.md`), written executive updates (use `skills/communication/write-executive-update.md`), or meeting facilitation (use `meeting_quality.md`).
+**Do not invoke this skill for**: Individual 1:1 communication quality (use `skills/people/assess-engagement.md`), written executive updates (use `skills/executive/executive-communication.md`), or meeting facilitation (use `meeting_quality.md`).
 
 ---
 
@@ -334,8 +334,8 @@ The confidence score reflects how much to trust this communication assessment. A
 - `docs/principles.md` — Principle 3: *Default to Transparency*; Principle 8: *Predict before React*
 - `docs/engineering-playbook.md` → *Managing Up*, *Executive Communication*, *Team Communication*
 - `skills/delivery/review-sprint.md` — Template for structure, confidence scoring, and failure modes
-- `skills/communication/write-executive-update.md` — Executive update format and best practices
-- `skills/stakeholder/manage-expectations.md` — Stakeholder communication tactics
+- `skills/executive/executive-communication.md` — Executive update format and best practices
+- `skills/stakeholder/manage-expectations.md` (planned — not yet built) — Stakeholder communication tactics
 - Heifetz — *Leadership on the Line* (2002): Communication as a leadership tool for adaptive change
 - Heath & Heath — *Made to Stick* (2007): Communication clarity principles (SUCCES framework)
 
@@ -345,8 +345,8 @@ The confidence score reflects how much to trust this communication assessment. A
 
 | Skill | Relationship |
 |---|---|
-| `skills/communication/write-executive-update.md` | Executive update format and cadence (complementary) |
-| `skills/stakeholder/manage-expectations.md` | Tactical stakeholder communication (complementary) |
+| `skills/executive/executive-communication.md` | Executive update format and cadence (complementary) |
+| `skills/stakeholder/manage-expectations.md` (planned — not yet built) | Tactical stakeholder communication (complementary) |
 | `master-leadership-health.md` | This dimension feeds into the holistic leadership health score |
 | `meeting_quality.md` | Closely related — meetings are a primary communication channel |
 | `stakeholder_alignment.md` | Closely related — poor communication causes misalignment |

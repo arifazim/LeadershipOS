@@ -324,9 +324,9 @@ The confidence score reflects how much to trust this assessment. Apply modifiers
 
 | Skill | Relationship |
 |---|---|
-| `political-signals/decision_reversals.md` | Ownership ambiguity drives decision instability |
-| `political-signals/escalation_patterns.md` | Unclear ownership triggers bypass escalation |
-| `political-signals/meeting_exclusion.md` | Unclear ownership creates meeting confusion |
-| `political-signals/incentive_misalignment.md` — Ownership affects incentive alignment |
+| `skills/political-signals/decision_reversals.md` | Ownership ambiguity drives decision instability |
+| `skills/political-signals/escalation_patterns.md` | Unclear ownership triggers bypass escalation |
+| `skills/political-signals/meeting_exclusion.md` | Unclear ownership creates meeting confusion |
+| `skills/political-signals/incentive_misalignment.md` — Ownership affects incentive alignment |
 | `political-signals/political-signals.md` | This dimension feeds into the holistic risk score |
 | `confidence-engine/executive_confidence.md` | Ownership ambiguity undermines confidence in execution |

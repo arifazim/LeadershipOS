@@ -17,7 +17,7 @@ This skill answers three questions:
 
 **Invoke this skill when**: Preparing for a QBR, a roadmap review, before a major planning cycle, or when stakeholder surprise has occurred.
 
-**Do not invoke this skill for**: Internal team priority alignment (use `skills/strategy/align-priorities.md`), sprint delivery reviews (use `skills/delivery/review-sprint.md`), or individual stakeholder management (use `skills/stakeholder/manage-expectations.md`).
+**Do not invoke this skill for**: Internal team priority alignment (use `skills/strategy/align-priorities.md` (planned — not yet built)), sprint delivery reviews (use `skills/delivery/review-sprint.md`), or individual stakeholder management (use `skills/stakeholder/manage-expectations.md` (planned — not yet built)).
 
 ---
 
@@ -311,9 +311,9 @@ The confidence score reflects how much to trust this alignment assessment. Apply
 - `docs/principles.md` — Principle 8: *Predict before React*; Principle 12: *Measure Outcomes*
 - `docs/engineering-playbook.md` → *Managing Up*, *Roadmapping*, *Stakeholder Communication*
 - `skills/delivery/review-sprint.md` — Template for structure, confidence scoring, and failure modes
-- `skills/stakeholder/manage-expectations.md` — Tactical stakeholder communication (complementary)
-- `skills/strategy/align-priorities.md` — Internal priority alignment (complementary)
-- `skills/communication/write-executive-update.md` — Executive update format and cadence
+- `skills/stakeholder/manage-expectations.md` (planned — not yet built) — Tactical stakeholder communication (complementary)
+- `skills/strategy/align-priorities.md` (planned — not yet built) — Internal priority alignment (complementary)
+- `skills/executive/executive-communication.md` — Executive update format and cadence
 - Spitzmuller et al. — *The Proactive Personality Scale and Business Performance* (2021): Proactive stakeholder management outcomes
 
 ---
@@ -322,9 +322,9 @@ The confidence score reflects how much to trust this alignment assessment. Apply
 
 | Skill | Relationship |
 |---|---|
-| `skills/stakeholder/manage-expectations.md` | Tactical communication with individual stakeholders |
-| `skills/strategy/align-priorities.md` | Internal team priority alignment |
-| `skills/communication/write-executive-update.md` | Executive status update format and cadence |
+| `skills/stakeholder/manage-expectations.md` (planned — not yet built) | Tactical communication with individual stakeholders |
+| `skills/strategy/align-priorities.md` (planned — not yet built) | Internal team priority alignment |
+| `skills/executive/executive-communication.md` | Executive status update format and cadence |
 | `master-leadership-health.md` | This dimension feeds into the holistic leadership health score |
 | `execution_clarity.md` | Closely related — unclear priorities affect both alignment and execution clarity |
 | `communication_effectiveness.md` | Communication quality affects stakeholder comprehension |

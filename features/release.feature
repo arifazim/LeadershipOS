@@ -4,7 +4,7 @@ Feature: Release Readiness
   So that we ship with confidence and respond quickly when releases degrade
 
   # Executor: subagents/delivery-manager.md → subagents/incident-manager.md (if rollback)
-  # Skill:    skills/delivery/assess-release.md
+  # Skill:    skills/delivery/assess-release.md (planned — not yet built)
   # Cadence:  Before every production release
 
   Background:

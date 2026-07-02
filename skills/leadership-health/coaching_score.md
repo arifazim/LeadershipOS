@@ -17,7 +17,7 @@ This skill answers three questions:
 
 **Invoke this skill when**: A team member's growth has plateaued, engagement is declining, before a promotion cycle, or when the EM wants to improve their coaching practice.
 
-**Do not invoke this skill for**: Performance reviews (use `skills/people/performance-review.md`), individual capability assessment (use `skills/people/assess-capability.md`), or career path definition (use `skills/people/develop-career.md`).
+**Do not invoke this skill for**: Performance reviews (use `skills/people/performance-review.md`), individual capability assessment (use `skills/people/assess-capability.md` (planned — not yet built)), or career path definition (use `skills/people/career-development.md`).
 
 ---
 
@@ -312,8 +312,8 @@ The confidence score reflects how much to trust this coaching assessment. Apply 
 - `docs/principles.md` — Principle 7: *Grow the Team*; Principle 3: *Default to Transparency*
 - `docs/engineering-playbook.md` → *1:1s*, *Coaching and Development*, *Career Paths*
 - `skills/delivery/review-sprint.md` — Template for structure, confidence scoring, and failure modes
-- `skills/people/develop-career.md` — Career development planning methodology
-- `skills/people/assess-capability.md` — Capability assessment methodology
+- `skills/people/career-development.md` — Career development planning methodology
+- `skills/people/assess-capability.md` (planned — not yet built) — Capability assessment methodology
 - `skills/people/performance-review.md` — Performance review integration
 - Whitmore — *Coaching for Performance* (2017): GROW model and coaching principles
 - Google — *Project Oxygen* (2018): "Is a good coach" as a top manager behavior
@@ -324,8 +324,8 @@ The confidence score reflects how much to trust this coaching assessment. Apply 
 
 | Skill | Relationship |
 |---|---|
-| `skills/people/develop-career.md` | Career development planning (complementary) |
-| `skills/people/assess-capability.md` | Capability assessment (input to this dimension) |
+| `skills/people/career-development.md` | Career development planning (complementary) |
+| `skills/people/assess-capability.md` (planned — not yet built) | Capability assessment (input to this dimension) |
 | `master-leadership-health.md` | This dimension feeds into the holistic leadership health score |
 | `team_autonomy.md` | Closely related — coaching enables autonomy |
 | `delegation_score.md` | Closely related — delegation requires capable team members |

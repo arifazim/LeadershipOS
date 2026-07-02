@@ -302,7 +302,7 @@ The confidence score reflects how much to trust this influence assessment. Apply
 - `political_awareness.md` — Closely related — political awareness enables influence
 - `stakeholder_alignment.md` — Closely related — alignment is a form of influence
 | `communication_effectiveness.md` | Closely related — communication is a primary influence tool |
-| `skills/stakeholder/manage-expectations.md` — Stakeholder management (complementary) |
+| `skills/stakeholder/manage-expectations.md` (planned — not yet built) — Stakeholder management (complementary) |
 | Kotter — *Leading Change* (2012): Building coalitions as a change leadership step |
 | Cialdini — *Influence* (2021): Six principles of persuasion |
 
@@ -317,5 +317,5 @@ The confidence score reflects how much to trust this influence assessment. Apply
 | `communication_effectiveness.md` | Closely related — communication is a primary influence tool |
 | `master-leadership-health.md` | This dimension feeds into the holistic leadership health score |
 | `executive_trust_score.md` | Trust is a prerequisite for influence |
-| `skills/stakeholder/manage-expectations.md` | Stakeholder management (complementary) |
-| `skills/strategy/align-priorities.md` | Strategic alignment requires influence |
+| `skills/stakeholder/manage-expectations.md` (planned — not yet built) | Stakeholder management (complementary) |
+| `skills/strategy/align-priorities.md` (planned — not yet built) | Strategic alignment requires influence |

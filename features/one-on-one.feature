@@ -4,7 +4,7 @@ Feature: One-on-One Effectiveness
   So that I can act on concerns early and build a team that improves over time
 
   # Executor: subagents/engineering-coach.md
-  # Skill:    skills/people/prepare-one-on-one.md
+  # Skill:    skills/people/one-on-one.md
   # Cadence:  Weekly or biweekly per engineer
 
   Background:
@@ -32,7 +32,7 @@ Feature: One-on-One Effectiveness
     When the engineering coach assesses the engineer's readiness
     Then promotion signal is "Positive"
     And recommendation is "Begin building the promotion case — gather evidence, get peer feedback"
-    And the skill skills/people/build-promotion-case.md is invoked
+    And a promotion case is built (skills/people/build-promotion-case.md is planned — not yet built; use skills/career/promotion/promotion-evidence.md in the meantime)
     And confidence is "Medium"
 
   # ─── Warning ──────────────────────────────────────────────────────────────
