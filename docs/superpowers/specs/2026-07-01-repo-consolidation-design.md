@@ -36,6 +36,40 @@ New findings (I–S), to be executed alongside A–H:
 19. **Missing cross-references**: `skills/mentoring/growth-tracking.md` and `skills/people/growth-plans.md` are complementary but never reference each other; `skills/mentoring/mentor-plan.md` independently restates growth-tracking's effectiveness-rate formula (optional light trim). Two additional files (`mentor-plan.md`, `growth-tracking.md`) reference the not-yet-renamed `skills/performance/promotion-readiness.md` path — added to item 4's blast radius.
 20. **Boundary clarification**: `skills/cross-functional/support-escalation.md` and `customer-success.md` independently derive similar SLA/severity tables for the same escalation-lifecycle problem entering via different channels. Add explicit boundary statements to both; do not merge.
 
+## Addendum 2 (same day) — Gherkin/features review, before task breakdown
+
+A targeted review of all 12 `.feature` files (never read in full before this pass) found the single biggest issue of the entire consolidation effort:
+
+21. **7 of 12 feature files have broken `# Skill:` references.** The features were authored against an older verb-first skill-naming convention (`assess-X.md`, `prepare-X.md`, `build-X.md`) that was abandoned when `skills/` was actually built with topic-based names — and the feature file comments were never updated. Three are simple wrong-path fixes (real content exists under a different name); the rest point at skills that were never built at all.
+22. **This directly contradicts Sub-project H**: `skills/architecture/` and `skills/operations/` are each the expected home of a referenced-but-missing skill (`assess-decision.md`, `postmortem.md`) — not vestigial. **Revise H**: remove these two from the deletion list; keep them as reserved placeholders (same treatment as `memory/retrospectives/`). `skills/communication/` (from Sub-project I's dangling-reference list) has a viable existing substitute (`skills/executive/executive-communication.md`) — redirect rather than treat as a gap.
+23. **Gherkin syntax bug**: `decision-memory.feature` and `political-signals.feature` both open with `# Feature: ...` (leading `#`), which makes the declaration a comment rather than valid Gherkin. `sprint.feature`, `delivery.feature`, `confidence-engine.feature` are correctly formatted as `Feature: ...`.
+24. **Status vocabulary split repo-wide**: `sprint.feature`, `delivery.feature`, `hiring.feature`, `release.feature`, `one-on-one.feature` use Healthy/Warning/At Risk/Critical; `burnout.feature` uses Green/Yellow/At Risk/Red throughout; `political-signals.feature` mixes both (Healthy/Warning/At Risk labels, then "Red" instead of "Critical" for its own critical scenario). **Decision**: standardize on Healthy/Warning/At Risk/Critical (majority convention).
+
+### S. Fix Gherkin syntax bug
+
+Remove the leading `#` from `Feature:` in `decision-memory/features/decision-memory.feature` and `political-signals/features/political-signals.feature`.
+
+### T. Reconcile feature-to-skill references
+
+Comment-path fixes (real content exists, just pointed at the wrong name):
+- `one-on-one.feature`: `skills/people/prepare-one-on-one.md` → `skills/people/one-on-one.md`
+- `burnout.feature`: `skills/people/assess-burnout.md` → `skills/people/burnout.md`
+- `leadership-health.feature`: `skills/leadership/master-leadership-health.md` → `leadership-health/master-leadership-health.md`
+- `leadership-health/master-leadership-health.md`'s own reference to `skills/communication/write-executive-update.md` → `skills/executive/executive-communication.md`
+
+Document-as-gap (no real content exists — change the comment to state the skill is planned, not built, rather than pointing at a nonexistent path):
+- `delivery.feature` → `skills/delivery/review-quarter.md`
+- `incidents.feature` → `skills/operations/postmortem.md`
+- `architecture.feature` → `skills/architecture/assess-decision.md`
+- `hiring.feature` → `skills/people/assess-hiring-pipeline.md`
+- `release.feature` → `skills/delivery/assess-release.md`
+- `one-on-one.feature`'s second reference → `skills/people/build-promotion-case.md`
+- Also fix `confidence-engine/prediction_confidence.md`'s reference to `skills/delivery/track-sprint.md` (from Addendum 1, item 11) the same way — real content doesn't exist; document as gap or repoint to `review-sprint.md` if close enough on inspection.
+
+### U. Standardize status vocabulary
+
+Migrate `burnout.feature`'s Green/Yellow/At Risk/Red scenarios to Healthy/Warning/At Risk/Critical (5 scenarios + the Scenario Outline's Examples table). Fix `political-signals.feature`'s single stray "Red" → "Critical". Leave `evaluations/`'s existing Green/Yellow/Red vocabulary in the leadership-health subfolder golden files alone for now unless Sub-project A's execution reveals it should migrate too — flag for a decision at that point rather than pre-deciding here.
+
 This spec covers items 1–8. Item 9 is explicitly deferred to a future project.
 
 ## Out of scope
@@ -107,15 +141,17 @@ Add a short disambiguation note to `skills/decision-memory/record-decision.md` a
 
 Trim `evaluations/regression/political-signals-results.md` and `evaluations/regression/decision-memory-results.md` so they stop restating the pass/fail rules and file-naming convention boilerplate already in `evaluations/regression/README.md`. Keep only what's genuinely module-specific (decision-memory's "Pattern Detection Check" table, political-signals' "Ethical Response Protocol Check" table), matching the leaner format used by `leadership-health-results.md` and `confidence-engine-results.md`.
 
-### H. Remove empty/vestigial directories
+### H. Remove empty/vestigial directories (revised per Addendum 2)
 
 Delete:
 - `evaluations/benchmarks/`
-- `skills/architecture/`
-- `skills/communication/`
 - `skills/confidence-engine/` (empty today — note this is a *different* empty dir than the one Sub-project B creates and populates; B creates it fresh with 6 files, so no conflict, just sequencing: H's deletion (if it still applies) must happen before or independently of B's creation)
-- `skills/operations/`
-- `skills/quality/`
+- `skills/quality/` (no reference found anywhere in the repo — genuinely vestigial)
+
+**Do NOT delete** (revised after the Gherkin review found these are referenced, not vestigial):
+- `skills/architecture/` — expected home of `assess-decision.md`, referenced by `features/architecture.feature`. Keep as a reserved placeholder.
+- `skills/operations/` — expected home of `postmortem.md`, referenced by `features/incidents.feature`, `decision-memory/decision-memory.md`, and `loops/incident-loop.md`. Keep as a reserved placeholder.
+- `skills/communication/` — has a viable redirect instead (see Sub-project T), so nothing is lost by not deleting it either way, but leave it out of this deletion pass since Sub-project T handles the actual reference fix.
 
 **Sequencing note:** verify `skills/confidence-engine/` is still empty at execution time (Sub-project B populates it) — if B has already run, this item no longer applies to that specific path. Also delete `prompts/{daily,monthly,quarterly,retrospectives,weekly}/` and `tests/{gherkins,prompts,scenarios}/` in this same step (confirmed dead scaffolding, referenced nowhere).
 
@@ -163,7 +199,9 @@ Add an explicit boundary statement to both files' Purpose sections (support-esca
 
 ## Execution order
 
-A → B → I (dangling refs + dead scaffolding + old empty dirs, merged with H) → C → D → Q → E → P → F → R → G → J → K → L → M → N → O, with a git commit after each sub-project so any single step can be reverted independently. Rationale: A/H/I front-load pure deletions and reference fixes with no downstream dependents. B comes early because C/D/E/F/P/Q touch files that may end up at new paths after B moves them. J (new Gherkin coverage) comes after the structural sub-projects it would otherwise need to immediately re-validate. K/L/M/N/O (documentation fixes) come last since they describe the *result* of everything above — writing them earlier would mean rewriting them again as A–J land.
+A → S → T → U → B → I → H → C → D → Q → E → P → F → R → G → J → K → L → M → N → O, with a git commit after each sub-project so any single step can be reverted independently.
+
+Rationale: A is pure deletion with no dependents, goes first. S/T/U (Gherkin syntax, reference reconciliation, vocabulary standardization) come early and before H specifically because T's decisions (which directories are genuine gaps vs. vestigial) determine what H is allowed to delete — running H before T would have deleted `skills/architecture/` and `skills/operations/` incorrectly, which is exactly the mistake this review caught. B comes after because C/D/E/F/P/Q touch files that may end up at new paths once B moves them. J (new Gherkin coverage for loops/contracts) comes after the structural sub-projects it would otherwise need to immediately re-validate. K/L/M/N/O (documentation fixes) come last since they describe the *result* of everything above.
 
 ## Verification
 
