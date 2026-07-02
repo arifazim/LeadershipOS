@@ -6,21 +6,25 @@ An AI-augmented operating system for engineering managers. This repo defines the
 
 Most management systems are either too abstract (leadership books) or too tactical (task trackers). This OS bridges that gap: it encodes *how* an engineering manager thinks, decides, and acts into structured artifacts that can be queried, executed, and improved over time.
 
-The OS has eleven layers:
+The OS has fifteen layers:
 
 | Layer | Directory | Purpose |
 |---|---|---|
 | Philosophy | `docs/` | Vision, principles, decision frameworks |
 | Actors | `subagents/` | Role definitions for AI-assisted execution |
 | Behavior Specs | `features/` | BDD specs for management workflows |
-| Commands | `commands/` | Runnable procedures (daily, weekly, incident) |
+| Commands | `commands/` | Runnable procedures (daily, weekly, incident) — thin pointers into `loops/` |
 | Templates | `templates/` | Documents produced by running commands |
 | Integrations | `integrations/` | Connections to GitHub, Jira, Slack, Datadog, PagerDuty |
 | Improvement | `kaizen/` | Reviews and retrospectives on the OS itself |
-| Leadership Health | `leadership-health/` | 13-dimension leadership diagnostics, trust, influence, delegation, coaching, and execution assessment |
-| Executive Confidence | `confidence-engine/` | 6-dimension trust assessment answering "Can I trust this team?" across prediction, data, risk, delivery, roadmap, and architecture |
+| Leadership Health | `leadership-health/` | 13-dimension leadership diagnostics (dimension skills in `skills/leadership-health/`), trust, influence, delegation, coaching, and execution assessment |
+| Executive Confidence | `confidence-engine/` | 6-dimension trust assessment (dimension skills in `skills/confidence-engine/`) answering "Can I trust this team?" across prediction, data, risk, delivery, roadmap, and architecture |
 | Political Signals | `political-signals/` | 5-dimension organizational risk detection answering "What harmful patterns are present, and how should I respond ethically?" |
 | Decision Memory | `decision-memory/` | Institutional learning and decision recall — captures decisions with full context and surfaces repeated patterns so the organization learns from experience |
+| Loops | `loops/` | Reusable, cadence-bound orchestration — gathers inputs, sequences skill invocations, routes to subagent(s), logs outcomes |
+| Contracts | `contracts/` | Specification schema (Inputs/Required Outputs/Failure Conditions/Quality Checks) formalizing what skills and subagents already do narratively |
+| Memory | `memory/` | Leadership Memory recall engine — 10 domains of relational/organizational pattern capture, distinct from and cross-linked with `decision-memory/` |
+| Analytics | `analytics/` | Cross-domain operational dashboards (career, executive, organization, people, stakeholder, strategy) |
 
 ## Who It's For
 

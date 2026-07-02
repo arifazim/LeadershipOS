@@ -31,13 +31,13 @@ Work through each file in `integrations/` and fill in the required details:
 | `datadog.md` | Dashboard IDs, SLO names, alert policy IDs |
 | `pagerduty.md` | Service IDs, escalation policy, on-call schedule URL |
 
-## Step 3: Customize Commands
+## Step 3: Customize Commands and Loops
 
-Review each file in `commands/` and adjust:
+Each file in `commands/` is a thin pointer into the matching `loops/*.md` file, which holds the actual orchestration logic (trigger conditions, steps, thresholds). Review both together:
 
-- **Timing**: Update day/time references to match your actual schedule
+- **Timing**: Update day/time references in the loop's Cadence field to match your actual schedule
 - **Stakeholders**: Replace placeholder names with real contacts
-- **Thresholds**: Set your team's specific SLO targets, velocity baselines, and escalation criteria
+- **Thresholds**: Set your team's specific SLO targets, velocity baselines, and escalation criteria in the loop's Steps and in the skills it invokes
 
 ## Step 4: Calibrate Subagents
 
@@ -62,8 +62,8 @@ Schedule recurring reviews:
 
 - **Weekly** (Friday or Monday): `kaizen/weekly-review.md`
 - **Monthly** (last day of month): `kaizen/monthly-review.md`
+- **Quarterly**: `kaizen/quarterly-review.md` — rolls up the quarter's monthly reviews, revisits `docs/principles.md`
 - **After incidents**: `kaizen/failures.md` entry within 48 hours
-- **Quarterly**: Revisit `docs/principles.md` — are these still the right beliefs?
 
 ## Ongoing Maintenance
 

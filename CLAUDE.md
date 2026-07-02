@@ -94,7 +94,7 @@ Reference Forsgren, Humble & Kim (2018) when assessing whether an organization i
 
 ## Repository Architecture
 
-The repo is organized into thirteen layers:
+The repo is organized into fourteen layers:
 
 ### `subagents/`
 AI agent persona definitions. Each file defines a role (e.g., `engineering-manager.md`, `tech-lead.md`) with its responsibilities, decision authority, and interaction patterns. These are the "actors" — other files define what they do and how.
