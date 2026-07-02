@@ -250,5 +250,5 @@ WHAT TO AVOID:
 |---|---|
 | `skills/presentation/kpi-storytelling.md` | Applies visualization choices to KPI narrative |
 | `skills/presentation/executive-slide-review.md` | Validates visualization in the full deck context |
-| `skills/presentation/board-deck.md` | Board-level visualization rules (stricter) |
+| `skills/executive/board-level-summary.md` | Board-level visualization rules (stricter); see its deck variant |
 | `skills/presentation/engineering-review.md` | Internal review allows richer visualizations |

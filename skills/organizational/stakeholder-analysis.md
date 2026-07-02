@@ -75,7 +75,18 @@ Interest score (1–5): How much does this person care about this initiative?
   1: Minimal connection to this initiative
 ```
 
-### Step 3 — Place in Stakeholder Matrix
+### Step 3 — Assess Relationship Health
+
+For each Partner and Gatekeeper, rate relationship health separately from influence/interest — a high-influence stakeholder with a strained relationship needs different handling than one with a strong relationship, even at the same tier:
+
+| Rating | What it means | What to do |
+|---|---|---|
+| **Strong** | Trust established, communication is open | Maintain — don't let it atrophy |
+| **Neutral** | Professional but no relationship depth | Invest in one-on-ones before the initiative |
+| **Strained** | Historical tension or miscommunication | Address directly before the initiative is public |
+| **Unknown** | No prior interaction | Treat as Neutral; invest in discovery |
+
+### Step 4 — Place in Stakeholder Matrix
 
 ```
 High influence, High interest (Partners):
@@ -94,7 +105,7 @@ Low influence, Low interest (Monitor):
   → Inform periodically; don't invest disproportionate engagement energy
 ```
 
-### Step 4 — Identify the Five Organizational Signals
+### Step 5 — Identify the Five Organizational Signals
 
 For each stakeholder interaction history, check for these signals:
 
@@ -164,6 +175,22 @@ What does the stakeholder analysis reveal?
 │       Escalate to shared leadership: This is a system design problem, not a people problem
 │       → Invoke: skills/organizational/political-risk.md for escalation framing
 
+├── RELATIONSHIP IS STRAINED (regardless of tier)
+│   └── Action: 1:1 before any public forum. Direct acknowledgment.
+│       Do not: wait for them to raise it. Do not: use email. Go face-to-face.
+│       Ask: "What would it take for this to work for your team?" Listen fully before responding.
+
+├── NEW EM — building the stakeholder map from scratch
+│   └── Action: 30-60-90 day stakeholder listening tour
+│       Week 1-4: Meet every peer EM, PM partner, and VP in adjacent orgs
+│       Document: What they care about, what engineering owes them, what history exists between teams
+│       Do NOT: Make commitments in these meetings. Listen first.
+
+├── REORG — stakeholder map has changed
+│   └── Action: Rebuild the map. Old relationships may not transfer.
+│       New owners of old functions may have different priorities.
+│       Assume Neutral relationship health until proven otherwise. Invest in discovery.
+
 └── STAKEHOLDER MAP IS COMPLETE AND ENGAGED
     └── Review quarterly or when team membership changes
         Before major milestones: confirm Partner-tier stakeholders are aligned
@@ -181,18 +208,26 @@ STAKEHOLDER ANALYSIS — {{Initiative}} — {{date}}
 
 STAKEHOLDER REGISTER
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-Name        | Role       | Influence | Interest | Tier        | What they need      | Signal detected?
-{{name}}    | {{role}}   | 5         | 5        | Partner     | {{need}}            | {{signal or None}}
-{{name}}    | {{role}}   | 4         | 2        | Gatekeeper  | {{need}}            | {{signal or None}}
-{{name}}    | {{role}}   | 2         | 5        | Advocate    | {{need}}            | None
-{{name}}    | {{role}}   | 1         | 1        | Monitor     | Periodic update     | None
+Name        | Role       | Influence | Interest | Tier        | Relationship | What they need      | Signal detected?
+{{name}}    | {{role}}   | 5         | 5        | Partner     | {{Strong/Neutral/Strained}} | {{need}}            | {{signal or None}}
+{{name}}    | {{role}}   | 4         | 2        | Gatekeeper  | {{health}}   | {{need}}            | {{signal or None}}
+{{name}}    | {{role}}   | 2         | 5        | Advocate    | {{health}}   | {{need}}            | None
+{{name}}    | {{role}}   | 1         | 1        | Monitor     | —            | Periodic update     | None
 
 SIGNALS DETECTED
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 ⚠️ {{Signal type}}: {{Stakeholder}} — {{specific observed pattern}} — Recommended response: {{action}}
 
-ENGAGEMENT PLAN
+PRE-ANNOUNCEMENT COMMUNICATION PLAN
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Before announcement (brief these people first):
+1. {{Name}} — {{what to cover}} — {{format: 1:1 / brief / demo}} — by {{date}}
+2. {{Name}} — {{what to cover}} — {{format}} — by {{date}}
+
+At launch (inform simultaneously):
+• {{Name group or list}} — {{format}} — {{date}}
+
+During execution (ongoing):
 Stakeholder    | Cadence         | Format         | Next touchpoint
 {{name}}       | Weekly          | 1:1            | {{date}}
 {{name}}       | Before decisions| Written brief  | Before {{milestone}}
@@ -202,6 +237,11 @@ OWNERSHIP GAPS
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 Area of ambiguity: {{area}} — Currently: {{name A}} and {{name B}} both claim/assume ownership
 Recommended resolution: {{specific action by date}}
+
+ALLIES TO ACTIVATE
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+{{Name}}: {{Why they're an ally and how to activate their support — e.g. speaking positively
+  about this work in cross-team forums where you're not present}}
 ```
 
 ---
@@ -212,12 +252,14 @@ Recommended resolution: {{specific action by date}}
 |---|---|
 | All stakeholder categories assessed | Base: 65% |
 | Five organizational signals checked per stakeholder | +15% |
-| Engagement plan with cadence and format | +10% |
+| Relationship health assessed for Partners and Gatekeepers | +10% |
+| Engagement plan with cadence and format, including pre-announcement briefings | +10% |
 | Ownership ambiguities identified | +10% |
 | Ethical response (not positioning) specified | +5% |
 | Only formal org chart used | −20% |
 | No signal detection | −15% |
 | No engagement plan | −10% |
+| Strained relationship identified with no action plan | −15% |
 
 ---
 
@@ -230,6 +272,7 @@ Recommended resolution: {{specific action by date}}
 | **Gatekeeper inattention** | High-influence, low-interest stakeholder surprised at key milestone | "No surprises" protocol for all gatekeepers, regardless of their stated interest level. |
 | **Ethical drift** | Analysis used to identify who to avoid or neutralize | Stakeholder analysis is for inclusion. If a concern is legitimate, engage with it. |
 | **Static map** | Analysis done once; not refreshed after reorg or leadership change | Refresh quarterly or on any org change. Stakeholder maps degrade within one quarter. |
+| **Ignored strained relationships** | Known tension left unaddressed | Address directly before the initiative goes public. Silent conflicts become loud ones. |
 
 ---
 
@@ -238,6 +281,8 @@ Recommended resolution: {{specific action by date}}
 - `skills/organizational/influence-map.md` — Informal influence network overlaid on this analysis
 - `skills/organizational/decision-network.md` — How decisions actually flow through the identified stakeholders
 - `skills/organizational/alignment-health.md` — Ongoing health check for stakeholder alignment
+- `skills/executive/vp-one-on-one.md` — Managing the VP gatekeeper relationship specifically
+- `docs/engineering-playbook.md` → Stakeholders section, Managing Across section
 
 ## Related Skills
 
@@ -247,3 +292,8 @@ Recommended resolution: {{specific action by date}}
 | `skills/organizational/decision-network.md` | Who makes decisions among the mapped stakeholders |
 | `skills/organizational/conflict-prediction.md` | Signals from stakeholder analysis feed conflict prediction |
 | `skills/organizational/political-risk.md` | Misaligned incentives detected here become political risks |
+| `skills/executive/vp-one-on-one.md` | VP is always the most important Gatekeeper to manage |
+| `skills/executive/executive-decision-framework.md` | Decisions require stakeholder alignment before escalation |
+| `skills/executive/investment-proposal.md` | Investment proposals require stakeholder mapping first |
+
+**Note**: this skill absorbed `skills/executive/stakeholder-map.md` (relationship-health axis, pre-announcement communication timing, and the Allies to Activate concept) — that file is retired; all callers should point here.

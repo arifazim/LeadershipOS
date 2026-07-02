@@ -187,4 +187,4 @@ MY ANSWER: {{two sentences}}
 | `skills/presentation/executive-slide-review.md` | Validate the deck before presenting to executives |
 | `skills/presentation/storyline-generator.md` | Build the narrative before the slides |
 | `skills/presentation/meeting-preparation.md` | Full prep for the meeting, not just the deck |
-| `skills/presentation/board-deck.md` | When the audience is the board |
+| `skills/executive/board-level-summary.md` | When the audience is the board — use its deck variant |

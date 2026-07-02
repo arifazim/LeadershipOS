@@ -134,7 +134,7 @@ Who is the primary audience for this review?
     └── Format: One slide. "We are making a major architectural decision.
                Here is what it enables. Here is the cost. Here is the risk.
                Here is our recommendation."
-        → Invoke: skills/presentation/board-deck.md for board-level framing
+        → Invoke: skills/executive/board-level-summary.md's deck variant for board-level framing
 ```
 
 ---

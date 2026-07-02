@@ -253,5 +253,5 @@ PRIORITY FIXES:
 |---|---|
 | `skills/presentation/presentation-coach.md` | Pre-review: determines what the deck should contain |
 | `skills/presentation/storyline-generator.md` | When narrative is weak — fix story before fixing slides |
-| `skills/presentation/board-deck.md` | Board-specific review (stricter standards) |
+| `skills/executive/board-level-summary.md` | Board-specific review (stricter standards); see its deck variant |
 | `skills/executive/executive-status-report.md` | Written equivalent of the status slide |

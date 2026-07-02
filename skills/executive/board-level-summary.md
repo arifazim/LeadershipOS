@@ -57,7 +57,7 @@ Every sentence in the board summary should answer one of these three questions. 
 Board members may include investors, domain experts, legal counsel, and former operators from non-technical industries. Write for the least technical person in the room.
 
 **Complete ban list for board summaries:**
-`sprint, velocity, deployment, CI/CD, microservices, API, latency, uptime SLA, tech debt, refactor, infrastructure, backlog, PR, ticket, story point, incident (use "service disruption"), MTTR (use "time to recovery"), on-call, pipeline`
+`sprint, velocity, deployment, CI/CD, microservices, API, latency, uptime SLA, tech debt, refactor, infrastructure, backlog, PR, ticket, story point, incident (use "service disruption"), MTTR (use "time to recovery"), on-call, pipeline, architecture, Kubernetes, DevOps, scrum, agile, standup`
 
 ### Step 3 — Translate Engineering Metrics to Business Metrics
 
@@ -152,6 +152,74 @@ ASK (if any)
 
 ---
 
+## Output Variant: Deck Format
+
+The memo format above is the default. When the context calls for live presentation rather than a pre-read document, use this deck variant instead — same content discipline (three questions, ban list, one ask), compressed to slides.
+
+**The 15-minute board standard** (boards often give engineering 10-15 minutes):
+> Three slides. No more.
+> - **Slide 1**: Performance — what we built and what it earned
+> - **Slide 2**: Investment — what we spent and what it's worth
+> - **Slide 3**: Outlook — what we're building next and the one risk to watch
+>
+> The ask goes on Slide 3 if there is one. One ask maximum. One slide. No exceptions.
+
+### Deck Output Template
+
+```
+ENGINEERING UPDATE — Q{{N}} {{YEAR}}
+Prepared for: Board of Directors
+Prepared by: {{EM / VP / CTO}}
+Presentation time: {{N}} minutes
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+SLIDE 1 — PERFORMANCE
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+[2-3 sentences. Delivery rate vs. commitment. Business framing only.]
+
+Key capabilities shipped this quarter:
+• {{Capability}} — {{business outcome: what it enables or what it measured}}
+• {{Capability}} — {{business outcome}}
+
+Reliability: {{N}}% of the quarter without customer-facing disruptions.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+SLIDE 2 — INVESTMENT
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Team: {{N}} engineers ({{+/-N}} vs. last quarter)
+Engineering cost: {{N}}% of operating expense (industry: {{N}}-{{N}}%)
+Significant investment this quarter: {{Investment}} — {{business outcome or projected return}}
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+SLIDE 3 — OUTLOOK + ONE ASK
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+[2 sentences. What engineering is building toward. Tied to company strategy.]
+Top risk: {{One risk in business terms — likelihood, mitigation, and status}}
+Confidence in Q{{N+1}} plan: {{High | Medium | Low}}
+Ask (if any — omit section if none): {{Specific, single ask}}
+```
+
+**Deck-specific decision tree** (which sections to add per meeting context):
+
+```
+├── FOLLOWING A MAJOR INCIDENT OR CRISIS
+│   └── Add before Slide 1: what happened (2 sentences) → customer impact → resolution
+│       → what prevents recurrence. Do not build a separate deck for this.
+
+├── FUNDRAISING / DUE DILIGENCE
+│   └── Expand to 1-2 pages: engineering capability → team → build/buy approach
+│       → roadmap → key risks and mitigations. Expect deep Q&A; prepare 10-15 backup slides.
+
+└── M&A OR STRATEGIC PARTNERSHIP
+    └── Format: assessment of target/partner → integration approach → risks → timeline → resource ask
+        → Also invoke: skills/executive/investment-proposal.md if resources needed
+        → Also invoke: subagents/tech-lead.md for technical assessment
+```
+
+Use `skills/presentation/kpi-storytelling.md` for metric selection and `skills/presentation/executive-slide-review.md` to review the deck before presenting.
+
+---
+
 ## Example
 
 ```
@@ -219,6 +287,7 @@ Confidence in Q3 plan: High.
 
 - `skills/executive/executive-communication.md` — Foundation translation rules
 - `skills/executive/executive-storytelling.md` — Narrative structure
+- `skills/presentation/kpi-storytelling.md` — KPI selection and translation for the deck variant
 - `CLAUDE.md` → "Produce executive summaries before details"
 
 ## Related Skills
@@ -228,3 +297,6 @@ Confidence in Q3 plan: High.
 | `skills/executive/quarterly-business-review.md` | QBR is the internal version; board summary is the external version |
 | `skills/executive/executive-risk-report.md` | Risk section of the board summary may need dedicated risk treatment |
 | `skills/executive/investment-proposal.md` | When the board ask involves a budget or headcount decision |
+| `skills/presentation/executive-slide-review.md` | Review the deck variant before presenting (stricter for board) |
+
+**Note**: this skill absorbed `skills/presentation/board-deck.md` as the "Output Variant: Deck Format" section above — that file is retired; all callers should point here.

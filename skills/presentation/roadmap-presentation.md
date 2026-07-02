@@ -136,7 +136,7 @@ What audience is receiving this roadmap presentation?
         Content: What engineering is building toward in next 2 quarters and why
         Connect: Every item to a company strategic bet
         Add: One risk to the plan + confidence signal
-        → Invoke: skills/presentation/board-deck.md for board-level formatting
+        → Invoke: skills/executive/board-level-summary.md's deck variant for board-level formatting
 ```
 
 ---
@@ -233,4 +233,4 @@ ASK
 | `skills/executive/annual-planning.md` | Annual plan is the source of the Later horizon |
 | `skills/product/align-stakeholders.md` | Alignment needed before roadmap is presented publicly |
 | `skills/presentation/executive-slide-review.md` | Review the roadmap deck before VP or executive presenting |
-| `skills/presentation/board-deck.md` | Board-level version of the roadmap (compressed) |
+| `skills/executive/board-level-summary.md` | Board-level version of the roadmap (compressed); see its deck variant |

@@ -26,7 +26,7 @@ Contract
 
 ## Relationship to `contracts/executive.contract.md`
 
-This contract is a stricter subtype of the executive contract — same discipline (honest signal, quantified claims, explicit ask), plus a hard jargon ban and a hard length cap that the general executive contract doesn't impose. Per the consolidation plan, `skills/presentation/board-deck.md` is being merged into this flagship file as an output-variant rather than kept as a separate near-duplicate; once that merge lands, this contract governs both the memo and deck output shapes.
+This contract is a stricter subtype of the executive contract — same discipline (honest signal, quantified claims, explicit ask), plus a hard jargon ban and a hard length cap that the general executive contract doesn't impose. `skills/presentation/board-deck.md` has been merged into the flagship file as its "Output Variant: Deck Format" section rather than kept as a separate near-duplicate; this contract governs both the memo and deck output shapes.
 
 ## Applies Also To
 

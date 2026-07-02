@@ -256,4 +256,4 @@ BACKUP KPIs (show only if asked):
 | `skills/presentation/visualization-recommendations.md` | Visual format for each KPI story |
 | `skills/executive/executive-status-report.md` | Written version of the KPI narrative |
 | `skills/executive/executive-risk-report.md` | When a Red KPI requires standalone risk escalation |
-| `skills/presentation/board-deck.md` | Board-level KPI selection (even stricter) |
+| `skills/executive/board-level-summary.md` | Board-level KPI selection (even stricter); see its deck variant |
