@@ -112,10 +112,10 @@ Reusable document templates: `executive-status.md`, `sprint-review.md`, `one-on-
 Integration guides for GitHub, Jira, Slack, Datadog, PagerDuty. Each file describes how the OS connects to the tool — data read, actions taken, and configuration required.
 
 ### `leadership-health/`
-Leadership capability assessment module. Contains 13 dimension-specific skills (`executive_trust_score.md`, `delegation_score.md`, `coaching_score.md`, etc.), a master synthesis pad (`master-leadership-health.md`), BDD feature specs, golden outputs, and regression datasets. Use for 360 reviews, promotion readiness, skip-level prep, and identifying systemic leadership risks.
+Leadership capability assessment module. Contains the master synthesis pad (`master-leadership-health.md`), BDD feature specs, golden outputs, and regression datasets. The 13 dimension-specific skills (`executive_trust_score.md`, `delegation_score.md`, `coaching_score.md`, etc.) live in `skills/leadership-health/`, matching the convention used by `political-signals/` and `decision-memory/`. Use for 360 reviews, promotion readiness, skip-level prep, and identifying systemic leadership risks.
 
 ### `confidence-engine/`
-Executive confidence assessment module. Answers "Can I trust this team?" across six dimensions: prediction confidence, data quality, risk confidence, delivery confidence, roadmap confidence, and architecture confidence. Contains dimension skills, master synthesis pad, BDD feature specs, golden outputs, and regression datasets. Use for executive reviews, board updates, and leadership assurance.
+Executive confidence assessment module. Answers "Can I trust this team?" across six dimensions: prediction confidence, data quality, risk confidence, delivery confidence, roadmap confidence, and architecture confidence. The module top level holds the master synthesis pad (`executive_confidence.md`), BDD feature specs, golden outputs, and regression datasets; the six dimension skills live in `skills/confidence-engine/`. Use for executive reviews, board updates, and leadership assurance.
 
 ### `political-signals/`
 Organizational risk detection module. Detects five risk signals — decision reversals, meeting exclusion, ownership ambiguity, escalation patterns, and incentive misalignment — and recommends ethical, transparent responses. Contains dimension skills in `skills/political-signals/`, master synthesis pad (`political-signals.md`), BDD feature specs, golden outputs, and regression datasets. Use for organizational health assessment, pre-promotion reviews, and detecting systemic exclusion or accountability failure.
@@ -150,7 +150,7 @@ The layers above describe dependency structure — what informs what. This secti
 | Leadership Skills | `skills/`, plus `leadership-health/`, `confidence-engine/` dimension files | Exists |
 | Subagents | `subagents/*.md` (8 personas) | Exists |
 | Decision Engine | `decision-memory/` module (with `memory/decision-history/` as the leadership-lesson angle on the same decisions — cross-linked, not duplicated) | Exists |
-| Prediction Engine | `confidence-engine/prediction_confidence.md`, elevated into a standalone cadence via `loops/prediction-loop.md` | Exists |
+| Prediction Engine | `skills/confidence-engine/prediction_confidence.md`, elevated into a standalone cadence via `loops/prediction-loop.md` | Exists |
 | Gherkin Validation | `features/*.feature` (Given/When/Then specs) | Exists |
 | Quality Evaluator | `evaluations/` (golden, datasets, regression) | Exists |
 | Kaizen Learning | `kaizen/` (weekly-review, monthly-review, prompt-review, failures, continuous-improvement) | Exists |

@@ -279,5 +279,5 @@ Each recommendation MUST include Confidence % and Supporting Evidence in the for
 | `skills/delivery/manage-risk.md` | If dependency failure is root cause, invoke for risk mitigation |
 | `skills/strategy/align-priorities.md` | Roadmap confidence uses prediction data as input |
 | `confidence-engine/executive_confidence.md` | This dimension feeds into the master confidence score |
-| `confidence-engine/delivery_confidence.md` | Correlates with prediction confidence — compare outputs |
+| `skills/confidence-engine/delivery_confidence.md` | Correlates with prediction confidence — compare outputs |
 | All `confidence-engine/*` skills | Individual assessments feed into executive synthesis |

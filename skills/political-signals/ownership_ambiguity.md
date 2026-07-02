@@ -17,7 +17,7 @@ This skill answers three questions:
 
 **Invoke this skill when**: Work is falling through cracks, multiple people claim ownership of the same area, no one takes responsibility for decisions, or after a reorg or restructuring.
 
-**Do not invoke this skill for**: Individual accountability (use `leadership-health/ownership_index.md`), sprint task ownership (use `skills/delivery/review-sprint.md`), or project status tracking (use `skills/communication/weekly-update.md`).
+**Do not invoke this skill for**: Individual accountability (use `skills/leadership-health/ownership_index.md`), sprint task ownership (use `skills/delivery/review-sprint.md`), or project status tracking (use `skills/communication/weekly-update.md`).
 
 ---
 
@@ -315,8 +315,8 @@ The confidence score reflects how much to trust this assessment. Apply modifiers
 - `docs/principles.md` — Principle 8: *Think in Systems*; Principle 3: *Default to Transparency*
 - `political-signals/README.md` — Module overview and Ethical Response Protocol
 - `skills/delivery/review-sprint.md` — Template for structure and confidence scoring
-- `leadership-health/ownership_index.md` — Related: individual ownership behavior
-- `leadership-health/organizational_clarity.md` — Related: clarity of roles and responsibilities
+- `skills/leadership-health/ownership_index.md` — Related: individual ownership behavior
+- `skills/leadership-health/organizational_clarity.md` — Related: clarity of roles and responsibilities
 
 ---
 

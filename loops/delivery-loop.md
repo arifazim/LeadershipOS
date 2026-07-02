@@ -12,14 +12,14 @@ Track delivery health as a trend, not a single-sprint snapshot: deployment frequ
 
 - Weekly delivery health check
 - Before an executive review that needs a trend line, not just last sprint's number (feeds `executive-loop`)
-- `confidence-engine/delivery_confidence.md` needs current trend data as evidence
+- `skills/confidence-engine/delivery_confidence.md` needs current trend data as evidence
 
 ## Steps
 
 1. **Gather inputs** — Historical PR/deployment data via `integrations/github.md`; historical sprint data via `integrations/jira.md`; incident history via `integrations/pagerduty.md`
 2. **Invoke skills** — `skills/delivery/review-sprint.md` outputs, aggregated across sprints (this loop does not re-run the single-sprint skill, it trends its historical outputs)
 3. **Route to subagent(s)** — `delivery-manager`
-4. **Produce output** — Trend summary feeding `confidence-engine/delivery_confidence.md` and, on request, `templates/executive-status.md` via `executive-loop`
+4. **Produce output** — Trend summary feeding `skills/confidence-engine/delivery_confidence.md` and, on request, `templates/executive-status.md` via `executive-loop`
 5. **Log outcome** — If the trend crosses a threshold (e.g. change failure rate rising 3 weeks running), log to `memory/roadmaps/` (delivery-risk domain) and to `kaizen/prediction-review.md` if the trend contradicts a prior forecast
 
 ## Feature Reference

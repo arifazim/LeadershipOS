@@ -281,8 +281,8 @@ Each recommendation MUST include Confidence % and Supporting Evidence:
 
 | Skill | Relationship |
 |---|---|
-| `confidence-engine/prediction_confidence.md` | Shares Jira and GitHub data; compare prediction accuracy vs. data quality |
-| `confidence-engine/delivery_confidence.md` | Uses data quality as input to delivery confidence assessment |
+| `skills/confidence-engine/prediction_confidence.md` | Shares Jira and GitHub data; compare prediction accuracy vs. data quality |
+| `skills/confidence-engine/delivery_confidence.md` | Uses data quality as input to delivery confidence assessment |
 | `confidence-engine/executive_confidence.md` | This dimension feeds into the master confidence score |
 | `skills/delivery/review-sprint.md` | Sprint data quality affects sprint review reliability |
 | `skills/executive/executive-status-report.md` | Data quality determines how much trust to place in status reports |

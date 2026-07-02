@@ -301,7 +301,7 @@ Each recommendation MUST include Confidence % and Supporting Evidence in the for
 - `docs/principles.md` — Principle 5: Data over Opinions; Principle 12: Measure Outcomes
 - `docs/engineering-playbook.md` → *Deployment Practices*, *Incident Response*, *Technical Debt Management*
 - `skills/operations/incident-response.md` — Incident analysis methodology
-- `confidence-engine/delivery_confidence.md` — Delivery metrics correlate with deployment success
+- `skills/confidence-engine/delivery_confidence.md` — Delivery metrics correlate with deployment success
 - `integrations/github.md` — Deployment PR and incident analysis
 - `integrations/monitoring.md` — SLO and reliability metric collection
 
@@ -311,9 +311,9 @@ Each recommendation MUST include Confidence % and Supporting Evidence in the for
 
 | Skill | Relationship |
 |---|---|
-| `confidence-engine/delivery_confidence.md` | Deployment reliability directly impacts delivery confidence |
+| `skills/confidence-engine/delivery_confidence.md` | Deployment reliability directly impacts delivery confidence |
 | `skills/operations/incident-response.md` | Incident patterns inform architecture risk assessment |
 | `skills/delivery/review-sprint.md` | Sprint instability may indicate architectural issues |
 | `skills/risk/manage-risk.md` — Technical debt risk management |
 | `confidence-engine/executive_confidence.md` — This dimension feeds into the master confidence score |
-| `confidence-engine/prediction_confidence.md` — Unstable systems affect prediction reliability |
+| `skills/confidence-engine/prediction_confidence.md` — Unstable systems affect prediction reliability |

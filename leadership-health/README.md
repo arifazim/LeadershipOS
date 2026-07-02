@@ -112,22 +112,24 @@ The master assessment computes a **weighted holistic score** with cross-dimensio
 
 ## File Index
 
+Dimension skills live under `skills/leadership-health/`, matching the convention used by `political-signals/` and `decision-memory/` — this module and `confidence-engine/` were the two exceptions until this reorganization.
+
 | File | Purpose |
 |---|---|
 | `README.md` | This file — module overview and integration guide |
 | `master-leadership-health.md` | Master assessment pad — synthesis, weighting, cross-dimensional patterns |
-| `executive_trust_score.md` | Measures leadership team trust in the EM |
-| `stakeholder_alignment.md` | Measures engineering priority-to-expectation mapping |
-| `organizational_clarity.md` | Measures role, goal, and decision-rights understanding |
-| `communication_effectiveness.md` | Measures clarity, frequency, and audience fit |
-| `delegation_score.md` | Measures ownership and decision-making distribution |
-| `coaching_score.md` | Measures 1:1 and development conversation quality |
-| `decision_quality.md` | Measures soundness, speed, and durability of decisions |
-| `ownership_index.md` | Measures initiative vs. direction requirement |
-| `team_autonomy.md` | Measures team's independent technical and process decisions |
-| `influence_score.md` | Measures shaping outcomes beyond direct authority |
-| `political_awareness.md` | Measures organizational dynamics navigation |
-| `meeting_quality.md` | Measures meeting effectiveness |
-| `execution_clarity.md` | Measures priority, success criteria, and accountability clarity |
+| `skills/leadership-health/executive_trust_score.md` | Measures leadership team trust in the EM |
+| `skills/leadership-health/stakeholder_alignment.md` | Measures engineering priority-to-expectation mapping |
+| `skills/leadership-health/organizational_clarity.md` | Measures role, goal, and decision-rights understanding |
+| `skills/leadership-health/communication_effectiveness.md` | Measures clarity, frequency, and audience fit |
+| `skills/leadership-health/delegation_score.md` | Measures ownership and decision-making distribution |
+| `skills/leadership-health/coaching_score.md` | Measures 1:1 and development conversation quality |
+| `skills/leadership-health/decision_quality.md` | Measures soundness, speed, and durability of decisions |
+| `skills/leadership-health/ownership_index.md` | Measures initiative vs. direction requirement |
+| `skills/leadership-health/team_autonomy.md` | Measures team's independent technical and process decisions |
+| `skills/leadership-health/influence_score.md` | Measures shaping outcomes beyond direct authority |
+| `skills/leadership-health/political_awareness.md` | Measures organizational dynamics navigation |
+| `skills/leadership-health/meeting_quality.md` | Measures meeting effectiveness |
+| `skills/leadership-health/execution_clarity.md` | Measures priority, success criteria, and accountability clarity |
 | `skills/leadership-health/generate-dashboard.md` | Generates visual dashboard from master assessment output |
 | `templates/leadership-health-dashboard.md` | Dashboard template with visual score bars and trend indicators |

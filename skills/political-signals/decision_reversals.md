@@ -17,7 +17,7 @@ This skill answers three questions:
 
 **Invoke this skill when**: A decision is unexpectedly reversed, team expresses confusion about priorities, stakeholders receive conflicting messages, or you observe patterns of "flip-flopping" on key initiatives.
 
-**Do not invoke this skill for**: Individual decision-making quality (use `leadership-health/decision_quality.md`), sprint planning changes (use `skills/delivery/review-sprint.md`), or technical pivots based on new information (use `skills/product/roadmap-health.md`).
+**Do not invoke this skill for**: Individual decision-making quality (use `skills/leadership-health/decision_quality.md`), sprint planning changes (use `skills/delivery/review-sprint.md`), or technical pivots based on new information (use `skills/product/roadmap-health.md`).
 
 ---
 
@@ -309,7 +309,7 @@ The confidence score reflects how much to trust this assessment. Apply modifiers
 - `docs/principles.md` — Principle 3: *Default to Transparency*; Principle 8: *Think in Systems*
 - `political-signals/README.md` — Module overview and Ethical Response Protocol
 - `skills/delivery/review-sprint.md` — Template for structure and confidence scoring
-- `leadership-health/decision_quality.md` — Related: decision-making quality in leadership context
+- `skills/leadership-health/decision_quality.md` — Related: decision-making quality in leadership context
 - `skills/operations/postmortem.md` — Decision reversal analysis in incident context
 - `skills/executive/executive-communication.md` — Communication protocols for decisions
 
@@ -325,4 +325,4 @@ The confidence score reflects how much to trust this assessment. Apply modifiers
 | `political-signals/incentive_misalignment.md` | Incentive misalignment can drive strategic pivots |
 | `political-signals/political-signals.md` | This dimension feeds into the holistic risk score |
 | `confidence-engine/executive_confidence.md` | Decision reversals directly impact executive confidence |
-| `leadership-health/decision_quality.md` — Related: decision quality in leadership context |
+| `skills/leadership-health/decision_quality.md` — Related: decision quality in leadership context |

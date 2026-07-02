@@ -280,6 +280,6 @@ Each recommendation MUST include Confidence % and Supporting Evidence:
 |---|---|
 | `skills/operations/postmortem.md` | Incident data feeds risk analysis; post-mortems reveal risk surfacing failures |
 | `skills/delivery/manage-risk.md` | Delivery risk register feeds into this assessment |
-| `confidence-engine/architecture_confidence.md` | Architectural risks are a subset of overall risk confidence |
+| `skills/confidence-engine/architecture_confidence.md` | Architectural risks are a subset of overall risk confidence |
 | `confidence-engine/executive_confidence.md` | This dimension feeds into the master confidence score |
 | All `confidence-engine/*` skills | Individual assessments feed into executive synthesis |

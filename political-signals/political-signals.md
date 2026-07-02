@@ -358,7 +358,7 @@ The confidence score reflects how much to trust this synthesis. Apply modifiers 
 | `skills/political-signals/ownership_ambiguity.md` | Primary dimension — provides ownership risk score |
 | `skills/political-signals/escalation_patterns.md` | Primary dimension — provides escalation risk score |
 | `skills/political-signals/incentive_misalignment.md` | Primary dimension — provides incentive risk score |
-| `leadership-health/political_awareness.md` | EM's political navigation is informed by organizational signal environment |
+| `skills/leadership-health/political_awareness.md` | EM's political navigation is informed by organizational signal environment |
 | `confidence-engine/executive_confidence.md` | Political signals directly impact executive confidence assessment |
-| `leadership-health/organizational_clarity.md` | Ownership ambiguity is a clarity failure that signals feed into |
-| `leadership-health/stakeholder_alignment.md` | Meeting exclusion and incentive misalignment are forms of misalignment |
+| `skills/leadership-health/organizational_clarity.md` | Ownership ambiguity is a clarity failure that signals feed into |
+| `skills/leadership-health/stakeholder_alignment.md` | Meeting exclusion and incentive misalignment are forms of misalignment |

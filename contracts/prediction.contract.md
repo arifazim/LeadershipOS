@@ -1,6 +1,6 @@
 # Contract: Prediction
 
-**Flagship skill**: `confidence-engine/prediction_confidence.md`
+**Flagship skill**: `skills/confidence-engine/prediction_confidence.md`
 **Category**: forecasting/estimation-accuracy skills — also governs the other five `confidence-engine/` dimension files and `loops/prediction-loop.md`
 
 ```

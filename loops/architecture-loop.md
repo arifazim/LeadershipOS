@@ -12,7 +12,7 @@ Run an architecture decision or review: surface the technical risk, produce the 
 
 - A significant architectural decision needs review before commitment
 - Scheduled architecture review cadence
-- `confidence-engine/architecture_confidence.md` needs current risk evidence
+- `skills/confidence-engine/architecture_confidence.md` needs current risk evidence
 
 ## Steps
 

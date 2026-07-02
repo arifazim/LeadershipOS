@@ -295,7 +295,7 @@ Each recommendation MUST include Confidence % and Supporting Evidence:
 |---|---|
 | `skills/delivery/review-sprint.md` | Sprint-level delivery data feeds this assessment |
 | `skills/operations/postmortem.md` | Release incidents feed into reliability scoring |
-| `confidence-engine/prediction_confidence.md` | Correlates with delivery confidence — compare forecasts vs. outcomes |
-| `confidence-engine/architecture_confidence.md` | Architectural stability affects release reliability |
+| `skills/confidence-engine/prediction_confidence.md` | Correlates with delivery confidence — compare forecasts vs. outcomes |
+| `skills/confidence-engine/architecture_confidence.md` | Architectural stability affects release reliability |
 | `confidence-engine/executive_confidence.md` | This dimension feeds into the master confidence score |
 | All `confidence-engine/*` skills | Individual assessments feed into executive synthesis |

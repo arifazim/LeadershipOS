@@ -271,7 +271,7 @@ Each recommendation MUST include Confidence % and Supporting Evidence in the for
 - `docs/principles.md` — Principle 5: Data over Opinions; Principle 12: Measure Outcomes
 - `docs/engineering-playbook.md` → *Roadmap Planning*, *Milestone Tracking*, *Stakeholder Communication*
 - `skills/delivery/review-sprint.md` — Sprint data feeds into milestone tracking
-- `confidence-engine/prediction_confidence.md` — Prediction accuracy feeds into roadmap forecasting
+- `skills/confidence-engine/prediction_confidence.md` — Prediction accuracy feeds into roadmap forecasting
 - `integrations/jira.md` — Jira roadmap epic and milestone tracking
 
 ---
@@ -280,8 +280,8 @@ Each recommendation MUST include Confidence % and Supporting Evidence in the for
 
 | Skill | Relationship |
 |---|---|
-| `confidence-engine/prediction_confidence.md` | Uses prediction data as input for milestone forecasting |
-| `confidence-engine/delivery_confidence.md` | Correlates with roadmap execution outcomes |
+| `skills/confidence-engine/prediction_confidence.md` | Uses prediction data as input for milestone forecasting |
+| `skills/confidence-engine/delivery_confidence.md` | Correlates with roadmap execution outcomes |
 | `skills/strategy/align-priorities.md` | Roadmap confidence informs priority reprioritization |
 | `skills/risk/manage-risk.md` | High roadmap risk triggers risk mitigation workflows |
 | `skills/communication/stakeholder-update.md` | Roadmap confidence is core input for executive updates |

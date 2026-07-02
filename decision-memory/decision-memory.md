@@ -287,6 +287,6 @@ Conditions under which this synthesis produces unreliable output. Identify and f
 | `decision-memory/record-decision.md` | Captures new decisions with full context and alternatives |
 | `decision-memory/recall-decisions.md` | Retrieves relevant historical decisions by context |
 | `decision-memory/detect-patterns.md` | Finds repeated patterns across decision history |
-| `leadership-health/decision_quality.md` | Decision outcomes and quality feed into EM assessment |
+| `skills/leadership-health/decision_quality.md` | Decision outcomes and quality feed into EM assessment |
 | `confidence-engine/executive_confidence.md` | Decision quality and learning build executive confidence |
 | `political-signals/decision_reversals.md` | Decision reversals are tracked against original records |

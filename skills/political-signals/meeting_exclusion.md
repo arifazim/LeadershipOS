@@ -17,7 +17,7 @@ This skill answers three questions:
 
 **Invoke this skill when**: Stakeholders express surprise about decisions, key contributors are absent from planning meetings, information seems to be "circulating" informally, or you observe consistent absence patterns.
 
-**Do not invoke this skill for**: Individual meeting etiquette (use `leadership-health/meeting_quality.md`), sprint ceremonies (use `skills/delivery/review-sprint.md`), or project status updates (use `skills/communication/weekly-update.md`).
+**Do not invoke this skill for**: Individual meeting etiquette (use `skills/leadership-health/meeting_quality.md`), sprint ceremonies (use `skills/delivery/review-sprint.md`), or project status updates (use `skills/communication/weekly-update.md`).
 
 ---
 
@@ -311,8 +311,8 @@ The confidence score reflects how much to trust this assessment. Apply modifiers
 - `docs/principles.md` — Principle 3: *Default to Transparency*; Principle 8: *Think in Systems*
 - `political-signals/README.md` — Module overview and Ethical Response Protocol
 - `skills/delivery/review-sprint.md` — Template for structure and confidence scoring
-- `leadership-health/meeting_quality.md` — Related: meeting quality and effectiveness
-- `leadership-health/stakeholder_alignment.md` — Related: stakeholder relationship health
+- `skills/leadership-health/meeting_quality.md` — Related: meeting quality and effectiveness
+- `skills/leadership-health/stakeholder_alignment.md` — Related: stakeholder relationship health
 
 ---
 

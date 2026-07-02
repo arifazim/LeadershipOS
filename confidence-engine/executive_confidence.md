@@ -260,12 +260,12 @@ Each recommendation MUST include Confidence % and Supporting Evidence in the for
 - `CLAUDE.md` — Confidence scoring scale; multi-dimensional assessment framework
 - `docs/principles.md` — Principle 5: Data over Opinions; Principle 12: Measure Outcomes
 - `docs/engineering-playbook.md` → *Executive Communication*, *Confidence Reporting*, *Cross-Dimensional Analysis*
-- `confidence-engine/prediction_confidence.md` — Prediction dimension methodology
-- `confidence-engine/roadmap_confidence.md` — Roadmap dimension methodology
-- `confidence-engine/architecture_confidence.md` — Architecture dimension methodology
-- `confidence-engine/delivery_confidence.md` — Delivery dimension methodology
-- `confidence-engine/data_quality.md` — Data quality dimension methodology
-- `confidence-engine/risk_confidence.md` — Risk dimension methodology
+- `skills/confidence-engine/prediction_confidence.md` — Prediction dimension methodology
+- `skills/confidence-engine/roadmap_confidence.md` — Roadmap dimension methodology
+- `skills/confidence-engine/architecture_confidence.md` — Architecture dimension methodology
+- `skills/confidence-engine/delivery_confidence.md` — Delivery dimension methodology
+- `skills/confidence-engine/data_quality.md` — Data quality dimension methodology
+- `skills/confidence-engine/risk_confidence.md` — Risk dimension methodology
 
 ---
 
@@ -273,11 +273,11 @@ Each recommendation MUST include Confidence % and Supporting Evidence in the for
 
 | Skill | Relationship |
 |---|---|
-| `confidence-engine/prediction_confidence.md` | Provides prediction dimension score and analysis |
-| `confidence-engine/roadmap_confidence.md` | Provides roadmap dimension score and analysis |
-| `confidence-engine/architecture_confidence.md` | Provides architecture dimension score and analysis |
-| `confidence-engine/delivery_confidence.md` | Provides delivery dimension score and analysis |
-| `confidence-engine/data_quality.md` | Provides data quality dimension score and analysis |
-| `confidence-engine/risk_confidence.md` | Provides risk dimension score and analysis |
+| `skills/confidence-engine/prediction_confidence.md` | Provides prediction dimension score and analysis |
+| `skills/confidence-engine/roadmap_confidence.md` | Provides roadmap dimension score and analysis |
+| `skills/confidence-engine/architecture_confidence.md` | Provides architecture dimension score and analysis |
+| `skills/confidence-engine/delivery_confidence.md` | Provides delivery dimension score and analysis |
+| `skills/confidence-engine/data_quality.md` | Provides data quality dimension score and analysis |
+| `skills/confidence-engine/risk_confidence.md` | Provides risk dimension score and analysis |
 | `skills/communication/executive-update.md` — Uses this skill's output for leadership communication |
 | `skills/strategy/planning.md` — Planning decisions require confidence input |

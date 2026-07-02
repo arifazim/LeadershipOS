@@ -94,16 +94,18 @@ The master assessment computes a **weighted executive confidence score** with cr
 
 ## File Index
 
+Dimension skills live under `skills/confidence-engine/`, matching the convention used by `political-signals/` and `decision-memory/` — this module and `leadership-health/` were the two exceptions until this reorganization.
+
 | File | Purpose |
 |---|---|
 | `README.md` | This file — module overview and integration guide |
 | `executive_confidence.md` | Master assessment pad — synthesis, weighting, cross-dimensional synthesis |
-| `prediction_confidence.md` | Forecast accuracy, estimation reliability, sprint goal hit rate |
-| `data_quality.md` | Reporting completeness, data timeliness, dashboard accuracy |
-| `risk_confidence.md` | Risk surfacing, escalation timeliness, mitigation effectiveness |
-| `delivery_confidence.md` | On-time delivery, scope stability, release reliability |
-| `roadmap_confidence.md` | Milestone hit rate, roadmap stability, feature delivery accuracy |
-| `architecture_confidence.md` | System stability, change failure rate, technical debt trajectory |
+| `skills/confidence-engine/prediction_confidence.md` | Forecast accuracy, estimation reliability, sprint goal hit rate |
+| `skills/confidence-engine/data_quality.md` | Reporting completeness, data timeliness, dashboard accuracy |
+| `skills/confidence-engine/risk_confidence.md` | Risk surfacing, escalation timeliness, mitigation effectiveness |
+| `skills/confidence-engine/delivery_confidence.md` | On-time delivery, scope stability, release reliability |
+| `skills/confidence-engine/roadmap_confidence.md` | Milestone hit rate, roadmap stability, feature delivery accuracy |
+| `skills/confidence-engine/architecture_confidence.md` | System stability, change failure rate, technical debt trajectory |
 
 ---
 

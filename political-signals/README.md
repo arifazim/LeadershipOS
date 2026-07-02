@@ -53,10 +53,10 @@ The Political Signals module answers three questions:
 The five dimension skills are standalone analysis procedures. Each produces a risk assessment for one signal. The master assessment pad synthesizes all five into a holistic organizational risk profile.
 
 **Interaction with other modules:**
-- `leadership-health/political_awareness.md` — The EM's own political navigation skill. Political signals is about the environment; political awareness is about the EM's capability within it.
+- `skills/leadership-health/political_awareness.md` — The EM's own political navigation skill. Political signals is about the environment; political awareness is about the EM's capability within it.
 - `confidence-engine/` — Signals feed into executive confidence assessments. Decision reversals and escalation patterns directly undermine confidence.
-- `leadership-health/stakeholder_alignment.md` — Meeting exclusion and misaligned incentives are forms of stakeholder misalignment.
-- `leadership-health/organizational_clarity.md` — Ownership ambiguity is a clarity failure.
+- `skills/leadership-health/stakeholder_alignment.md` — Meeting exclusion and misaligned incentives are forms of stakeholder misalignment.
+- `skills/leadership-health/organizational_clarity.md` — Ownership ambiguity is a clarity failure.
 
 ---
 
@@ -120,9 +120,9 @@ The master assessment computes a **weighted organizational risk score**. No sing
 
 | Integration | Description |
 |---|---|
-| `leadership-health/political_awareness.md` | EM's political navigation capability interacts with organizational signal environment |
+| `skills/leadership-health/political_awareness.md` | EM's political navigation capability interacts with organizational signal environment |
 | `confidence-engine/executive_confidence.md` | Political signals directly impact executive confidence in the team |
-| `leadership-health/organizational_clarity.md` | Ownership ambiguity is a clarity dimension |
-| `leadership-health/stakeholder_alignment.md` | Meeting exclusion and incentive misalignment are misalignment forms |
+| `skills/leadership-health/organizational_clarity.md` | Ownership ambiguity is a clarity dimension |
+| `skills/leadership-health/stakeholder_alignment.md` | Meeting exclusion and incentive misalignment are misalignment forms |
 | `skills/executive/executive-communication.md` | Ethical responses to political signals inform executive communication |
 | `docs/principles.md` | All responses governed by platform principles (Transparency, People First, Think in Systems) |

@@ -85,8 +85,8 @@ Every decision is recorded as a structured artifact with the following fields:
 **Interaction with other modules:**
 - `confidence-engine/` — Decision outcomes feed into delivery confidence, risk confidence, and executive confidence assessments
 - `political-signals/` — Decision patterns interact with decision reversals and escalation patterns
-- `leadership-health/decision_quality.md` — Decision quality dimension uses decision memory as evidence
-- `leadership-health/organizational_clarity.md` — Decision ownership clarity feeds into ownership ambiguity detection
+- `skills/leadership-health/decision_quality.md` — Decision quality dimension uses decision memory as evidence
+- `skills/leadership-health/organizational_clarity.md` — Decision ownership clarity feeds into ownership ambiguity detection
 - `skills/delivery/review-sprint.md` — Sprint outcomes include decision recall check
 - `skills/operations/postmortem.md` — Incident post-mortems reference past similar incidents
 

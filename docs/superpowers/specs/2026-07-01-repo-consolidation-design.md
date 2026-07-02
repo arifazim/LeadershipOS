@@ -25,7 +25,7 @@ A second, broader audit ("review the full project, check all missing, duplicates
 New findings (I–S), to be executed alongside A–H:
 
 10. **Dead scaffolding**: `prompts/{daily,monthly,quarterly,retrospectives,weekly}/` and `tests/{gherkins,prompts,scenarios}/` are empty, referenced nowhere in the repo, and duplicate namespaces already covered by `commands/`, `kaizen/`, and `features/`. Delete alongside item 8's empty-dir cleanup.
-11. **Dangling references**: `decision-memory/schema.md` references `decision-memory/records/`, `decision-memory/examples/`, and an example path under `records/` — none exist. `confidence-engine/prediction_confidence.md` references `skills/delivery/track-sprint.md` (doesn't exist). `leadership-health/master-leadership-health.md` references `skills/communication/write-executive-update.md` (the entire `skills/communication/` directory doesn't exist).
+11. **Dangling references**: `decision-memory/schema.md` references `decision-memory/records/`, `decision-memory/examples/`, and an example path under `records/` — none exist. `skills/confidence-engine/prediction_confidence.md` references `skills/delivery/track-sprint.md` (doesn't exist). `leadership-health/master-leadership-health.md` references `skills/communication/write-executive-update.md` (the entire `skills/communication/` directory doesn't exist).
 12. **Zero Gherkin coverage** for `loops/`, `contracts/`, and the `kaizen/` extraction — breaks this repo's own convention that every module gets a `.feature` file.
 13. **`README.md`/`BUILD.md` staleness**: neither mentions `loops/`, `contracts/`, `memory/`, or `analytics/`. `README.md` has its own separate "eleven layers" table (distinct from `CLAUDE.md`'s Repository Architecture) that risks drifting out of sync with it going forward.
 14. **`ROADMAP.md` v0.2 metrics are wrong**: claims "1 of 20 skills complete"; reality is 100+ skill files across 13+ subdirectories. Unlike v0.5's Memory section (which self-flagged its own staleness), this was never disclosed.
@@ -64,7 +64,7 @@ Document-as-gap (no real content exists — change the comment to state the skil
 - `hiring.feature` → `skills/people/assess-hiring-pipeline.md`
 - `release.feature` → `skills/delivery/assess-release.md`
 - `one-on-one.feature`'s second reference → `skills/people/build-promotion-case.md`
-- Also fix `confidence-engine/prediction_confidence.md`'s reference to `skills/delivery/track-sprint.md` (from Addendum 1, item 11) the same way — real content doesn't exist; document as gap or repoint to `review-sprint.md` if close enough on inspection.
+- Also fix `skills/confidence-engine/prediction_confidence.md`'s reference to `skills/delivery/track-sprint.md` (from Addendum 1, item 11) the same way — real content doesn't exist; document as gap or repoint to `review-sprint.md` if close enough on inspection.
 
 ### U. Standardize status vocabulary
 
@@ -158,7 +158,7 @@ Delete:
 ### I. Fix dangling references
 
 - `decision-memory/schema.md`: either create `decision-memory/records/` and `decision-memory/examples/` with real content, or rewrite the Storage Conventions section to describe how decisions are actually stored today (as `.md` files directly under a to-be-decided location) — decide which based on whether `decision-memory/` records are expected to exist as individual files soon or not.
-- `confidence-engine/prediction_confidence.md`: fix or remove the reference to `skills/delivery/track-sprint.md` (doesn't exist) — either point to `skills/delivery/review-sprint.md` instead, or note the file is a planned-but-undelivered skill.
+- `skills/confidence-engine/prediction_confidence.md`: fix or remove the reference to `skills/delivery/track-sprint.md` (doesn't exist) — either point to `skills/delivery/review-sprint.md` instead, or note the file is a planned-but-undelivered skill.
 - `leadership-health/master-leadership-health.md`: fix or remove the reference to `skills/communication/write-executive-update.md` — likely should point to `skills/executive/executive-status-report.md` or `skills/executive/executive-communication.md` instead.
 
 ### J. Add Gherkin coverage for loops/contracts

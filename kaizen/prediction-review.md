@@ -2,7 +2,7 @@
 
 **Cadence**: Weekly (quick log) + Monthly (calibration analysis)
 **Extracted from**: `weekly-review.md` Q1 + `monthly-review.md` Part 3
-**Feeds**: `loops/prediction-loop.md` Step 5 ("Log outcome") logs here; `confidence-engine/prediction_confidence.md` and `contracts/prediction.contract.md` define what a well-formed prediction record looks like
+**Feeds**: `loops/prediction-loop.md` Step 5 ("Log outcome") logs here; `skills/confidence-engine/prediction_confidence.md` and `contracts/prediction.contract.md` define what a well-formed prediction record looks like
 
 This is the standalone home for tracking whether the OS's confidence system is calibrated — previously buried inside the monthly review as Part 3. It exists on its own because prediction accuracy is now checkable on its own cadence via `loops/prediction-loop.md`, not only during the full monthly review.
 
@@ -57,7 +57,7 @@ Confidence stated: 72%
 Root cause: Ignored signal — QA signal was present but under-weighted in the release skill
 OS UPDATE NEEDED? Yes
   → Increase QA-signal weight in the release-readiness skill
-  → Update prediction thresholds in confidence-engine/prediction_confidence.md
+  → Update prediction thresholds in skills/confidence-engine/prediction_confidence.md
   → Log to memory/roadmaps/ (estimation/forecast-risk domain)
 ```
 
