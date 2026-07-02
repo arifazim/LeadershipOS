@@ -1,48 +1,35 @@
-# Regression Results — Decision Memory
-
-This directory stores the output of each evaluation run for the decision-memory module.
-
----
-
-## File Naming
-
-```
-{{YYYY-MM-DD}}-decision-memory-results.md
-```
-
----
-
-## Result File Format
-
-```markdown
-# Regression Run — Decision Memory — {{YYYY-MM-DD}}
+# Regression Run — decision-memory — {{YYYY-MM-DD}}
 
 Triggered by: [Monthly kaizen / Module update / Threshold change / Manual]
 Skill version: {{commit or date of last change to the skill files}}
-Dataset: evaluations/datasets/decision-memory/{{dataset file used}}
+Dataset: evaluations/datasets/decision-memory/decision-memory-scenarios.md
 
 ## Results
 
 | Scenario | Expected Status | Actual Status | Expected Confidence | Actual Confidence | Pass/Fail | Notes |
 |---|---|---|---|---|---|---|
-| DM-01 Healthy | Green | Green | High | High | PASS | — |
-| DM-07 Critical | Red | Red | High | High | PASS | — |
+| DM-01 Healthy | Healthy | — | High | — | — | — |
+| DM-05 Warning | Warning | — | Medium | — | — | — |
+| DM-06 At Risk | At Risk | — | Medium | — | — | — |
+| DM-07 Critical | Critical | — | High | — | — | — |
 
 ## Golden Output Comparison (where applicable)
 
 | Scenario | Hard Failures | Soft Failures | Pass/Fail |
 |---|---|---|---|
-| DM-01 Healthy | 0 | 0 | PASS |
-| DM-07 Critical | 0 | 1 (exact decision IDs differ) | PASS |
+| DM-01 Healthy | — | — | — |
+| DM-07 Critical | — | — | — |
 
 ## Pattern Detection Check
 
+Module-specific check — not covered by the generic format in `evaluations/regression/README.md`. Verifies `skills/decision-memory/detect-patterns.md` classifies severity correctly.
+
 | Scenario | Pattern Detected | Severity | Correct | Pass/Fail |
 |---|---|---|---|---|
-| DM-01 Healthy | None | — | Yes | PASS |
-| DM-05 Warning | Underestimated vendor onboarding | Warning | Yes | PASS |
-| DM-06 At Risk | Similar failure in migration | At Risk | Yes | PASS |
-| DM-07 Critical | Similar failure Q4 architecture | Critical | Yes | PASS |
+| DM-01 Healthy | None | — | — | — |
+| DM-05 Warning | — | — | — | — |
+| DM-06 At Risk | — | — | — | — |
+| DM-07 Critical | — | — | — | — |
 
 ## Overall Result
 
@@ -56,31 +43,10 @@ If FAIL:
 ## Notes
 
 {{Anything unusual about this run — edge cases, borderline passes, new failure modes observed}}
-```
-
----
-
-## Pass/Fail Rules
-
-**A run PASSES if**:
-- All scenarios produce the correct DECISION MEMORY STATUS
-- All scenarios produce the correct CONFIDENCE label (High/Medium/Low)
-- Golden output scenarios have 0 hard failures
-- Pattern detection produces correct severity classification
-
-**A run FAILS if**:
-- Any scenario produces an incorrect primary status
-- Any golden output scenario has 1 or more hard failures
-- More than 2 soft failures across the full suite
-- Pattern detection severity is incorrect for any scenario
-
-**On failure**: Do not deploy or use the updated skill/prompt until the failure is investigated and the root cause is addressed. Log the failure in `kaizen/failures.md`.
 
 ---
 
 ## Trend Tracking
-
-After each run, update this table:
 
 | Date | Scenarios | Passed | Failed | Overall |
 |---|---|---|---|---|
