@@ -54,11 +54,13 @@ v1.0  Production        ░░░░░░░░░░░░░░░░░░�
 
 ---
 
-## v0.2 — Skills 🚧 In Progress
+## v0.2 — Skills 🚧 In Progress (metrics corrected — see staleness note)
 
 **Theme**: The OS can execute. Subagents have procedures to follow, not just identities to embody.
 
 **What this means**: An EM who runs v0.2 can invoke a skill and receive a structured, evidence-based output in < 5 minutes. The skill handles the analysis. The EM handles the judgment. The combination is faster and more consistent than either alone.
+
+**Staleness note**: this section's Success Metrics claimed "1 of 20 skills complete" — never updated as the skills library grew. Reality: `skills/` now has 100+ files across 13+ subdirectories (career, conflict, cross-functional, delivery, executive, meetings, mentoring, organizational, people, performance, presentation, product, strategy), vastly exceeding this section's original 20-item plan — but under a different, topic-based naming convention than the verb-first names listed below. Of the 20 originally named here, only 3 were built under their literal listed name (`skills/people/one-on-one.md`, `skills/people/burnout.md`, `skills/executive/executive-communication.md` — checked off below); most others were superseded by a differently-named real skill (noted inline) or remain a genuine gap, tracked in the "shadow taxonomy" finding from the 2026-07-01 consolidation audit (`docs/superpowers/specs/2026-07-01-repo-consolidation-design.md`).
 
 ### Deliverables
 
@@ -66,41 +68,41 @@ v1.0  Production        ░░░░░░░░░░░░░░░░░░�
 - [x] Skill structure: Purpose / Inputs / Analysis / Decision Tree / Output / Examples / Confidence Score / Failure Modes / References / Related Skills
 - [x] Golden outputs for sprint review (healthy and critical cases)
 - [x] Regression dataset: 7 sprint scenarios
-- [ ] `skills/delivery/track-sprint.md` — Mid-sprint health check
-- [ ] `skills/delivery/plan-sprint.md` — Sprint planning inputs
-- [ ] `skills/delivery/review-quarter.md` — Quarterly delivery narrative
-- [ ] `skills/delivery/manage-risk.md` — Risk register update
-- [ ] `skills/operations/postmortem.md` — Blameless post-mortem facilitation
-- [ ] `skills/operations/assess-oncall.md` — On-call health review
-- [ ] `skills/operations/triage-alert.md` — Alert noise assessment
-- [ ] `skills/people/one-on-one.md` — 1:1 preparation
-- [ ] `skills/people/burnout.md` — Wellbeing signal evaluation
-- [ ] `skills/people/build-growth-plan.md` — Career development plan
-- [ ] `skills/people/build-promotion-case.md` — Promotion evidence builder
-- [ ] `skills/people/prepare-feedback.md` — SBI feedback preparation
-- [ ] `skills/people/assess-hiring-pipeline.md` — Hiring funnel health
-- [ ] `skills/architecture/assess-decision.md` — ADR evaluation
-- [ ] `skills/quality/assess-tech-debt.md` — Debt classification and prioritization
-- [ ] `skills/executive/executive-communication.md` — Status communication
-- [ ] `skills/product/prioritize-backlog.md` — RICE/ICE prioritization
-- [ ] `skills/product/align-stakeholders.md` — Expectation management
-- [ ] `skills/product/update-roadmap.md` — Roadmap refresh
+- [ ] `skills/delivery/track-sprint.md` — Mid-sprint health check (real gap)
+- [ ] `skills/delivery/plan-sprint.md` — Sprint planning inputs (real gap)
+- [ ] `skills/delivery/review-quarter.md` — Quarterly delivery narrative (real gap)
+- [ ] `skills/delivery/manage-risk.md` — Risk register update (real gap)
+- [ ] `skills/operations/postmortem.md` — Blameless post-mortem facilitation (real gap; `skills/operations/` reserved)
+- [ ] `skills/operations/assess-oncall.md` — On-call health review (real gap)
+- [ ] `skills/operations/triage-alert.md` — Alert noise assessment (real gap)
+- [x] `skills/people/one-on-one.md` — 1:1 preparation
+- [x] `skills/people/burnout.md` — Wellbeing signal evaluation
+- [ ] `skills/people/build-growth-plan.md` — superseded by `skills/people/growth-plans.md`
+- [ ] `skills/people/build-promotion-case.md` — real gap; use `skills/career/promotion/promotion-evidence.md` in the meantime
+- [ ] `skills/people/prepare-feedback.md` — superseded by `skills/people/feedback.md`
+- [ ] `skills/people/assess-hiring-pipeline.md` — real gap
+- [ ] `skills/architecture/assess-decision.md` — real gap; `skills/architecture/` reserved
+- [ ] `skills/quality/assess-tech-debt.md` — real gap
+- [x] `skills/executive/executive-communication.md` — Status communication
+- [ ] `skills/product/prioritize-backlog.md` — superseded by `skills/product/rice-scoring.md` and `moscow-prioritization.md`
+- [ ] `skills/product/align-stakeholders.md` — superseded by `skills/organizational/stakeholder-analysis.md`
+- [ ] `skills/product/update-roadmap.md` — superseded by `skills/product/roadmap-health.md`
 
 ### Exit Criteria
 
-- [ ] All 20 skills have complete files matching the 10-section template
-- [ ] Every skill has at least 2 example scenarios (healthy + stressed)
-- [ ] Every skill has a golden output file in `evaluations/golden/`
-- [ ] Every skill has test data in `evaluations/datasets/`
-- [ ] Regression suite passes 100% for all skills against their golden outputs
+- [ ] All 20 originally-listed skills have complete files matching the 10-section template — superseded in practice by a much larger (100+ file) skill library under a different naming convention; treat this criterion as met in spirit, not literally
+- [x] Every skill has at least 2 example scenarios (healthy + stressed) — true for the built skills library
+- [ ] Every skill has a golden output file in `evaluations/golden/` — true only for the modules with dedicated eval suites (leadership-health, confidence-engine, political-signals, decision-memory, sprint-review); most individual skill files do not have one
+- [ ] Every skill has test data in `evaluations/datasets/` — same caveat as above
+- [ ] Regression suite passes 100% for all skills against their golden outputs — no regression run has been executed with real data yet (see v0.4)
 
 ### Success Metrics
 
 | Metric | Target | Status |
 |---|---|---|
-| Skills complete (all sections) | 20 of 20 | 1 of 20 |
-| Skills with golden outputs | 20 of 20 | 2 of 20 |
-| Skills with datasets | 20 of 20 | 1 of 20 |
+| Skills complete (all sections) | 20 of 20 (original list) | 3 of 20 named; 100+ under the real, expanded taxonomy |
+| Skills with golden outputs | 20 of 20 | Module-level only (5 modules), not per-skill |
+| Skills with datasets | 20 of 20 | Module-level only (5 modules), not per-skill |
 | Regression pass rate | 100% | Not yet run |
 
 ---
@@ -287,7 +289,7 @@ v1.0  Production        ░░░░░░░░░░░░░░░░░░�
 - [ ] < 1 unresolved failure in `kaizen/failures.md` older than 30 days
 
 **Coverage**
-- [ ] All 20 skills complete with golden outputs and passing regression
+- [ ] All skills in the real, expanded library (100+ files, superseding v0.2's original 20-item plan — see that section's staleness note) have golden outputs and passing regression
 - [ ] All 9 feature files with regression runs logged
 - [ ] All 5 integrations active and providing real data to the dashboard
 - [ ] Memory populated with ≥ 12 weeks of lessons, incidents, and coaching data
