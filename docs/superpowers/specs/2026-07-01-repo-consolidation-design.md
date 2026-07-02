@@ -18,6 +18,24 @@ A four-agent audit of the repo (240 files across `subagents/`, `features/`, `com
 8. Vestigial empty directories.
 9. (Out of scope for this pass, tracked separately) 16 completely empty files in `commands/`, `integrations/`, `templates/`, `docs/` — completion debt, not duplication, per user decision.
 
+## Addendum (same day) — Full-Project Audit Findings
+
+A second, broader audit ("review the full project, check all missing, duplicates, messy, inorganized patterns") was run after items A-H above were designed but before execution, triggered by a real mistake: a `memory/` directory was built assuming no prior implementation existed, when a richer 10-domain module already did (fixed in commit `d54304d`). The follow-up audit confirmed that mistake was isolated — `loops/`, `contracts/`, and the `kaizen/` extraction were all verified as genuinely novel, correctly extracted from real prior locations — but surfaced a different, related problem: **documentation drift**. Seven structural commits landed without the kaizen changelog, root README/BUILD, or most subagent files ever being updated to reflect them.
+
+New findings (I–S), to be executed alongside A–H:
+
+10. **Dead scaffolding**: `prompts/{daily,monthly,quarterly,retrospectives,weekly}/` and `tests/{gherkins,prompts,scenarios}/` are empty, referenced nowhere in the repo, and duplicate namespaces already covered by `commands/`, `kaizen/`, and `features/`. Delete alongside item 8's empty-dir cleanup.
+11. **Dangling references**: `decision-memory/schema.md` references `decision-memory/records/`, `decision-memory/examples/`, and an example path under `records/` — none exist. `confidence-engine/prediction_confidence.md` references `skills/delivery/track-sprint.md` (doesn't exist). `leadership-health/master-leadership-health.md` references `skills/communication/write-executive-update.md` (the entire `skills/communication/` directory doesn't exist).
+12. **Zero Gherkin coverage** for `loops/`, `contracts/`, and the `kaizen/` extraction — breaks this repo's own convention that every module gets a `.feature` file.
+13. **`README.md`/`BUILD.md` staleness**: neither mentions `loops/`, `contracts/`, `memory/`, or `analytics/`. `README.md` has its own separate "eleven layers" table (distinct from `CLAUDE.md`'s Repository Architecture) that risks drifting out of sync with it going forward.
+14. **`ROADMAP.md` v0.2 metrics are wrong**: claims "1 of 20 skills complete"; reality is 100+ skill files across 13+ subdirectories. Unlike v0.5's Memory section (which self-flagged its own staleness), this was never disclosed.
+15. **`kaizen/continuous-improvement.md` changelog never updated**: 7 structural commits this session (loops/memory/contracts/kaizen-extraction/the memory-fix) with zero changelog rows, violating this repo's own Content Conventions ("After significant changes, update kaizen/continuous-improvement.md").
+16. **Subagent routing gap**: 7 of 8 `subagents/*.md` files never reference `commands/`, `loops/`, `contracts/`, or `memory/` at all — even `engineering-manager.md` never cites `loops/` despite loops being the actual orchestration mechanism now.
+17. **`analytics/` is undocumented**: 6 real, non-duplicative dashboard files with no README/master-pad and no entry in `CLAUDE.md`'s Repository Architecture.
+18. **Restated scoring rubric**: `skills/product/product-risk.md` and `skills/strategy/risk-planning.md` restate an identical probability×impact rubric verbatim. Extract to a shared reference; do not merge (the risk taxonomies above the rubric are genuinely distinct).
+19. **Missing cross-references**: `skills/mentoring/growth-tracking.md` and `skills/people/growth-plans.md` are complementary but never reference each other; `skills/mentoring/mentor-plan.md` independently restates growth-tracking's effectiveness-rate formula (optional light trim). Two additional files (`mentor-plan.md`, `growth-tracking.md`) reference the not-yet-renamed `skills/performance/promotion-readiness.md` path — added to item 4's blast radius.
+20. **Boundary clarification**: `skills/cross-functional/support-escalation.md` and `customer-success.md` independently derive similar SLA/severity tables for the same escalation-lifecycle problem entering via different channels. Add explicit boundary statements to both; do not merge.
+
 This spec covers items 1–8. Item 9 is explicitly deferred to a future project.
 
 ## Out of scope
@@ -99,17 +117,60 @@ Delete:
 - `skills/operations/`
 - `skills/quality/`
 
-**Sequencing note:** verify `skills/confidence-engine/` is still empty at execution time (Sub-project B populates it) — if B has already run, this item no longer applies to that specific path.
+**Sequencing note:** verify `skills/confidence-engine/` is still empty at execution time (Sub-project B populates it) — if B has already run, this item no longer applies to that specific path. Also delete `prompts/{daily,monthly,quarterly,retrospectives,weekly}/` and `tests/{gherkins,prompts,scenarios}/` in this same step (confirmed dead scaffolding, referenced nowhere).
+
+### I. Fix dangling references
+
+- `decision-memory/schema.md`: either create `decision-memory/records/` and `decision-memory/examples/` with real content, or rewrite the Storage Conventions section to describe how decisions are actually stored today (as `.md` files directly under a to-be-decided location) — decide which based on whether `decision-memory/` records are expected to exist as individual files soon or not.
+- `confidence-engine/prediction_confidence.md`: fix or remove the reference to `skills/delivery/track-sprint.md` (doesn't exist) — either point to `skills/delivery/review-sprint.md` instead, or note the file is a planned-but-undelivered skill.
+- `leadership-health/master-leadership-health.md`: fix or remove the reference to `skills/communication/write-executive-update.md` — likely should point to `skills/executive/executive-status-report.md` or `skills/executive/executive-communication.md` instead.
+
+### J. Add Gherkin coverage for loops/contracts
+
+Add `loops/features/loops.feature` and `contracts/features/contracts.feature` covering, at minimum: a loop correctly routing to its primary subagent, a loop's Related Loops disambiguation holding (e.g. sprint-loop vs. delivery-loop don't both fire for the same request), and a contract's Failure Conditions correctly blocking invalid input. `kaizen/` stays the one exception (meta-process-improvement, not user-facing behavior) unless a future review decides otherwise.
+
+### K. Fix README.md/BUILD.md staleness
+
+Add `loops/`, `contracts/`, `memory/`, and `analytics/` to `README.md`'s layer table and to `BUILD.md`'s relevant setup steps. Cross-check `README.md`'s table against `CLAUDE.md`'s Repository Architecture section for consistency — consider whether one should simply reference the other instead of maintaining two independent architecture descriptions long-term (flag as a question, don't resolve unilaterally).
+
+### L. Fix ROADMAP.md v0.2 metrics
+
+Update the v0.2 "Skills" section's metrics table to reflect the real skill count (100+ files across 13+ subdirectories, not "1 of 20"), following the same disclosure pattern already used in v0.5's staleness note.
+
+### M. Backfill kaizen changelog
+
+Add changelog rows to `kaizen/continuous-improvement.md` for this session's structural commits (loop engineering + memory/, specification contracts, kaizen extraction, the memory/ mistake fix), tagged appropriately per the existing Change Categories table (`skill-extended`, `memory-added`, `prompt-clarified`, `failure-closed` as applicable). This is retroactive backfill, not a substitute for updating it going forward.
+
+### N. Close the subagent routing gap
+
+Add a reference to the matching `loops/*.md` file in each specialist subagent's Scope or Trigger Conditions section: `delivery-manager.md` → `sprint-loop.md`/`delivery-loop.md`; `incident-manager.md` → `incident-loop.md`; `engineering-coach.md` → `career-loop.md`/`promotion-loop.md`; `product-partner.md` → `stakeholder-loop.md`; `tech-lead.md`/`architecture-reviewer.md` → `architecture-loop.md`; `executive-summary.md` → `executive-loop.md`/`prediction-loop.md`. Add `loops/` and `commands/` mentions to `engineering-manager.md`'s routing table too.
+
+### O. Document analytics/
+
+Add `analytics/README.md` (or `analytics/analytics.md` master pad, matching the `memory.md`/`political-signals.md` naming convention) documenting the six dashboards' relationships and shared metrics (Cross-Functional Alignment Score, Delivery Confidence, Customer Impact Score). Add an `### analytics/` entry to `CLAUDE.md`'s Repository Architecture section.
+
+### P. Extract restated risk-scoring rubric (expands E2)
+
+`skills/product/product-risk.md` and `skills/strategy/risk-planning.md` restate an identical probability×impact rubric verbatim (same 5 probability labels, same severity bands). Extract to one shared reference (`docs/glossary.md` or a small shared file); both skills point to it instead of restating.
+
+### Q. Add missing cross-references in the growth cluster
+
+`skills/mentoring/growth-tracking.md` and `skills/people/growth-plans.md`: add each to the other's Related Skills table. `skills/mentoring/mentor-plan.md`: optionally trim its independently-restated effectiveness-rate formula to a pointer at `growth-tracking.md` (low priority). Update the 2 additional promotion-readiness path references found in `mentor-plan.md`/`growth-tracking.md` at the same time Sub-project D executes its rename.
+
+### R. Clarify support-escalation/customer-success boundary
+
+Add an explicit boundary statement to both files' Purpose sections (support-escalation covers support-originated tickets; customer-success covers account-level churn-risk escalations) and have `support-escalation.md`'s triage table reference `customer-success.md` as the downstream path once severity exceeds support's resolution authority. No merge.
 
 ## Execution order
 
-A → B → C → D → E → F → G → H, with a git commit after each sub-project so any single step can be reverted independently. A comes first because it's pure deletion with no downstream dependents. B comes early because C/D/E/F touch files that may end up at new paths after B moves them (dimension files aren't directly involved in C–F, but keeping B early avoids path-reference churn happening twice).
+A → B → I (dangling refs + dead scaffolding + old empty dirs, merged with H) → C → D → Q → E → P → F → R → G → J → K → L → M → N → O, with a git commit after each sub-project so any single step can be reverted independently. Rationale: A/H/I front-load pure deletions and reference fixes with no downstream dependents. B comes early because C/D/E/F/P/Q touch files that may end up at new paths after B moves them. J (new Gherkin coverage) comes after the structural sub-projects it would otherwise need to immediately re-validate. K/L/M/N/O (documentation fixes) come last since they describe the *result* of everything above — writing them earlier would mean rewriting them again as A–J land.
 
 ## Verification
 
-After each sub-project, grep the full repo for the old path/filename being removed or moved, to catch any cross-reference the audits missed. After all sub-projects, re-run a lightweight version of the original audit (Glob comparison of before/after directory listings) to confirm no unintended file loss.
+After each sub-project, grep the full repo for the old path/filename being removed or moved, to catch any cross-reference the audits missed. After all sub-projects, re-run a lightweight version of the original audit (Glob comparison of before/after directory listings) to confirm no unintended file loss. Specifically re-run the exact grep used to catch the `memory/` mistake (`grep -rn "path-being-removed"`) after every deletion/rename sub-project, not just at the end.
 
 ## Risks
 
 - **No automated tests exist for this repo** (it's a prompt/skill library, not executable code) — verification is manual grep + read, not a test suite. Confidence in "nothing broke" will be based on reference-check completeness, not automated proof.
 - **Merges (C1, C2) require judgment calls** about which content from the deleted file is worth folding in — there's a small risk of losing a nuance the audit agents didn't flag. Mitigated by the git checkpoint after each sub-project.
+- **Documentation sub-projects (K, L, M, N, O) risk becoming stale again** the moment the next structural change lands, exactly as happened this session. No process fix in this plan actually prevents recurrence — that would require a hook or habit change outside the scope of a one-time consolidation pass. Flagging this explicitly rather than implying the plan "solves" documentation drift permanently.
