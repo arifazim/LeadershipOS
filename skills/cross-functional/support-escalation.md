@@ -14,6 +14,8 @@ Support is engineering's early warning system. A spike in support tickets about 
 
 **The escalation contract**: Support owns the customer conversation. Engineering owns the technical resolution. Support should never have to chase engineering for status. Engineering should never be surprised by a support escalation that could have been caught by a monitoring alert.
 
+**Boundary with `skills/cross-functional/customer-success.md`**: this skill covers support-originated tickets — individual issues entering through the support queue, triaged by severity and resolved case by case. When a pattern of unresolved issues threatens an account relationship or churn risk rather than a single ticket, that's `customer-success.md`'s territory — hand off there once severity exceeds support's resolution authority (e.g., repeated unresolved issues on one account, or a strategic customer at risk).
+
 ---
 
 ## Metrics

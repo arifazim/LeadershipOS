@@ -14,6 +14,8 @@ Customer Success (CS) is engineering's clearest signal about whether what was bu
 
 **The partnership model**: CS owns the customer relationship and the escalation signal. Engineering owns the resolution and the root cause. Neither team can do their job well without the other.
 
+**Boundary with `skills/cross-functional/support-escalation.md`**: that skill covers individual support-originated tickets, triaged by severity and resolved case by case. This skill covers account-level relationship and churn-risk escalations — a pattern of unresolved issues threatening a customer relationship, not a single ticket. Support-escalation should hand off here once severity exceeds its resolution authority; this skill doesn't re-triage individual tickets that are already progressing through support's queue.
+
 ---
 
 ## Metrics
