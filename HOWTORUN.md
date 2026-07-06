@@ -12,8 +12,25 @@ For instance configuration (team size, integrations, thresholds), see [BUILD.md]
 |---|---|
 | How do I "run" it? | Load a **subagent** + **command or loop** into your AI tool, provide real inputs, get output from **templates/**, then **log** to **memory/** or **kaizen/** |
 | What is the execution path? | **Command → Loop → Skills → Subagent → Template → Memory/Kaizen** |
-| How many actors? | **8 subagents**, **11 loops**, **5 commands**, **7 contracts** (2 universal + 5 domain), **10 memory domains**, **6 kaizen cadences** |
+| How many actors? | **8 subagents**, **11 loops**, **5 commands**, **7 contracts** (2 universal + 5 domain), **10 memory domains**, **10 kaizen files** across weekly/monthly/quarterly/event-triggered cadences |
 | What blocks good output? | Missing integration data, unconfigured thresholds, skipping the logging step |
+
+---
+
+## Proof This Works — What the First Regression Run Found
+
+Anyone can claim a system "improves itself." Here's what actually happened when this one was tested for real, on 2026-07-01 — the first time any of these modules had ever been run against their own reference outputs, a gap `ROADMAP.md` had flagged as open since v0.1:
+
+| Module | Bug found | Would have produced |
+|---|---|---|
+| `leadership-health/master-leadership-health.md` | Its own dimension-weight table summed to **157%**, not 100% | Every holistic leadership score it ever computed was mathematically wrong |
+| `confidence-engine/executive_confidence.md` | A formula capped every dimension's score at 30 *before* weighting | The maximum possible "Can I trust this team?" score was 30 — regardless of how healthy the team actually was |
+| `leadership-health`, `confidence-engine`, `political-signals` (3 modules) | Each was silently missing an entire severity band ("At Risk") | Moderate-risk situations misclassified as either falsely healthy or falsely critical |
+| `skills/delivery/review-sprint.md` | No root-cause category existed for "goal missed despite high completion" | A real, distinct sprint-failure pattern with no diagnosis path |
+
+All 5 bugs were found, fixed, and **verified by reproducing the actual golden reference scores** — not just asserted fixed. 34 of 35 test scenarios pass cleanly today; 2 in `confidence-engine` are still flagged as an open follow-up rather than force-fit. Full evidence trail: `evaluations/regression/*.md` and `kaizen/failures.md` (FAIL-002).
+
+**Why this matters for demonstrating value**: this is the difference between "an AI that sounds confident" and a system with an actual quality gate. The bugs were invisible from the *outputs alone* — they only surfaced because golden references existed and someone finally ran them. That's the argument for keeping `evaluations/` current as you extend this OS, not a nice-to-have.
 
 ---
 
@@ -203,13 +220,13 @@ Contracts define **Failure Conditions** (cannot run) and **Quality Checks** (val
 
 | Contract | File | Governs |
 |---|---|---|
-| Skill (universal) | `contracts/skill.contract.md` | All files under `skills/`, `leadership-health/`, `confidence-engine/` |
+| Skill (universal) | `contracts/skill.contract.md` | All files under `skills/` — including dimension skills at `skills/leadership-health/` and `skills/confidence-engine/` |
 | Subagent (universal) | `contracts/subagent.contract.md` | All files under `subagents/` |
-| Executive | `contracts/executive.contract.md` | `skills/executive/*.md` |
-| Presentation | `contracts/presentation.contract.md` | `skills/presentation/*.md`, board-level summaries |
+| Executive | `contracts/executive.contract.md` | `skills/executive/*.md` (except `board-level-summary.md`, governed by Presentation below) |
+| Presentation | `contracts/presentation.contract.md` | `skills/presentation/*.md` plus `skills/executive/board-level-summary.md` (its memo and deck output variants both live here) |
 | Meeting | `contracts/meeting.contract.md` | `skills/meetings/*.md` |
-| Prediction | `contracts/prediction.contract.md` | `prediction-loop`, prediction confidence skill |
-| Dashboard | `contracts/dashboard.contract.md` | Leadership health dashboards, `analytics/*.md` |
+| Prediction | `contracts/prediction.contract.md` | `prediction-loop`, `skills/confidence-engine/prediction_confidence.md` |
+| Dashboard | `contracts/dashboard.contract.md` | `skills/leadership-health/generate-dashboard.md`, `analytics/*.md` |
 
 **When to attach a contract:** Any output that goes to executives, board, or calibration — or whenever missing data would produce a falsely confident answer.
 
@@ -244,10 +261,14 @@ Formal decisions with alternatives → also use [decision-memory/](decision-memo
 |---|---|---|
 | `kaizen/weekly-review.md` | Every Friday | 10 questions → update cascade → archive |
 | `kaizen/monthly-review.md` | Last day of month | Roll up weekly findings |
-| `kaizen/quarterly-review.md` | End of quarter | Revisit `docs/principles.md` |
-| `kaizen/prediction-review.md` | Weekly (via Q1) | Forecast accuracy tracking |
-| `kaizen/failures.md` | Within 48h of failure | OS/process/subagent failures |
-| `kaizen/continuous-improvement.md` | After reviews | Changelog of OS changes |
+| `kaizen/quarterly-review.md` | End of quarter | Rolls up 3 monthly reviews, revisits `docs/principles.md` |
+| `kaizen/prediction-review.md` | Weekly (via Q1) + monthly calibration | Forecast accuracy tracking — standalone home for what used to be buried in Q1 |
+| `kaizen/playbook-review.md` | Weekly (via Q7) | Tracks where `docs/engineering-playbook.md` proved wrong or incomplete |
+| `kaizen/skill-review.md` | Weekly (via Q8) + monthly usage audit | Tracks which skill sections produced bad output, and which skills go unused |
+| `kaizen/failure-analysis.md` | Monthly | Reads `failures.md`'s raw log and finds recurring root-cause patterns (3+ = a pattern, not a one-off) |
+| `kaizen/root-cause.md` | Referenced, not cadenced | Canonical root-cause taxonomy — every failure/prompt/prediction entry picks one category from here instead of inventing its own |
+| `kaizen/failures.md` | Within 48h of failure | Raw failure log — OS/process/subagent failures |
+| `kaizen/continuous-improvement.md` | After every review | Changelog of OS changes, tagged by category |
 
 **Rule:** When the OS gives advice you would not actually follow, update the **source file** — not just the output.
 

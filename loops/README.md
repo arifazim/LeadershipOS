@@ -67,10 +67,11 @@ Every loop file follows this shape:
 
 ## Disambiguated Pairs
 
-Two pairs of loops cover adjacent ground and are deliberately split rather than merged — each loop's `Related Loops` section names the boundary explicitly so the distinction doesn't erode over time:
+Three pairs of loops cover adjacent ground and are deliberately split rather than merged — each loop's `Related Loops` section names the boundary explicitly so the distinction doesn't erode over time:
 
 - **sprint-loop vs. delivery-loop**: sprint-loop is the single-sprint ceremony (plan → execute → review); delivery-loop is the rolling, cross-sprint DORA/trend read.
 - **career-loop vs. promotion-loop**: career-loop is the ongoing, multi-year development conversation; promotion-loop is the execution of one specific promotion cycle.
+- **executive-loop vs. stakeholder-loop**: executive-loop is the upward reporting shape (status, confidence, ask); stakeholder-loop is lateral alignment and influence mapping. An ask that's really about stakeholder alignment shouldn't be forced through executive-loop's reporting template, and vice versa.
 
 ## Logging
 
