@@ -1,0 +1,727 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>How the Agents Connect — Engineering Manager OS</title>
+<style>
+  :root{
+    --bg:#0F1B2D;
+    --panel:#16263D;
+    --panel-hi:#1C2F4A;
+    --border:#28405C;
+    --grid:#16263B;
+    --accent:#E8A33D;
+    --accent-dim:#8A6528;
+    --text:#D7E4F2;
+    --text-muted:#8CA2BC;
+    --text-dim:#54708F;
+    --mono: "Cascadia Code","JetBrains Mono",Consolas,"SF Mono",Menlo,monospace;
+    --serif: Charter,"Iowan Old Style","Palatino Linotype",Georgia,"Times New Roman",serif;
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;background:var(--bg);}
+  body{
+    color:var(--text);
+    font-family:var(--serif);
+    font-size:17px;
+    line-height:1.6;
+    background-image:
+      repeating-linear-gradient(0deg, var(--grid) 0, var(--grid) 1px, transparent 1px, transparent 40px),
+      repeating-linear-gradient(90deg, var(--grid) 0, var(--grid) 1px, transparent 1px, transparent 40px);
+    background-attachment:fixed;
+  }
+  @media (prefers-reduced-motion: reduce){
+    *{animation-duration:0.001ms !important; transition-duration:0.001ms !important;}
+  }
+
+  .wrap{max-width:1180px; margin:0 auto; padding:56px 28px 96px;}
+
+  .eyebrow{
+    font-family:var(--mono);
+    font-size:12px;
+    letter-spacing:.14em;
+    text-transform:uppercase;
+    color:var(--accent);
+    margin:0 0 14px;
+  }
+  h1{
+    font-family:var(--serif);
+    font-weight:600;
+    font-size:clamp(30px,4vw,44px);
+    line-height:1.12;
+    letter-spacing:-.01em;
+    margin:0 0 14px;
+    text-wrap:balance;
+    color:#EFF5FB;
+  }
+  .lede{
+    font-size:18px;
+    color:var(--text-muted);
+    max-width:62ch;
+    margin:0 0 8px;
+  }
+  .lede em{color:var(--text); font-style:italic;}
+
+  h2{
+    font-family:var(--mono);
+    font-size:13px;
+    letter-spacing:.12em;
+    text-transform:uppercase;
+    color:var(--text-muted);
+    margin:0 0 4px;
+    display:flex;
+    align-items:baseline;
+    gap:10px;
+  }
+  h2 .num{color:var(--accent);}
+  h2::after{
+    content:"";
+    flex:1;
+    height:1px;
+    background:var(--border);
+    transform:translateY(-3px);
+  }
+  h3{
+    font-family:var(--serif);
+    font-weight:600;
+    font-size:22px;
+    color:#EFF5FB;
+    margin:0 0 6px;
+  }
+  .section-note{
+    color:var(--text-muted);
+    max-width:70ch;
+    margin:0 0 28px;
+    font-size:15.5px;
+  }
+  section{margin-top:64px;}
+
+  /* ---------- Section 1: main schematic ---------- */
+  #diagram{
+    position:relative;
+    padding:8px 0 4px;
+  }
+  #connector-svg{
+    position:absolute;
+    top:0; left:0;
+    width:100%; height:100%;
+    pointer-events:none;
+    overflow:visible;
+  }
+  #connector-svg path{
+    fill:none;
+    stroke:var(--border);
+    stroke-width:1.4;
+    transition:stroke .25s ease, stroke-width .25s ease;
+  }
+  #connector-svg path.lit{
+    stroke:var(--accent);
+    stroke-width:2;
+  }
+  #connector-svg circle{ fill:var(--border); transition:fill .25s ease; }
+  #connector-svg circle.lit{ fill:var(--accent); }
+
+  .row{
+    position:relative;
+    z-index:2;
+    display:flex;
+    justify-content:center;
+    margin-bottom:64px;
+  }
+  .row.specialists{
+    display:grid;
+    grid-template-columns:repeat(4, minmax(0,1fr));
+    gap:20px 16px;
+  }
+  .row.support{
+    display:grid;
+    grid-template-columns:repeat(4, minmax(0,1fr));
+    gap:16px;
+  }
+  @media (max-width:900px){
+    .row.specialists{grid-template-columns:repeat(2,minmax(0,1fr));}
+    .row.support{grid-template-columns:repeat(2,minmax(0,1fr));}
+  }
+  @media (max-width:520px){
+    .row.specialists{grid-template-columns:1fr;}
+    .row.support{grid-template-columns:1fr;}
+  }
+
+  .node{
+    background:var(--panel);
+    border:1px solid var(--border);
+    border-radius:3px;
+    padding:16px 18px;
+    position:relative;
+  }
+  .node::before{
+    content:attr(data-tag);
+    position:absolute;
+    top:-9px; left:12px;
+    background:var(--bg);
+    padding:0 6px;
+    font-family:var(--mono);
+    font-size:10px;
+    letter-spacing:.1em;
+    text-transform:uppercase;
+    color:var(--text-dim);
+  }
+  .node-request{
+    max-width:340px;
+    text-align:center;
+    border-style:dashed;
+    color:var(--text-muted);
+    font-family:var(--mono);
+    font-size:13px;
+    letter-spacing:.04em;
+  }
+  .node-orchestrator{
+    max-width:460px;
+    width:100%;
+    border-color:var(--accent-dim);
+    box-shadow:0 0 0 1px rgba(232,163,61,0.12);
+  }
+  .node-orchestrator .name{color:var(--accent);}
+  .node .name{
+    font-family:var(--mono);
+    font-weight:700;
+    font-size:15px;
+    color:#EFF5FB;
+    margin:0 0 6px;
+  }
+  .node .role{
+    font-size:14.5px;
+    color:var(--text-muted);
+    margin:0 0 10px;
+    line-height:1.45;
+  }
+  .node .loops{
+    display:flex;
+    flex-wrap:wrap;
+    gap:6px;
+    margin-bottom:8px;
+  }
+  .loop-tag{
+    font-family:var(--mono);
+    font-size:11px;
+    letter-spacing:.02em;
+    color:var(--accent);
+    background:rgba(232,163,61,0.08);
+    border:1px solid var(--accent-dim);
+    border-radius:2px;
+    padding:2px 7px;
+    white-space:nowrap;
+  }
+  .node .hint{
+    font-size:12.5px;
+    color:var(--text-dim);
+    font-style:italic;
+    border-top:1px solid var(--border);
+    padding-top:8px;
+    margin-top:2px;
+  }
+  .node-support .name{color:var(--text);}
+  .node-support{cursor:default;}
+
+  .legend{
+    display:flex;
+    flex-wrap:wrap;
+    gap:18px;
+    font-family:var(--mono);
+    font-size:12px;
+    color:var(--text-dim);
+    justify-content:center;
+    margin-top:-32px;
+    margin-bottom:56px;
+  }
+  .legend span{display:flex; align-items:center; gap:6px;}
+  .swatch{width:14px; height:2px; background:var(--border); display:inline-block;}
+  .swatch.accent{background:var(--accent);}
+  .dot{width:8px; height:8px; border-radius:50%; display:inline-block; background:var(--border);}
+  .dot.accent{background:var(--accent);}
+
+  /* ---------- Section 2: loop anatomy ---------- */
+  .anatomy{
+    display:grid;
+    grid-template-columns:repeat(5,1fr);
+    gap:0;
+    position:relative;
+  }
+  @media (max-width:820px){ .anatomy{grid-template-columns:1fr;} }
+  .step{
+    border:1px solid var(--border);
+    background:var(--panel);
+    padding:18px 16px 16px;
+    position:relative;
+  }
+  .anatomy .step:not(:last-child){border-right:none;}
+  @media (max-width:820px){ .anatomy .step:not(:last-child){border-right:1px solid var(--border); border-bottom:none;} }
+  .step .stepno{
+    font-family:var(--mono);
+    color:var(--accent);
+    font-size:12px;
+    letter-spacing:.08em;
+  }
+  .step .steptitle{
+    font-family:var(--mono);
+    font-weight:700;
+    font-size:14px;
+    color:#EFF5FB;
+    margin:6px 0 8px;
+  }
+  .step .stepbody{
+    font-size:13.8px;
+    color:var(--text-muted);
+    line-height:1.5;
+  }
+  .step .steplink{
+    display:block;
+    margin-top:10px;
+    font-family:var(--mono);
+    font-size:11.5px;
+    color:var(--text-dim);
+  }
+  .anatomy-arrow{
+    display:none;
+  }
+  @media (min-width:821px){
+    .step:not(:last-child)::after{
+      content:"→";
+      position:absolute;
+      right:-11px; top:50%;
+      transform:translateY(-50%);
+      color:var(--accent);
+      font-family:var(--mono);
+      z-index:3;
+      background:var(--bg);
+      width:20px; text-align:center;
+    }
+  }
+
+  /* ---------- Section 3: disambiguation ---------- */
+  .pairs{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:20px;
+  }
+  @media (max-width:700px){ .pairs{grid-template-columns:1fr;} }
+  .pair{
+    border:1px solid var(--border);
+    background:var(--panel);
+    padding:20px 22px;
+  }
+  .pair .vs{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    margin-bottom:14px;
+  }
+  .pair .vs .loop-tag{font-size:12px;}
+  .pair .vs .x{color:var(--text-dim); font-family:var(--mono); font-size:12px;}
+  .pair .split{
+    display:grid;
+    grid-template-columns:1fr;
+    gap:10px;
+  }
+  .pair .half{
+    border-left:2px solid var(--accent-dim);
+    padding-left:12px;
+  }
+  .pair .half b{color:var(--text); font-family:var(--mono); font-size:12.5px; letter-spacing:.02em;}
+  .pair .half p{margin:3px 0 0; font-size:14px; color:var(--text-muted);}
+
+  /* ---------- Section 4: kaizen cycle ---------- */
+  #kaizen-wrap{
+    position:relative;
+    width:100%;
+    max-width:640px;
+    aspect-ratio:1/1;
+    margin:0 auto;
+  }
+  #kaizen-svg{position:absolute; inset:0; width:100%; height:100%; overflow:visible;}
+  #kaizen-svg path{fill:none; stroke:var(--border); stroke-width:1.4; marker-end:url(#arrowhead);}
+  .kz-node{
+    position:absolute;
+    transform:translate(-50%,-50%);
+    width:128px;
+    text-align:center;
+    font-family:var(--mono);
+    font-size:11.5px;
+    line-height:1.3;
+    color:var(--text-muted);
+    background:var(--bg);
+    padding:6px;
+  }
+  .kz-node b{
+    display:block;
+    color:#EFF5FB;
+    font-size:12.5px;
+    margin-bottom:2px;
+  }
+  .kz-node.center{
+    width:170px;
+    color:var(--accent);
+  }
+  .kz-node.center b{color:var(--accent); font-size:15px;}
+
+  footer{
+    margin-top:80px;
+    padding-top:24px;
+    border-top:1px solid var(--border);
+    font-family:var(--mono);
+    font-size:12px;
+    color:var(--text-dim);
+    display:flex;
+    justify-content:space-between;
+    flex-wrap:wrap;
+    gap:8px;
+  }
+
+  a{color:var(--accent);}
+  code{font-family:var(--mono); font-size:0.9em; color:var(--text);}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <p class="eyebrow">Engineering Manager OS — System Schematic</p>
+  <h1>How the agents connect</h1>
+  <p class="lede">Eight subagents, eleven reusable loops, and the shared layers underneath them. <em>Orchestrator</em> routes to <em>specialists</em>; specialists run <em>loops</em>; loops invoke <em>skills</em>, honor <em>contracts</em>, and log to <em>memory</em>; <em>kaizen</em> watches all of it and rewrites the rest.</p>
+
+  <section>
+    <h2><span class="num">01</span> Request → Orchestrator → Specialists</h2>
+    <p class="section-note">A request lands with the engineering-manager subagent, which routes it — sometimes to one specialist, sometimes to several in parallel — then synthesizes their outputs. Two specialists (tech-lead, product-partner) hand off deeper work to others rather than reporting straight back.</p>
+
+    <div id="diagram">
+      <svg id="connector-svg"></svg>
+
+      <div class="row">
+        <div class="node node-request" data-tag="entry point" id="n-request">commands/*.md&nbsp;·&nbsp;or a direct ask</div>
+      </div>
+
+      <div class="row">
+        <div class="node node-orchestrator" data-tag="orchestrator" id="n-em">
+          <div class="name">engineering-manager</div>
+          <div class="role">Routes work, synthesizes multi-specialist findings, owns cross-team decisions. Never does specialist work itself.</div>
+          <div class="loops"><span class="loop-tag">daily-leadership-loop</span></div>
+          <div class="hint">+ invokes any specialist's loop directly when a situation crosses domains</div>
+        </div>
+      </div>
+
+      <div class="row specialists">
+        <div class="node" data-tag="specialist" id="n-delivery">
+          <div class="name">delivery-manager</div>
+          <div class="role">Sprint health, velocity, DORA metrics, release planning</div>
+          <div class="loops"><span class="loop-tag">sprint-loop</span><span class="loop-tag">delivery-loop</span></div>
+          <div class="hint">hands P1/P2 disruption to → incident-manager</div>
+        </div>
+        <div class="node" data-tag="specialist" id="n-incident">
+          <div class="name">incident-manager</div>
+          <div class="role">P1/P2 response, post-mortems, on-call health</div>
+          <div class="loops"><span class="loop-tag">incident-loop</span></div>
+          <div class="hint">takes routing priority over everything else in flight</div>
+        </div>
+        <div class="node" data-tag="specialist" id="n-techlead">
+          <div class="name">tech-lead</div>
+          <div class="role">Technical quality, architecture guidance, technical risk</div>
+          <div class="loops"><span class="loop-tag">architecture-loop</span></div>
+          <div class="hint">hands deep ADR review to → architecture-reviewer</div>
+        </div>
+        <div class="node" data-tag="specialist" id="n-coach">
+          <div class="name">engineering-coach</div>
+          <div class="role">Individual development, career growth, people health</div>
+          <div class="loops"><span class="loop-tag">career-loop</span><span class="loop-tag">promotion-loop</span></div>
+          <div class="hint">calls no one — terminal in the routing graph</div>
+        </div>
+        <div class="node" data-tag="specialist" id="n-product">
+          <div class="name">product-partner</div>
+          <div class="role">Roadmap alignment, prioritization, stakeholder expectations</div>
+          <div class="loops"><span class="loop-tag">stakeholder-loop</span></div>
+          <div class="hint">hands exec-facing asks to → executive-summary</div>
+        </div>
+        <div class="node" data-tag="deep specialist" id="n-arch">
+          <div class="name">architecture-reviewer</div>
+          <div class="role">Reviews significant architectural decisions for risk &amp; tradeoffs</div>
+          <div class="loops"><span class="loop-tag">architecture-loop</span></div>
+          <div class="hint">only reachable via tech-lead, never called by the orchestrator directly</div>
+        </div>
+        <div class="node" data-tag="output specialist" id="n-exec">
+          <div class="name">executive-summary</div>
+          <div class="role">Transforms any agent's output into executive-ready communication</div>
+          <div class="loops"><span class="loop-tag">executive-loop</span><span class="loop-tag">prediction-loop</span></div>
+          <div class="hint">the leaf node — four other subagents can end here</div>
+        </div>
+      </div>
+
+      <div class="row support">
+        <div class="node node-support" data-tag="invoked by loops · step 2" id="n-skills">
+          <div class="name">Skills</div>
+          <div class="role">200+ capability files under <code>skills/&lt;domain&gt;/</code>, each with its own Purpose, Inputs, Decision Tree, and Confidence Score.</div>
+        </div>
+        <div class="node node-support" data-tag="governs skills &amp; subagents" id="n-contracts">
+          <div class="name">Contracts</div>
+          <div class="role">Inputs · Required Outputs · Failure Conditions · Quality Checks that a skill or subagent must satisfy before its output counts.</div>
+        </div>
+        <div class="node node-support" data-tag="written by loops · step 5" id="n-memory">
+          <div class="name">Memory</div>
+          <div class="role">10-domain recall engine — executive, stakeholders, career, conflicts, mentoring, promotions, architecture, roadmaps, customer-feedback, decision-history.</div>
+        </div>
+        <div class="node node-support" data-tag="reads everything above" id="n-kaizen">
+          <div class="name">Kaizen</div>
+          <div class="role">The feedback engine. Turns a wrong recommendation into a Playbook → Prompt → Skill → Memory update. See §4.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="legend">
+      <span><span class="swatch"></span> routes / invokes</span>
+      <span><span class="swatch accent"></span> highlighted on hover</span>
+      <span><span class="dot"></span> connection point</span>
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="num">02</span> Anatomy of one loop</h2>
+    <p class="section-note">Every one of the eleven loops — <code>sprint-loop</code>, <code>incident-loop</code>, <code>career-loop</code>, and eight others — runs the same five steps. A loop is what makes a subagent's routing reusable and cadence-bound instead of ad hoc.</p>
+
+    <div class="anatomy">
+      <div class="step">
+        <div class="stepno">01</div>
+        <div class="steptitle">Gather Inputs</div>
+        <div class="stepbody">Pull data via the relevant integration — GitHub, Jira, PagerDuty, Datadog.</div>
+        <span class="steplink">integrations/*.md</span>
+      </div>
+      <div class="step">
+        <div class="stepno">02</div>
+        <div class="steptitle">Invoke Skills</div>
+        <div class="stepbody">Run the domain skill(s) that do the actual analysis, in sequence or with branches.</div>
+        <span class="steplink">skills/&lt;domain&gt;/*.md</span>
+      </div>
+      <div class="step">
+        <div class="stepno">03</div>
+        <div class="steptitle">Route to Subagent(s)</div>
+        <div class="stepbody">Hand the analysis to whichever subagent owns the judgment call.</div>
+        <span class="steplink">subagents/*.md</span>
+      </div>
+      <div class="step">
+        <div class="stepno">04</div>
+        <div class="steptitle">Produce Output</div>
+        <div class="stepbody">Render the result into a standard, fillable artifact.</div>
+        <span class="steplink">templates/*.md</span>
+      </div>
+      <div class="step">
+        <div class="stepno">05</div>
+        <div class="steptitle">Log Outcome</div>
+        <div class="stepbody">Write what happened to the matching memory domain — never a generic file.</div>
+        <span class="steplink">memory/&lt;domain&gt;/</span>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="num">03</span> Same territory, different loop</h2>
+    <p class="section-note">Two pairs of loops sit close enough to collide. Each one names the boundary explicitly in its own <code>Related Loops</code> section, so the split doesn't erode back into one loop guessing at the other's job.</p>
+
+    <div class="pairs">
+      <div class="pair">
+        <div class="vs">
+          <span class="loop-tag">sprint-loop</span>
+          <span class="x">vs</span>
+          <span class="loop-tag">delivery-loop</span>
+        </div>
+        <div class="split">
+          <div class="half"><b>SPRINT-LOOP</b><p>The single-sprint ceremony — plan, execute, review one cycle.</p></div>
+          <div class="half"><b>DELIVERY-LOOP</b><p>The rolling, cross-sprint DORA trend — is delivery health improving or decaying.</p></div>
+        </div>
+      </div>
+      <div class="pair">
+        <div class="vs">
+          <span class="loop-tag">career-loop</span>
+          <span class="x">vs</span>
+          <span class="loop-tag">promotion-loop</span>
+        </div>
+        <div class="split">
+          <div class="half"><b>CAREER-LOOP</b><p>The ongoing, multi-year development conversation — direction, sponsorship, growth.</p></div>
+          <div class="half"><b>PROMOTION-LOOP</b><p>The bounded execution of one specific promotion cycle, once career-loop has set direction.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="num">04</span> Kaizen — the loop that watches the loops</h2>
+    <p class="section-note">Loop Engineering improves within a task. Kaizen improves the system itself. Every completed activity becomes training data for the next decision — this is the cycle that rewrites playbooks, prompts, skills, and memory when a recommendation turns out wrong.</p>
+
+    <div id="kaizen-wrap">
+      <svg id="kaizen-svg">
+        <defs>
+          <marker id="arrowhead" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+            <path d="M0,0 L6,3 L0,6 Z" fill="#28405C"></path>
+          </marker>
+        </defs>
+      </svg>
+      <div class="kz-node center" id="kz-center"><b>Every quarter</b>this cycle repeats — the OS should be measurably smarter each time</div>
+    </div>
+  </section>
+
+  <footer>
+    <span>engineering-manager-os · agent architecture</span>
+    <span>8 subagents · 11 loops · 4 shared layers</span>
+  </footer>
+
+</div>
+
+<script>
+(function(){
+  var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  // ---------- Main schematic connectors ----------
+  var svg = document.getElementById('connector-svg');
+  var diagram = document.getElementById('diagram');
+
+  var links = [
+    ['n-request','n-em'],
+    ['n-em','n-delivery'],
+    ['n-em','n-incident'],
+    ['n-em','n-techlead'],
+    ['n-em','n-coach'],
+    ['n-em','n-product'],
+    ['n-em','n-exec'],
+    ['n-delivery','n-skills'],
+    ['n-incident','n-skills'],
+    ['n-techlead','n-skills'],
+    ['n-coach','n-skills'],
+    ['n-product','n-skills'],
+    ['n-arch','n-skills'],
+    ['n-exec','n-skills'],
+    ['n-skills','n-contracts'],
+    ['n-skills','n-memory'],
+    ['n-memory','n-kaizen']
+  ];
+
+  function rectOf(id){
+    var el = document.getElementById(id);
+    var r = el.getBoundingClientRect();
+    var host = diagram.getBoundingClientRect();
+    return {
+      cx: r.left - host.left + r.width/2,
+      top: r.top - host.top,
+      bottom: r.top - host.top + r.height,
+      left: r.left - host.left,
+      right: r.left - host.left + r.width,
+      width: r.width
+    };
+  }
+
+  function draw(){
+    svg.innerHTML = '';
+    var host = diagram.getBoundingClientRect();
+    svg.setAttribute('viewBox', '0 0 ' + host.width + ' ' + host.height);
+
+    links.forEach(function(pair){
+      var a = rectOf(pair[0]);
+      var b = rectOf(pair[1]);
+      var y1 = a.bottom, y2 = b.top;
+      var x1 = a.cx, x2 = b.cx;
+      var midY = y1 + (y2 - y1) * 0.55;
+
+      var path = document.createElementNS('http://www.w3.org/2000/svg','path');
+      var d = 'M ' + x1 + ' ' + y1 + ' C ' + x1 + ' ' + midY + ', ' + x2 + ' ' + midY + ', ' + x2 + ' ' + y2;
+      path.setAttribute('d', d);
+      path.setAttribute('data-a', pair[0]);
+      path.setAttribute('data-b', pair[1]);
+      svg.appendChild(path);
+
+      [ [x1,y1], [x2,y2] ].forEach(function(pt){
+        var c = document.createElementNS('http://www.w3.org/2000/svg','circle');
+        c.setAttribute('cx', pt[0]); c.setAttribute('cy', pt[1]); c.setAttribute('r', 2.5);
+        svg.appendChild(c);
+      });
+    });
+  }
+
+  draw();
+  window.addEventListener('resize', draw);
+
+  document.querySelectorAll('.node').forEach(function(node){
+    node.addEventListener('mouseenter', function(){
+      var id = node.id;
+      if(!id) return;
+      svg.querySelectorAll('path').forEach(function(p){
+        if(p.getAttribute('data-a') === id || p.getAttribute('data-b') === id){
+          p.classList.add('lit');
+        }
+      });
+    });
+    node.addEventListener('mouseleave', function(){
+      svg.querySelectorAll('path').forEach(function(p){ p.classList.remove('lit'); });
+    });
+  });
+
+  // ---------- Kaizen circular cycle ----------
+  var kzWrap = document.getElementById('kaizen-wrap');
+  var kzSvg = document.getElementById('kaizen-svg');
+  var stages = [
+    ['Recommendation','the OS makes a call'],
+    ['Actual Result','what really happened'],
+    ['Gap Analysis','where they diverged'],
+    ['Root Cause','the system condition, not the person'],
+    ['Playbook Update','docs/engineering-playbook.md'],
+    ['Prompt Update','a subagent constraint'],
+    ['Skill Update','a decision tree branch'],
+    ['Memory Update','memory/&lt;domain&gt;/'],
+    ['Future Improvement','the next recommendation is sharper']
+  ];
+
+  function layoutKaizen(){
+    var rect = kzWrap.getBoundingClientRect();
+    var w = rect.width, h = rect.height;
+    var cx = w/2, cy = h/2;
+    var r = Math.min(w,h) * 0.38;
+    var n = stages.length;
+    var pts = [];
+
+    kzSvg.setAttribute('viewBox','0 0 ' + w + ' ' + h);
+
+    document.querySelectorAll('.kz-node:not(.center)').forEach(function(el){ el.remove(); });
+
+    for(var i=0;i<n;i++){
+      var angle = (Math.PI*2/n)*i - Math.PI/2;
+      var x = cx + r*Math.cos(angle);
+      var y = cy + r*Math.sin(angle);
+      pts.push([x,y]);
+
+      var node = document.createElement('div');
+      node.className = 'kz-node';
+      node.style.left = x + 'px';
+      node.style.top = y + 'px';
+      node.innerHTML = '<b>' + stages[i][0] + '</b>' + stages[i][1];
+      kzWrap.appendChild(node);
+    }
+
+    var paths = kzSvg.querySelectorAll('path.cycle');
+    paths.forEach(function(p){ p.remove(); });
+
+    for(var j=0;j<n;j++){
+      var from = pts[j], to = pts[(j+1)%n];
+      var dx = to[0]-from[0], dy = to[1]-from[1];
+      var dist = Math.sqrt(dx*dx+dy*dy);
+      var pad = 44;
+      var ux = dx/dist, uy = dy/dist;
+      var sx = from[0] + ux*pad, sy = from[1] + uy*pad;
+      var ex = to[0] - ux*pad, ey = to[1] - uy*pad;
+
+      var path = document.createElementNS('http://www.w3.org/2000/svg','path');
+      path.classList.add('cycle');
+      path.setAttribute('d', 'M ' + sx + ' ' + sy + ' L ' + ex + ' ' + ey);
+      kzSvg.appendChild(path);
+    }
+  }
+
+  layoutKaizen();
+  window.addEventListener('resize', layoutKaizen);
+})();
+</script>
+</body>
+</html>

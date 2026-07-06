@@ -854,6 +854,7 @@ These modules are not loops but are routed by `engineering-manager`:
 | Integrations | [integrations/](integrations/) |
 | Skills | [skills/](skills/) |
 | Behavior specs | [features/](features/) |
+| Visual agent-architecture diagram | [docs/diagrams/agent-architecture.html](docs/diagrams/agent-architecture.html) — open directly in a browser |
 
 ---
 

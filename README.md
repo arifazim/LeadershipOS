@@ -51,4 +51,8 @@ Engineering managers who want to:
 
 ## Building Your Instance
 
-See `BUILD.md` for how to configure this OS for your specific team, tech stack, and organization.
+See `BUILD.md` for how to configure this OS for your specific team, tech stack, and organization. For the full step-by-step usage guide with copy-paste examples, see `HOWTORUN.md`.
+
+## Visual Overview
+
+`docs/diagrams/agent-architecture.html` — an interactive, offline-viewable schematic of how the 8 subagents, 11 loops, and shared layers (skills, contracts, memory, kaizen) route requests and feed back into each other. Open it directly in any browser; no server or build step needed.
