@@ -17,7 +17,7 @@ Map stakeholder influence/interest, track relationship health, and detect organi
 ## Steps
 
 1. **Gather inputs** — Meeting attendance and decision history (manual/organizational, no direct integration today)
-2. **Invoke skills** — `skills/organizational/stakeholder-analysis.md` (canonical — absorbed `skills/executive/stakeholder-map.md`'s relationship-health axis and pre-announcement timing structure; the only stakeholder-mapping skill). Cross-check against `political-signals/political-signals.md` if a risk signal is present.
+2. **Invoke skills** — `skills/organizational/stakeholder-analysis.md` (canonical — absorbed `skills/executive/stakeholder-map.md`'s relationship-health axis and pre-announcement timing structure; the only stakeholder-mapping skill). Cross-check against `skills/organizational/political-intelligence.md` if a risk signal is present.
 3. **Route to subagent(s)** — `product-partner`; escalate to `engineering-manager` if a political-signal risk score is elevated
 4. **Produce output** — Stakeholder map + engagement plan (no dedicated template yet — output lives inline in the skill's own format)
 5. **Log outcome** — `memory/stakeholders/` (exact domain match) always; cross-link to `memory/decision-history/` if a stakeholder-driven trade-off was made, and to `political-signals/` if a risk signal was the trigger

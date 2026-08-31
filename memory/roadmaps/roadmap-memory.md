@@ -230,6 +230,6 @@ RECOMMENDATION:
 
 - `memory/schema.md` — Universal entry format
 - `memory/memory.md` — Cross-domain pattern detection
-- `analytics/strategy-dashboard.md` — Roadmap confidence and delivery metrics
+- `analytics/master-leadership-dashboard.md` (View 2) — Roadmap confidence and delivery metrics
 - `skills/meetings/decision-log.md` — Decision stickiness for roadmap decisions
 - `memory/stakeholders/stakeholder-memory.md` — Stakeholder reaction patterns cross-referenced here

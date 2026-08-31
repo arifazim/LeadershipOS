@@ -209,6 +209,6 @@ RECOMMENDATION:
 
 - `memory/schema.md` — Universal entry format
 - `memory/memory.md` — Cross-domain pattern detection
-- `analytics/career-dashboard.md` — Career progression index informed by this log
+- `analytics/master-leadership-dashboard.md` (View 3) — Career progression index informed by this log
 - `skills/people/career-development.md` — Career development skill using this domain
 - `skills/performance/retention-risk.md` — Career factor in retention risk model

@@ -235,4 +235,4 @@ RECOMMENDATION FOR CURRENT DECISION:
 - `memory/memory.md` — Cross-domain pattern detection
 - `skills/meetings/architecture-review.md` — Architecture review skill; ADR format
 - `decision-memory/decision-memory.md` — Engineering decision record (complementary)
-- `analytics/strategy-dashboard.md` — Innovation and architecture quality signals
+- `analytics/master-leadership-dashboard.md` (View 5) — Innovation and architecture quality signals

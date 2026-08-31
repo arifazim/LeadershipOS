@@ -190,6 +190,6 @@ CONFIDENCE: {{High / Medium / Low}}
 
 - `memory/schema.md` — Universal entry format
 - `memory/memory.md` — Cross-domain pattern detection
-- `analytics/stakeholder-dashboard.md` — Per-partner trust scores informed by this log
+- `analytics/master-leadership-dashboard.md` (View 4) — Per-partner trust scores informed by this log
 - `skills/conflict/stakeholder-resolution.md` — Conflict resolution skill using this domain
-- `political-signals/political-signals.md` — Structural risk signals that often appear in this log
+- `skills/organizational/political-intelligence.md` — Structural risk signals that often appear in this log

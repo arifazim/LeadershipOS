@@ -1,11 +1,11 @@
 # Golden Output: Political Signals — Healthy
 
-**Skill**: `political-signals/political-signals.md`
+**Skill**: `skills/organizational/political-intelligence.md`
 **Scenario**: `political-signals/features/political-signals.feature` → `@healthy` — "Healthy Organization — no significant political signals"
 **Last verified**: {{YYYY-MM-DD}}
 **Status**: Active
 
-This is the reference output. When `political-signals.md` is run against the input below, its output must match this golden output within the tolerance defined at the bottom of this file.
+This is the reference output. When `political-intelligence.md` is run against the input below, its output must match this golden output within the tolerance defined at the bottom of this file.
 
 ---
 

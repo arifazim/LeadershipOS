@@ -210,4 +210,4 @@ RECOMMENDATION FOR NEXT SESSION:
 - `memory/memory.md` — Cross-domain pattern detection
 - `skills/mentoring/coaching-style.md` — Mode selection and adaptation
 - `skills/mentoring/growth-tracking.md` — Skill progression data linked to this log
-- `analytics/people-dashboard.md` — Coaching effectiveness metric
+- `analytics/master-leadership-dashboard.md` (View 3) — Coaching effectiveness metric

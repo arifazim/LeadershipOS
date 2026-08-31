@@ -212,4 +212,4 @@ CONFIDENCE: {{High / Medium / Low}}
 - `memory/memory.md` — Cross-domain pattern detection
 - `skills/conflict/stakeholder-resolution.md` — Conflict resolution skill
 - `skills/conflict/blameless-retrospectives.md` — Blameless framing technique
-- `political-signals/political-signals.md` — Escalation and ownership ambiguity signals
+- `political-signals/political-signals.md` — Escalation and ownership ambiguity signals (redirect → `skills/organizational/political-intelligence.md`)

@@ -1,6 +1,6 @@
 # Dataset: Political Signals Scenarios
 
-**Used by**: `political-signals/political-signals.md`
+**Used by**: `skills/organizational/political-intelligence.md`
 **Linked scenarios**: `political-signals/features/political-signals.feature`
 **Purpose**: Standard inputs for regression testing and prompt calibration
 
@@ -148,7 +148,7 @@ Expected: ORGANIZATIONAL RISK STATUS = Red | CONFIDENCE = High | PATTERNS = targ
 
 To run regression against all scenarios:
 
-1. Feed each scenario's input block to `political-signals/political-signals.md`
+1. Feed each scenario's input block to `skills/organizational/political-intelligence.md`
 2. Compare output to the `Expected:` line for each scenario
 3. For PS-01 and PS-07, compare the full output to the golden output files
 4. Flag any scenario where ORGANIZATIONAL RISK STATUS or PATTERN does not match

@@ -107,7 +107,7 @@ Low influence, Low interest (Monitor):
 
 ### Step 5 — Identify the Five Organizational Signals
 
-For each stakeholder interaction history, check for the five signals defined in `political-signals/political-signals.md` (canonical definitions — do not restate them here). Stakeholder-specific response per signal:
+For each stakeholder interaction history, check for the five signals defined in `skills/organizational/political-intelligence.md` (canonical definitions — do not restate them here). Stakeholder-specific response per signal:
 
 | Signal | Response for this stakeholder |
 |---|---|
@@ -259,7 +259,7 @@ ALLIES TO ACTIVATE
 - `skills/organizational/alignment-health.md` — Ongoing health check for stakeholder alignment
 - `skills/executive/vp-one-on-one.md` — Managing the VP gatekeeper relationship specifically
 - `docs/engineering-playbook.md` → Stakeholders section, Managing Across section
-- `political-signals/political-signals.md` — Canonical definitions of the five organizational signals
+- `skills/organizational/political-intelligence.md` — Canonical definitions of the five organizational signals
 
 ## Related Skills
 

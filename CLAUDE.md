@@ -112,13 +112,16 @@ Reusable document templates: `executive-status.md`, `sprint-review.md`, `one-on-
 Integration guides for GitHub, Jira, Slack, Datadog, PagerDuty. Each file describes how the OS connects to the tool — data read, actions taken, and configuration required.
 
 ### `leadership-health/`
-Leadership capability assessment module. Contains the master synthesis pad (`master-leadership-health.md`), BDD feature specs, golden outputs, and regression datasets. The 13 dimension-specific skills (`executive_trust_score.md`, `delegation_score.md`, `coaching_score.md`, etc.) live in `skills/leadership-health/`, matching the convention used by `political-signals/` and `decision-memory/`. Use for 360 reviews, promotion readiness, skip-level prep, and identifying systemic leadership risks.
+Leadership capability assessment module. Canonical skill: `skills/leadership-health/leadership-health-engine.md` (consolidated 13-dimension engine). Module directory holds BDD feature specs, golden outputs, regression datasets, and redirect stub `master-leadership-health.md`. Graph migration: `graph/migrations/2026-08-consolidation.json`. Use for 360 reviews, promotion readiness, skip-level prep, and identifying systemic leadership risks.
 
 ### `confidence-engine/`
 Executive confidence assessment module. Answers "Can I trust this team?" across six dimensions: prediction confidence, data quality, risk confidence, delivery confidence, roadmap confidence, and architecture confidence. The module top level holds the master synthesis pad (`executive_confidence.md`), BDD feature specs, golden outputs, and regression datasets; the six dimension skills live in `skills/confidence-engine/`. Use for executive reviews, board updates, and leadership assurance.
 
 ### `political-signals/`
-Organizational risk detection module. Detects five risk signals — decision reversals, meeting exclusion, ownership ambiguity, escalation patterns, and incentive misalignment — and recommends ethical, transparent responses. Contains dimension skills in `skills/political-signals/`, master synthesis pad (`political-signals.md`), BDD feature specs, golden outputs, and regression datasets. Use for organizational health assessment, pre-promotion reviews, and detecting systemic exclusion or accountability failure.
+Organizational risk detection module. Canonical skill: `skills/organizational/political-intelligence.md` (consolidated five-signal engine). Module directory holds BDD feature specs, golden outputs, regression datasets, and redirect stub `political-signals.md`. Graph migration: `graph/migrations/2026-08-consolidation.json`. Use for organizational health assessment, pre-promotion reviews, and detecting systemic exclusion or accountability failure.
+
+### `graph/`
+Graph engineering layer — schema, artifact contracts, migration maps with `supersedes`/`projects_to` edges, and run audit logs. Resolves deprecated paths before agent execution. Foundation for cross-session state and typed agent handoffs (Phase 1+). See `graph/schema.md`.
 
 ### `decision-memory/`
 Institutional learning module. Captures decisions with full context (decision, alternatives, why, who, expected outcome, actual outcome, lessons learned, repeated patterns) and enables AI recall of past decisions to prevent repeated mistakes. Contains decision schema (`schema.md`), master pad (`decision-memory.md`), sub-skills in `skills/decision-memory/` (record-decision, recall-decisions, detect-patterns), BDD feature specs, golden outputs, and regression datasets. Use for executive review preparation, pre-mortems, and institutional knowledge retention.
@@ -139,7 +142,7 @@ Reusable, cadence-bound orchestration definitions — the layer between a reques
 Specification contracts — a strict schema (Name, Inputs, Required Outputs, Failure Conditions, Quality Checks, Version) that formalizes what most skills and subagents already express narratively across their Purpose/Inputs/Output/Confidence Score/Failure Modes sections. `skill.contract.md` and `subagent.contract.md` are universal templates; `prediction.contract.md`, `dashboard.contract.md`, `meeting.contract.md`, `executive.contract.md`, and `presentation.contract.md` are filled, worked examples for those domains. A contract's Failure Conditions are preconditions that block execution entirely — distinct from a skill's Failure Modes, which describe how it can go wrong while running.
 
 ### `analytics/`
-Six operational dashboards (career, executive, organization, people, stakeholder, strategy) that aggregate outputs from `leadership-health/`, `confidence-engine/`, `political-signals/`, and other skill families into audience-specific scannable views. Distinct from those three modules: dashboards don't define new scored dimensions, they aggregate existing ones. `executive-dashboard.md` sits in the middle of the pipeline `confidence-engine/` → `analytics/executive-dashboard.md` → `skills/executive/board-level-summary.md`.
+Operational dashboards aggregating outputs from `leadership-health/`, `confidence-engine/`, `political-signals/`, and other skill families. Canonical: `analytics/master-leadership-dashboard.md` (five views). Deprecated per-dashboard files are redirect stubs — see `analytics/README.md`. Pipeline: `confidence-engine/` → `analytics/master-leadership-dashboard.md` (View 1) → `skills/executive/board-level-summary.md`.
 
 ## Request Lifecycle
 

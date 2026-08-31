@@ -285,7 +285,7 @@ Conditions under which this synthesis produces unreliable output. Identify and f
 - `decision-memory/schema.md` — Decision record format specification
 - `skills/leadership-health/decision_quality.md` — Decision quality dimension uses decision memory as evidence
 - `confidence-engine/executive_confidence.md` — Decision outcomes feed into confidence assessment
-- `skills/political-signals/decision_reversals.md` — Decision reversals cross-reference with decision memory
+- `skills/organizational/political-intelligence.md` — Decision reversals cross-reference with decision memory (Signal 1: Decision Reversals)
 - `skills/delivery/review-sprint.md` — Integration point for sprint retrospective decision recall
 - `skills/operations/postmortem.md` — Incident post-mortems reference similar past incidents
 

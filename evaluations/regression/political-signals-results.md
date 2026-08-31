@@ -1,7 +1,7 @@
 # Regression Run — political-signals — 2026-07-01
 
 Triggered by: Manual (first-ever run for this module)
-Skill version: `political-signals/political-signals.md`, fixed during this run
+Skill version: `skills/organizational/political-intelligence.md` (canonical; was `political-signals/political-signals.md`), fixed during original 2026-07-01 run
 Dataset: evaluations/datasets/political-signals/political-signals-scenarios.md
 
 ## Results

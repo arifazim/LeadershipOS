@@ -6,7 +6,7 @@ Dataset: evaluations/datasets/leadership-health/leadership-health-scenarios.md
 
 ## Results
 
-Computed by hand-applying `master-leadership-health.md`'s weighted formula and decision tree to each scenario's inputs. Note: LH-05/LH-06 (dataset's own scenario ordering, note LH-06 here is "Micromanagement Pattern" not "Critical" — the results table below was originally scaffolded before the dataset's final scenario numbering was set and has been corrected).
+Computed by hand-applying `skills/leadership-health/leadership-health-engine.md`'s weighted formula and decision tree to each scenario's inputs. (Canonical skill; was `leadership-health/master-leadership-health.md`.)
 
 | Scenario | Expected Status | Actual Status (before fix) | Actual Status (after fix) | Expected Confidence | Pass/Fail |
 |---|---|---|---|---|---|

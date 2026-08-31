@@ -1,11 +1,11 @@
 # Golden Output: Leadership Health — Critical
 
-**Skill**: `leadership-health/master-leadership-health.md`
+**Skill**: `skills/leadership-health/leadership-health-engine.md`
 **Scenario**: `leadership-health/features/leadership-health.feature` → `@critical` — "Critical Leadership — multiple red dimensions and eroding trust"
 **Last verified**: {{YYYY-MM-DD}}
 **Status**: Active
 
-This is the reference output. When `master-leadership-health.md` is run against the input below, its output must match this golden output within the tolerance defined at the bottom of this file.
+This is the reference output. When `leadership-health-engine.md` is run against the input below, its output must match this golden output within the tolerance defined at the bottom of this file.
 
 ---
 

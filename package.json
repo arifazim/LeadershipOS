@@ -1,0 +1,10 @@
+{
+  "name": "engineering-manager-os",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Setup tooling for the Engineering Manager OS. The OS itself is Markdown, not code — this is just the one-time/rerunnable configuration script.",
+  "scripts": {
+    "setup": "node scripts/setup.js",
+    "setup:show": "node scripts/setup.js --show"
+  }
+}

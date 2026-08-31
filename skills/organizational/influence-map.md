@@ -76,7 +76,7 @@ engineering will be asked to execute decisions that don't reflect technical real
 
 ### Step 3 — Assess the Five Organizational Signals
 
-The five signals are defined canonically in `political-signals/political-signals.md` — this step applies each to the informal-influence layer specifically:
+The five signals are defined canonically in `skills/organizational/political-intelligence.md` — this step applies each to the informal-influence layer specifically:
 
 ```
 Signal 1 — Frequent decision reversals
@@ -243,7 +243,7 @@ Action: {{Transparent step to build inclusion — not workaround}}
 - `skills/organizational/stakeholder-analysis.md` — Formal stakeholder map overlaid by informal influence
 - `skills/organizational/decision-network.md` — How informal influence shapes the formal decision process
 - `skills/organizational/political-risk.md` — Influence gaps become political risks when initiatives are at stake
-- `political-signals/political-signals.md` — Canonical definitions of the five organizational signals
+- `skills/organizational/political-intelligence.md` — Canonical definitions of the five organizational signals
 
 ## Related Skills
 

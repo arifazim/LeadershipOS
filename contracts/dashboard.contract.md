@@ -1,14 +1,14 @@
 # Contract: Dashboard
 
-**Flagship skill**: `skills/leadership-health/generate-dashboard.md`
-**Category**: visual/scannable summary skills — also governs `analytics/*.md` dashboards (career, executive, organization, people, stakeholder, strategy)
+**Flagship skill**: `skills/leadership-health/leadership-health-engine.md`
+**Category**: visual/scannable summary skills — also governs `analytics/master-leadership-dashboard.md` (five views; deprecated per-dashboard files are redirect stubs)
 
 ```
 Contract
   Name:                Generate Leadership Health Dashboard
   Owner:                subagents/engineering-manager.md
   Inputs:
-    Required:          Master assessment output (master-leadership-health.md), 13 dimension
+    Required:          Leadership health engine output (skills/leadership-health/leadership-health-engine.md), 13 dimension
                         scores (score 0-100 + label + confidence), trend data (vs. previous
                         quarter)
     Optional:           EM name, assessment period, development priorities (top 3 dimensions)

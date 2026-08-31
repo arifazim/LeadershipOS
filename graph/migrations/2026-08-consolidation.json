@@ -1,0 +1,235 @@
+{
+  "migration_id": "2026-08-consolidation",
+  "date": "2026-08-20",
+  "description": "Consolidates fragmented leadership-health dimension skills, six analytics dashboards, and political-signals dimension skills into three canonical engines. All deprecated paths resolve via supersedes edges.",
+  "canonical_targets": {
+    "leadership_health": "skills/leadership-health/leadership-health-engine.md",
+    "political_signals": "skills/organizational/political-intelligence.md",
+    "analytics_dashboard": "analytics/master-leadership-dashboard.md"
+  },
+  "edges": [
+    {
+      "id": "sup-001",
+      "type": "supersedes",
+      "from": "skills/leadership-health/leadership-health-engine.md",
+      "to": "leadership-health/master-leadership-health.md",
+      "reason": "13-dimension synthesis consolidated into unified engine"
+    },
+    {
+      "id": "sup-002",
+      "type": "supersedes",
+      "from": "skills/leadership-health/leadership-health-engine.md",
+      "to": "skills/leadership-health/executive_trust_score.md",
+      "reason": "Dimension skill absorbed into Pillar 1 of leadership-health-engine"
+    },
+    {
+      "id": "sup-003",
+      "type": "supersedes",
+      "from": "skills/leadership-health/leadership-health-engine.md",
+      "to": "skills/leadership-health/stakeholder_alignment.md",
+      "reason": "Dimension skill absorbed into Pillar 1"
+    },
+    {
+      "id": "sup-004",
+      "type": "supersedes",
+      "from": "skills/leadership-health/leadership-health-engine.md",
+      "to": "skills/leadership-health/organizational_clarity.md",
+      "reason": "Dimension skill absorbed into Pillar 1"
+    },
+    {
+      "id": "sup-005",
+      "type": "supersedes",
+      "from": "skills/leadership-health/leadership-health-engine.md",
+      "to": "skills/leadership-health/political_awareness.md",
+      "reason": "Dimension skill absorbed into Pillar 1"
+    },
+    {
+      "id": "sup-006",
+      "type": "supersedes",
+      "from": "skills/leadership-health/leadership-health-engine.md",
+      "to": "skills/leadership-health/communication_effectiveness.md",
+      "reason": "Dimension skill absorbed into Pillar 2"
+    },
+    {
+      "id": "sup-007",
+      "type": "supersedes",
+      "from": "skills/leadership-health/leadership-health-engine.md",
+      "to": "skills/leadership-health/influence_score.md",
+      "reason": "Dimension skill absorbed into Pillar 2"
+    },
+    {
+      "id": "sup-008",
+      "type": "supersedes",
+      "from": "skills/leadership-health/leadership-health-engine.md",
+      "to": "skills/leadership-health/meeting_quality.md",
+      "reason": "Dimension skill absorbed into Pillar 2"
+    },
+    {
+      "id": "sup-009",
+      "type": "supersedes",
+      "from": "skills/leadership-health/leadership-health-engine.md",
+      "to": "skills/leadership-health/delegation_score.md",
+      "reason": "Dimension skill absorbed into Pillar 3"
+    },
+    {
+      "id": "sup-010",
+      "type": "supersedes",
+      "from": "skills/leadership-health/leadership-health-engine.md",
+      "to": "skills/leadership-health/decision_quality.md",
+      "reason": "Dimension skill absorbed into Pillar 3"
+    },
+    {
+      "id": "sup-011",
+      "type": "supersedes",
+      "from": "skills/leadership-health/leadership-health-engine.md",
+      "to": "skills/leadership-health/ownership_index.md",
+      "reason": "Dimension skill absorbed into Pillar 3"
+    },
+    {
+      "id": "sup-012",
+      "type": "supersedes",
+      "from": "skills/leadership-health/leadership-health-engine.md",
+      "to": "skills/leadership-health/execution_clarity.md",
+      "reason": "Dimension skill absorbed into Pillar 3"
+    },
+    {
+      "id": "sup-013",
+      "type": "supersedes",
+      "from": "skills/leadership-health/leadership-health-engine.md",
+      "to": "skills/leadership-health/coaching_score.md",
+      "reason": "Dimension skill absorbed into Pillar 4"
+    },
+    {
+      "id": "sup-014",
+      "type": "supersedes",
+      "from": "skills/leadership-health/leadership-health-engine.md",
+      "to": "skills/leadership-health/team_autonomy.md",
+      "reason": "Dimension skill absorbed into Pillar 4"
+    },
+    {
+      "id": "sup-015",
+      "type": "supersedes",
+      "from": "analytics/master-leadership-dashboard.md",
+      "to": "skills/leadership-health/generate-dashboard.md",
+      "reason": "Dashboard generation consolidated into master dashboard"
+    },
+    {
+      "id": "sup-016",
+      "type": "supersedes",
+      "from": "skills/organizational/political-intelligence.md",
+      "to": "political-signals/political-signals.md",
+      "reason": "Five-signal synthesis consolidated into political-intelligence skill"
+    },
+    {
+      "id": "sup-017",
+      "type": "supersedes",
+      "from": "skills/organizational/political-intelligence.md",
+      "to": "skills/political-signals/decision_reversals.md",
+      "reason": "Signal dimension absorbed into political-intelligence Detection Engine"
+    },
+    {
+      "id": "sup-018",
+      "type": "supersedes",
+      "from": "skills/organizational/political-intelligence.md",
+      "to": "skills/political-signals/meeting_exclusion.md",
+      "reason": "Signal dimension absorbed"
+    },
+    {
+      "id": "sup-019",
+      "type": "supersedes",
+      "from": "skills/organizational/political-intelligence.md",
+      "to": "skills/political-signals/ownership_ambiguity.md",
+      "reason": "Signal dimension absorbed"
+    },
+    {
+      "id": "sup-020",
+      "type": "supersedes",
+      "from": "skills/organizational/political-intelligence.md",
+      "to": "skills/political-signals/escalation_patterns.md",
+      "reason": "Signal dimension absorbed"
+    },
+    {
+      "id": "sup-021",
+      "type": "supersedes",
+      "from": "skills/organizational/political-intelligence.md",
+      "to": "skills/political-signals/incentive_misalignment.md",
+      "reason": "Signal dimension absorbed"
+    },
+    {
+      "id": "proj-001",
+      "type": "projects_to",
+      "from": "analytics/master-leadership-dashboard.md#view-1",
+      "to": "analytics/executive-dashboard.md",
+      "reason": "Executive confidence view"
+    },
+    {
+      "id": "proj-002",
+      "type": "projects_to",
+      "from": "analytics/master-leadership-dashboard.md#view-2",
+      "to": "analytics/strategy-dashboard.md",
+      "reason": "Delivery and strategic impact view"
+    },
+    {
+      "id": "proj-003",
+      "type": "projects_to",
+      "from": "analytics/master-leadership-dashboard.md#view-3",
+      "to": "analytics/career-dashboard.md",
+      "reason": "Organizational health and people risk view (includes career momentum)"
+    },
+    {
+      "id": "proj-004",
+      "type": "projects_to",
+      "from": "analytics/master-leadership-dashboard.md#view-3",
+      "to": "analytics/people-dashboard.md",
+      "reason": "People intervention view merged into View 3"
+    },
+    {
+      "id": "proj-005",
+      "type": "projects_to",
+      "from": "analytics/master-leadership-dashboard.md#view-3",
+      "to": "analytics/organization-dashboard.md",
+      "reason": "Org sustainability view merged into View 3"
+    },
+    {
+      "id": "proj-006",
+      "type": "projects_to",
+      "from": "analytics/master-leadership-dashboard.md#view-4",
+      "to": "analytics/stakeholder-dashboard.md",
+      "reason": "Stakeholder alignment view"
+    },
+    {
+      "id": "proj-007",
+      "type": "projects_to",
+      "from": "analytics/master-leadership-dashboard.md#view-5",
+      "to": "analytics/strategy-dashboard.md",
+      "reason": "Innovation and future readiness (partial overlap with View 2)"
+    }
+  ],
+  "eval_reconciliation": {
+    "leadership_health_golden": {
+      "old_skill_ref": "leadership-health/master-leadership-health.md",
+      "new_skill_ref": "skills/leadership-health/leadership-health-engine.md",
+      "note": "Dimension input names (executive_trust_score, etc.) remain valid as scenario inputs; scoring runs through consolidated engine"
+    },
+    "political_signals_golden": {
+      "old_skill_ref": "political-signals/political-signals.md",
+      "new_skill_ref": "skills/organizational/political-intelligence.md",
+      "note": "Signal names remain valid as scenario inputs"
+    }
+  },
+  "pipeline_updates": {
+    "executive_board": [
+      "confidence-engine/executive_confidence.md",
+      "analytics/master-leadership-dashboard.md",
+      "skills/executive/board-level-summary.md"
+    ],
+    "leadership_assessment": [
+      "skills/leadership-health/leadership-health-engine.md",
+      "analytics/master-leadership-dashboard.md"
+    ],
+    "political_assessment": [
+      "skills/organizational/political-intelligence.md",
+      "analytics/master-leadership-dashboard.md"
+    ]
+  }
+}

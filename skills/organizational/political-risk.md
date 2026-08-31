@@ -137,7 +137,7 @@ For each risk type, the ethical response:
 
 ### Step 4 — Detect the Five Signals as Political Risk Triggers
 
-The five signals are defined canonically in `political-signals/political-signals.md` — this step maps each to the political-risk types from Step 1:
+The five signals are defined canonically in `skills/organizational/political-intelligence.md` — this step maps each to the political-risk types from Step 1:
 
 ```
 Signal 1 — Frequent decision reversals
@@ -304,7 +304,7 @@ This skill is the integration layer for all organizational dynamics skills:
 - `skills/organizational/change-resistance.md` — Unmanaged resistance creates reputation risk
 - `skills/organizational/alignment-health.md` — Low alignment health is the leading indicator of political risk
 - `docs/glossary.md` — Shared probability/impact/severity scoring rubric
-- `political-signals/political-signals.md` — Canonical definitions of the five organizational signals
+- `skills/organizational/political-intelligence.md` — Canonical definitions of the five organizational signals
 
 ## Related Skills
 

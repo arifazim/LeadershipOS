@@ -251,4 +251,4 @@ RECOMMENDATION FOR CURRENT DECISION:
 - `memory/memory.md` — Cross-domain pattern detection
 - `decision-memory/decision-memory.md` — Engineering/technical decisions (complementary)
 - `skills/meetings/decision-log.md` — Formal decision capture for cross-functional decisions
-- `analytics/strategy-dashboard.md` — Strategic decision outcomes reflected in delivery metrics
+- `analytics/master-leadership-dashboard.md` (View 2) — Strategic decision outcomes reflected in delivery metrics

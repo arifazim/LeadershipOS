@@ -23,7 +23,7 @@ Most skills and subagents in this repo already have rich Purpose/Inputs/Output/C
 | `skill.contract.md` | Universal template | Every file under `skills/`, `leadership-health/`, `confidence-engine/` |
 | `subagent.contract.md` | Universal template | Every file under `subagents/` |
 | `prediction.contract.md` | Filled | `skills/confidence-engine/prediction_confidence.md` + `loops/prediction-loop.md` |
-| `dashboard.contract.md` | Filled | `skills/leadership-health/generate-dashboard.md` + `analytics/*.md` |
+| `dashboard.contract.md` | Filled | `skills/leadership-health/leadership-health-engine.md` + `analytics/master-leadership-dashboard.md` |
 | `meeting.contract.md` | Filled | `skills/meetings/*.md` |
 | `executive.contract.md` | Filled | `skills/executive/*.md` (board-level-summary.md's deck variant is governed by `presentation.contract.md` instead) |
 | `presentation.contract.md` | Filled | `skills/presentation/*.md` + `skills/executive/board-level-summary.md` |

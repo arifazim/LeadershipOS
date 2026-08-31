@@ -4,7 +4,7 @@ Feature: Political Signals Assessment
   So that I can protect the team and organization without manipulation
 
   # Executor: subagents/engineering-manager.md
-  # Skill:    political-signals/political-signals.md
+  # Skill:    skills/organizational/political-intelligence.md
   # Cadence:  Monthly, quarterly, or on-demand
 
   Background:

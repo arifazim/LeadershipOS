@@ -221,6 +221,6 @@ RECOMMENDATION:
 
 - `memory/schema.md` — Universal entry format
 - `memory/memory.md` — Cross-domain pattern detection
-- `analytics/executive-dashboard.md` — Customer impact score fed by this domain
-- `analytics/strategy-dashboard.md` — Customer impact and innovation signals
+- `analytics/master-leadership-dashboard.md` (View 2) — Customer impact score fed by this domain
+- `analytics/master-leadership-dashboard.md` (View 5) — Customer impact and innovation signals
 - `skills/meetings/retrospective.md` — Customer feedback themes often surface here

@@ -245,7 +245,7 @@ favorable conditions for this decision type.
 
 - `decision-memory/schema.md` — Record format for parsing decision content
 - `decision-memory/records/` — Source decision archive
-- `skills/political-signals/decision_reversals.md` — Stakeholder conflict history
+- `skills/organizational/political-intelligence.md` — Stakeholder conflict history (Signal 4: Escalation Patterns)
 - `skills/conflict/mediation.md` — Stakeholder dynamics from past conflicts
 
 ---

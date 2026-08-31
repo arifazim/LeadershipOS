@@ -72,7 +72,7 @@ Feature: Specification Contract Enforcement
     Examples:
       | contract                          | flagship_skill                                          |
       | contracts/prediction.contract.md   | skills/confidence-engine/prediction_confidence.md        |
-      | contracts/dashboard.contract.md    | skills/leadership-health/generate-dashboard.md           |
+      | contracts/dashboard.contract.md    | skills/leadership-health/leadership-health-engine.md           |
       | contracts/meeting.contract.md      | skills/meetings/meeting-planner.md                       |
       | contracts/executive.contract.md    | skills/executive/executive-status-report.md              |
       | contracts/presentation.contract.md | skills/executive/board-level-summary.md                  |

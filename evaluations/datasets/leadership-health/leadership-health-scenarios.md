@@ -1,6 +1,6 @@
 # Dataset: Leadership Health Scenarios
 
-**Used by**: `leadership-health/master-leadership-health.md`
+**Used by**: `skills/leadership-health/leadership-health-engine.md`
 **Linked scenarios**: `leadership-health/features/leadership-health.feature`
 **Purpose**: Standard inputs for regression testing and prompt calibration
 
@@ -189,7 +189,7 @@ Expected: LEADERSHIP HEALTH STATUS = Red | CONFIDENCE = High | IMMEDIATE_ACTION 
 
 To run regression against all scenarios:
 
-1. Feed each scenario's input block to `leadership-health/master-leadership-health.md`
+1. Feed each scenario's input block to `skills/leadership-health/leadership-health-engine.md`
 2. Compare output to the `Expected:` line for each scenario
 3. For LH-01 and LH-07, compare the full output to the golden output files
 4. Flag any scenario where LEADERSHIP HEALTH STATUS or ROOT CAUSE does not match
