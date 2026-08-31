@@ -89,7 +89,7 @@ pattern:underestimated-risk      pattern:communication-style       pattern:frami
 pattern:trust-building           pattern:trust-erosion             pattern:repeated-mistake
 pattern:negotiation              pattern:stakeholder-avoidance      pattern:scope-creep
 pattern:estimation-miss          pattern:coaching-response          pattern:calibration-bias
-pattern:strategic-exclusion      pattern:decision-reversal
+pattern:strategic-exclusion      pattern:decision-reversal         pattern:attribution-conflation
 ```
 
 ### Outcome Tags

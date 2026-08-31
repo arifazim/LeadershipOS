@@ -1,0 +1,43 @@
+{
+  "team_name": "AI Engineering Team",
+  "team_size": 7,
+  "tech_stack": [
+    "AI",
+    "Python",
+    ".NET",
+    "C#",
+    "Angular",
+    "Azure",
+    "AWS"
+  ],
+  "product_domain": "",
+  "sprint_cadence": "2w",
+  "on_call": true,
+  "reporting_chain": [
+    {
+      "role": "Manager",
+      "name": "me"
+    },
+    {
+      "role": "Lead Manager",
+      "name": "KSheeraj"
+    },
+    {
+      "role": "Director",
+      "name": "Vanessa"
+    },
+    {
+      "role": "Sr. Director",
+      "name": "Jeff"
+    },
+    {
+      "role": "CIO",
+      "name": "Tim"
+    }
+  ],
+  "key_stakeholders": [
+    "Social Security Agency",
+    "Health care agency"
+  ],
+  "okr_cycle": "6m"
+}

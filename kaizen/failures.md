@@ -56,6 +56,75 @@ How will we know the fix worked?
 
 *Entries are added weekly from Q4 and Q6 of the weekly review. Most recent first.*
 
+## FAIL-003 — Escalation-patterns skill has no single-incident response path
+
+Date: 2026-07-08
+Type: Skill
+Severity: Medium
+Status: Open
+Source: User scenario review (a product manager repeatedly raising concerns about the EM to the EM's manager and skip-level, rather than to the EM directly)
+
+### What Failed
+`skills/political-signals/escalation_patterns.md` only operates on a 6-month aggregate frequency count (0–3 / 4–8 / 9–15 / 16+) at monthly cadence. It has no guidance for the day an EM learns about a single incident — exactly when direct intervention is cheapest. `loops/stakeholder-loop.md`'s trigger conditions never name "a stakeholder raised concerns about me/my team to leadership above me" explicitly (only the generic "shows signs of strain"), and its Step 5 "Log outcome" cross-links only to `political-signals/` and `memory/decision-history/` — never to `memory/conflicts/`, despite that domain existing specifically for this.
+
+### What Was Available Earlier
+The skill's own Confidence Score table already penalizes "assessment based on second-hand accounts" (−15%), showing the authors knew single incidents are weak signal in aggregate — but never built the single-incident path that would make that signal actionable immediately instead of only after it accumulates.
+
+### OS vs. Execution
+- OS fault: Yes — the skill and loop are both silent on this common case.
+- Execution fault: No.
+
+### Root Cause
+Missing failure mode — the aggregate-frequency design never anticipated the single-incident, same-day response case.
+
+### Change Required
+- File to update: `skills/political-signals/escalation_patterns.md` — add a "Single-Incident Fast Path" section (verify specifics → direct conversation with the source → shared-visibility protocol → only feed the 6-month aggregate scan if it recurs)
+- File to update: `loops/stakeholder-loop.md` — add explicit trigger: "A stakeholder has raised concerns about me or my team directly to my manager or skip-level rather than to me"; fix Step 5 to cross-link `memory/conflicts/` when the strain is interpersonal/reputational
+- Confidence in fix: Medium — approach is clear; needs a worked example before it's trustworthy
+
+### Verification
+A new example scenario in `skills/political-signals/escalation_patterns.md` showing single-incident triage end-to-end, distinct from the existing aggregate-scan examples.
+
+### Linked Updates
+- Skill change: not yet made
+- Feature change: none
+- Golden output: n/a
+
+## FAIL-004 — Promotion/career loops don't anticipate attribution-conflated feedback, and the new self-feedback skill has no eval coverage
+
+Date: 2026-07-08
+Type: Skill
+Severity: Medium
+Status: Open
+Source: Same user scenario review that produced `skills/people/upward-feedback.md`
+
+### What Failed
+`loops/promotion-loop.md`'s Failure Modes list only names "Hidden candidate" and "Self/EM disagreement unresolved" — it doesn't anticipate a declined promotion whose stated feedback blends the candidate's (in this case the EM's own) behavior with externally-imposed conditions, which is exactly the case `skills/people/upward-feedback.md` was built to handle. Separately, the new skill itself has no golden output or regression dataset — the same class of gap FAIL-002 already found in four other modules.
+
+### What Was Available Earlier
+This is the same pattern as FAIL-002: a skill/loop was authored (or, in this case, identified as needed) without the eval-coverage step that would make it trustworthy before real use.
+
+### OS vs. Execution
+- OS fault: Yes — the loop's Failure Modes list and the new skill's eval coverage are both incomplete.
+- Execution fault: No — this entry is being logged at creation time specifically to avoid FAIL-002's mistake of shipping without ever closing the loop.
+
+### Root Cause
+Missing failure mode (loop) — see `kaizen/root-cause.md`.
+
+### Change Required
+- File to update: `loops/promotion-loop.md` — add "Unvalidated attribution" to Failure Modes, pointing to `skills/people/upward-feedback.md`
+- File to update: `loops/career-loop.md` — same addition where relevant
+- File to create: a golden output + small regression dataset (2–3 scenarios: pure Personal, pure Structural, mixed) for `skills/people/upward-feedback.md`, following the pattern in `evaluations/golden/` and `evaluations/datasets/`
+- Confidence in fix: Medium — the skill's logic is designed but unvalidated against worked scenarios
+
+### Verification
+Regression scenarios pass and reproduce the classification (Personal/Structural/Ambiguous) a human would assign to each worked example.
+
+### Linked Updates
+- Skill change: not yet made
+- Feature change: none — no `.feature` file exists for `skills/people/*` skills individually
+- Golden output: not yet created
+
 ---
 
 ## Closed Failures

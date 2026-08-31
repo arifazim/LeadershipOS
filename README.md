@@ -36,6 +36,27 @@ Engineering managers who want to:
 
 ## How to Use It
 
+**As a CLI tool (Recommended)**: Run commands directly from your terminal.
+```powershell
+# Install dependencies
+pip install -r requirements.txt
+
+# (Optional) Set up your API key in .env
+cp .env.example .env
+
+# List available leadership commands
+./bin/em-os.ps1 list
+
+# Show current operational metrics (ingested from GitHub/Jira/etc)
+./bin/em-os.ps1 status
+
+# Execute a leadership command (e.g., Daily Leadership Loop)
+./bin/em-os.ps1 run daily
+
+# Process a custom situation through the AI Orchestrator
+./bin/em-os.ps1 run "Our deployment frequency is dropping and the team seems tired"
+```
+
 **As a reference system**: Browse `docs/` for principles and `features/` for how specific scenarios should play out.
 
 **As an AI-assisted workflow**: Load the relevant subagent definition from `subagents/` into your AI tool, then run a command from `commands/`. The subagent will produce output using the appropriate template from `templates/`.

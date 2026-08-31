@@ -74,6 +74,7 @@ Invoke the Engineering Coach when:
 | `skills/people/build-growth-plan.md` | Career development plan needed |
 | `skills/people/build-promotion-case.md` | Building evidence for promotion calibration |
 | `skills/people/prepare-feedback.md` | Corrective or developmental feedback conversation |
+| `skills/people/upward-feedback.md` | The EM has received feedback, blame, or a promotion outcome about themselves that needs SBI validation and personal/structural separation before acting |
 
 ---
 
