@@ -59,7 +59,7 @@ cp .env.example .env
 
 **As a reference system**: Browse `docs/` for principles and `features/` for how specific scenarios should play out.
 
-**As an AI-assisted workflow**: Load the relevant subagent definition from `subagents/` into your AI tool, then run a command from `commands/`. The subagent will produce output using the appropriate template from `templates/`.
+**As an AI-assisted workflow**: Load the relevant subagent definition from `subagents/` into your AI tool (Claude Code, Codex CLI, Cursor, or any LLM), then run a command from `commands/`. The subagent will produce output using the appropriate template from `templates/`.
 
 **As a living practice**: Run `kaizen/weekly-review.md` each week and `kaizen/monthly-review.md` each month to refine the OS based on what's working.
 
@@ -69,6 +69,8 @@ cp .env.example .env
 2. Read `docs/principles.md` to understand the beliefs that shape decisions
 3. Configure your integrations in `integrations/`
 4. Run your first command: load `subagents/engineering-manager.md` and execute `commands/daily.md`
+
+**AI tool setup**: This repo ships two instruction files — `CLAUDE.md` (picked up automatically by Claude Code) and `AGENTS.md` (picked up automatically by Codex CLI and OpenAI agentic tools). Both point to the same operating directives. See `BUILD.md` for full setup instructions for either tool.
 
 ## Building Your Instance
 

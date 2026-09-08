@@ -119,26 +119,43 @@ MONTHLY MEMORY REVIEW CHECKLIST
 1. SINGLE-INSTANCE SCAN (each domain)
    □ Identify all Single instance entries older than 90 days
    □ For each: has this pattern recurred? If yes → promote. If no → note as isolated.
+   □ Apply decay tier: 90–180 days old → add [WATCH] tag
+   □ Apply decay tier: > 180 days old with no confirmation → add [STALE] note with archive deadline
 
 2. EMERGING PATTERN PROMOTION
    □ Identify Emerging entries with 4+ confirming observations → promote to Established
    □ Add to Established Patterns section above
 
-3. ACTIVE WATCH LIST REVIEW
+3. DECAY-WEIGHT CHECK
+   □ Identify any Established or Emerging entries with no confirming observation in > 12 months
+   □ Add [DECAY-WEIGHT] tag; treat as one confidence level lower in recall until reconfirmed
+   □ Surface these in the next relevant recall response with the explicit decay caveat
+
+4. CONTEXT-EXPIRY SWEEP
+   □ Did any major context shift occur this month? (reorg, role change, person left/joined, product pivot)
+   □ If yes → identify all entries involving the affected person/context → add [CONTEXT-EXPIRED] note
+   □ Do not wait for monthly review for context expiry — apply immediately when the shift occurs
+
+5. ARCHIVE EXECUTION
+   □ Identify all entries with a [STALE] note whose archive deadline has passed
+   □ Move each to the ## Archived Entries section of its domain file
+   □ Add Archived date and Archive reason fields to each moved entry
+
+6. ACTIVE WATCH LIST REVIEW
    □ For each watched pattern: did any new entries confirm or refute it this month?
    □ Update confidence; graduate to Established or Refuted as appropriate
 
-4. CROSS-DOMAIN SCAN
+7. CROSS-DOMAIN SCAN
    □ Are there new entries in multiple domains that point to the same dynamic?
    □ If yes → create a cross-domain pattern record above
 
-5. REFUTED PATTERN CHECK
+8. REFUTED PATTERN CHECK
    □ Did any established pattern fail this month?
    □ If yes → move to Refuted Patterns with failure conditions documented
 
-6. STALE ENTRY AUDIT
+9. STALE ENTRY AUDIT (legacy rule — now superseded by decay tiers above, retained for reference)
    □ Any entry older than 12 months that has not been referenced or confirmed?
-   □ Mark as archived with a note — do not delete
+   □ Apply decay-weight or archive per the decay tier table in memory/schema.md
 ```
 
 ---
@@ -156,6 +173,10 @@ QUERY: {{exact question asked}}
 RELEVANT ENTRIES ({{N}} found):
   {{Entry ID}} — {{date}} — {{one-sentence summary of lesson}}
   {{Entry ID}} — {{date}} — {{one-sentence summary of lesson}}
+
+DECAY STATUS (flag if any relevant entry is tagged):
+  {{Entry ID}}: [WATCH] / [STALE] / [DECAY-WEIGHT] / [CONTEXT-EXPIRED] — {{brief implication}}
+  (Omit this section if no relevant entries carry a decay tag)
 
 PATTERN MATCH:
   {{Does this query match an established or emerging pattern?}}

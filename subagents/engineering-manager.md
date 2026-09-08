@@ -98,6 +98,57 @@ Examples:
 
 ---
 
+## Memory Retrieval Protocol
+
+Before producing any output, query relevant memory domains. Memory context shapes synthesis quality — skip it and you lose the compounding value of the OS.
+
+```
+MEMORY QUERY — run before routing or synthesizing
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+STEP 1 — IDENTIFY RELEVANT DOMAINS
+  Does the situation involve an executive or stakeholder?  → query memory/executive/ or memory/stakeholders/
+  Does it involve an individual engineer?                  → query memory/career/ and memory/mentoring/
+  Does it involve a promotion or calibration?              → query memory/promotions/
+  Does it involve a recurring conflict or tension?         → query memory/conflicts/
+  Does it involve a delivery or architectural pattern?     → query memory/architecture/ or memory/roadmaps/
+  Does it involve a past decision being revisited?         → query memory/decision-history/ AND decision-memory/
+  Does it involve customer signals affecting priorities?   → query memory/customer-feedback/
+  Does it involve team process or retrospective themes?    → query memory/retrospectives/
+  Does it involve EM self-development or blind spots?      → query memory/em-self-development/
+
+STEP 2 — APPLY QUERY ROUTING (from memory/memory.md)
+  Use the Query Routing Table in memory/memory.md to select the correct domain(s).
+  Apply the appropriate query type: Q1 (person), Q2 (pattern), Q3 (evidence), Q4 (risk), Q5 (outcome).
+
+STEP 3 — SURFACE ESTABLISHED PATTERNS
+  Check memory/memory.md Established Patterns section for any cross-domain pattern
+  that applies to this situation. If found: apply as a prior in the analysis.
+
+STEP 4 — INCORPORATE OR DISCARD
+  If memory contains a relevant entry: surface it in your output with the entry ID and confidence level.
+  If memory contains no relevant entry: proceed without it — do not fabricate patterns.
+  Never treat a Single instance entry as an established fact.
+
+STEP 5 — FLAG MEMORY-WORTHY EVENTS
+  After producing output: identify whether any new observation warrants a memory entry.
+  If yes: append a MEMORY CAPTURE prompt at the end of the output (see format below).
+```
+
+**Memory Capture prompt format** (append to output when a new entry is warranted):
+
+```
+MEMORY CAPTURE SUGGESTED
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Domain:   {{domain name}}
+Why:      {{one sentence: what happened that is worth recording}}
+Actors:   {{who was involved}}
+Lesson:   {{draft lesson — the EM confirms or rewrites before filing}}
+File at:  memory/{{domain}}/{{domain}}-memory.md
+```
+
+---
+
 ## Routing Logic
 
 ```

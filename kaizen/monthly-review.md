@@ -94,6 +94,46 @@ Run `kaizen/skill-review.md`'s Monthly Usage Audit section — it now holds the 
 
 ---
 
+## Part 6b — Memory Health Review (15 min)
+
+Run the full Monthly Memory Review Checklist from `memory/memory.md`. This is the monthly decay and pattern-promotion pass — it is not optional.
+
+```
+MEMORY HEALTH — Month of: {{YYYY-MM}}
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+ENTRIES ADDED THIS MONTH:
+  Total new entries: {{N}}
+  Domains updated: {{list}}
+
+DECAY ACTIONS TAKEN:
+  [WATCH] tags applied: {{N entries}} — {{which domains}}
+  [STALE] notes applied: {{N entries}} — {{which domains}}
+  [DECAY-WEIGHT] tags applied: {{N entries}}
+  [CONTEXT-EXPIRED] notes applied: {{N entries}} — {{what context shift triggered them}}
+  Entries archived: {{N}} — moved to ## Archived Entries in their domain files
+
+PATTERN PROMOTIONS:
+  Single → Emerging: {{N}} entries — {{briefly name which ones}}
+  Emerging → Established: {{N}} entries — {{briefly name which ones}}
+  New cross-domain patterns added to memory/memory.md: {{N}}
+
+REFUTATIONS:
+  Patterns refuted this month: {{N}} — {{briefly name which ones}}
+
+MEMORY HEALTH SIGNAL:
+  Capture rate (did significant events get entries?): {{High / Medium / Low}}
+  Decay maintenance current (no overdue stale entries): {{Yes / No}}
+  Cross-domain patterns up to date: {{Yes / No}}
+
+OS UPDATE NEEDED FROM MEMORY REVIEW? {{Yes / No}}
+If yes: {{what — new pattern to propagate, decay rule to apply, cross-link to add}}
+```
+
+The memory/memory.md monthly checklist (9 steps) is the execution guide. This block is the archive record.
+
+---
+
 ## Part 7 — OS Health Score (5 min)
 
 Score the OS this month on each dimension. Honest scores only.

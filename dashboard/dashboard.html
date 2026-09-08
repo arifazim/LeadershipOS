@@ -1,0 +1,1784 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Engineering Manager OS</title>
+  <style>
+    /* =====================================================================
+       DESIGN SYSTEM — tokens, reset, typography
+       ===================================================================== */
+    :root {
+      --font-sans: "Inter", ui-sans-serif, system-ui, -apple-system, sans-serif;
+      --font-mono: "JetBrains Mono", "Fira Code", ui-monospace, monospace;
+
+      /* Neutral scale */
+      --gray-950: #0a0b0d;
+      --gray-900: #111318;
+      --gray-850: #181c23;
+      --gray-800: #1e2330;
+      --gray-750: #242a38;
+      --gray-700: #2c3347;
+      --gray-600: #3e4a63;
+      --gray-500: #5a6882;
+      --gray-400: #7d8fa8;
+      --gray-300: #a4b3ca;
+      --gray-200: #c8d4e3;
+      --gray-100: #e4ecf4;
+      --gray-50:  #f0f4f9;
+
+      /* Semantic status */
+      --green-600:  #15803d;
+      --green-500:  #22c55e;
+      --green-100:  #dcfce7;
+      --green-dim:  rgba(34,197,94,.12);
+
+      --yellow-600: #a16207;
+      --yellow-500: #eab308;
+      --yellow-100: #fef9c3;
+      --yellow-dim: rgba(234,179,8,.12);
+
+      --red-600:    #b91c1c;
+      --red-500:    #ef4444;
+      --red-100:    #fee2e2;
+      --red-dim:    rgba(239,68,68,.12);
+
+      --blue-600:   #1d4ed8;
+      --blue-500:   #3b82f6;
+      --blue-100:   #dbeafe;
+      --blue-dim:   rgba(59,130,246,.12);
+
+      --violet-500: #8b5cf6;
+      --violet-dim: rgba(139,92,246,.12);
+
+      /* Surface & border */
+      --surface-0:  var(--gray-900);
+      --surface-1:  var(--gray-850);
+      --surface-2:  var(--gray-800);
+      --surface-3:  var(--gray-750);
+      --border:     rgba(255,255,255,.07);
+      --border-md:  rgba(255,255,255,.11);
+
+      /* Text */
+      --text-primary:   #e8edf5;
+      --text-secondary: #8fa4bf;
+      --text-tertiary:  #5a6882;
+      --text-accent:    var(--blue-500);
+
+      /* Sidebar */
+      --sidebar-w: 220px;
+
+      /* Motion */
+      --ease-out: cubic-bezier(.16,1,.3,1);
+      --duration: 200ms;
+
+      /* Spacing */
+      --r-sm: 6px;
+      --r-md: 10px;
+      --r-lg: 14px;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { font-size: 13px; -webkit-font-smoothing: antialiased; }
+
+    body {
+      font-family: var(--font-sans);
+      background: var(--surface-0);
+      color: var(--text-primary);
+      display: flex;
+      height: 100vh;
+      overflow: hidden;
+    }
+
+    /* =====================================================================
+       SIDEBAR
+       ===================================================================== */
+    .sidebar {
+      width: var(--sidebar-w);
+      min-width: var(--sidebar-w);
+      background: var(--surface-1);
+      border-right: 1px solid var(--border);
+      display: flex;
+      flex-direction: column;
+      height: 100vh;
+      overflow: hidden;
+      z-index: 10;
+    }
+
+    .sidebar-header {
+      padding: 20px 18px 16px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .sidebar-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .sidebar-logo-icon {
+      width: 28px; height: 28px;
+      background: linear-gradient(135deg, var(--blue-600), var(--violet-500));
+      border-radius: 7px;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .sidebar-logo-icon svg { width: 15px; height: 15px; }
+
+    .sidebar-logo-text { line-height: 1.25; }
+    .sidebar-logo-title { font-size: 12px; font-weight: 600; color: var(--text-primary); letter-spacing: .01em; }
+    .sidebar-logo-sub   { font-size: 10px; color: var(--text-tertiary); letter-spacing: .02em; text-transform: uppercase; }
+
+    .sidebar-team-badge {
+      margin: 12px 18px 0;
+      padding: 8px 10px;
+      background: var(--surface-2);
+      border: 1px solid var(--border);
+      border-radius: var(--r-md);
+    }
+
+    .sidebar-team-badge .team-name { font-size: 11.5px; font-weight: 600; color: var(--text-primary); }
+    .sidebar-team-badge .team-meta { font-size: 10px; color: var(--text-tertiary); margin-top: 2px; }
+
+    .sidebar-nav { flex: 1; overflow-y: auto; padding: 14px 10px; }
+
+    .nav-section-label {
+      font-size: 9.5px; font-weight: 700;
+      text-transform: uppercase; letter-spacing: .1em;
+      color: var(--text-tertiary);
+      padding: 0 8px 6px;
+      margin-top: 14px;
+    }
+    .nav-section-label:first-child { margin-top: 0; }
+
+    .nav-item {
+      display: flex; align-items: center; gap: 9px;
+      padding: 7px 10px;
+      border-radius: var(--r-sm);
+      cursor: pointer;
+      font-size: 12px; font-weight: 500;
+      color: var(--text-secondary);
+      transition: background var(--duration) var(--ease-out), color var(--duration);
+      user-select: none;
+      border: none; background: transparent; width: 100%; text-align: left;
+    }
+
+    .nav-item:hover { background: var(--surface-3); color: var(--text-primary); }
+
+    .nav-item.active {
+      background: var(--blue-dim);
+      color: var(--blue-500);
+    }
+
+    .nav-item svg { width: 14px; height: 14px; flex-shrink: 0; opacity: .85; }
+
+    .nav-badge {
+      margin-left: auto;
+      font-size: 9px; font-weight: 700;
+      padding: 2px 5px;
+      border-radius: 10px;
+      background: var(--red-600);
+      color: #fff;
+      letter-spacing: .02em;
+    }
+
+    .sidebar-footer {
+      padding: 12px 18px;
+      border-top: 1px solid var(--border);
+    }
+
+    .sidebar-footer .refresh-btn {
+      display: flex; align-items: center; justify-content: center; gap: 7px;
+      width: 100%; padding: 7px;
+      background: var(--surface-3);
+      border: 1px solid var(--border-md);
+      border-radius: var(--r-sm);
+      font-size: 11px; font-weight: 600; color: var(--text-secondary);
+      cursor: pointer;
+      transition: background var(--duration), color var(--duration);
+    }
+    .sidebar-footer .refresh-btn:hover { background: var(--surface-2); color: var(--text-primary); }
+    .sidebar-footer .refresh-btn svg { width: 12px; height: 12px; }
+
+    .sidebar-footer .last-refresh {
+      font-size: 9.5px; color: var(--text-tertiary);
+      text-align: center; margin-top: 6px;
+      font-variant-numeric: tabular-nums;
+    }
+
+    /* =====================================================================
+       MAIN LAYOUT
+       ===================================================================== */
+    .main { flex: 1; display: flex; flex-direction: column; overflow: hidden; }
+
+    .topbar {
+      height: 48px; min-height: 48px;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 24px;
+      border-bottom: 1px solid var(--border);
+      background: var(--surface-1);
+      gap: 16px;
+    }
+
+    .topbar-left { display: flex; align-items: center; gap: 8px; }
+    .topbar-breadcrumb { font-size: 12px; color: var(--text-tertiary); }
+    .topbar-breadcrumb span { color: var(--text-primary); font-weight: 600; }
+
+    .topbar-right { display: flex; align-items: center; gap: 10px; }
+
+    .status-pill {
+      display: inline-flex; align-items: center; gap: 5px;
+      padding: 3px 9px;
+      border-radius: 20px;
+      font-size: 10.5px; font-weight: 600;
+      letter-spacing: .02em;
+    }
+    .status-pill .dot {
+      width: 6px; height: 6px; border-radius: 50%;
+    }
+    .status-pill.green  { background: var(--green-dim);  color: var(--green-500); }
+    .status-pill.yellow { background: var(--yellow-dim); color: var(--yellow-500); }
+    .status-pill.red    { background: var(--red-dim);    color: var(--red-500); }
+    .status-pill.blue   { background: var(--blue-dim);   color: var(--blue-500); }
+
+    .status-pill.green  .dot { background: var(--green-500); }
+    .status-pill.yellow .dot { background: var(--yellow-500); }
+    .status-pill.red    .dot { background: var(--red-500); }
+    .status-pill.blue   .dot { background: var(--blue-500); }
+
+    .topbar-ask-btn {
+      display: flex; align-items: center; gap: 6px;
+      padding: 5px 12px;
+      background: var(--blue-600);
+      border: none; border-radius: var(--r-sm);
+      font-size: 11px; font-weight: 600; color: #fff;
+      cursor: pointer;
+      transition: background var(--duration);
+    }
+    .topbar-ask-btn:hover { background: var(--blue-500); }
+    .topbar-ask-btn svg { width: 12px; height: 12px; }
+
+    /* =====================================================================
+       CONTENT
+       ===================================================================== */
+    .content {
+      flex: 1; overflow-y: auto;
+      padding: 24px;
+      display: flex; flex-direction: column; gap: 20px;
+    }
+
+    /* =====================================================================
+       VIEWS (pages)
+       ===================================================================== */
+    .view { display: none; flex-direction: column; gap: 20px; }
+    .view.active { display: flex; }
+
+    /* =====================================================================
+       SECTION HEADER
+       ===================================================================== */
+    .section-header {
+      display: flex; align-items: flex-start; justify-content: space-between;
+      margin-bottom: 2px;
+    }
+    .section-title { font-size: 14px; font-weight: 700; color: var(--text-primary); }
+    .section-desc  { font-size: 11px; color: var(--text-tertiary); margin-top: 2px; }
+    .section-meta  { font-size: 10px; color: var(--text-tertiary); white-space: nowrap; }
+
+    /* =====================================================================
+       KPI CARD ROW
+       ===================================================================== */
+    .kpi-row { display: grid; gap: 12px; }
+    .kpi-row.cols-4 { grid-template-columns: repeat(4, 1fr); }
+    .kpi-row.cols-3 { grid-template-columns: repeat(3, 1fr); }
+    .kpi-row.cols-2 { grid-template-columns: repeat(2, 1fr); }
+
+    .kpi-card {
+      background: var(--surface-1);
+      border: 1px solid var(--border);
+      border-radius: var(--r-lg);
+      padding: 16px 18px;
+      display: flex; flex-direction: column; gap: 4px;
+      position: relative; overflow: hidden;
+      transition: border-color var(--duration);
+    }
+    .kpi-card:hover { border-color: var(--border-md); }
+
+    .kpi-card.accent-green  { border-left: 3px solid var(--green-500); }
+    .kpi-card.accent-yellow { border-left: 3px solid var(--yellow-500); }
+    .kpi-card.accent-red    { border-left: 3px solid var(--red-500); }
+    .kpi-card.accent-blue   { border-left: 3px solid var(--blue-500); }
+    .kpi-card.accent-violet { border-left: 3px solid var(--violet-500); }
+
+    .kpi-label {
+      font-size: 10.5px; font-weight: 600; text-transform: uppercase;
+      letter-spacing: .07em; color: var(--text-tertiary);
+    }
+
+    .kpi-value {
+      font-size: 26px; font-weight: 700;
+      letter-spacing: -.02em; line-height: 1.1;
+      color: var(--text-primary);
+      font-variant-numeric: tabular-nums;
+    }
+
+    .kpi-value .unit {
+      font-size: 13px; font-weight: 500; color: var(--text-tertiary);
+      margin-left: 3px;
+    }
+
+    .kpi-footer {
+      display: flex; align-items: center; gap: 6px;
+      margin-top: 4px;
+    }
+
+    .kpi-band {
+      font-size: 10.5px; font-weight: 700;
+      padding: 2px 7px; border-radius: 12px;
+    }
+    .kpi-band.green  { background: var(--green-dim);  color: var(--green-500); }
+    .kpi-band.yellow { background: var(--yellow-dim); color: var(--yellow-500); }
+    .kpi-band.red    { background: var(--red-dim);    color: var(--red-500); }
+    .kpi-band.blue   { background: var(--blue-dim);   color: var(--blue-500); }
+
+    .kpi-trend {
+      font-size: 10.5px; color: var(--text-tertiary);
+      display: flex; align-items: center; gap: 3px;
+    }
+    .kpi-trend.up   { color: var(--green-500); }
+    .kpi-trend.down { color: var(--red-500); }
+    .kpi-trend.down.better-lower { color: var(--green-500); } /* Lower is better */
+    .kpi-trend.up.better-lower   { color: var(--red-500); }
+
+    /* =====================================================================
+       CONFIDENCE SCORE — big hero card
+       ===================================================================== */
+    .confidence-hero {
+      background: var(--surface-1);
+      border: 1px solid var(--border);
+      border-radius: var(--r-lg);
+      padding: 24px 28px;
+      display: flex; align-items: center; gap: 32px;
+    }
+
+    .confidence-gauge { position: relative; width: 96px; height: 96px; flex-shrink: 0; }
+    .confidence-gauge svg { width: 96px; height: 96px; transform: rotate(-90deg); }
+    .confidence-gauge .gauge-bg    { fill: none; stroke: var(--surface-3); stroke-width: 8; }
+    .confidence-gauge .gauge-track { fill: none; stroke-width: 8; stroke-linecap: round; transition: stroke-dashoffset .8s var(--ease-out); }
+    .confidence-gauge .gauge-text  {
+      position: absolute; inset: 0;
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      transform: none;
+    }
+    .confidence-gauge .gauge-number { font-size: 22px; font-weight: 800; letter-spacing: -.03em; }
+    .confidence-gauge .gauge-label  { font-size: 8.5px; font-weight: 700; text-transform: uppercase; letter-spacing: .08em; color: var(--text-tertiary); }
+
+    .confidence-body { flex: 1; }
+    .confidence-title { font-size: 18px; font-weight: 700; margin-bottom: 4px; }
+    .confidence-desc  { font-size: 12px; color: var(--text-secondary); line-height: 1.6; margin-bottom: 12px; }
+
+    .confidence-dims {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px;
+    }
+
+    .conf-dim {
+      background: var(--surface-2);
+      border: 1px solid var(--border);
+      border-radius: var(--r-sm);
+      padding: 8px 10px;
+    }
+    .conf-dim-label { font-size: 9.5px; font-weight: 600; text-transform: uppercase; letter-spacing: .06em; color: var(--text-tertiary); }
+    .conf-dim-value { font-size: 15px; font-weight: 700; margin-top: 2px; }
+
+    /* =====================================================================
+       DATA TABLE
+       ===================================================================== */
+    .table-card {
+      background: var(--surface-1);
+      border: 1px solid var(--border);
+      border-radius: var(--r-lg);
+      overflow: hidden;
+    }
+
+    .table-card-header {
+      padding: 14px 18px 12px;
+      border-bottom: 1px solid var(--border);
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .table-card-title { font-size: 12.5px; font-weight: 700; color: var(--text-primary); }
+    .table-card-meta  { font-size: 10px; color: var(--text-tertiary); }
+
+    table { width: 100%; border-collapse: collapse; }
+
+    thead th {
+      font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: .07em;
+      color: var(--text-tertiary);
+      padding: 9px 18px;
+      text-align: left;
+      border-bottom: 1px solid var(--border);
+      white-space: nowrap;
+    }
+
+    tbody tr { border-bottom: 1px solid var(--border); }
+    tbody tr:last-child { border-bottom: none; }
+    tbody tr:hover { background: var(--surface-2); }
+
+    tbody td {
+      padding: 10px 18px;
+      font-size: 12px;
+      color: var(--text-primary);
+      vertical-align: middle;
+    }
+
+    .td-label   { font-weight: 600; }
+    .td-value   { font-variant-numeric: tabular-nums; font-weight: 500; }
+    .td-band    { }
+    .td-trend   { }
+    .td-desc    { color: var(--text-secondary); font-size: 11px; }
+
+    .trend-chip {
+      display: inline-flex; align-items: center; gap: 3px;
+      font-size: 10.5px; font-weight: 600;
+      padding: 2px 6px; border-radius: 10px;
+    }
+    .trend-chip.up      { background: var(--green-dim); color: var(--green-500); }
+    .trend-chip.down    { background: var(--red-dim);   color: var(--red-500); }
+    .trend-chip.flat    { background: var(--surface-3); color: var(--text-tertiary); }
+
+    /* =====================================================================
+       DORA VISUAL BAND ROW
+       ===================================================================== */
+    .dora-bands {
+      display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px;
+    }
+
+    .dora-band-card {
+      background: var(--surface-1);
+      border: 1px solid var(--border);
+      border-radius: var(--r-lg);
+      padding: 16px;
+      display: flex; flex-direction: column; gap: 10px;
+    }
+
+    .dora-band-top { display: flex; align-items: center; justify-content: space-between; }
+    .dora-band-metric { font-size: 10.5px; font-weight: 700; text-transform: uppercase; letter-spacing: .06em; color: var(--text-tertiary); }
+
+    .dora-band-value { font-size: 22px; font-weight: 800; letter-spacing: -.02em; font-variant-numeric: tabular-nums; }
+
+    .dora-band-bar { height: 4px; border-radius: 2px; background: var(--surface-3); overflow: hidden; }
+    .dora-band-fill { height: 100%; border-radius: 2px; transition: width .8s var(--ease-out); }
+
+    .dora-band-footer { display: flex; align-items: center; justify-content: space-between; }
+    .dora-band-label  { font-size: 11px; font-weight: 700; }
+
+    /* =====================================================================
+       INCIDENT TICKER
+       ===================================================================== */
+    .incident-row { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; }
+
+    /* =====================================================================
+       RISK REGISTER
+       ===================================================================== */
+    .risk-item {
+      display: flex; align-items: flex-start; gap: 12px;
+      padding: 12px 18px;
+      border-bottom: 1px solid var(--border);
+    }
+    .risk-item:last-child { border-bottom: none; }
+
+    .risk-sev {
+      width: 4px; flex-shrink: 0;
+      border-radius: 2px; margin-top: 2px;
+      align-self: stretch;
+    }
+    .risk-sev.high   { background: var(--red-500); }
+    .risk-sev.medium { background: var(--yellow-500); }
+    .risk-sev.low    { background: var(--green-500); }
+
+    .risk-body { flex: 1; }
+    .risk-title    { font-size: 12px; font-weight: 600; color: var(--text-primary); }
+    .risk-details  { font-size: 11px; color: var(--text-secondary); margin-top: 2px; line-height: 1.5; }
+
+    .risk-meta { display: flex; align-items: center; gap: 8px; margin-top: 5px; }
+    .risk-tag {
+      font-size: 10px; font-weight: 600; letter-spacing: .04em;
+      padding: 2px 6px; border-radius: 4px;
+      background: var(--surface-3); color: var(--text-tertiary);
+    }
+
+    .risk-confidence {
+      font-size: 10px; font-weight: 600;
+      padding: 2px 6px; border-radius: 4px;
+    }
+    .risk-confidence.high   { background: var(--red-dim);    color: var(--red-500); }
+    .risk-confidence.medium { background: var(--yellow-dim); color: var(--yellow-500); }
+    .risk-confidence.low    { background: var(--green-dim);  color: var(--green-500); }
+
+    /* =====================================================================
+       ONE THING — priority recommendation card
+       ===================================================================== */
+    .one-thing {
+      background: linear-gradient(135deg, rgba(29,78,216,.18) 0%, rgba(139,92,246,.12) 100%);
+      border: 1px solid rgba(59,130,246,.25);
+      border-radius: var(--r-lg);
+      padding: 20px 24px;
+      display: flex; align-items: flex-start; gap: 16px;
+    }
+    .one-thing-icon {
+      width: 36px; height: 36px; flex-shrink: 0;
+      background: var(--blue-600); border-radius: 8px;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .one-thing-icon svg { width: 18px; height: 18px; }
+    .one-thing-body { flex: 1; }
+    .one-thing-eyebrow { font-size: 9.5px; font-weight: 700; text-transform: uppercase; letter-spacing: .1em; color: var(--blue-500); margin-bottom: 4px; }
+    .one-thing-title   { font-size: 14px; font-weight: 700; color: var(--text-primary); line-height: 1.4; }
+    .one-thing-desc    { font-size: 12px; color: var(--text-secondary); margin-top: 5px; line-height: 1.6; }
+
+    /* =====================================================================
+       SPRINT PROGRESS BAR
+       ===================================================================== */
+    .sprint-bar-wrap { margin-top: 6px; }
+    .sprint-bar-labels { display: flex; justify-content: space-between; font-size: 10.5px; color: var(--text-tertiary); margin-bottom: 5px; }
+    .sprint-bar { height: 8px; background: var(--surface-3); border-radius: 4px; overflow: hidden; }
+    .sprint-bar-fill { height: 100%; border-radius: 4px; background: var(--blue-500); transition: width .8s var(--ease-out); }
+    .sprint-bar-fill.green  { background: var(--green-500); }
+    .sprint-bar-fill.yellow { background: var(--yellow-500); }
+    .sprint-bar-fill.red    { background: var(--red-500); }
+
+    /* =====================================================================
+       AI CHAT PANEL
+       ===================================================================== */
+    .chat-overlay {
+      position: fixed; inset: 0;
+      background: rgba(10,11,13,.7);
+      backdrop-filter: blur(4px);
+      z-index: 100;
+      display: none;
+      align-items: flex-end; justify-content: flex-end;
+    }
+    .chat-overlay.open { display: flex; }
+
+    .chat-panel {
+      width: 460px; height: 100vh;
+      background: var(--surface-1);
+      border-left: 1px solid var(--border);
+      display: flex; flex-direction: column;
+      animation: slideIn .25s var(--ease-out);
+    }
+
+    @keyframes slideIn { from { transform: translateX(100%); } to { transform: translateX(0); } }
+
+    .chat-header {
+      padding: 18px 20px 14px;
+      border-bottom: 1px solid var(--border);
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .chat-header-left h3 { font-size: 14px; font-weight: 700; }
+    .chat-header-left p  { font-size: 11px; color: var(--text-tertiary); margin-top: 2px; }
+    .chat-close { background: none; border: none; cursor: pointer; color: var(--text-tertiary); padding: 4px; border-radius: 4px; }
+    .chat-close:hover { color: var(--text-primary); background: var(--surface-3); }
+    .chat-close svg { width: 16px; height: 16px; display: block; }
+
+    .chat-messages {
+      flex: 1; overflow-y: auto;
+      padding: 16px;
+      display: flex; flex-direction: column; gap: 12px;
+    }
+
+    .msg {
+      display: flex; flex-direction: column; gap: 3px;
+    }
+    .msg.user { align-items: flex-end; }
+    .msg.agent { align-items: flex-start; }
+
+    .msg-bubble {
+      max-width: 88%;
+      padding: 9px 13px;
+      border-radius: 12px;
+      font-size: 12px; line-height: 1.6;
+    }
+    .msg.user  .msg-bubble { background: var(--blue-600); color: #fff; border-bottom-right-radius: 4px; }
+    .msg.agent .msg-bubble { background: var(--surface-2); border: 1px solid var(--border); color: var(--text-primary); border-bottom-left-radius: 4px; white-space: pre-wrap; }
+
+    .msg-time { font-size: 9.5px; color: var(--text-tertiary); }
+
+    .chat-thinking {
+      display: flex; align-items: center; gap: 8px;
+      padding: 10px 13px;
+      background: var(--surface-2);
+      border: 1px solid var(--border);
+      border-radius: 12px; border-bottom-left-radius: 4px;
+      max-width: 88%;
+      font-size: 12px; color: var(--text-tertiary);
+    }
+    .thinking-dots { display: flex; gap: 3px; }
+    .thinking-dots span {
+      width: 5px; height: 5px; border-radius: 50%;
+      background: var(--text-tertiary);
+      animation: blink 1.2s infinite;
+    }
+    .thinking-dots span:nth-child(2) { animation-delay: .2s; }
+    .thinking-dots span:nth-child(3) { animation-delay: .4s; }
+    @keyframes blink { 0%,80%,100%{opacity:.2} 40%{opacity:1} }
+
+    .chat-quick-prompts {
+      padding: 0 16px 12px;
+      display: flex; gap: 6px; flex-wrap: wrap;
+    }
+    .quick-prompt {
+      font-size: 10.5px; font-weight: 500;
+      padding: 4px 9px;
+      border: 1px solid var(--border-md);
+      border-radius: 12px;
+      background: var(--surface-2);
+      color: var(--text-secondary);
+      cursor: pointer; white-space: nowrap;
+      transition: border-color var(--duration), color var(--duration);
+    }
+    .quick-prompt:hover { border-color: var(--blue-500); color: var(--blue-500); }
+
+    .chat-input-area {
+      padding: 12px 16px 16px;
+      border-top: 1px solid var(--border);
+      display: flex; gap: 8px;
+    }
+    .chat-input {
+      flex: 1;
+      background: var(--surface-2);
+      border: 1px solid var(--border-md);
+      border-radius: var(--r-md);
+      padding: 9px 12px;
+      font-size: 12.5px; font-family: var(--font-sans);
+      color: var(--text-primary);
+      resize: none; height: 40px; min-height: 40px; max-height: 120px;
+      outline: none;
+      transition: border-color var(--duration);
+    }
+    .chat-input:focus { border-color: var(--blue-500); }
+    .chat-input::placeholder { color: var(--text-tertiary); }
+
+    .chat-send-btn {
+      width: 40px; height: 40px;
+      background: var(--blue-600); border: none; border-radius: var(--r-md);
+      cursor: pointer; display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0; transition: background var(--duration);
+    }
+    .chat-send-btn:hover   { background: var(--blue-500); }
+    .chat-send-btn:disabled { background: var(--surface-3); cursor: not-allowed; }
+    .chat-send-btn svg { width: 15px; height: 15px; }
+
+    /* =====================================================================
+       LOADING SKELETON
+       ===================================================================== */
+    .skeleton {
+      background: linear-gradient(90deg, var(--surface-2) 25%, var(--surface-3) 50%, var(--surface-2) 75%);
+      background-size: 200% 100%;
+      animation: shimmer 1.5s infinite;
+      border-radius: 4px;
+    }
+    @keyframes shimmer { 0%{background-position:200% 0} 100%{background-position:-200% 0} }
+
+    .skel-line { height: 12px; margin-bottom: 6px; }
+    .skel-line.w-60 { width: 60%; }
+    .skel-line.w-40 { width: 40%; }
+    .skel-line.w-80 { width: 80%; }
+
+    /* =====================================================================
+       PLACEHOLDER / EMPTY STATE
+       ===================================================================== */
+    .empty-state {
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      gap: 10px; padding: 48px 24px;
+      color: var(--text-tertiary);
+    }
+    .empty-state svg { width: 36px; height: 36px; opacity: .4; }
+    .empty-state p { font-size: 12px; text-align: center; }
+
+    /* =====================================================================
+       TOAST
+       ===================================================================== */
+    .toast-container {
+      position: fixed; bottom: 24px; right: 24px;
+      z-index: 200;
+      display: flex; flex-direction: column; gap: 8px;
+      pointer-events: none;
+    }
+    .toast {
+      padding: 10px 14px;
+      background: var(--surface-2);
+      border: 1px solid var(--border-md);
+      border-radius: var(--r-md);
+      font-size: 12px; color: var(--text-primary);
+      animation: toastIn .3s var(--ease-out);
+      pointer-events: all;
+      max-width: 320px;
+    }
+    @keyframes toastIn { from{transform:translateY(8px);opacity:0} to{transform:none;opacity:1} }
+
+    /* =====================================================================
+       SCROLLBAR
+       ===================================================================== */
+    ::-webkit-scrollbar { width: 5px; height: 5px; }
+    ::-webkit-scrollbar-track { background: transparent; }
+    ::-webkit-scrollbar-thumb { background: var(--gray-700); border-radius: 3px; }
+    ::-webkit-scrollbar-thumb:hover { background: var(--gray-600); }
+
+    /* =====================================================================
+       UTILITY
+       ===================================================================== */
+    .text-green  { color: var(--green-500); }
+    .text-yellow { color: var(--yellow-500); }
+    .text-red    { color: var(--red-500); }
+    .text-blue   { color: var(--blue-500); }
+    .text-muted  { color: var(--text-tertiary); }
+    .font-mono   { font-family: var(--font-mono); }
+
+    .divider { height: 1px; background: var(--border); }
+
+    .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+    .three-col { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; }
+
+    @media (max-width: 1100px) {
+      .kpi-row.cols-4 { grid-template-columns: repeat(2, 1fr); }
+      .dora-bands { grid-template-columns: repeat(2, 1fr); }
+      .confidence-dims { grid-template-columns: repeat(2, 1fr); }
+      .two-col, .three-col { grid-template-columns: 1fr; }
+    }
+  </style>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+</head>
+<body>
+
+<!-- =========================================================
+     SIDEBAR
+     ========================================================= -->
+<aside class="sidebar">
+  <div class="sidebar-header">
+    <div class="sidebar-logo">
+      <div class="sidebar-logo-icon">
+        <svg fill="none" viewBox="0 0 24 24" stroke="white" stroke-width="2">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M9 3H5a2 2 0 00-2 2v4m6-6h10a2 2 0 012 2v4M9 3v18m0 0h10a2 2 0 002-2V9M9 21H5a2 2 0 01-2-2V9m0 0h18"/>
+        </svg>
+      </div>
+      <div class="sidebar-logo-text">
+        <div class="sidebar-logo-title">Engineering OS</div>
+        <div class="sidebar-logo-sub">v0.6 Dashboard</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="sidebar-team-badge" id="sidebar-team">
+    <div class="team-name">Loading…</div>
+    <div class="team-meta"></div>
+  </div>
+
+  <nav class="sidebar-nav">
+    <div class="nav-section-label">Overview</div>
+    <button class="nav-item active" data-view="overview" onclick="switchView('overview', this)">
+      <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>
+      Summary
+    </button>
+    <button class="nav-item" data-view="delivery" onclick="switchView('delivery', this)">
+      <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+      Delivery &amp; DORA
+    </button>
+    <button class="nav-item" data-view="incidents" onclick="switchView('incidents', this)">
+      <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 9v4m0 4h.01M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/></svg>
+      Incidents
+      <span class="nav-badge" id="incident-badge" style="display:none"></span>
+    </button>
+    <button class="nav-item" data-view="team" onclick="switchView('team', this)">
+      <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 20h5v-2a4 4 0 00-4-4M9 20H4v-2a4 4 0 014-4m8-4a4 4 0 11-8 0 4 4 0 018 0z"/></svg>
+      Team Health
+    </button>
+    <button class="nav-item" data-view="risks" onclick="switchView('risks', this)">
+      <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+      Risk Register
+    </button>
+
+    <div class="nav-section-label">Agent</div>
+    <button class="nav-item" onclick="openChat()">
+      <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z"/></svg>
+      Ask Engineering Manager
+    </button>
+  </nav>
+
+  <div class="sidebar-footer">
+    <button class="refresh-btn" onclick="refresh()">
+      <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" id="refresh-icon">
+        <polyline points="23 4 23 10 17 10"/><path d="M20.49 15a9 9 0 11-2.12-9.36L23 10"/>
+      </svg>
+      Refresh Data
+    </button>
+    <div class="last-refresh" id="last-refresh">—</div>
+  </div>
+</aside>
+
+<!-- =========================================================
+     MAIN
+     ========================================================= -->
+<div class="main">
+  <!-- Topbar -->
+  <header class="topbar">
+    <div class="topbar-left">
+      <span class="topbar-breadcrumb">Dashboard / <span id="topbar-view-name">Summary</span></span>
+    </div>
+    <div class="topbar-right">
+      <div class="status-pill" id="api-status-pill" style="display:none"></div>
+      <div class="status-pill green" id="os-health-pill">
+        <span class="dot"></span>
+        OS Online
+      </div>
+      <button class="topbar-ask-btn" onclick="openChat()">
+        <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+        Ask EM Agent
+      </button>
+    </div>
+  </header>
+
+  <!-- Content -->
+  <div class="content">
+
+    <!-- ============================================================
+         VIEW: SUMMARY (overview)
+         ============================================================ -->
+    <div class="view active" id="view-overview">
+
+      <!-- One Thing -->
+      <div class="one-thing" id="one-thing">
+        <div class="one-thing-icon">
+          <svg fill="none" viewBox="0 0 24 24" stroke="white" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+        </div>
+        <div class="one-thing-body">
+          <div class="one-thing-eyebrow">Priority action this week</div>
+          <div class="one-thing-title" id="one-thing-title">Loading recommendation…</div>
+          <div class="one-thing-desc"  id="one-thing-desc"></div>
+        </div>
+      </div>
+
+      <!-- Confidence hero -->
+      <div class="confidence-hero">
+        <div class="confidence-gauge">
+          <svg viewBox="0 0 100 100">
+            <circle class="gauge-bg"    cx="50" cy="50" r="38"/>
+            <circle class="gauge-track" cx="50" cy="50" r="38"
+              id="gauge-circle"
+              stroke="#3b82f6"
+              stroke-dasharray="238.76"
+              stroke-dashoffset="238.76"/>
+          </svg>
+          <div class="gauge-text">
+            <span class="gauge-number" id="gauge-number">—</span>
+            <span class="gauge-label">Score</span>
+          </div>
+        </div>
+        <div class="confidence-body">
+          <div class="confidence-title">Executive Confidence Score <span class="status-pill" id="conf-band-pill" style="margin-left:8px"></span></div>
+          <div class="confidence-desc">Composite of DORA delivery metrics, sprint predictability, and commitment accuracy. Answers: <em>"Can leadership trust this team to deliver?"</em></div>
+          <div class="confidence-dims" id="conf-dims">
+            <div class="conf-dim"><div class="conf-dim-label">Deployment Freq.</div><div class="conf-dim-value" id="cd-deploy">—</div></div>
+            <div class="conf-dim"><div class="conf-dim-label">Lead Time</div><div class="conf-dim-value" id="cd-lt">—</div></div>
+            <div class="conf-dim"><div class="conf-dim-label">Change Failure</div><div class="conf-dim-value" id="cd-cfr">—</div></div>
+            <div class="conf-dim"><div class="conf-dim-label">MTTR</div><div class="conf-dim-value" id="cd-mttr">—</div></div>
+            <div class="conf-dim"><div class="conf-dim-label">Commit Accuracy</div><div class="conf-dim-value" id="cd-ca">—</div></div>
+            <div class="conf-dim"><div class="conf-dim-label">DORA Overall</div><div class="conf-dim-value" id="cd-dora">—</div></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- KPI row -->
+      <div class="kpi-row cols-4" id="summary-kpis">
+        <div class="kpi-card skeleton" style="min-height:90px"></div>
+        <div class="kpi-card skeleton" style="min-height:90px"></div>
+        <div class="kpi-card skeleton" style="min-height:90px"></div>
+        <div class="kpi-card skeleton" style="min-height:90px"></div>
+      </div>
+
+      <!-- Two-col: sprint + incidents -->
+      <div class="two-col">
+        <div class="table-card">
+          <div class="table-card-header">
+            <span class="table-card-title">Sprint Health</span>
+            <span class="table-card-meta" id="sprint-cadence-label">2-week sprint</span>
+          </div>
+          <div style="padding:16px 18px" id="sprint-panel">
+            <div class="skeleton skel-line w-80"></div>
+            <div class="skeleton skel-line w-60"></div>
+            <div class="skeleton skel-line w-40"></div>
+          </div>
+        </div>
+        <div class="table-card">
+          <div class="table-card-header">
+            <span class="table-card-title">Incident Snapshot</span>
+            <span class="table-card-meta">Last 30 days</span>
+          </div>
+          <div style="padding:16px 18px" id="incident-snapshot">
+            <div class="skeleton skel-line w-80"></div>
+            <div class="skeleton skel-line w-60"></div>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- /view-overview -->
+
+    <!-- ============================================================
+         VIEW: DELIVERY & DORA
+         ============================================================ -->
+    <div class="view" id="view-delivery">
+      <div>
+        <div class="section-header">
+          <div>
+            <div class="section-title">Delivery &amp; DORA Metrics</div>
+            <div class="section-desc">Accelerate research bands — Elite / High / Medium / Low</div>
+          </div>
+          <span class="section-meta" id="dora-timestamp">—</span>
+        </div>
+      </div>
+
+      <!-- DORA 4-band cards -->
+      <div class="dora-bands" id="dora-cards">
+        <div class="kpi-card skeleton" style="min-height:110px"></div>
+        <div class="kpi-card skeleton" style="min-height:110px"></div>
+        <div class="kpi-card skeleton" style="min-height:110px"></div>
+        <div class="kpi-card skeleton" style="min-height:110px"></div>
+      </div>
+
+      <!-- Delivery detail table -->
+      <div class="table-card">
+        <div class="table-card-header">
+          <span class="table-card-title">Delivery Signals</span>
+          <span class="table-card-meta">Sprint + PR metrics vs. 4-week baseline</span>
+        </div>
+        <table id="delivery-table">
+          <thead>
+            <tr>
+              <th>Metric</th>
+              <th>Current</th>
+              <th>4-wk Baseline</th>
+              <th>Trend</th>
+              <th>Band</th>
+              <th>Notes</th>
+            </tr>
+          </thead>
+          <tbody id="delivery-tbody">
+            <tr><td colspan="6"><div style="padding:24px;text-align:center"><div class="skeleton skel-line w-60" style="margin:auto"></div></div></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div><!-- /view-delivery -->
+
+    <!-- ============================================================
+         VIEW: INCIDENTS
+         ============================================================ -->
+    <div class="view" id="view-incidents">
+      <div>
+        <div class="section-title">Incident &amp; Reliability</div>
+        <div class="section-desc">MTTR, change failure rate, on-call burden — last 30 days</div>
+      </div>
+
+      <div class="kpi-row cols-3" id="incident-kpis">
+        <div class="kpi-card skeleton" style="min-height:90px"></div>
+        <div class="kpi-card skeleton" style="min-height:90px"></div>
+        <div class="kpi-card skeleton" style="min-height:90px"></div>
+      </div>
+
+      <div class="table-card">
+        <div class="table-card-header">
+          <span class="table-card-title">Reliability Detail</span>
+        </div>
+        <table>
+          <thead><tr><th>Signal</th><th>Current</th><th>Band</th><th>Accelerate Target</th><th>Action</th></tr></thead>
+          <tbody id="reliability-tbody">
+            <tr><td colspan="5" class="text-muted" style="padding:24px;text-align:center">Loading…</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div><!-- /view-incidents -->
+
+    <!-- ============================================================
+         VIEW: TEAM HEALTH (placeholder panels — data from memory)
+         ============================================================ -->
+    <div class="view" id="view-team">
+      <div>
+        <div class="section-title">Team Health</div>
+        <div class="section-desc">SPACE dimensions — Satisfaction, Performance, Activity, Communication, Efficiency</div>
+      </div>
+
+      <div class="kpi-row cols-3" id="team-kpis">
+        <!-- populated from team.json -->
+      </div>
+
+      <div class="two-col">
+        <div class="table-card">
+          <div class="table-card-header">
+            <span class="table-card-title">Team Context</span>
+          </div>
+          <table id="team-context-table">
+            <thead><tr><th>Field</th><th>Value</th></tr></thead>
+            <tbody id="team-context-tbody">
+              <tr><td colspan="2" class="text-muted" style="padding:24px;text-align:center">Loading…</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="table-card">
+          <div class="table-card-header">
+            <span class="table-card-title">Reporting Chain</span>
+          </div>
+          <table>
+            <thead><tr><th>#</th><th>Role</th><th>Name</th></tr></thead>
+            <tbody id="reporting-chain-tbody">
+              <tr><td colspan="3" class="text-muted" style="padding:24px;text-align:center">Loading…</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="table-card">
+        <div class="table-card-header">
+          <span class="table-card-title">Pending: People Signals</span>
+          <span class="table-card-meta">Requires memory/ data accumulation</span>
+        </div>
+        <div class="empty-state">
+          <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+          <p>1:1 coaching trajectories, burnout signals, and retention risk profiles will appear here once 4+ weeks of memory data have been captured. Run the weekly kaizen review to populate this panel.</p>
+        </div>
+      </div>
+    </div><!-- /view-team -->
+
+    <!-- ============================================================
+         VIEW: RISK REGISTER
+         ============================================================ -->
+    <div class="view" id="view-risks">
+      <div>
+        <div class="section-title">Risk Register</div>
+        <div class="section-desc">Top risks derived from DORA metrics, delivery signals, and incident patterns</div>
+      </div>
+      <div class="table-card" id="risk-register-card">
+        <div class="table-card-header">
+          <span class="table-card-title">Active Risks</span>
+          <span class="table-card-meta" id="risk-count-label">—</span>
+        </div>
+        <div id="risk-list">
+          <div class="skeleton skel-line w-80" style="margin:16px 18px"></div>
+          <div class="skeleton skel-line w-60" style="margin:0 18px 16px"></div>
+        </div>
+      </div>
+    </div><!-- /view-risks -->
+
+  </div><!-- /content -->
+</div><!-- /main -->
+
+<!-- =========================================================
+     CHAT PANEL
+     ========================================================= -->
+<div class="chat-overlay" id="chat-overlay" onclick="closeChatOnOverlay(event)">
+  <div class="chat-panel">
+    <div class="chat-header">
+      <div class="chat-header-left">
+        <h3>Engineering Manager Agent</h3>
+        <p>Ask about delivery, team health, risks, or any leadership situation</p>
+      </div>
+      <button class="chat-close" onclick="closeChat()">
+        <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>
+      </button>
+    </div>
+    <div class="chat-messages" id="chat-messages">
+      <div class="msg agent">
+        <div class="msg-bubble">Hello. I'm your Engineering Manager OS agent. I have access to your current metrics and team context. What's on your mind?</div>
+        <span class="msg-time">now</span>
+      </div>
+    </div>
+    <div class="chat-quick-prompts">
+      <span class="quick-prompt" onclick="sendQuick(this)">How is our sprint looking?</span>
+      <span class="quick-prompt" onclick="sendQuick(this)">Any delivery risks this week?</span>
+      <span class="quick-prompt" onclick="sendQuick(this)">Summarize our DORA posture</span>
+      <span class="quick-prompt" onclick="sendQuick(this)">What should I focus on today?</span>
+    </div>
+    <div class="chat-input-area">
+      <textarea class="chat-input" id="chat-input" placeholder="Describe a situation or ask a question…" rows="1"
+        onkeydown="handleChatKey(event)" oninput="autoResize(this)"></textarea>
+      <button class="chat-send-btn" id="chat-send-btn" onclick="sendChat()">
+        <svg fill="none" viewBox="0 0 24 24" stroke="white" stroke-width="2.5"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- Toast container -->
+<div class="toast-container" id="toast-container"></div>
+
+<!-- =========================================================
+     JAVASCRIPT
+     ========================================================= -->
+<script>
+"use strict";
+
+// ---------------------------------------------------------------------------
+// Config
+// ---------------------------------------------------------------------------
+const API = "";  // Same origin — server.py serves this file
+
+// ---------------------------------------------------------------------------
+// State
+// ---------------------------------------------------------------------------
+let metricsData = null;
+let teamData = null;
+let currentView = "overview";
+
+// ---------------------------------------------------------------------------
+// Boot
+// ---------------------------------------------------------------------------
+(async function init() {
+  await Promise.all([loadTeam(), loadMetrics()]);
+  updateLastRefresh();
+})();
+
+// ---------------------------------------------------------------------------
+// Navigation
+// ---------------------------------------------------------------------------
+const VIEW_NAMES = {
+  overview: "Summary",
+  delivery: "Delivery & DORA",
+  incidents: "Incidents",
+  team: "Team Health",
+  risks: "Risk Register",
+};
+
+function switchView(name, btn) {
+  document.querySelectorAll(".view").forEach(v => v.classList.remove("active"));
+  document.querySelectorAll(".nav-item").forEach(n => n.classList.remove("active"));
+  document.getElementById("view-" + name).classList.add("active");
+  if (btn) btn.classList.add("active");
+  currentView = name;
+  document.getElementById("topbar-view-name").textContent = VIEW_NAMES[name] || name;
+}
+
+// ---------------------------------------------------------------------------
+// Data loading
+// ---------------------------------------------------------------------------
+async function loadTeam() {
+  try {
+    const res = await fetch(API + "/api/team");
+    if (!res.ok) throw new Error(res.statusText);
+    teamData = await res.json();
+    renderTeam(teamData);
+  } catch (e) {
+    console.warn("Team load failed:", e);
+    toast("Could not load team context — using defaults", "warn");
+  }
+}
+
+async function loadMetrics() {
+  try {
+    const res = await fetch(API + "/api/metrics");
+    if (!res.ok) throw new Error(res.statusText);
+    metricsData = await res.json();
+    renderAll(metricsData);
+  } catch (e) {
+    console.warn("Metrics load failed:", e);
+    toast("Could not load metrics — check that the server is running", "error");
+    renderFallback();
+  }
+}
+
+// ---------------------------------------------------------------------------
+// Refresh
+// ---------------------------------------------------------------------------
+async function refresh() {
+  const icon = document.getElementById("refresh-icon");
+  icon.style.animation = "spin 1s linear infinite";
+
+  try {
+    await fetch(API + "/api/ingest", { method: "POST" });
+    await loadMetrics();
+    updateLastRefresh();
+    toast("Metrics refreshed");
+  } catch (e) {
+    toast("Refresh failed — " + e.message, "error");
+  } finally {
+    icon.style.animation = "";
+  }
+}
+
+function updateLastRefresh() {
+  const el = document.getElementById("last-refresh");
+  if (metricsData?.timestamp) {
+    const d = new Date(metricsData.timestamp);
+    el.textContent = "Updated " + d.toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" });
+  } else {
+    el.textContent = "Updated just now";
+  }
+}
+
+// ---------------------------------------------------------------------------
+// Render helpers
+// ---------------------------------------------------------------------------
+const COLOR_MAP = {
+  green:  { pill: "green",  accent: "accent-green" },
+  yellow: { pill: "yellow", accent: "accent-yellow" },
+  red:    { pill: "red",    accent: "accent-red" },
+  neutral:{ pill: "blue",   accent: "accent-blue" },
+};
+
+function bandToColor(band) {
+  if (!band) return "neutral";
+  const b = band.toLowerCase();
+  if (b === "elite" || b === "high" || b === "green") return "green";
+  if (b === "medium" || b === "yellow") return "yellow";
+  if (b === "low" || b === "red" || b === "critical" || b === "at risk") return "red";
+  return "neutral";
+}
+
+function trendHtml(trend, betterLower = false) {
+  if (trend === "up") {
+    const cls = betterLower ? "up better-lower" : "up";
+    const arrow = betterLower ? "↑" : "↑";
+    return `<span class="trend-chip ${cls}">${arrow} Rising</span>`;
+  }
+  if (trend === "down") {
+    const cls = betterLower ? "down better-lower" : "down";
+    const arrow = "↓";
+    return `<span class="trend-chip ${cls}">${arrow} Falling</span>`;
+  }
+  return `<span class="trend-chip flat">→ Stable</span>`;
+}
+
+function bandPill(band) {
+  const color = bandToColor(band);
+  return `<span class="kpi-band ${color}">${band}</span>`;
+}
+
+function kpiCard({ label, value, unit = "", band, trend, betterLower = false, accent = "" }) {
+  const color = bandToColor(band);
+  const accentClass = accent || COLOR_MAP[color]?.accent || "accent-blue";
+  return `
+    <div class="kpi-card ${accentClass}">
+      <div class="kpi-label">${label}</div>
+      <div class="kpi-value">${value}${unit ? `<span class="unit">${unit}</span>` : ""}</div>
+      <div class="kpi-footer">
+        ${band ? bandPill(band) : ""}
+        ${trend ? `<span class="kpi-trend ${trend}${betterLower ? " better-lower" : ""}">${trend === "up" ? "↑" : trend === "down" ? "↓" : "→"}</span>` : ""}
+      </div>
+    </div>`;
+}
+
+// ---------------------------------------------------------------------------
+// Master render
+// ---------------------------------------------------------------------------
+function renderAll(m) {
+  if (!m) return;
+  renderConfidence(m);
+  renderSummaryKPIs(m);
+  renderSprintPanel(m);
+  renderIncidentSnapshot(m);
+  renderDoraCards(m);
+  renderDeliveryTable(m);
+  renderIncidentKPIs(m);
+  renderReliabilityTable(m);
+  renderRiskRegister(m);
+  renderOneThing(m);
+  updateApiStatus(true);
+}
+
+function renderFallback() {
+  updateApiStatus(false);
+}
+
+// ---------------------------------------------------------------------------
+// Confidence
+// ---------------------------------------------------------------------------
+function renderConfidence(m) {
+  const score = m.confidence_score || 0;
+  const band  = m.confidence_band  || "—";
+  const dora  = m.dora || {};
+  const del   = m.delivery || {};
+
+  // Gauge animation
+  const circumference = 238.76;
+  const offset = circumference - (score / 100) * circumference;
+  const circle = document.getElementById("gauge-circle");
+  const color = bandToColor(band);
+  const colorMap = { green: "#22c55e", yellow: "#eab308", red: "#ef4444", neutral: "#3b82f6" };
+  setTimeout(() => {
+    circle.style.strokeDashoffset = offset;
+    circle.style.stroke = colorMap[color] || "#3b82f6";
+  }, 100);
+  document.getElementById("gauge-number").textContent = score;
+
+  // Band pill
+  const pill = document.getElementById("conf-band-pill");
+  pill.className = `status-pill ${color}`;
+  pill.innerHTML = `<span class="dot"></span> ${band}`;
+  pill.style.display = "inline-flex";
+
+  // Dimensions
+  document.getElementById("cd-deploy").textContent = dora.deployment_frequency?.value || "—";
+  document.getElementById("cd-deploy").className   = `conf-dim-value text-${bandToColor(dora.deployment_frequency?.band)}`;
+  document.getElementById("cd-lt").textContent     = dora.lead_time?.value || "—";
+  document.getElementById("cd-lt").className       = `conf-dim-value text-${bandToColor(dora.lead_time?.band)}`;
+  document.getElementById("cd-cfr").textContent    = dora.change_failure_rate?.value || "—";
+  document.getElementById("cd-cfr").className      = `conf-dim-value text-${bandToColor(dora.change_failure_rate?.band)}`;
+  document.getElementById("cd-mttr").textContent   = dora.mttr?.value || "—";
+  document.getElementById("cd-mttr").className     = `conf-dim-value text-${bandToColor(dora.mttr?.band)}`;
+  document.getElementById("cd-ca").textContent     = del.commitment_accuracy?.value_display || "—";
+  document.getElementById("cd-ca").className       = `conf-dim-value text-${bandToColor(del.commitment_accuracy?.band)}`;
+  document.getElementById("cd-dora").textContent   = dora.overall || "—";
+  document.getElementById("cd-dora").className     = `conf-dim-value text-${bandToColor(dora.overall)}`;
+}
+
+// ---------------------------------------------------------------------------
+// Summary KPIs
+// ---------------------------------------------------------------------------
+function renderSummaryKPIs(m) {
+  const dora = m.dora || {};
+  const del  = m.delivery || {};
+  const inc  = m.incidents || {};
+
+  const cards = [
+    { label: "Deploy Frequency", value: dora.deployment_frequency?.value || "—", band: dora.deployment_frequency?.band, trend: dora.deployment_frequency?.trend },
+    { label: "Commit Accuracy",  value: del.commitment_accuracy?.value_display || "—",  band: del.commitment_accuracy?.band,  trend: del.commitment_accuracy?.trend },
+    { label: "MTTR",             value: dora.mttr?.value || "—",             band: dora.mttr?.band,             trend: dora.mttr?.trend, betterLower: true },
+    { label: "Incidents (30d)",  value: inc.count_30d ?? "—",  band: inc.band,  trend: inc.trend_count, betterLower: true },
+  ];
+
+  document.getElementById("summary-kpis").innerHTML = cards.map(kpiCard).join("");
+}
+
+// ---------------------------------------------------------------------------
+// Sprint panel
+// ---------------------------------------------------------------------------
+function renderSprintPanel(m) {
+  const del = m.delivery || {};
+  const vel  = del.sprint_velocity || {};
+  const ca   = del.commitment_accuracy || {};
+  const up   = del.unplanned_work || {};
+
+  const pct = ca.value || 0;
+  const barColor = pct >= 85 ? "green" : pct >= 70 ? "yellow" : "red";
+
+  document.getElementById("sprint-panel").innerHTML = `
+    <div style="display:flex;justify-content:space-between;margin-bottom:12px">
+      <div>
+        <div class="kpi-label">Sprint Velocity</div>
+        <div style="font-size:22px;font-weight:800;margin-top:4px">${vel.value ?? "—"} <span class="unit">pts</span></div>
+      </div>
+      <div style="text-align:right">
+        <div class="kpi-label">vs. Baseline</div>
+        <div style="font-size:14px;font-weight:600;margin-top:4px;color:var(--text-secondary)">${vel.baseline ?? "—"} pts avg</div>
+      </div>
+    </div>
+    <div class="sprint-bar-wrap">
+      <div class="sprint-bar-labels">
+        <span>Commitment accuracy</span>
+        <span style="font-weight:700;color:var(--text-primary)">${ca.value_display || "—"}</span>
+      </div>
+      <div class="sprint-bar">
+        <div class="sprint-bar-fill ${barColor}" style="width:${Math.min(pct, 100)}%"></div>
+      </div>
+    </div>
+    <div style="margin-top:12px;display:flex;align-items:center;justify-content:space-between">
+      <span class="kpi-label">Unplanned Work</span>
+      <span style="font-size:13px;font-weight:600">${up.value_display || "—"} ${bandPill(up.band || "")}</span>
+    </div>
+  `;
+}
+
+// ---------------------------------------------------------------------------
+// Incident snapshot (summary view)
+// ---------------------------------------------------------------------------
+function renderIncidentSnapshot(m) {
+  const inc = m.incidents || {};
+  const dora = m.dora || {};
+  const count = inc.count_30d ?? "—";
+  const mttr  = dora.mttr?.value || "—";
+  const band  = inc.band || "";
+  const color = bandToColor(band);
+
+  document.getElementById("incident-snapshot").innerHTML = `
+    <div style="display:flex;align-items:center;gap:16px;margin-bottom:14px">
+      <div>
+        <div class="kpi-label">Incidents (30d)</div>
+        <div style="font-size:26px;font-weight:800;margin-top:4px" class="text-${color}">${count}</div>
+      </div>
+      <div style="width:1px;height:40px;background:var(--border)"></div>
+      <div>
+        <div class="kpi-label">MTTR</div>
+        <div style="font-size:26px;font-weight:800;margin-top:4px" class="text-${bandToColor(dora.mttr?.band)}">${mttr}</div>
+      </div>
+      <div style="width:1px;height:40px;background:var(--border)"></div>
+      <div>
+        <div class="kpi-label">Change Failure</div>
+        <div style="font-size:26px;font-weight:800;margin-top:4px" class="text-${bandToColor(dora.change_failure_rate?.band)}">${dora.change_failure_rate?.value || "—"}</div>
+      </div>
+    </div>
+    ${count === 0 ? `<div class="status-pill green" style="display:inline-flex"><span class="dot"></span> No active incidents</div>` :
+      `<div class="status-pill ${color}" style="display:inline-flex"><span class="dot"></span> ${count} incident${count !== 1 ? "s" : ""} last 30 days</div>`}
+  `;
+
+  // Update nav badge
+  const badge = document.getElementById("incident-badge");
+  if (typeof count === "number" && count > 0) {
+    badge.textContent = count;
+    badge.style.display = "inline-block";
+  } else {
+    badge.style.display = "none";
+  }
+}
+
+// ---------------------------------------------------------------------------
+// DORA band cards
+// ---------------------------------------------------------------------------
+function renderDoraCards(m) {
+  const dora = m.dora || {};
+  const defs = [
+    { key: "deployment_frequency", label: "Deployment Frequency", desc: "How often code ships to prod", higherBetter: true },
+    { key: "lead_time",            label: "Lead Time for Changes", desc: "Commit → production",          higherBetter: false },
+    { key: "change_failure_rate",  label: "Change Failure Rate",   desc: "% of deployments causing failures", higherBetter: false },
+    { key: "mttr",                 label: "Mean Time to Recover",  desc: "Time to restore service",      higherBetter: false },
+  ];
+
+  const barWidths = { Elite: 100, High: 75, Medium: 45, Low: 20 };
+
+  const html = defs.map(def => {
+    const d = dora[def.key] || {};
+    const band  = d.band  || "—";
+    const color = bandToColor(band);
+    const colorHex = { green: "#22c55e", yellow: "#eab308", red: "#ef4444", neutral: "#3b82f6" }[color];
+    const barW = barWidths[band] || 0;
+    return `
+      <div class="dora-band-card">
+        <div class="dora-band-top">
+          <span class="dora-band-metric">${def.label}</span>
+          ${trendHtml(d.trend, !def.higherBetter)}
+        </div>
+        <div class="dora-band-value text-${color}">${d.value || "—"}</div>
+        <div class="dora-band-bar"><div class="dora-band-fill" style="width:${barW}%;background:${colorHex}"></div></div>
+        <div class="dora-band-footer">
+          <span class="dora-band-label text-${color}">${band}</span>
+          <span class="text-muted" style="font-size:10px">${def.desc}</span>
+        </div>
+      </div>`;
+  });
+
+  document.getElementById("dora-cards").innerHTML = html.join("");
+
+  const ts = m.timestamp ? new Date(m.timestamp).toLocaleString([], { dateStyle: "medium", timeStyle: "short" }) : "—";
+  document.getElementById("dora-timestamp").textContent = ts;
+}
+
+// ---------------------------------------------------------------------------
+// Delivery table
+// ---------------------------------------------------------------------------
+function renderDeliveryTable(m) {
+  const del  = m.delivery || {};
+  const dora = m.dora || {};
+
+  const rows = [
+    { label: "Sprint Velocity",    current: (del.sprint_velocity?.value ?? "—") + " pts",   baseline: (del.sprint_velocity?.baseline ?? "—") + " pts avg", trend: del.sprint_velocity?.trend,      band: "—",                              better: false, notes: "Story points per sprint" },
+    { label: "Commit Accuracy",    current: del.commitment_accuracy?.value_display || "—",    baseline: (del.commitment_accuracy?.baseline ?? "—") + "% avg",  trend: del.commitment_accuracy?.trend,  band: del.commitment_accuracy?.band || "—", better: false, notes: "% of committed scope delivered" },
+    { label: "Unplanned Work",     current: del.unplanned_work?.value_display || "—",         baseline: (del.unplanned_work?.baseline ?? "—") + "% avg",        trend: del.unplanned_work?.trend,       band: del.unplanned_work?.band || "—",      better: true,  notes: "% capacity consumed by unplanned items" },
+    { label: "PR Cycle Time",      current: del.pr_cycle_time?.value || "—",                  baseline: (del.pr_cycle_time?.baseline ?? "—") + "h avg",          trend: del.pr_cycle_time?.trend,        band: del.pr_cycle_time?.band || "—",       better: true,  notes: "Open → merged, P50" },
+    { label: "Lead Time",          current: dora.lead_time?.value || "—",                     baseline: "< 1 day (Elite)",                                        trend: dora.lead_time?.trend,           band: dora.lead_time?.band || "—",          better: true,  notes: "Commit → production" },
+    { label: "Deploy Frequency",   current: dora.deployment_frequency?.value || "—",          baseline: "≥ Daily (Elite)",                                        trend: dora.deployment_frequency?.trend, band: dora.deployment_frequency?.band || "—", better: false, notes: "Frequency of production deploys" },
+  ];
+
+  document.getElementById("delivery-tbody").innerHTML = rows.map(r => `
+    <tr>
+      <td class="td-label">${r.label}</td>
+      <td class="td-value font-mono">${r.current}</td>
+      <td class="td-value text-muted font-mono">${r.baseline}</td>
+      <td class="td-trend">${trendHtml(r.trend, r.better)}</td>
+      <td class="td-band">${r.band !== "—" ? bandPill(r.band) : '<span class="text-muted">—</span>'}</td>
+      <td class="td-desc">${r.notes}</td>
+    </tr>`).join("");
+}
+
+// ---------------------------------------------------------------------------
+// Incident KPIs
+// ---------------------------------------------------------------------------
+function renderIncidentKPIs(m) {
+  const inc  = m.incidents || {};
+  const dora = m.dora || {};
+
+  const cards = [
+    { label: "Incidents (30d)",       value: inc.count_30d ?? "—",  band: inc.band,                  trend: inc.trend_count, betterLower: true },
+    { label: "MTTR",                   value: dora.mttr?.value || "—", band: dora.mttr?.band,         trend: dora.mttr?.trend, betterLower: true },
+    { label: "Change Failure Rate",    value: dora.change_failure_rate?.value || "—", band: dora.change_failure_rate?.band, trend: dora.change_failure_rate?.trend, betterLower: true },
+  ];
+
+  document.getElementById("incident-kpis").innerHTML = cards.map(kpiCard).join("");
+}
+
+// ---------------------------------------------------------------------------
+// Reliability table
+// ---------------------------------------------------------------------------
+function renderReliabilityTable(m) {
+  const dora = m.dora || {};
+  const inc  = m.incidents || {};
+
+  const rows = [
+    { signal: "MTTR",               current: dora.mttr?.value || "—",                  band: dora.mttr?.band || "—",                  target: "< 1 hour (Elite)",   action: dora.mttr?.band === "Elite" ? "Maintain" : "Root cause repeated incidents; invest in runbooks and on-call training" },
+    { signal: "Change Failure Rate", current: dora.change_failure_rate?.value || "—",   band: dora.change_failure_rate?.band || "—",   target: "< 5% (Elite)",       action: dora.change_failure_rate?.band === "Elite" ? "Maintain" : "Review deployment pipeline; add pre-prod validation stage" },
+    { signal: "Incident Count (30d)", current: String(inc.count_30d ?? "—"),            band: inc.band || "—",                          target: "0–1 / month",        action: !inc.count_30d ? "Maintain" : "Complete post-mortems; track action item closure rate" },
+  ];
+
+  document.getElementById("reliability-tbody").innerHTML = rows.map(r => `
+    <tr>
+      <td class="td-label">${r.signal}</td>
+      <td class="td-value font-mono">${r.current}</td>
+      <td class="td-band">${bandPill(r.band)}</td>
+      <td class="td-value text-muted">${r.target}</td>
+      <td class="td-desc">${r.action}</td>
+    </tr>`).join("");
+}
+
+// ---------------------------------------------------------------------------
+// Risk register
+// ---------------------------------------------------------------------------
+function renderRiskRegister(m) {
+  const dora = m.dora || {};
+  const del  = m.delivery || {};
+  const inc  = m.incidents || {};
+
+  const risks = [];
+
+  // Derive risks from metrics
+  if (dora.lead_time?.band === "Medium" || dora.lead_time?.band === "Low") {
+    risks.push({ sev: "high", title: "Lead time exceeding DORA High band", details: `Current lead time is ${dora.lead_time.value}. Elite target is < 1 day. This signals pipeline friction or PR review bottleneck.`, tags: ["Delivery", "DORA"], confidence: "high" });
+  }
+  if (dora.change_failure_rate?.band === "Medium" || dora.change_failure_rate?.band === "Low") {
+    risks.push({ sev: "medium", title: "Change failure rate above Elite threshold", details: `Current CFR is ${dora.change_failure_rate.value}. Review deployment validation and rollback procedures.`, tags: ["Reliability", "DORA"], confidence: "medium" });
+  }
+  if (del.unplanned_work?.band === "Yellow" || del.unplanned_work?.band === "Red") {
+    risks.push({ sev: "medium", title: "Unplanned work exceeding 10% capacity", details: `${del.unplanned_work.value_display} of sprint capacity is unplanned. This erodes predictability and signals incident or dependency pressure.`, tags: ["Delivery", "Sprint"], confidence: "high" });
+  }
+  if (del.commitment_accuracy?.band === "Yellow" || del.commitment_accuracy?.band === "Red") {
+    risks.push({ sev: "medium", title: "Sprint commitment accuracy below 85%", details: `Current accuracy is ${del.commitment_accuracy.value_display}. Review estimation calibration and scope management.`, tags: ["Sprint", "Predictability"], confidence: "medium" });
+  }
+  if ((inc.count_30d ?? 0) > 3) {
+    risks.push({ sev: "high", title: "Elevated incident frequency — on-call burden risk", details: `${inc.count_30d} incidents in 30 days. Check on-call rotation health and post-mortem action item closure rate.`, tags: ["Reliability", "People"], confidence: "high" });
+  }
+  if (risks.length === 0) {
+    risks.push({ sev: "low", title: "No significant risks detected from current metrics", details: "All DORA metrics and delivery signals are within Green or Elite bands. Continue weekly kaizen reviews to maintain.", tags: ["All clear"], confidence: "high" });
+  }
+
+  document.getElementById("risk-count-label").textContent = `${risks.length} risk${risks.length !== 1 ? "s" : ""} detected`;
+
+  document.getElementById("risk-list").innerHTML = risks.map(r => `
+    <div class="risk-item">
+      <div class="risk-sev ${r.sev}"></div>
+      <div class="risk-body">
+        <div class="risk-title">${r.title}</div>
+        <div class="risk-details">${r.details}</div>
+        <div class="risk-meta">
+          ${r.tags.map(t => `<span class="risk-tag">${t}</span>`).join("")}
+          <span class="risk-confidence ${r.confidence}">${r.confidence.charAt(0).toUpperCase() + r.confidence.slice(1)} Confidence</span>
+        </div>
+      </div>
+    </div>`).join("");
+}
+
+// ---------------------------------------------------------------------------
+// One Thing
+// ---------------------------------------------------------------------------
+function renderOneThing(m) {
+  const dora = m.dora || {};
+  const del  = m.delivery || {};
+  const inc  = m.incidents || {};
+  const score = m.confidence_score || 0;
+
+  let title = "Run the weekly kaizen review — metrics are healthy";
+  let desc  = "All DORA and delivery signals are within expected bands. Use Friday's kaizen review to log observations and update memory before the next sprint.";
+
+  if (dora.lead_time?.band === "Low" || dora.lead_time?.band === "Medium") {
+    title = "Investigate lead time — pipeline friction is signaling delivery risk";
+    desc  = `Lead time is at ${dora.lead_time.value} (${dora.lead_time.band} band). Review the PR review cycle and deployment pipeline for bottlenecks. Target: < 1 day.`;
+  } else if ((inc.count_30d ?? 0) > 3) {
+    title = "Close post-mortem action items — incident frequency is elevated";
+    desc  = `${inc.count_30d} incidents in 30 days. Review open post-mortem action items and confirm on-call rotation health before the next sprint.`;
+  } else if (del.commitment_accuracy?.band === "Yellow" || del.commitment_accuracy?.band === "Red") {
+    title = "Recalibrate sprint estimation — commitment accuracy is below target";
+    desc  = `Commitment accuracy is ${del.commitment_accuracy?.value_display}. Run a planning retrospective to identify whether the issue is estimation, scope creep, or external dependencies.`;
+  } else if (del.unplanned_work?.band === "Yellow" || del.unplanned_work?.band === "Red") {
+    title = "Address unplanned work sources before next sprint planning";
+    desc  = `${del.unplanned_work?.value_display} of capacity was consumed by unplanned work. Trace the source: incidents, stakeholder requests, or dependency failures.`;
+  }
+
+  document.getElementById("one-thing-title").textContent = title;
+  document.getElementById("one-thing-desc").textContent  = desc;
+}
+
+// ---------------------------------------------------------------------------
+// Team view
+// ---------------------------------------------------------------------------
+function renderTeam(team) {
+  if (!team) return;
+
+  // Sidebar badge
+  document.getElementById("sidebar-team").innerHTML = `
+    <div class="team-name">${team.team_name || "Engineering Team"}</div>
+    <div class="team-meta">${team.team_size} engineers · ${team.sprint_cadence} sprints · ${team.on_call ? "on-call" : "no on-call"}</div>
+  `;
+
+  // Sprint cadence label
+  const cadenceLabel = { "1w": "1-week sprint", "2w": "2-week sprint", "4w": "4-week sprint" }[team.sprint_cadence] || team.sprint_cadence;
+  const el = document.getElementById("sprint-cadence-label");
+  if (el) el.textContent = cadenceLabel;
+
+  // Context table
+  const ctx = [
+    ["Team name",     team.team_name || "—"],
+    ["Team size",     `${team.team_size} engineers`],
+    ["Tech stack",    (team.tech_stack || []).join(", ") || "—"],
+    ["Product domain",team.product_domain || "—"],
+    ["Sprint cadence",cadenceLabel],
+    ["On-call",       team.on_call ? "Yes" : "No"],
+    ["OKR cycle",     team.okr_cycle || "—"],
+    ["Stakeholders",  (team.key_stakeholders || []).join(", ") || "—"],
+  ];
+
+  document.getElementById("team-context-tbody").innerHTML = ctx.map(([k, v]) => `
+    <tr><td class="td-label">${k}</td><td class="td-value">${v}</td></tr>`).join("");
+
+  // Reporting chain
+  const chain = team.reporting_chain || [];
+  document.getElementById("reporting-chain-tbody").innerHTML = chain.length
+    ? chain.map((r, i) => `<tr><td class="text-muted font-mono">${i + 1}</td><td class="td-label">${r.role}</td><td>${r.name}</td></tr>`).join("")
+    : `<tr><td colspan="3" class="text-muted" style="padding:14px 18px">No reporting chain configured</td></tr>`;
+
+  // Team KPIs from context
+  const kpis = [
+    { label: "Team Size",     value: team.team_size,           band: "—" },
+    { label: "Sprint Cadence",value: team.sprint_cadence,      band: "—", unit: " sprints" },
+    { label: "On-call",       value: team.on_call ? "Yes" : "No", band: team.on_call ? "Yellow" : "Green" },
+  ];
+  document.getElementById("team-kpis").innerHTML = kpis.map(kpiCard).join("");
+}
+
+// ---------------------------------------------------------------------------
+// API Status
+// ---------------------------------------------------------------------------
+function updateApiStatus(ok) {
+  const pill = document.getElementById("api-status-pill");
+  if (ok) {
+    pill.style.display = "none";
+  } else {
+    pill.className = "status-pill red";
+    pill.innerHTML = '<span class="dot"></span> API Offline';
+    pill.style.display = "inline-flex";
+  }
+}
+
+// ---------------------------------------------------------------------------
+// Chat
+// ---------------------------------------------------------------------------
+function openChat()  { document.getElementById("chat-overlay").classList.add("open"); document.getElementById("chat-input").focus(); }
+function closeChat() { document.getElementById("chat-overlay").classList.remove("open"); }
+function closeChatOnOverlay(e) { if (e.target === document.getElementById("chat-overlay")) closeChat(); }
+
+function sendQuick(el) { document.getElementById("chat-input").value = el.textContent; sendChat(); }
+
+function handleChatKey(e) {
+  if (e.key === "Enter" && !e.shiftKey) { e.preventDefault(); sendChat(); }
+}
+
+function autoResize(el) {
+  el.style.height = "40px";
+  el.style.height = Math.min(el.scrollHeight, 120) + "px";
+}
+
+async function sendChat() {
+  const input = document.getElementById("chat-input");
+  const btn   = document.getElementById("chat-send-btn");
+  const text  = input.value.trim();
+  if (!text) return;
+
+  const msgs = document.getElementById("chat-messages");
+  const now  = new Date().toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" });
+
+  // User bubble
+  msgs.innerHTML += `
+    <div class="msg user">
+      <div class="msg-bubble">${escHtml(text)}</div>
+      <span class="msg-time">${now}</span>
+    </div>`;
+
+  input.value = "";
+  input.style.height = "40px";
+  btn.disabled = true;
+
+  // Thinking indicator
+  const thinkId = "thinking-" + Date.now();
+  msgs.innerHTML += `
+    <div class="msg agent" id="${thinkId}">
+      <div class="chat-thinking">
+        <div class="thinking-dots"><span></span><span></span><span></span></div>
+        Routing to agents…
+      </div>
+    </div>`;
+  msgs.scrollTop = msgs.scrollHeight;
+
+  try {
+    const res = await fetch(API + "/api/run", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ situation: text }),
+    });
+    const data = await res.json();
+    const reply = res.ok ? data.result : (data.detail || "Error from agent");
+
+    document.getElementById(thinkId).remove();
+    msgs.innerHTML += `
+      <div class="msg agent">
+        <div class="msg-bubble">${escHtml(reply)}</div>
+        <span class="msg-time">${new Date().toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" })}</span>
+      </div>`;
+  } catch (e) {
+    document.getElementById(thinkId).remove();
+    msgs.innerHTML += `
+      <div class="msg agent">
+        <div class="msg-bubble text-red">Agent unavailable: ${escHtml(e.message)}</div>
+        <span class="msg-time">${now}</span>
+      </div>`;
+  }
+
+  btn.disabled = false;
+  msgs.scrollTop = msgs.scrollHeight;
+}
+
+// ---------------------------------------------------------------------------
+// Toast
+// ---------------------------------------------------------------------------
+function toast(msg, type = "info") {
+  const container = document.getElementById("toast-container");
+  const el = document.createElement("div");
+  el.className = "toast";
+  el.textContent = msg;
+  if (type === "error") el.style.borderColor = "var(--red-500)";
+  if (type === "warn")  el.style.borderColor = "var(--yellow-500)";
+  container.appendChild(el);
+  setTimeout(() => el.remove(), 4000);
+}
+
+// ---------------------------------------------------------------------------
+// Util
+// ---------------------------------------------------------------------------
+function escHtml(s) {
+  return String(s)
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/\n/g, "<br>");
+}
+
+// Spin animation for refresh icon
+const style = document.createElement("style");
+style.textContent = "@keyframes spin { from{transform:rotate(0deg)} to{transform:rotate(360deg)} }";
+document.head.appendChild(style);
+</script>
+</body>
+</html>

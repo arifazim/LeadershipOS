@@ -17,13 +17,18 @@ You need exactly one of these. Every option can read this repo's files and follo
 | Tool | Install? | Reads repo files on its own? | Cost | Best for |
 |---|---|---|---|---|
 | **Claude Code** (recommended) | Yes — one terminal command | Yes — reads any file in the folder the moment it's asked | Included with a Claude Pro/Max subscription, or pay-as-you-go API usage | Anyone willing to type in a terminal; the smoothest fit for this repo specifically |
-| **Cursor** | Yes — download an app | Yes, similar to Claude Code | Free tier + paid plans | Same as above, if you'd rather work in a full editor window than a terminal |
+| **Codex CLI / OpenAI API** | Yes — `npm install -g @openai/codex` | Yes — reads repo files via tool calls when run in agent mode | Pay-as-you-go API usage (OpenAI account required) | Teams already on the OpenAI platform; agentic use via the Responses API |
+| **Cursor** | Yes — download an app | Yes, similar to Claude Code | Free tier + paid plans | Full editor experience with inline AI; works with either Anthropic or OpenAI models |
 | **Claude.ai (web, Projects)** | No | No — you upload or paste files into the chat yourself | Free tier + paid plans | Zero-install, but more manual work each session |
 | **ChatGPT (web, Projects/Custom GPTs)** | No | No — same as above | Free tier + paid plans | If your organization already standardized on ChatGPT |
 
-`CLAUDE.md` (the file governing every response in this repo) is written specifically for **Claude Code** — it's picked up automatically as project-wide instructions the instant you open this folder with it. Other tools work too; you'll just paste `CLAUDE.md`'s contents into the chat yourself at the start of each session.
+This repo ships two AI instruction files:
+- `CLAUDE.md` — picked up automatically by Claude Code the instant you open this folder
+- `AGENTS.md` — picked up automatically by Codex CLI and OpenAI agentic tools; it points back to `CLAUDE.md` as the authoritative directive source
 
-**If you don't know which to pick: install Claude Code.** Instructions below. If you'd rather not install anything, skip to "No-install path" underneath.
+Both files contain the same operating directives. If you use any other tool, paste `CLAUDE.md`'s contents into the chat yourself at the start of each session.
+
+**If you don't know which to pick: install Claude Code.** Instructions below. If you're on the OpenAI platform, see "Install Codex CLI" further down. If you'd rather not install anything, skip to "No-install path".
 
 ### 2. Get this repo onto your computer
 
@@ -55,18 +60,51 @@ cd engineering-manager-os
    ```
 6. The first time, it opens a browser tab to sign in with your Claude account. Approve it, come back to the terminal.
 
-You're now in a chat session that can read every file in this repo on request.
+You're now in a chat session that can read every file in this repo on request. `CLAUDE.md` is loaded automatically.
+
+### 3b. Install Codex CLI (OpenAI alternative)
+
+1. Install Node.js if you don't have it — [nodejs.org](https://nodejs.org), "LTS" download.
+2. Run:
+   ```
+   npm install -g @openai/codex
+   ```
+3. Set your OpenAI API key:
+   ```
+   export OPENAI_API_KEY=sk-...
+   ```
+4. Move into the repo folder:
+   ```
+   cd path/to/engineering-manager-os
+   ```
+5. Start it in full-auto agent mode:
+   ```
+   codex --approval-mode full-auto
+   ```
+
+`AGENTS.md` is loaded automatically by Codex CLI. It directs Codex to read `CLAUDE.md` for the full operating directives — this happens on the first prompt.
 
 **No-install path (Claude.ai or ChatGPT web):** open a new chat in your browser. You'll paste file contents in manually — see "Prove It Works" below for exactly what to paste.
 
 ### 4. Prove it works
 
-**Claude Code / Cursor** — type this exactly, in the session you just opened:
+**Claude Code** — type this exactly, in the session you just opened:
 
 ```
 Read CLAUDE.md and subagents/engineering-manager.md, then introduce yourself
 as my engineering manager assistant and tell me what you can help with.
 ```
+
+**Codex CLI** — type this at the prompt after starting `codex --approval-mode full-auto`:
+
+```
+Read CLAUDE.md and subagents/engineering-manager.md, then introduce yourself
+as my engineering manager assistant and tell me what you can help with.
+```
+
+`AGENTS.md` tells Codex to read `CLAUDE.md` first — so this prompt completes the boot sequence.
+
+**Cursor** — open this folder in Cursor, then type the same prompt in the AI chat panel.
 
 **Claude.ai / ChatGPT (web)** — first copy the full contents of `CLAUDE.md`, paste it into the chat, then in the same message add:
 
@@ -76,7 +114,7 @@ operating instructions for the rest of this conversation. Introduce yourself
 as my engineering manager assistant and tell me what you can help with.
 ```
 
-If you get back a response describing the EM OS and asking what's going on with your team, it's working — everything from here is configuration and usage, not setup. If instead it responds like a generic assistant with no awareness of subagents, loops, or kaizen, it didn't actually read the file — check that you're in the right folder (Claude Code/Cursor) or that the paste went through (web tools).
+If you get back a response describing the EM OS and asking what's going on with your team, it's working. If instead it responds like a generic assistant with no awareness of subagents, loops, or kaizen, it didn't actually read the file — check that you're in the right folder (Claude Code / Codex / Cursor) or that the paste went through (web tools).
 
 ---
 

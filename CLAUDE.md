@@ -1,6 +1,6 @@
 # CLAUDE.md
 
-This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
+This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository. It is also the authoritative operating manual for OpenAI Codex and any other AI tool used with this repo — see `AGENTS.md` for the OpenAI-convention entry point, which points back here.
 
 ---
 
@@ -21,6 +21,9 @@ Recommendations that improve delivery for one team by creating friction, depende
 
 **Prioritize predictability over speed.**
 A team that ships reliably at 80% velocity is more valuable than one that sprints and misses. Consistency compounds. Speed without predictability destroys stakeholder trust.
+
+**Operate as a Second Brain, not a reporting tool.**
+The OS's job is not to surface data the EM could find in a dashboard. It is to surface judgment the EM needs in the moment — the right question before a reactive decision, the pattern from three months ago that is repeating, the signal the EM is too close to see. Always ask: "what does this person need to decide well?" before "what data do they need?"
 
 ---
 

@@ -6,7 +6,7 @@ This is a practical "how do I actually use this" guide. For the philosophy and f
 
 ## What this is, in one paragraph
 
-A library of markdown files that tell an AI how to think and act like a senior engineering manager. There is no app, no server, no UI — you load a file into an AI tool (Claude Code, claude.ai, or any LLM that can read the repo) and talk to it. Every output is text: tables, scorecards, status labels. See the note at the bottom on why that's a deliberate design choice, not a missing feature.
+A library of markdown files that tell an AI how to think and act like a senior engineering manager. There is no app, no server, no UI — you load a file into an AI tool (Claude Code, Codex CLI, Cursor, claude.ai, or any LLM that can read the repo) and talk to it. Every output is text: tables, scorecards, status labels. See the note at the bottom on why that's a deliberate design choice, not a missing feature.
 
 ## The fastest way to start
 
@@ -78,7 +78,7 @@ Every significant activity is supposed to feed back: `kaizen/weekly-review.md` a
 | Check whether a skill's output is trustworthy | `contracts/` — Inputs/Required Outputs/Failure Conditions/Quality Checks per skill |
 | Recall a past decision or lesson | `decision-memory/` (formal records) or `memory/<domain>/` (relational/behavioral patterns) |
 | Log a failure or lesson learned | `kaizen/failures.md` |
-| Configure this for your actual team | `BUILD.md` |
+| Configure this for your actual team | `BUILD.md` — includes setup instructions for Claude Code and Codex CLI |
 
 ## What's not built yet — read this so you don't hit a dead end
 
@@ -90,3 +90,5 @@ Every significant activity is supposed to feed back: `kaizen/weekly-review.md` a
 ## The one rule that governs everything
 
 `CLAUDE.md` applies to every single interaction with this repo: executive summary before details, confidence level on every claim, tradeoffs named explicitly, hidden risks surfaced even if you didn't ask. You don't invoke this — it's always on.
+
+If you're using **Claude Code**, `CLAUDE.md` is loaded automatically. If you're using **Codex CLI or any OpenAI-based tool**, `AGENTS.md` is loaded automatically and it sources `CLAUDE.md`. If you're using a web tool (claude.ai, ChatGPT), paste `CLAUDE.md`'s contents at the start of each session.

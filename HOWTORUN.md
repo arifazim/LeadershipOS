@@ -8,7 +8,12 @@ This guide provides the necessary steps to set up, configure, and operate the En
 
 - **Python 3.9+**
 - **PowerShell 7+** (for `.ps1` wrapper scripts)
-- **Google Gemini API Key**: Required for the core reasoning engine. Get one at [AI Studio](https://aistudio.google.com/).
+- **AI API Key** — choose one:
+  - **Google Gemini**: `GOOGLE_API_KEY` — get one at [AI Studio](https://aistudio.google.com/) *(current default engine)*
+  - **OpenAI / Codex**: `OPENAI_API_KEY` — get one at [platform.openai.com](https://platform.openai.com/) *(set `LLM_PROVIDER=openai` in `.env`)*
+  - **Anthropic Claude**: `ANTHROPIC_API_KEY` — get one at [console.anthropic.com](https://console.anthropic.com/) *(set `LLM_PROVIDER=anthropic` in `.env`)*
+
+If you are using this repo in **conversational mode** (Claude Code, Codex CLI, Cursor, or a web chat), no API key setup is needed here — your AI tool handles authentication. The Python setup below is only required for the automated `./bin/em-os.ps1` command runner.
 
 ---
 
@@ -25,7 +30,10 @@ pip install -r requirements.txt
    ```bash
    cp .env.example .env
    ```
-2. Open `.env` and add your **GOOGLE_API_KEY** (Required).
+2. Open `.env` and set your API key for whichever provider you're using:
+   - **Gemini (default)**: set `GOOGLE_API_KEY`
+   - **OpenAI / Codex**: set `OPENAI_API_KEY` and `LLM_PROVIDER=openai`
+   - **Anthropic Claude**: set `ANTHROPIC_API_KEY` and `LLM_PROVIDER=anthropic`
 3. (Optional) Add tokens for GitHub, Jira, PagerDuty, etc., to enable real-time data ingestion.
 
 ### C. Team Context

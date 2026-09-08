@@ -182,14 +182,26 @@ STEP 3 — SKILLS (affects agent outputs)
 STEP 4 — MEMORY (records the outcome of the above)
 ├── Add a MEMORY ENTRY (per memory/schema.md) to the relevant domain — executive/, stakeholders/,
 │   career/, conflicts/, mentoring/, promotions/, architecture/, roadmaps/, customer-feedback/,
-│   or decision-history/ — not a generic "lessons" file; every entry belongs to exactly one domain
+│   decision-history/, or retrospectives/ — not a generic "lessons" file; every entry belongs
+│   to exactly one domain
 ├── Incident recurrence goes in kaizen/failures.md, not memory/ (memory/ is leadership/relational
 │   patterns only — see memory/schema.md's "What This Module Is Not")
 ├── Engineer growth observed → memory/career/ or memory/mentoring/ depending on whether the
 │   entry is about the person's trajectory or the coaching approach that worked
-└── Decision outcome tracked → memory/decision-history/ (leadership-lesson angle) and/or
-    decision-memory/ (formal record) — cross-link both if the decision was significant enough
-    for a full decision-memory/ record
+├── Decision outcome tracked → memory/decision-history/ (leadership-lesson angle) and/or
+│   decision-memory/ (formal record) — cross-link both if the decision was significant enough
+│   for a full decision-memory/ record
+├── Retrospective themes, action item completion, or sentiment shift → memory/retrospectives/
+│   (use the domain-specific fields in retrospective-memory.md; set Recurring theme flag if
+│   the same theme appeared in the prior 90 days)
+└── DECAY MAINTENANCE (run once per week, takes < 5 minutes)
+    ├── Scan any domain file you added an entry to this week
+    ├── Are there entries now 90–180 days old with no confirmation? → add [WATCH] tag
+    ├── Are there entries now > 180 days old with no confirmation? → add [STALE] note
+    │   with archive deadline (entry date + 270 days)
+    └── Did a context shift occur this week (reorg, role change, person left/joined)?
+        → Add [CONTEXT-EXPIRED] note to all affected entries immediately; do not wait
+           for monthly review
 
 STEP 5 — EVALUATIONS (validation — confirm changes didn't break anything)
 ├── Run regression scenarios for every skill that was updated

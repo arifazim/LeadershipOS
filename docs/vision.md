@@ -24,6 +24,30 @@ This means:
 - **Consistency**: The same quality of decision-making on a bad week as on a good one
 - **Clarity**: Stakeholders always know what is happening and why
 - **Confidence**: Recommendations grounded in evidence, risks named, tradeoffs explained
+- **Second Brain**: The system remembers what the EM forgets, surfaces what they need before they ask, and develops their judgment over time — not just their team's
+
+---
+
+## What Makes This Different from Existing Tools
+
+Engineering intelligence platforms like LinearB, Jellyfish, Waydev, and Swarmia solve the **data visibility problem** well. They tell you what your DORA metrics are. They show you PR cycle times, sprint velocity, and AI code attribution. They are rearview mirrors.
+
+This OS solves a different problem: **the judgment problem**. It encodes how a great engineering manager thinks, decides, and acts — and makes that judgment available on-demand, consistent under pressure, and improving over time.
+
+The key distinction:
+
+| What data tools do | What this OS does |
+|---|---|
+| Show delivery metrics | Produce delivery narratives with confidence levels |
+| Surface attrition signals from activity data | Detect flight risk from relational and motivational signals — weeks earlier |
+| Measure AI output | Help EMs manage the human transition to AI-first work |
+| Provide dashboards for executives | Build and maintain executive trust proactively |
+| Track what happened | Predict what will happen and recommend action |
+| Give the EM data about their team | Coach the EM about their own leadership |
+
+The nine air gaps this OS is built to close — delivery narrative, predictive people risk, EM self-coaching, AI workforce transition, executive trust, org design, cross-functional PM, hiring intelligence, and decision assurance under pressure — are not addressable from a data layer. They require a judgment layer. That is this OS's moat.
+
+See `docs/superpowers/specs/2026-08-31-platform-evolution-strategy.md` for the full competitive analysis and gap-by-gap implementation plan.
 
 ---
 
@@ -31,29 +55,41 @@ This means:
 
 The OS matures in three phases. Each phase builds on the last.
 
-### Phase 1 — Foundation *(current)*
+### Phase 1 — Foundation *(complete)*
 Establish the core vocabulary, principles, and artifacts that define the management practice.
 
-- [ ] Core docs complete (`vision`, `principles`, `leadership-philosophy`, `operating-model`, `decision-framework`, `engineering-playbook`)
-- [ ] All seven subagents defined with responsibilities and decision boundaries
-- [ ] Command library covers daily, weekly, executive, incident, and retrospective workflows
-- [ ] Templates cover the six highest-frequency artifacts (1:1, sprint review, executive status, roadmap, promotion, incident review)
-- [ ] All five integrations configured (GitHub, Jira, Slack, Datadog, PagerDuty)
+- [x] Core docs complete (`vision`, `principles`, `engineering-playbook`, `glossary`)
+- [x] All eight subagents defined with responsibilities and decision boundaries
+- [x] Command library covers daily, weekly, executive, incident, and retrospective workflows
+- [x] 100+ skills across 21 directories
+- [x] Prediction engine with 81 Gherkin scenarios across 9 feature files
+- [x] Memory module with 10 domains of leadership pattern capture
+- [x] Loops, contracts, kaizen, analytics, political-signals, confidence-engine, decision-memory
 
-### Phase 2 — Intelligence
+### Phase 2 — Intelligence *(v0.5–v0.6, in progress)*
 Make the OS proactive rather than reactive. It surfaces signals before they become problems.
 
-- [ ] Early-warning features for delivery drift, burnout signals, and team health trends
-- [ ] Automated weekly digest pulling from integrations (velocity, alert noise, PR cycle time)
-- [ ] Confidence-scored risk register updated continuously from team signals
-- [ ] Pattern library: documented playbooks for the 10 most common EM scenarios (missed sprint, key person departure, scope creep, inter-team conflict, hiring freeze)
+- [ ] Memory populated with live data (v0.5)
+- [ ] Dashboard aggregates all signals into a Monday-morning at-a-glance view (v0.6)
+- [ ] Automated weekly digest pulling from integrations
+- [ ] Confidence-scored risk register updated continuously
 
-### Phase 3 — Institutional Memory
-Turn individual management practice into organizational knowledge.
+### Phase 3 — Second Brain *(v0.7–v0.9, planned)*
+Transform the OS from a management practice system into a Technical Leadership Second Brain — something no competitor in the market builds or can build from their data-layer foundation.
 
-- [ ] OS is fully transferable — a new EM can onboard to a team via this system in < 1 week
-- [ ] Kaizen archive surfaces patterns across quarters, not just within them
-- [ ] OS adapts to org-level changes (reorgs, strategy pivots, leadership transitions) without losing continuity
+- [ ] EM self-coaching loop: the system develops the manager, not just the team (v0.7)
+- [ ] Predictive people risk: flight risk detected weeks before activity signals (v0.8)
+- [ ] AI workforce transition: managing humans in an AI-first environment (v0.8)
+- [ ] Org design and reorg navigation (v0.8)
+- [ ] Hiring intelligence: full funnel from role design to 90-day ramp (v0.8)
+- [ ] Delivery narrative engine: translates metrics into stories with confidence levels (v0.9)
+- [ ] Executive trust engine: manages the upward relationship proactively (v0.9)
+- [ ] Cross-functional PM: dependency management and cross-team negotiation (v0.9)
+
+### Phase 4 — Production *(v1.0)*
+The OS is trusted, transferable, and self-sustaining. A new EM can take over a team using this OS in < 1 week. The system improves every Friday without exceptional effort.
+
+See `ROADMAP.md` for the full version-by-version breakdown with deliverables, entry criteria, exit criteria, and success metrics.
 
 ---
 

@@ -24,7 +24,7 @@ MEMORY ENTRY
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 ID:               {{DOMAIN-YYYY-MM-DD-NNN}}
 Date:             {{YYYY-MM-DD}}
-Domain:           {{executive / stakeholders / career / conflicts / mentoring / promotions / architecture / roadmaps / customer-feedback / decision-history}}
+Domain:           {{executive / stakeholders / career / conflicts / mentoring / promotions / architecture / roadmaps / customer-feedback / decision-history / retrospectives}}
 Actors:           {{roles + names; use role when the person may change; use name when person-specific}}
 Context:          {{2–3 sentences: what was the situation? what was the state of trust/momentum going in?}}
 What happened:    {{specific and behavioral: what was said, done, proposed, decided — no interpretation yet}}
@@ -51,6 +51,8 @@ Related entries:  {{IDs of entries in any domain that connect to this one}}
 | roadmaps | RMP | RMP-2026-07-01-001 |
 | customer-feedback | CUS | CUS-2026-07-01-001 |
 | decision-history | DEC | DEC-2026-07-01-001 |
+| retrospectives | RET | RET-2026-07-01-001 |
+| em-self-development | EMG | EMG-2026-08-01-001 |
 
 ---
 
@@ -167,6 +169,70 @@ Retrieval: filter by `situation:[matching tag]`; retrieve Outcome field; check R
 **Cross-link generously.** The same event often creates entries in multiple domains. Link them. Cross-domain connections surface the patterns that single-domain analysis misses.
 
 **Never treat memory as fact without verification.** Memory entries describe what appeared to be true at the time of recording. Before acting on a recalled pattern, verify current conditions — people change, context shifts, priorities evolve.
+
+---
+
+## Memory Decay Rules
+
+Memory degrades in two distinct ways: entries become stale (the world has changed), and entries accumulate noise (too many low-signal records dilute the high-signal ones). Decay rules govern both.
+
+### Decay Tiers
+
+Every entry has an implicit decay tier based on its confidence level and age. Apply these tiers during the monthly review.
+
+| Tier | Condition | Action |
+|---|---|---|
+| **Active** | Any entry < 90 days old, regardless of confidence | No action — in active recall window |
+| **Watch** | Single instance entry 90–180 days old with no confirming observation | Add `[WATCH]` tag; flag for deliberate testing in next relevant situation |
+| **Stale** | Single instance entry > 180 days old with no confirming observation | Add `[STALE — archive if not confirmed by {{date + 90 days}}]` note |
+| **Archive** | Stale entry that reaches its archive deadline without confirmation | Move to `## Archived Entries` section in the domain file; add archive date and reason |
+| **Decay-weight** | Emerging or Established entry > 12 months since last confirming observation | Add `[DECAY-WEIGHT]` tag; treat as one confidence level lower until reconfirmed |
+| **Context-expired** | Any entry where a major context shift has occurred (new executive, reorg, role change, team restructure) | Add `[CONTEXT-EXPIRED — revalidate before use]` note; do not delete |
+
+### Decay Clock Rules
+
+- The decay clock starts on the **entry date**, not the event date.
+- The clock **resets** when a new confirming observation is added (update the Last confirmed date).
+- The clock does **not** reset when an entry is merely referenced — only new confirming evidence resets it.
+- Refuted entries are **exempt from decay archival** — they are permanently retained as boundary-condition records.
+
+### Archival Mechanics
+
+When an entry is archived, it moves within its domain file to a clearly marked `## Archived Entries` section at the bottom. It is not deleted. The entry retains its full content and gains two additional fields:
+
+```
+Archived:     {{YYYY-MM-DD}}
+Archive reason: {{Stale — no confirming observation in 270 days / Context-expired — [explain shift] / Superseded by {{entry ID}}}}
+```
+
+Archived entries remain searchable. If a previously archived pattern re-emerges, restore it to Active status with a new observation note — do not create a duplicate entry.
+
+### Decay-Weight Application
+
+A Decay-weight entry should be surfaced in recall responses with an explicit caveat:
+
+```
+[DECAY-WEIGHT] This pattern was Established but has not been confirmed in > 12 months.
+Treat as Emerging (not Established) until reconfirmed. Last confirmed: {{date}}.
+```
+
+### Context-Expiry Triggers
+
+Apply `[CONTEXT-EXPIRED]` immediately — do not wait for monthly review — when any of the following occur:
+
+- The person an entry describes changes roles, leaves, or joins the team
+- A reorg changes the reporting structure or team composition
+- The EM changes roles (their own patterns observed in a prior context may not transfer)
+- A major project or product pivot changes what "good delivery" looks like for this team
+
+### What Does Not Decay
+
+| Entry type | Decay applies? | Reason |
+|---|---|---|
+| Refuted entries | No | Failure conditions are permanent boundary records |
+| Archived entries (already archived) | No | Already out of active recall |
+| Established entries < 12 months since last confirmation | No | Still within active validity window |
+| Decision-history entries linked to outcomes | No | Outcome facts do not expire (the decision happened) |
 
 ---
 
