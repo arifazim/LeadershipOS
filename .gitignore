@@ -19,4 +19,7 @@ venv/
 .idea/
 .vscode/
 *.swp
-.env
+
+# macOS screenshot originals (README uses compressed JPEG)
+images/Screenshot*.heic
+images/dashboard-*.png
