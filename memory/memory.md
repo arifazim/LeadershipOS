@@ -36,6 +36,8 @@ When a recall question arrives, route to the correct domain before querying.
 | "What caused this conflict to resolve (or not)?" | conflicts/ | stakeholders/ |
 | "What was the outcome of the last [initiative] decision?" | decision-history/ | roadmaps/ |
 | "What does [engineer]'s career aspiration look like over time?" | career/ | promotions/ |
+| "What retro themes keep coming back?" | retrospectives/ | delivery-adjacent memory |
+| "What growth edge did I set for myself last month?" | em-self-development/ | decision-history/ |
 
 ---
 

@@ -1,5 +1,6 @@
-google-generativeai
+google-genai
 python-dotenv
 requests
-fastapi
+fastapi>=0.115.0
+starlette>=0.40.0,<1.0.0
 uvicorn[standard]

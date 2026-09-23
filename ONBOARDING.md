@@ -82,7 +82,7 @@ Every significant activity is supposed to feed back: `kaizen/weekly-review.md` a
 
 ## What's not built yet — read this so you don't hit a dead end
 
-- **`integrations/*.md` (GitHub, Jira, Slack, Datadog, PagerDuty) are empty.** Nothing auto-fetches data yet — when a loop says "gather inputs via Jira," you currently paste that data into your prompt yourself.
+- **Live metrics are optional.** `python3 scripts/ingest_metrics.py` writes `memory/current_metrics.json`. Missing tokens use mock. See `integrations/README.md`. Conversational loops can still take pasted Jira/GitHub context.
 - **A handful of skills are referenced but not built** (e.g. `skills/operations/postmortem.md`, `skills/delivery/track-sprint.md`). They're explicitly marked "(planned — not yet built)" wherever referenced — if you hit one, treat it as a gap, not a bug.
 - **Only 5 of ~200+ skills have regression test coverage** (sprint-review + the 4 assessment modules). Everything else hasn't been run against real golden outputs — treat first-time output from an untested skill with a bit more scrutiny.
 - **No weekly/monthly kaizen review has actually been run in production yet** — the mechanism is built and tested, not yet proven on live data.

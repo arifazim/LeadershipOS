@@ -1,6 +1,6 @@
 # Contract Template: Skill
 
-**Applies to**: every file under `skills/`, `leadership-health/`, `confidence-engine/` (dimension files), `political-signals/` (via `skills/political-signals/`), `decision-memory/` (via `skills/decision-memory/`)
+**Applies to**: every file under `skills/`, `leadership-health/`, `confidence-engine/` (dimension files), `political-signals/` (via `skills/organizational/political-intelligence.md`), `decision-memory/` (via `skills/decision-memory/`)
 
 Every skill must be describable by this contract. If a skill's own file doesn't state these fields explicitly (most existing skills express them narratively across Purpose/Inputs/Output/Confidence Score/Failure Modes sections), the contract is derived from those sections — see `skill.contract.md#worked-example` below for how `skills/delivery/review-sprint.md` maps onto it.
 

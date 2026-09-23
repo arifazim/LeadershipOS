@@ -9,12 +9,14 @@
 
 ## What This Command Does
 
-Produces a structured, stakeholder-sendable snapshot of the team's current operational health across four dimensions:
+Produces a structured, stakeholder-sendable snapshot of the team's current operational health across six dimensions:
 
 1. **Executive Confidence** — composite score (0–100) from DORA metrics + sprint predictability
 2. **Delivery** — sprint velocity, commitment accuracy, unplanned work ratio, PR cycle time
 3. **Reliability** — MTTR, change failure rate, incident frequency
-4. **Risk** — top risks derived from the above signals with confidence levels
+4. **SPACE team health** — derived proxies until 1:1/retro memory accumulates (explicit Low confidence)
+5. **Roadmap** — milestone status, commitment hit rate, scope-inflation flag (mock until Jira token)
+6. **Risk** — top risks derived from the above signals with confidence levels
 
 The dashboard command is the lightweight entry point: it reads `memory/current_metrics.json` (populated by `scripts/ingest_metrics.py`) and produces output in < 5 minutes without requiring any specialist agents unless a Yellow or Red signal is found.
 
@@ -39,7 +41,7 @@ To refresh metrics (re-ingest from configured sources):
 ```bash
 # Via the web UI: click "Refresh Data" in the sidebar
 # Via CLI:
-python scripts/ingest_metrics.py
+python3 scripts/ingest_metrics.py
 ```
 
 ---
@@ -87,6 +89,18 @@ INCIDENTS (30d):
   Count   : {{N}} — {{Green | Yellow | Red}}
   MTTR    : {{value}}
   CFR     : {{value}}%
+
+SPACE (derived proxies until 1:1 memory accumulates — confidence Low):
+  Satisfaction  : {{score}} — {{Green | Yellow | At Risk | Red}}
+  Performance   : {{score}} — {{Green | Yellow | At Risk | Red}}
+  Activity      : {{score}} — {{Green | Yellow | At Risk | Red}}
+  Communication : {{score}} — {{Green | Yellow | At Risk | Red}}
+  Efficiency    : {{score}} — {{Green | Yellow | At Risk | Red}}
+
+ROADMAP:
+  Milestone          : {{name}} — {{On track | At risk | Off track}}
+  Commitments hit    : {{pct}}%
+  Scope inflation    : {{pct}}% — {{flagged | within band}}
 
 RISK REGISTER:
   {{severity}} | {{risk title}} | Confidence: {{High | Medium | Low}}

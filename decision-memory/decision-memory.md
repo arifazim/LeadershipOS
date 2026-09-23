@@ -300,4 +300,4 @@ Conditions under which this synthesis produces unreliable output. Identify and f
 | `skills/decision-memory/detect-patterns.md` | Finds repeated patterns across decision history |
 | `skills/leadership-health/decision_quality.md` | Decision outcomes and quality feed into EM assessment |
 | `confidence-engine/executive_confidence.md` | Decision quality and learning build executive confidence |
-| `skills/political-signals/decision_reversals.md` | Decision reversals are tracked against original records |
+| `skills/organizational/political-intelligence.md` | Decision reversals are tracked against original records (Signal 1) |

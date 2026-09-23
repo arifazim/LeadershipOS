@@ -2,7 +2,7 @@
 
 **Cadence**: Monthly (first Friday of each month, or the Friday closest to the 1st)
 **Reusable by**: `engineering-manager` (primary and only owner — this loop is inward-facing)
-**Command entry point**: none — invoked directly; no command file exists for this loop
+**Command entry point**: `commands/em-growth.md`
 
 ## Purpose
 
@@ -23,7 +23,7 @@ Unlike all other loops in this OS, the output of this loop is not a team artifac
 1. **Gather inputs** (15 minutes)
    - Read `kaizen/weekly-review.md` Q9 ("what would I do differently") entries from the last 4 weeks
    - Read `kaizen/failures.md` — all entries from the last 90 days where EM behavior was the execution fault or a contributing factor
-   - Pull the most recent `leadership-health/master-leadership-health.md` score — note dimensions below 6/10
+   - Pull the most recent `skills/leadership-health/leadership-health-engine.md` score — note dimensions below 60/100
    - Pull the last 3 decisions from `decision-memory/` — if no formal records, use mental inventory
    - Read prior `memory/em-self-development/` entry (if exists) — specifically: was last month's growth edge applied?
 
@@ -75,9 +75,7 @@ Linked failures closed: {{FAIL-NNN list or "none"}}
 
 ## Feature Reference
 
-`features/crisis-management.feature` — crisis scenarios are the highest-pressure application of growth loop outputs; see also `features/one-on-one.feature` for the individual development context that this loop complements.
-
-No dedicated feature file exists for this loop yet. Proposed: `features/em-growth.feature` — to be created when this loop has been run for at least 3 months and behavioral patterns can be specified with enough fidelity to write Gherkin scenarios.
+`features/em-growth.feature` — monthly self-coaching, prior-edge close, mock-metrics caveat, cadence overdue. Crisis application: `features/crisis-management.feature`.
 
 ## Failure Modes
 

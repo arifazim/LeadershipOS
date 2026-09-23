@@ -79,6 +79,26 @@ Apply weights to individual signal assessments (0-100 scale):
 
 ---
 
+## Single-Incident Fast Path (Escalation Signal)
+
+The five-signal engine scores **aggregates** (typically last 6 months). Do not wait for a second data point when a single escalation happens today — especially when a stakeholder raised concerns about the EM or the team to a skip-level rather than to the EM.
+
+**When to use this path (not the monthly scan):**
+- A stakeholder bypassed the EM and raised a concern to the EM's manager, skip-level, or HR
+- The EM learned of the concern second-hand on the same day
+- Only one incident exists so far (frequency = 1)
+
+**Triage (same day):**
+1. **Verify specifics** — what was said, to whom, about what, with what ask. Do not infer motive.
+2. **Direct conversation with the source** — request a bilateral conversation before responding upward. Name the pattern, not the person.
+3. **Shared-visibility protocol** — tell the manager/skip-level: "I heard this, I am talking to the source, I will close the loop by {{date}}."
+4. **Do not inflate the aggregate score** from a single incident. Feed the monthly scan only if it recurs (2+ independent incidents in 90 days).
+5. **Log** to `memory/conflicts/` (reputational/interpersonal strain) and `memory/stakeholders/` (relationship health). Cross-link both.
+
+**Worked example:** PM raises delivery-quality concerns to the Director, not the EM. Same-day path: EM asks the Director for the specifics, books a 30-minute with the PM, agrees a shared status format, logs CON + STK entries. Monthly escalation score stays unchanged unless a second independent bypass occurs.
+
+---
+
 ## Output Template
 
 ### 1. Risk Summary

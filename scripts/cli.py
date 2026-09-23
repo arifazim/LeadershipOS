@@ -7,8 +7,6 @@ from dotenv import load_dotenv
 # Add project root to path to allow imports from core
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
-from core.orchestrator import Orchestrator
-
 load_dotenv()
 
 # Paths
@@ -51,13 +49,19 @@ def run_command(command_name):
     print(f"\nProcessing situation: {command_name}")
     print("-" * 30)
     
+    from core.orchestrator import Orchestrator
+
     orchestrator = Orchestrator()
-    result = orchestrator.run(situation)
+    command = command_name if os.path.exists(cmd_path) else None
+    result = orchestrator.run(situation, command=command)
     
     print("\nFINAL OUTPUT:")
     print("-" * 30)
     print(result)
     print("-" * 30)
+
+    from core.session_log import persist_cli_run
+    persist_cli_run(command or "", result)
 
 def main():
     parser = argparse.ArgumentParser(description="Engineering Manager OS CLI")

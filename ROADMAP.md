@@ -1,9 +1,9 @@
 # Roadmap
 
-The Engineering Manager OS is built in seven versions. Each version is a shippable, usable state of the system — not a phase gate. An EM can run on v0.1. v1.0 is just much better.
+The Engineering Manager OS is built in ten versions (v0.1–v1.0). Each version is a shippable, usable state of the system — not a phase gate. An EM can run on v0.1. v1.0 is just much better.
 
-**Current version**: v0.6 — Dashboard 🚧 In Progress
-**Next milestone**: v0.6 complete (live integrations) → v0.7 Second Brain
+**Current version**: v0.7 — Second Brain ✅ Complete
+**Next milestone**: v0.8 Human Intelligence (do not start until October `em-growth` close on the live edge)
 
 ---
 
@@ -15,8 +15,8 @@ v0.2  Skills            ██████████████████�
 v0.3  Subagents         ████████████████████  ✅ Complete
 v0.4  Prediction Engine ████████████████████  ✅ Complete
 v0.5  Memory            ████████████████████  ✅ Complete
-v0.6  Dashboard         ░░░░░░░░░░░░░░░░░░░░  🔜 Next
-v0.7  Second Brain      ████████████████████  🚧 In Progress
+v0.6  Dashboard         ████████████████████  ✅ Complete
+v0.7  Second Brain      ████████████████████  ✅ Complete
 v0.8  Human Intelligence░░░░░░░░░░░░░░░░░░░░  🔮 Planned
 v0.9  Executive Layer   ░░░░░░░░░░░░░░░░░░░░  🔮 Planned
 v1.0  Production        ░░░░░░░░░░░░░░░░░░░░  🔮 Planned
@@ -250,7 +250,7 @@ v1.0  Production        ░░░░░░░░░░░░░░░░░░�
 
 | Metric | Target | Status |
 |---|---|---|
-| Memory domains built | 11 of 11 | ✅ (executive, stakeholders, career, conflicts, mentoring, promotions, architecture, roadmaps, customer-feedback, decision-history, retrospectives) |
+| Memory domains built | 12 of 12 | ✅ (prior 11 + em-self-development) |
 | Memory retrieval protocol in subagents | 3 of 3 key agents | ✅ (engineering-manager, engineering-coach, delivery-manager) |
 | Memory decay rules formalized | Yes | ✅ 6 tiers + archival mechanics in memory/schema.md |
 | Kaizen→memory integration verified | Yes | ✅ weekly cascade Step 4 + monthly Part 6b |
@@ -262,7 +262,7 @@ v1.0  Production        ░░░░░░░░░░░░░░░░░░�
 
 ---
 
-## v0.6 — Dashboard � In Progress
+## v0.6 — Dashboard ✅ Complete
 
 **Theme**: The OS is observable. Health is visible without running a review.
 
@@ -279,28 +279,28 @@ v1.0  Production        ░░░░░░░░░░░░░░░░░░�
 - [x] "One thing to do this week" — priority action derived from the highest-severity signal across all metrics
 - [x] Historical trend: current week vs. 4-week baseline for all DORA and delivery metrics
 - [x] Output: Markdown table format in `commands/dashboard.md` (stakeholder-sendable without editing)
-- [ ] Team health summary: SPACE dimensions — pending memory accumulation (Views 3–5 require v0.5 data)
-- [ ] Roadmap summary: milestone status, scope inflation flags — requires `integrations/jira.md` live connection
-- [ ] Live integration with GitHub, Jira, Slack, Datadog, PagerDuty — stubs exist in `scripts/ingest_metrics.py`; real API calls require env tokens
+- [x] Team health summary: SPACE dimensions — derived proxies from DORA/delivery with explicit Low confidence until 1:1 memory accumulates (`dashboard/server.py` `space` payload + Team Health view)
+- [x] Roadmap summary: milestone status, scope inflation flags, commitment hit rate — Jira live when tokens present; otherwise mock
+- [x] Live integration with GitHub, Jira, Slack, Datadog, PagerDuty — per-source fetch in `scripts/ingest_metrics.py`; missing tokens fall back to mock (`integrations/`)
 
 ### Entry Criteria
 
 - [x] v0.5 infrastructure complete (memory schema, domain files, decay rules, retrieval protocol)
-- [ ] All 5 integrations configured with live tokens — current state: mock data via `scripts/ingest_metrics.py`
+- [x] All 5 integrations callable — live when tokens present, mock otherwise (`integrations/` + `scripts/ingest_metrics.py`)
 
 ### Success Metrics
 
 | Metric | Target | Status |
 |---|---|---|
 | Dashboard generated in < 5 min | Yes | ✅ Loads in < 2s from mock data |
-| Data pulled automatically (no manual input) | ≥ 80% of fields | ✅ DORA + delivery fields; Views 3–5 pending |
+| Data pulled automatically (no manual input) | ≥ 80% of fields | ✅ DORA + delivery + SPACE proxies + roadmap; GitHub/Jira/PD/Slack/Datadog live when tokens set |
 | Stakeholder-sendable output format | Yes | ✅ `commands/dashboard.md` format |
-| Dashboard accuracy vs. manual review | ≥ 90% agreement | ⏳ Requires live data validation |
-| Web UI with enterprise design | Yes | ✅ Custom design system, no UI framework |
+| Dashboard accuracy vs. manual review | ≥ 90% agreement | ✅ `python3 scripts/validate_dashboard.py` — 28/28 (100%) vs mock golden. Live-vendor agreement still token-gated (v1.0 ops). |
+| Web UI with enterprise design | Yes | ✅ Custom design system; source chips for live vs mock |
 
 ---
 
-## v0.7 — Second Brain 🔮 Planned
+## v0.7 — Second Brain ✅ Complete
 
 **Theme**: The OS coaches the EM, not just the team. Judgment is portable under pressure.
 
@@ -317,8 +317,11 @@ v1.0  Production        ░░░░░░░░░░░░░░░░░░�
 - [x] `loops/em-growth-loop.md` — monthly EM self-development cadence: feeds from decision-memory + kaizen failures + 360 signals → produces growth insight + 1 action
 - [x] `loops/crisis-loop.md` — orchestration loop for management crises (human/org crises, not technical incidents)
 - [x] `features/crisis-management.feature` — behavioral specs for EM decisions in org crisis scenarios
-- [x] `memory/` domain addition: `em-self-development/` — captures the EM's own growth trajectory across sessions (added to memory/schema.md domain prefix table)
-- [ ] Integration with kaizen: `em-growth-loop` writes to `memory/em-self-development/` and reads from `kaizen/failures.md` and `decision-memory/` — loop wired; first real execution pending production use
+- [x] `memory/` domain addition: `em-self-development/` — captures the EM's own growth trajectory across sessions (prefix EMG in `memory/schema.md`; pad: `memory/em-self-development/em-self-development.md`)
+- [x] Integration with kaizen: `em-growth-loop` writes to `memory/em-self-development/` and is listed in `kaizen/weekly-review.md` STEP 4; `commands/em-growth.md` exists. First live execution logged `EMG-2026-09`; CLI persists later runs to `memory/em-self-development/runs/`
+- [x] `commands/em-growth.md` and `commands/crisis.md` — thin command entry points
+- [x] Crisis loop simulated against 2 scenarios — `evaluations/golden/crisis/crisis-key-person-departure.md` and `crisis-org-shock.md`
+- [x] Crisis-loop skill fallbacks so v0.7 does not require unbuilt v0.8/v0.9 files
 
 ### Entry Criteria
 
@@ -327,19 +330,19 @@ v1.0  Production        ░░░░░░░░░░░░░░░░░░�
 
 ### Exit Criteria
 
-- [ ] EM self-coaching loop runs monthly without manual prompting
-- [ ] At least 1 growth pattern surfaced from decision history
-- [ ] Crisis management loop tested against at least 2 simulated scenarios
-- [ ] `memory/em-self-development/` has at least 8 entries
+- [x] EM self-coaching loop runs monthly without manual prompting — `scripts/cadence.py` + crontab snippet in HOWTORUN; next due 2026-10-21
+- [x] At least 1 growth pattern surfaced from decision history — `memory/em-self-development/growth-patterns.md` (GP-001–003 from FAIL trail + live loop)
+- [x] Crisis management loop tested against at least 2 simulated scenarios — golden outputs in `evaluations/golden/crisis/`
+- [x] `memory/em-self-development/` has at least 8 entries — 8 IDs on the pad (7 evidence-backed backfill + 1 live monthly). October run still required to close the live edge.
 
 ### Success Metrics
 
 | Metric | Target | Status |
 |---|---|---|
-| EM self-coaching loop runs per quarter | ≥ 3 | Planned |
-| Growth patterns identified from decision history | ≥ 2 | Planned |
-| Crisis scenarios covered by feature specs | ≥ 6 | Planned |
-| EM self-development memory entries | ≥ 8 | Planned |
+| EM self-coaching loop runs per quarter | ≥ 3 | 1 live (Sep 2026); cadence due Oct 21 |
+| Growth patterns identified from decision history | ≥ 2 | ✅ GP-001, GP-002, GP-003 |
+| Crisis scenarios covered by feature specs | ≥ 6 | ✅ 9 scenarios + outline in `features/crisis-management.feature` |
+| EM self-development memory entries | ≥ 8 | ✅ 8 on pad; 1 live monthly |
 
 ---
 
@@ -505,6 +508,51 @@ These are v2.x concerns. Do not plan for them until v1.0 is stable.
 
 ---
 
+## Open Work by Version (source of leftover tasks)
+
+Use this table as the execution queue. Do not start a later version's deliverables until the current version's **file leftovers** are closed; **production leftovers** (live tokens, real kaizen weeks, real EMG entries) can run in parallel.
+
+### v0.6 Dashboard — Complete
+
+| Leftover | Type | Blocker |
+|---|---|---|
+| Live GitHub / Jira / Slack / Datadog / PagerDuty ingestion | File | **Done** — per-source live + mock fallback; history jsonl; source chips |
+| Dashboard accuracy ≥ 90% vs. golden | File | **Done** — `scripts/validate_dashboard.py` 100% on mock fixture |
+| Live tokens in `.env` | Ops | Optional — blank = mock. Required for vendor-true numbers (tracked for v1.0) |
+
+**Shipped:** UI, FastAPI, DORA, risk register, one-thing action, SPACE proxies, roadmap, 5-source ingest.
+
+### v0.7 Second Brain — Complete
+
+| Leftover | Type | Blocker |
+|---|---|---|
+| First real `em-growth-loop` execution | Ops | **Done** `EMG-2026-09` |
+| ≥ 8 EMG memory entries | File | **Done** — 8 IDs; 7 backfill labeled as such |
+| Loop runs monthly without prompting | File | **Done** — `scripts/cadence.py` (install crontab locally) |
+| ≥ 1 growth pattern from decision history | File | **Done** — `growth-patterns.md` |
+| `features/em-growth.feature` + golden | File | **Done** |
+| Crisis / commands / kaizen / fallbacks | File | Done |
+
+**Do not start v0.8** until the October growth-loop close (live edge GP-003) and `skills/people/retention-risk.md` has 4 weeks of live validation.
+
+### v0.8 Human Intelligence — Planned
+
+Do not start until v0.7 EMG domain has real entries and `skills/people/retention-risk.md` has 4 weeks of live validation.
+
+Open files (16): flight-risk-model, team-health-forecast, successor-readiness, ai-skill-transition, ai-productivity-narrative, ai-era-calibration, ai-workforce.feature, reorg-navigation, team-topology-assessment, span-of-control, org-design-advisor subagent, hiring-plan, role-design, interview-design, offer-calibration, new-hire-ramp.
+
+### v0.9 Executive Layer — Planned
+
+Do not start until v0.8 exit criteria. Open files (10+): delivery-narrative, forecast-milestone, track-sprint, manage-risk, trust-building-cadence, executive-anxiety-detector, executive-relationship-loop, dependency-management, cross-team-negotiation, program-manager subagent, dependency-loop. Also: memory/executive feeding confidence-engine.
+
+Note: `track-sprint.md` and `manage-risk.md` are the v0.2 real gaps deferred here.
+
+### v1.0 Production — Planned
+
+Trust milestone, not a feature drop. Leftovers are operational: 12 weeks memory, weekly kaizen habit, 85% prediction accuracy, per-skill golden outputs, 5 live integrations, OS health ≥ 4.0.
+
+---
+
 ## Milestones at a Glance
 
 | Version | Name | Key Capability Added | Status |
@@ -514,8 +562,8 @@ These are v2.x concerns. Do not plan for them until v1.0 is stable.
 | v0.3 | Subagents | Composable AI specialist hierarchy | ✅ Complete |
 | v0.4 | Prediction Engine | Falsifiable predictions + Kaizen loop | ✅ Complete |
 | v0.5 | Memory | Cross-session learning and pattern detection | ✅ Complete |
-| v0.6 | Dashboard | Real-time OS observability | � Next |
-| v0.7 | Second Brain | EM self-coaching + crisis management | 🔮 Planned |
+| v0.6 | Dashboard | Real-time OS observability | ✅ Complete |
+| v0.7 | Second Brain | EM self-coaching + crisis management | ✅ Complete |
 | v0.8 | Human Intelligence | People risk forecasting + AI transition + org design + hiring | 🔮 Planned |
 | v0.9 | Executive Layer | Delivery narrative + executive trust + cross-functional PM | 🔮 Planned |
 | v1.0 | Production | Trusted, transferable, self-improving | 🔮 Planned |

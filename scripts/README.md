@@ -4,35 +4,46 @@ This directory contains scripts for automating data ingestion and operational ta
 
 ## 1. Metrics Ingestion (`ingest_metrics.py`)
 
-This script pulls data from external sources (GitHub, Jira, PagerDuty) and stores it in `memory/current_metrics.json` for use by the subagents.
+Pulls GitHub, Jira, PagerDuty, Slack (`auth.test`), and Datadog (validate + monitor count) into `memory/current_metrics.json` and appends `memory/metrics_history.jsonl`.
 
-### Setup
+```bash
+python3 scripts/ingest_metrics.py
+```
 
-1. **Install Dependencies**:
-   ```bash
-   pip install requests
-   ```
+Each source is independent. Missing env vars → mock data with `"_source": "mock"`. API errors → `"_source": "mock-fallback"`.
 
-2. **Configure Environment Variables**:
-   For real data ingestion, set the following environment variables:
-   - `GITHUB_TOKEN`
-   - `JIRA_TOKEN`
-   - `JIRA_BASE_URL`
-   - `PAGERDUTY_TOKEN`
+Required env vars: see `integrations/README.md` and `HOWTORUN.md` §2.
 
-3. **Run Ingestion**:
-   ```bash
-   python scripts/ingest_metrics.py
-   ```
+There is no global `mock=` switch. Do not set `MetricsIngestor(mock=True)`.
 
-### Mock Mode
-By default, the script runs in **mock mode** to demonstrate functionality without requiring API keys. To enable real ingestion, modify the `ingestor = MetricsIngestor(mock=True)` line in the script to `mock=False`.
+## 2. Dashboard golden check (`validate_dashboard.py`)
 
-## 2. CI/CD Integration
+```bash
+python3 scripts/validate_dashboard.py
+```
 
-You can schedule these scripts using GitHub Actions or a local cron job to ensure the OS always has up-to-date context.
+Must print ≥ 90% agreement against `evaluations/golden/dashboard/`.
 
-Example Crontab:
+## 3. Cadence (`cadence.py`)
+
+```bash
+python3 scripts/cadence.py
+```
+
+Exit 1 if `em-growth` is overdue (`memory/cadence.json`).
+
+## 4. CLI (`cli.py`)
+
+```bash
+./bin/em-os list
+./bin/em-os status
+./bin/em-os run daily
+```
+
+## 5. CI/CD Integration
+
+Example crontab:
+
 ```cron
 0 * * * * /usr/bin/python3 /path/to/engineering-manager-os/scripts/ingest_metrics.py
 ```

@@ -1,0 +1,56 @@
+{
+  "confidence_score": 88,
+  "confidence_band": "Green",
+  "dora": {
+    "overall": "High",
+    "deployment_frequency": {
+      "value": "daily",
+      "band": "Elite"
+    },
+    "lead_time": {
+      "value_raw": 1.2,
+      "band": "High"
+    },
+    "change_failure_rate": {
+      "value_raw": 5.0,
+      "band": "Elite"
+    },
+    "mttr": {
+      "value_raw": 0.7,
+      "band": "Elite"
+    }
+  },
+  "delivery": {
+    "sprint_velocity": {
+      "value": 45
+    },
+    "commitment_accuracy": {
+      "value": 88.0,
+      "band": "Green"
+    },
+    "unplanned_work": {
+      "value": 12.0,
+      "band": "Yellow"
+    },
+    "pr_cycle_time": {
+      "value_raw": 18.0,
+      "band": "Yellow"
+    }
+  },
+  "incidents": {
+    "count_30d": 3,
+    "band": "Yellow"
+  },
+  "roadmap": {
+    "milestone": "Q3 platform API",
+    "band": "Green",
+    "source": "mock"
+  },
+  "sources": {
+    "github": "mock",
+    "jira": "mock",
+    "pagerduty": "mock",
+    "slack": "mock",
+    "datadog": "mock"
+  }
+}

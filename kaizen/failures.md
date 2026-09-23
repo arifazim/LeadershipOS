@@ -61,11 +61,11 @@ How will we know the fix worked?
 Date: 2026-07-08
 Type: Skill
 Severity: Medium
-Status: Open
+Status: Fixed
 Source: User scenario review (a product manager repeatedly raising concerns about the EM to the EM's manager and skip-level, rather than to the EM directly)
 
 ### What Failed
-`skills/political-signals/escalation_patterns.md` only operates on a 6-month aggregate frequency count (0–3 / 4–8 / 9–15 / 16+) at monthly cadence. It has no guidance for the day an EM learns about a single incident — exactly when direct intervention is cheapest. `loops/stakeholder-loop.md`'s trigger conditions never name "a stakeholder raised concerns about me/my team to leadership above me" explicitly (only the generic "shows signs of strain"), and its Step 5 "Log outcome" cross-links only to `political-signals/` and `memory/decision-history/` — never to `memory/conflicts/`, despite that domain existing specifically for this.
+`skills/organizational/political-intelligence.md` (Signal 4: Escalation Patterns; formerly `skills/political-signals/escalation_patterns.md`) only operated on a 6-month aggregate frequency count at monthly cadence. It had no guidance for the day an EM learns about a single incident — exactly when direct intervention is cheapest. `loops/stakeholder-loop.md`'s trigger conditions never name "a stakeholder raised concerns about me/my team to leadership above me" explicitly (only the generic "shows signs of strain"), and its Step 5 "Log outcome" historically cross-linked only to `political-signals/` and `memory/decision-history/` — never to `memory/conflicts/`, despite that domain existing specifically for this.
 
 ### What Was Available Earlier
 The skill's own Confidence Score table already penalizes "assessment based on second-hand accounts" (−15%), showing the authors knew single incidents are weak signal in aggregate — but never built the single-incident path that would make that signal actionable immediately instead of only after it accumulates.
@@ -78,15 +78,16 @@ The skill's own Confidence Score table already penalizes "assessment based on se
 Missing failure mode — the aggregate-frequency design never anticipated the single-incident, same-day response case.
 
 ### Change Required
-- File to update: `skills/political-signals/escalation_patterns.md` — add a "Single-Incident Fast Path" section (verify specifics → direct conversation with the source → shared-visibility protocol → only feed the 6-month aggregate scan if it recurs)
+- File to update: `skills/organizational/political-intelligence.md` — add a "Single-Incident Fast Path" section (verify specifics → direct conversation with the source → shared-visibility protocol → only feed the 6-month aggregate scan if it recurs)
 - File to update: `loops/stakeholder-loop.md` — add explicit trigger: "A stakeholder has raised concerns about me or my team directly to my manager or skip-level rather than to me"; fix Step 5 to cross-link `memory/conflicts/` when the strain is interpersonal/reputational
 - Confidence in fix: Medium — approach is clear; needs a worked example before it's trustworthy
 
 ### Verification
-A new example scenario in `skills/political-signals/escalation_patterns.md` showing single-incident triage end-to-end, distinct from the existing aggregate-scan examples.
+A new example scenario in `skills/organizational/political-intelligence.md` showing single-incident triage end-to-end, distinct from the existing aggregate-scan examples.
 
 ### Linked Updates
-- Skill change: not yet made
+- Skill change: `skills/organizational/political-intelligence.md` — Single-Incident Fast Path added 2026-09-20
+- Loop change: `loops/stakeholder-loop.md` — skip-level bypass trigger + `memory/conflicts/` log path
 - Feature change: none
 - Golden output: n/a
 

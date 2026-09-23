@@ -137,15 +137,15 @@ Add this context block to the top of `subagents/engineering-manager.md`.
 
 ## Step 2: Configure Integrations
 
-Work through each file in `integrations/` and fill in the required details:
+Set env vars in `.env` (see `integrations/README.md`). Each source is independent.
 
 | Integration | Required Config |
 |---|---|
-| `github.md` | Org name, repo list, team slug |
-| `jira.md` | Project keys, board IDs, sprint field name |
-| `slack.md` | Channel IDs (#team, #incidents, #eng-leadership) |
-| `datadog.md` | Dashboard IDs, SLO names, alert policy IDs |
-| `pagerduty.md` | Service IDs, escalation policy, on-call schedule URL |
+| `github.md` | `GITHUB_TOKEN`, `GITHUB_REPO=owner/repo` |
+| `jira.md` | `JIRA_BASE_URL`, `JIRA_EMAIL`, `JIRA_TOKEN`, `JIRA_PROJECT` |
+| `slack.md` | `SLACK_TOKEN` (presence recorded; channel pulse not yet in DORA) |
+| `datadog.md` | `DATADOG_API_KEY`, `DATADOG_APP_KEY` (presence recorded) |
+| `pagerduty.md` | `PAGERDUTY_TOKEN` |
 
 ## Step 3: Customize Commands and Loops
 

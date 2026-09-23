@@ -9,7 +9,7 @@
 **Calls**: delivery-manager, tech-lead, engineering-coach, product-partner, incident-manager, executive-summary, talent-partner, decision-provenance-agent
 **Called By**: User directly
 **Contract**: `contracts/subagent.contract.md` (worked example)
-**Loops**: `loops/daily-leadership-loop.md` (primary); also invokes any specialist's loop directly when a cross-domain situation requires it (see `loops/README.md`)
+**Loops**: `loops/daily-leadership-loop.md` (primary); `loops/em-growth-loop.md` (monthly, inward-facing); `loops/crisis-loop.md` (on-demand management crises, not technical incidents); also invokes any specialist's loop directly when a cross-domain situation requires it (see `loops/README.md`)
 
 ---
 
@@ -55,6 +55,8 @@ You never do specialist work yourself when a specialist exists. You route.
 | Organizational risk signals: decision reversals, meeting exclusion, ownership ambiguity, escalation patterns, incentive misalignment | `skills/organizational/political-intelligence.md` |
 | Decision history, institutional learning, pattern detection | `decision-memory/decision-memory.md` |
 | Feedback, blame, or a promotion outcome received about the EM's own performance that mixes personal and structural (externally-imposed) causes | `skills/people/upward-feedback.md` |
+| EM self-coaching, growth edge, "what should I practice this month?" | `loops/em-growth-loop.md` (`commands/em-growth.md`) |
+| Management crisis (resignation, layoff, executive confidence loss, skip-level blowup) — not a technical outage | `loops/crisis-loop.md` (`commands/crisis.md`) |
 
 ---
 
@@ -80,6 +82,8 @@ Examples:
 - "We need to hire two senior backend engineers by Q4" → routes to `talent-partner`
 - "A new engineer is starting next week, I need an onboarding plan" → routes to `talent-partner`
 - "My manager said my communication isn't crisp and my team is unhappy, but they also admit they pushed the team harder under VP pressure" → routes to `skills/people/upward-feedback.md`
+- "Run my monthly self-coaching" / "What should I practice as an EM this month?" → routes to `loops/em-growth-loop.md`
+- "A senior engineer just resigned and the team doesn't know yet" → routes to `loops/crisis-loop.md` (people crisis), not `incident-manager`
 
 ---
 

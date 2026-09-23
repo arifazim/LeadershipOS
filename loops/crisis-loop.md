@@ -2,7 +2,7 @@
 
 **Cadence**: On-demand — activates when a management crisis (not a technical incident) is unfolding
 **Reusable by**: `engineering-manager` (primary), `engineering-coach` (people crises), `delivery-manager` (delivery crises)
-**Command entry point**: none — invoked directly; technical incidents use `incident-loop` instead
+**Command entry point**: `commands/crisis.md` — technical incidents use `commands/incident.md` / `incident-loop` instead
 
 ## Purpose
 
@@ -23,7 +23,7 @@ These events are management P1s. They deserve the same response discipline: imme
 **What this loop does NOT cover**:
 - Technical incidents → use `incident-loop`
 - Routine conflict → use `skills/conflict/`
-- Standard reorg navigation → use `skills/organizational/reorg-navigation.md` (those are handled proactively; this loop activates when the event has already landed without warning)
+- Standard reorg navigation that is still in the planning window → use `skills/organizational/change-resistance.md` (full `reorg-navigation.md` is v0.8)
 
 ## Steps
 
@@ -35,10 +35,10 @@ These events are management P1s. They deserve the same response discipline: imme
    - **Do not communicate before this step is complete.** An uninformed communication in a crisis is worse than a short delay.
 
 2. **Invoke skills** (concurrent with triage where possible)
-   - **People crisis**: `skills/people/difficult-message-delivery.md` (if a hard message must be delivered), `skills/people/flight-risk-model.md` (to assess who else may be destabilized), `skills/people/trust-recovery-playbook.md`
-   - **Executive trust crisis**: `skills/executive/executive-anxiety-detector.md` (to understand what the executive is actually worried about), `skills/executive/trust-building-cadence.md`
+   - **People crisis**: `skills/people/difficult-message-delivery.md` (if a hard message must be delivered), `skills/people/trust-recovery-playbook.md`, `skills/strategy/succession-planning.md` (bus factor). `skills/people/flight-risk-model.md` is planned for v0.8 — until then use `skills/people/retention-risk.md` + 1:1 signals.
+   - **Executive trust crisis**: `skills/executive/pressure-decision-framework.md`, `skills/people/upward-feedback.md`, `confidence-engine/executive_confidence.md`. `skills/executive/executive-anxiety-detector.md` and `trust-building-cadence.md` are planned for v0.9 — until then use `skills/executive/vp-one-on-one.md`.
    - **Cross-team crisis**: `skills/conflict/stakeholder-resolution.md`, `skills/organizational/political-intelligence.md`
-   - **Org shock**: `skills/organizational/reorg-navigation.md`, `skills/people/difficult-message-delivery.md` (for individual conversations within the team)
+   - **Org shock**: `skills/people/difficult-message-delivery.md` (for individual conversations). `skills/organizational/reorg-navigation.md` is planned for v0.8 — until then use `skills/people/trust-recovery-playbook.md` + `skills/organizational/change-resistance.md`.
    - **Delivery crisis**: `skills/executive/pressure-decision-framework.md` (for commitments that must be made), `skills/executive/executive-communication.md`
 
 3. **Route to subagent(s)**

@@ -41,6 +41,9 @@ Notes:            {{optional}}
 | Run ID | Migration | Description |
 |---|---|---|
 | RUN-2026-08-20-001 | `2026-08-consolidation` | Graph-native Phase 0: schema, migration map, redirect stubs, README reconciliation |
+| RUN-2026-09-20-001 | leftover close | SPACE/roadmap dashboard, EMG memory pad, FAIL-003 fast path, ROADMAP reconcile |
+| RUN-2026-09-21-001 | leftover close | HOWTORUN commands; live ingest; `integrations/` guides |
+| RUN-2026-09-21-002 | leftover close | v0.6 + v0.7 exit criteria closed (file); v0.8 not started |
 
 ---
 

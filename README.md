@@ -6,7 +6,7 @@ An AI-augmented operating system for engineering managers. This repo defines the
 
 Most management systems are either too abstract (leadership books) or too tactical (task trackers). This OS bridges that gap: it encodes *how* an engineering manager thinks, decides, and acts into structured artifacts that can be queried, executed, and improved over time.
 
-The OS has fifteen layers:
+The OS has sixteen layers:
 
 | Layer | Directory | Purpose |
 |---|---|---|
@@ -20,11 +20,12 @@ The OS has fifteen layers:
 | Leadership Health | `leadership-health/` | 13-dimension leadership diagnostics (dimension skills in `skills/leadership-health/`), trust, influence, delegation, coaching, and execution assessment |
 | Executive Confidence | `confidence-engine/` | 6-dimension trust assessment (dimension skills in `skills/confidence-engine/`) answering "Can I trust this team?" across prediction, data, risk, delivery, roadmap, and architecture |
 | Political Signals | `political-signals/` | 5-dimension organizational risk detection answering "What harmful patterns are present, and how should I respond ethically?" |
+| Graph | `graph/` | Shared-state schema, artifact contracts, and `supersedes` migrations so agents resolve canonical paths |
 | Decision Memory | `decision-memory/` | Institutional learning and decision recall — captures decisions with full context and surfaces repeated patterns so the organization learns from experience |
 | Loops | `loops/` | Reusable, cadence-bound orchestration — gathers inputs, sequences skill invocations, routes to subagent(s), logs outcomes |
 | Contracts | `contracts/` | Specification schema (Inputs/Required Outputs/Failure Conditions/Quality Checks) formalizing what skills and subagents already do narratively |
-| Memory | `memory/` | Leadership Memory recall engine — 10 domains of relational/organizational pattern capture, distinct from and cross-linked with `decision-memory/` |
-| Analytics | `analytics/` | Cross-domain operational dashboards (career, executive, organization, people, stakeholder, strategy) |
+| Memory | `memory/` | Leadership Memory recall engine — 12 domains of relational/organizational pattern capture, distinct from and cross-linked with `decision-memory/` |
+| Analytics | `analytics/` | Master leadership dashboard (five views); deprecated per-dashboard files are redirect stubs |
 
 ## Who It's For
 
@@ -37,7 +38,7 @@ Engineering managers who want to:
 ## How to Use It
 
 **As a CLI tool (Recommended)**: Run commands directly from your terminal.
-```powershell
+```bash
 # Install dependencies
 pip install -r requirements.txt
 
@@ -45,16 +46,16 @@ pip install -r requirements.txt
 cp .env.example .env
 
 # List available leadership commands
-./bin/em-os.ps1 list
+./bin/em-os list
 
 # Show current operational metrics (ingested from GitHub/Jira/etc)
-./bin/em-os.ps1 status
+./bin/em-os status
 
 # Execute a leadership command (e.g., Daily Leadership Loop)
-./bin/em-os.ps1 run daily
+./bin/em-os run daily
 
 # Process a custom situation through the AI Orchestrator
-./bin/em-os.ps1 run "Our deployment frequency is dropping and the team seems tired"
+./bin/em-os run "Our deployment frequency is dropping and the team seems tired"
 ```
 
 **As a reference system**: Browse `docs/` for principles and `features/` for how specific scenarios should play out.

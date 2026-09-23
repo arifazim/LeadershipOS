@@ -1,44 +1,54 @@
-import os
 from core.agent_engine import AgentEngine
 from typing import List, Dict, Any
+
+COMMAND_ROUTES = {
+    "daily": ["engineering-manager"],
+    "weekly": ["delivery-manager"],
+    "dashboard": ["engineering-manager"],
+    "executive": ["executive-summary"],
+    "incident": ["incident-manager"],
+    "retrospective": ["engineering-manager"],
+    "em-growth": ["engineering-manager"],
+    "crisis": ["engineering-manager"],
+}
+
 
 class Orchestrator:
     def __init__(self, api_key: str = None):
         self.engine = AgentEngine(api_key=api_key)
 
-    def _detect_routing(self, situation: str, metrics: Dict[str, Any]) -> List[str]:
+    def _detect_routing(self, situation: str, metrics: Dict[str, Any], command: str = None) -> List[str]:
+        if command and command in COMMAND_ROUTES:
+            return list(COMMAND_ROUTES[command])
+
         routes = []
-        
-        # Incident Check (P1/P2)
-        pagerduty = metrics.get("pagerduty", {})
-        incident_count = pagerduty.get("incident_count_last_30d", 0)
-        # In a real scenario, we'd check for *active* P1/P2
-        if "incident" in situation.lower() or "outage" in situation.lower() or incident_count > 0:
+        text = situation.lower()
+
+        # Active incident language only — do not treat trailing 30-day counts as a live P1
+        if "incident" in text or "outage" in text:
             routes.append("incident-manager")
 
         # Delivery Health
-        if any(kw in situation.lower() for kw in ["sprint", "velocity", "delivery", "dora", "milestone"]):
+        if any(kw in text for kw in ["sprint", "velocity", "delivery", "dora", "milestone"]):
             routes.append("delivery-manager")
 
-        # Technical/Architecture
-        if any(kw in situation.lower() for kw in ["architecture", "tech debt", "technical", "adr", "design"]):
+        if any(kw in text for kw in ["architecture", "tech debt", "technical", "adr", "design"]):
             routes.append("tech-lead")
 
-        # People/Coaching
-        if any(kw in situation.lower() for kw in ["burnout", "1:1", "coaching", "growth", "performance"]):
+        if any(kw in text for kw in ["burnout", "1:1", "coaching", "growth", "performance"]):
             routes.append("engineering-coach")
 
-        # Product/Roadmap
-        if any(kw in situation.lower() for kw in ["roadmap", "priority", "stakeholder", "product"]):
+        if any(kw in text for kw in ["roadmap", "priority", "stakeholder", "product"]):
             routes.append("product-partner")
 
-        # Talent/Hiring
-        if any(kw in situation.lower() for kw in ["hire", "interview", "onboarding", "talent"]):
+        if any(kw in text for kw in ["hire", "interview", "onboarding", "talent"]):
             routes.append("talent-partner")
 
-        # Decision Provenance / History
-        if any(kw in situation.lower() for kw in ["history", "provenance", "audit", "why did we", "decided"]):
+        if any(kw in text for kw in ["history", "provenance", "audit", "why did we", "decided"]):
             routes.append("decision-provenance-agent")
+
+        if any(kw in text for kw in ["crisis", "layoff", "reorg", "resigned", "resignation"]):
+            routes.append("engineering-manager")
 
         # Default to Engineering Manager if no clear route
         if not routes:
@@ -46,9 +56,9 @@ class Orchestrator:
             
         return list(set(routes)) # Remove duplicates
 
-    def run(self, situation: str) -> str:
+    def run(self, situation: str, command: str = None) -> str:
         metrics = self.engine._load_metrics()
-        routes = self._detect_routing(situation, metrics)
+        routes = self._detect_routing(situation, metrics, command=command)
         
         print(f"Routing situation to: {', '.join(routes)}")
         

@@ -182,8 +182,8 @@ STEP 3 — SKILLS (affects agent outputs)
 STEP 4 — MEMORY (records the outcome of the above)
 ├── Add a MEMORY ENTRY (per memory/schema.md) to the relevant domain — executive/, stakeholders/,
 │   career/, conflicts/, mentoring/, promotions/, architecture/, roadmaps/, customer-feedback/,
-│   decision-history/, or retrospectives/ — not a generic "lessons" file; every entry belongs
-│   to exactly one domain
+│   decision-history/, retrospectives/, or em-self-development/ — not a generic "lessons" file;
+│   every entry belongs to exactly one domain
 ├── Incident recurrence goes in kaizen/failures.md, not memory/ (memory/ is leadership/relational
 │   patterns only — see memory/schema.md's "What This Module Is Not")
 ├── Engineer growth observed → memory/career/ or memory/mentoring/ depending on whether the
@@ -194,6 +194,8 @@ STEP 4 — MEMORY (records the outcome of the above)
 ├── Retrospective themes, action item completion, or sentiment shift → memory/retrospectives/
 │   (use the domain-specific fields in retrospective-memory.md; set Recurring theme flag if
 │   the same theme appeared in the prior 90 days)
+├── EM's own growth edge, pressure default, or skip-level-as-subject signal → memory/em-self-development/
+│   (if Q9 named EM behavior as the thing to change, also trigger commands/em-growth.md this month)
 └── DECAY MAINTENANCE (run once per week, takes < 5 minutes)
     ├── Scan any domain file you added an entry to this week
     ├── Are there entries now 90–180 days old with no confirmation? → add [WATCH] tag

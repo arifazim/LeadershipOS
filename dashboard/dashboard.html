@@ -535,6 +535,10 @@
     .one-thing-eyebrow { font-size: 9.5px; font-weight: 700; text-transform: uppercase; letter-spacing: .1em; color: var(--blue-500); margin-bottom: 4px; }
     .one-thing-title   { font-size: 14px; font-weight: 700; color: var(--text-primary); line-height: 1.4; }
     .one-thing-desc    { font-size: 12px; color: var(--text-secondary); margin-top: 5px; line-height: 1.6; }
+    .source-strip { display: flex; flex-wrap: wrap; gap: 8px; margin: 0 0 16px; }
+    .source-chip { font-size: 10px; font-weight: 700; letter-spacing: .04em; text-transform: uppercase; padding: 4px 8px; border-radius: 999px; border: 1px solid var(--gray-700); color: var(--gray-300); }
+    .source-chip.live { border-color: #166534; color: #86efac; }
+    .source-chip.mock { border-color: var(--gray-600); color: var(--gray-400); }
 
     /* =====================================================================
        SPRINT PROGRESS BAR
@@ -859,6 +863,8 @@
         </div>
       </div>
 
+      <div class="source-strip" id="source-strip"></div>
+
       <!-- Confidence hero -->
       <div class="confidence-hero">
         <div class="confidence-gauge">
@@ -1009,6 +1015,29 @@
 
       <div class="kpi-row cols-3" id="team-kpis">
         <!-- populated from team.json -->
+      </div>
+
+      <div class="table-card">
+        <div class="table-card-header">
+          <span class="table-card-title">SPACE Dimensions</span>
+          <span class="table-card-meta" id="space-meta">Derived proxies — Low confidence until 1:1 memory accumulates</span>
+        </div>
+        <div class="kpi-row cols-3" id="space-kpis" style="padding:12px 12px 4px;margin:0;border:0;background:transparent">
+          <div class="kpi-card skeleton" style="min-height:90px"></div>
+        </div>
+      </div>
+
+      <div class="table-card">
+        <div class="table-card-header">
+          <span class="table-card-title">Roadmap Snapshot</span>
+          <span class="table-card-meta" id="roadmap-meta">Mock until Jira token is configured</span>
+        </div>
+        <table>
+          <thead><tr><th>Field</th><th>Value</th><th>Signal</th></tr></thead>
+          <tbody id="roadmap-tbody">
+            <tr><td colspan="3" class="text-muted" style="padding:24px;text-align:center">Loading…</td></tr>
+          </tbody>
+        </table>
       </div>
 
       <div class="two-col">
@@ -1280,11 +1309,25 @@ function renderAll(m) {
   renderReliabilityTable(m);
   renderRiskRegister(m);
   renderOneThing(m);
+  renderSpaceAndRoadmap(m);
+  renderSources(m);
   updateApiStatus(true);
 }
 
 function renderFallback() {
   updateApiStatus(false);
+}
+
+function renderSources(m) {
+  const el = document.getElementById("source-strip");
+  if (!el) return;
+  const sources = m.sources || {};
+  const keys = ["github", "jira", "pagerduty", "slack", "datadog"];
+  el.innerHTML = keys.map((k) => {
+    const v = String(sources[k] || "unknown");
+    const live = v.startsWith("live");
+    return `<span class="source-chip ${live ? "live" : "mock"}">${k}: ${v}</span>`;
+  }).join("");
 }
 
 // ---------------------------------------------------------------------------
@@ -1656,6 +1699,40 @@ function renderTeam(team) {
     { label: "On-call",       value: team.on_call ? "Yes" : "No", band: team.on_call ? "Yellow" : "Green" },
   ];
   document.getElementById("team-kpis").innerHTML = kpis.map(kpiCard).join("");
+}
+
+function renderSpaceAndRoadmap(m) {
+  const space = m.space;
+  const roadmap = m.roadmap;
+  const spaceEl = document.getElementById("space-kpis");
+  if (space && spaceEl) {
+    const dims = [
+      { key: "satisfaction", label: "Satisfaction" },
+      { key: "performance", label: "Performance" },
+      { key: "activity", label: "Activity" },
+      { key: "communication", label: "Communication" },
+      { key: "efficiency", label: "Efficiency" },
+    ];
+    spaceEl.innerHTML = dims.map(d => kpiCard({
+      label: d.label,
+      value: space[d.key].score,
+      band: space[d.key].band,
+    })).join("");
+    const meta = document.getElementById("space-meta");
+    if (meta) meta.textContent = `${space.note} · overall ${space.overall} (${space.overall_band})`;
+  }
+
+  const tbody = document.getElementById("roadmap-tbody");
+  if (roadmap && tbody) {
+    const flag = roadmap.scope_flag ? "Scope inflation flagged" : "Within band";
+    tbody.innerHTML = [
+      ["Milestone", roadmap.milestone, roadmap.status],
+      ["Commitments hit", `${roadmap.commitments_hit_pct}%`, roadmap.band],
+      ["Scope inflation", `${roadmap.scope_inflation_pct}%`, flag],
+    ].map(([k, v, s]) => `<tr><td class="td-label">${k}</td><td class="td-value">${v}</td><td>${s}</td></tr>`).join("");
+    const rmeta = document.getElementById("roadmap-meta");
+    if (rmeta) rmeta.textContent = `Source: ${roadmap.source} · confidence ${roadmap.confidence}`;
+  }
 }
 
 // ---------------------------------------------------------------------------
