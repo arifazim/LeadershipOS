@@ -24,6 +24,14 @@ python3 scripts/validate_dashboard.py
 
 Must print ≥ 90% agreement against `evaluations/golden/dashboard/`.
 
+## 2b. Org-health engine (`test_org_health_engine.js`)
+
+```bash
+node scripts/test_org_health_engine.js
+```
+
+Locks the ten `/org-health` formulas, band thresholds, Level 1–4 presets, and four intersection alerts.
+
 ## 3. Cadence (`cadence.py`)
 
 ```bash

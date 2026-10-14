@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AI-Era Org Health · Quality · ROI</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            slate: {
+              850: "#0f172a",
+              925: "#070b14",
+            },
+          },
+        },
+      },
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <style>
+    @media print {
+      .no-print { display: none !important; }
+      body { background: #0f172a !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+      .print-break { break-inside: avoid; }
+    }
+    .spark polyline { fill: none; stroke-width: 1.75; }
+    input[type="range"] { accent-color: #38bdf8; }
+  </style>
+</head>
+<body class="bg-slate-900 text-slate-100 min-h-screen antialiased">
+  <header class="sticky top-0 z-30 border-b border-slate-700/80 bg-slate-900/95 backdrop-blur no-print">
+    <div class="max-w-7xl mx-auto px-4 py-4 flex flex-col gap-3 lg:flex-row lg:items-center lg:justify-between">
+      <div>
+        <div class="flex items-center gap-2 text-sky-400 text-xs font-semibold uppercase tracking-widest">
+          <a href="/" class="hover:text-sky-300">EM-OS</a>
+          <span class="text-slate-600">/</span>
+          <span>Executive</span>
+        </div>
+        <h1 class="text-xl sm:text-2xl font-semibold mt-1">Engineering Org Health, Quality &amp; AI ROI</h1>
+        <p class="text-slate-400 text-sm mt-0.5">Practical DORA, DX innovation, forecast accuracy, and observed AI efficiency — not invented indexes.</p>
+      </div>
+      <div class="flex flex-wrap items-center gap-2">
+        <span class="text-xs text-slate-500 uppercase tracking-wide mr-1">Presets</span>
+        <button type="button" data-preset="l1" class="preset-btn px-3 py-1.5 rounded-md text-xs font-medium border border-slate-600 hover:bg-slate-800">Level 1 Ad-Hoc</button>
+        <button type="button" data-preset="l2" class="preset-btn px-3 py-1.5 rounded-md text-xs font-medium border border-slate-600 hover:bg-slate-800">Level 2 Enabled</button>
+        <button type="button" data-preset="l3" class="preset-btn px-3 py-1.5 rounded-md text-xs font-medium border border-slate-600 hover:bg-slate-800">Level 3 Governed</button>
+        <button type="button" data-preset="l4" class="preset-btn px-3 py-1.5 rounded-md text-xs font-medium border border-slate-600 hover:bg-slate-800">Level 4 Intelligent</button>
+        <button type="button" id="btn-print" class="ml-1 inline-flex items-center gap-1.5 px-3 py-1.5 rounded-md text-xs font-medium bg-slate-100 text-slate-900 hover:bg-white">
+          <i data-lucide="printer" class="w-3.5 h-3.5"></i>
+          Print / PDF
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main class="max-w-7xl mx-auto px-4 py-6 space-y-6">
+    <section id="maturity-bar" class="rounded-xl border border-slate-700 bg-slate-800/60 p-5 print-break">
+      <div class="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-3">
+        <div>
+          <p class="text-xs uppercase tracking-widest text-slate-400">Executive health overview</p>
+          <h2 id="maturity-label" class="text-2xl font-semibold mt-1">—</h2>
+          <p id="maturity-sub" class="text-sm text-slate-400 mt-1">Scored metrics only (controls and product adoption are excluded). Green=2, Amber=1, Red/n/a=0.</p>
+        </div>
+        <div class="text-right">
+          <p class="text-3xl font-semibold tabular-nums" id="maturity-score">0<span class="text-lg text-slate-500">/20</span></p>
+          <p class="text-xs text-slate-500">Health index</p>
+        </div>
+      </div>
+      <div class="mt-4 grid grid-cols-4 gap-2" id="maturity-steps"></div>
+    </section>
+
+    <section>
+      <h2 class="text-sm font-semibold uppercase tracking-widest text-slate-400 mb-3">Scored · Flow</h2>
+      <div id="pillar-1" class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4"></div>
+    </section>
+    <section>
+      <h2 class="text-sm font-semibold uppercase tracking-widest text-slate-400 mb-3">Scored · Quality (DORA-aligned)</h2>
+      <div id="pillar-2" class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4"></div>
+    </section>
+    <section>
+      <h2 class="text-sm font-semibold uppercase tracking-widest text-slate-400 mb-3">Scored · Prediction</h2>
+      <div id="pillar-3" class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4"></div>
+    </section>
+    <section>
+      <h2 class="text-sm font-semibold uppercase tracking-widest text-slate-400 mb-3">Economics (observed cycle time) · Controls (not in the grade)</h2>
+      <div id="pillar-4" class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4"></div>
+    </section>
+
+    <section class="grid lg:grid-cols-2 gap-4">
+      <div class="rounded-xl border border-slate-700 bg-slate-800/50 p-5 print-break">
+        <h2 class="text-sm font-semibold uppercase tracking-widest text-slate-400">Scored metrics vs practical targets</h2>
+        <p class="text-xs text-slate-500 mt-1 mb-3">0–100; higher is better. Targets are knowledge-work FER 40%, DORA Elite CFR/MTTR, DX innovation 30–55%, forecast ≥85% — not a fake gold overlay.</p>
+        <canvas id="radar-chart" height="280"></canvas>
+      </div>
+      <div class="rounded-xl border border-slate-700 bg-slate-800/50 p-5 print-break">
+        <h2 class="text-sm font-semibold uppercase tracking-widest text-slate-400">TCO vs value delivered (monthly)</h2>
+        <p class="text-xs text-slate-500 mt-1 mb-3">TCO vs priced cycle-time capacity. Incremental revenue is listed, not added into ROI.</p>
+        <canvas id="bar-chart" height="280"></canvas>
+        <dl id="econ-legend" class="mt-4 grid grid-cols-2 gap-2 text-xs text-slate-400"></dl>
+      </div>
+    </section>
+
+    <section class="rounded-xl border border-slate-700 bg-slate-800/40 p-5 print-break">
+      <h2 class="text-sm font-semibold uppercase tracking-widest text-slate-400">Dynamic gap analysis</h2>
+      <p class="text-xs text-slate-500 mt-1 mb-4">Alerts are questions, not root cause. FER red is now &lt;20% (knowledge work), not &lt;50%.</p>
+      <div id="alerts" class="space-y-3"></div>
+    </section>
+
+    <section class="rounded-xl border border-slate-700 bg-slate-800/40 p-5 no-print">
+      <div class="flex items-center justify-between mb-4">
+        <h2 class="text-sm font-semibold uppercase tracking-widest text-slate-400">Interactive inputs</h2>
+        <p class="text-xs text-slate-500">Sliders write the same fields as the number boxes. Model recalculates immediately.</p>
+      </div>
+      <div id="inputs" class="grid md:grid-cols-2 xl:grid-cols-3 gap-x-6 gap-y-4"></div>
+    </section>
+  </main>
+
+  <script src="/static/org-health-engine.js"></script>
+  <script>
+    const E = window.OrgHealthEngine;
+    const history = {};
+    const HISTORY_LEN = 14;
+    let radarChart;
+    let barChart;
+    let applyingPreset = false;
+
+    const PILLARS = {
+      1: ["fer", "innovation", "meetingLoad"],
+      2: ["cfr", "der", "mttr"],
+      3: ["goalHit", "estimateAccuracy"],
+      4: ["aiRoi", "arr", "agcs", "far"],
+    };
+
+    const ICONS = {
+      fer: "timer",
+      innovation: "layers",
+      meetingLoad: "calendar-clock",
+      cfr: "alert-triangle",
+      der: "bug",
+      arr: "wand-2",
+      mttr: "activity",
+      agcs: "shield-check",
+      aiRoi: "circle-dollar-sign",
+      far: "users",
+      goalHit: "target",
+      estimateAccuracy: "gauge",
+    };
+
+    const INPUT_FIELDS = [
+      { key: "activeDevHours", label: "Active / touch time (hours)", min: 0, max: 80, step: 0.5 },
+      { key: "totalCycleHours", label: "Total cycle time (hours)", min: 1, max: 200, step: 0.5 },
+      { key: "featurePrs", label: "PRs that are new capability", min: 0, max: 500, step: 1 },
+      { key: "totalPrs", label: "Total PRs (same window)", min: 1, max: 500, step: 1 },
+      { key: "weeklySyncHoursPerDev", label: "Weekly sync hours / engineer", min: 0, max: 20, step: 0.5 },
+      { key: "timezoneHandoffCount", label: "Timezone handoff count (context)", min: 0, max: 12, step: 1 },
+      { key: "failedDeployments", label: "Failed deploys (outage/hotfix)", min: 0, max: 80, step: 1 },
+      { key: "totalDeployments", label: "Total deployments", min: 1, max: 200, step: 1 },
+      { key: "productionDefects", label: "Production (escaped) defects", min: 0, max: 200, step: 1 },
+      { key: "totalDefectsFound", label: "Total defects found", min: 1, max: 500, step: 1 },
+      { key: "defectsAutoRemediated", label: "Defects auto-remediated (AI/CI)", min: 0, max: 500, step: 1 },
+      { key: "totalDefectsDetected", label: "Total defects detected", min: 1, max: 500, step: 1 },
+      { key: "totalDowntimeHours", label: "Total downtime (hours)", min: 0, max: 200, step: 0.1 },
+      { key: "incidentCount", label: "Number of incidents", min: 0, max: 50, step: 1 },
+      { key: "aiPrsPassingGuardrails", label: "AI PRs passing real guardrails", min: 0, max: 500, step: 1 },
+      { key: "totalAiAssistedPrs", label: "Total AI-assisted PRs", min: 0, max: 500, step: 1 },
+      { key: "baselineCycleTimeHours", label: "Pre-AI / baseline cycle time (h)", min: 0, max: 200, step: 0.5 },
+      { key: "currentCycleTimeHours", label: "Current cycle time (h)", min: 0, max: 200, step: 0.5 },
+      { key: "surveyTimeSavedPct", label: "Survey time saved % (cannot go Green)", min: 0, max: 90, step: 1 },
+      { key: "sprintGoalHitPct", label: "Sprint/milestone goals hit %", min: 0, max: 100, step: 1 },
+      { key: "estimateAccuracyPct", label: "Actual ÷ estimate × 100", min: 20, max: 250, step: 1 },
+      { key: "teamSize", label: "Team size", min: 1, max: 200, step: 1 },
+      { key: "avgAnnualComp", label: "Avg annual comp (USD)", min: 50000, max: 400000, step: 1000 },
+      { key: "monthlyInferenceCost", label: "Monthly inference cost (USD)", min: 0, max: 200000, step: 500 },
+      { key: "monthlyLicenseFee", label: "Monthly AI license / engineer", min: 0, max: 200, step: 1 },
+      { key: "remediationToilPct", label: "Remediation toil of eng cost (%)", min: 0, max: 80, step: 1 },
+      { key: "monthlyIncrementalRevenue", label: "Incremental revenue (not in ROI)", min: 0, max: 500000, step: 1000 },
+      { key: "activeUsersNewFeature30d", label: "Active users of new feature (30d)", min: 0, max: 100000, step: 1 },
+      { key: "totalTargetUserBase", label: "Total target user base", min: 1, max: 500000, step: 1 },
+    ];
+
+    function fmt(metric) {
+      const v = metric.value;
+      if (metric.band.key === "na") return "n/a";
+      if (metric.id === "aiRoi" || metric.id === "mttr") {
+        return v.toFixed(2) + (metric.unit ? metric.unit : "");
+      }
+      return v.toFixed(1) + metric.unit;
+    }
+
+    function money(n) {
+      return n.toLocaleString(undefined, { style: "currency", currency: "USD", maximumFractionDigits: 0 });
+    }
+
+    function bandClass(band) {
+      if (band.key === "green") return { badge: "bg-emerald-500/15 text-emerald-300 border-emerald-500/40", stroke: "#34d399" };
+      if (band.key === "amber") return { badge: "bg-amber-500/15 text-amber-300 border-amber-500/40", stroke: "#fbbf24" };
+      if (band.key === "na") return { badge: "bg-slate-500/20 text-slate-300 border-slate-500/40", stroke: "#64748b" };
+      return { badge: "bg-rose-500/15 text-rose-300 border-rose-500/40", stroke: "#f43f5e" };
+    }
+
+    function sparkSvg(id, stroke) {
+      const pts = history[id] || [];
+      if (pts.length < 2) return `<svg class="spark w-full h-8" viewBox="0 0 100 24" preserveAspectRatio="none"></svg>`;
+      const min = Math.min.apply(null, pts);
+      const max = Math.max.apply(null, pts);
+      const span = max - min || 1;
+      const d = pts.map((p, i) => {
+        const x = (i / (pts.length - 1)) * 100;
+        const y = 22 - ((p - min) / span) * 20;
+        return x.toFixed(1) + "," + y.toFixed(1);
+      }).join(" ");
+      return `<svg class="spark w-full h-8" viewBox="0 0 100 24" preserveAspectRatio="none"><polyline points="${d}" stroke="${stroke}" /></svg>`;
+    }
+
+    function cardHtml(m) {
+      const bc = bandClass(m.band);
+      const role = m.scored ? "Scored" : (m.role === "product" ? "Product" : "Control");
+      return `
+        <article class="print-break rounded-xl border border-slate-700 bg-slate-800/70 p-4 flex flex-col gap-2">
+          <div class="flex items-start justify-between gap-2">
+            <div class="flex items-center gap-2 text-slate-300">
+              <i data-lucide="${ICONS[m.id]}" class="w-4 h-4 text-sky-400"></i>
+              <h3 class="text-sm font-medium leading-snug">${m.name}</h3>
+            </div>
+            <span class="shrink-0 text-[10px] uppercase tracking-wide px-2 py-0.5 rounded-full border ${bc.badge}">${m.band.label}</span>
+          </div>
+          <p class="text-[10px] uppercase tracking-wide text-slate-500">${role}</p>
+          <p class="text-3xl font-semibold tabular-nums">${fmt(m)}</p>
+          <p class="text-xs text-slate-500">Target ${m.target}</p>
+          <p class="text-xs text-slate-400 leading-snug">${m.note || ""}</p>
+          ${sparkSvg(m.id, bc.stroke)}
+        </article>`;
+    }
+
+    function renderCards(model) {
+      [1, 2, 3, 4].forEach((p) => {
+        const el = document.getElementById("pillar-" + p);
+        el.innerHTML = PILLARS[p].map((id) => cardHtml(model.metrics[id])).join("");
+      });
+    }
+
+    function renderMaturity(model) {
+      const m = model.maturity;
+      document.getElementById("maturity-label").textContent = m.label;
+      document.getElementById("maturity-score").innerHTML = m.points + '<span class="text-lg text-slate-500">/' + m.maxPoints + "</span>";
+      const labels = ["Ad-Hoc", "Enabled", "Governed", "Intelligent"];
+      document.getElementById("maturity-steps").innerHTML = labels.map((lab, idx) => {
+        const on = m.level === idx + 1;
+        const passed = m.level > idx + 1;
+        const cls = on
+          ? "bg-sky-500 text-slate-950 border border-sky-400"
+          : passed
+            ? "bg-sky-950 text-sky-100 border border-sky-700"
+            : "bg-slate-950 text-slate-400 border border-slate-600";
+        return `<div class="rounded-lg px-2 py-2 text-center ${cls}"><div class="text-[10px] uppercase tracking-wide">L${idx + 1}</div><div class="text-xs font-medium">${lab}</div></div>`;
+      }).join("");
+      document.querySelectorAll(".preset-btn").forEach((btn) => {
+        const on = btn.getAttribute("data-preset") === ("l" + m.level);
+        btn.classList.toggle("bg-sky-500", on);
+        btn.classList.toggle("text-slate-950", on);
+        btn.classList.toggle("border-sky-400", on);
+      });
+    }
+
+    function renderAlerts(model) {
+      const box = document.getElementById("alerts");
+      if (!model.alerts.length) {
+        box.innerHTML = `<div role="status" class="rounded-lg border border-emerald-500/30 bg-emerald-500/10 px-4 py-3 text-sm text-emerald-200">No intersection alerts. Flow, quality, recovery, and adoption are not in a conflicting state.</div>`;
+        return;
+      }
+      box.innerHTML = model.alerts.map((a) => `
+        <div class="rounded-lg border border-rose-500/40 bg-rose-500/10 px-4 py-3">
+          <div class="flex items-center gap-2 text-rose-200 font-medium text-sm">
+            <i data-lucide="siren" class="w-4 h-4"></i>
+            ${a.title}
+          </div>
+          <p class="text-sm text-slate-300 mt-1">${a.message}</p>
+        </div>`).join("");
+    }
+
+    function renderEcon(model) {
+      const e = model.economics;
+      document.getElementById("econ-legend").innerHTML = `
+        <div>Monthly eng cost <span class="text-slate-200">${money(e.monthlyEngCost)}</span></div>
+        <div>Capacity value <span class="text-slate-200">${money(e.capacityValue)}</span></div>
+        <div>Inference <span class="text-slate-200">${money(e.inferenceCost)}</span></div>
+        <div>Licenses <span class="text-slate-200">${money(e.licenseCost)}</span></div>
+        <div>Remediation toil <span class="text-slate-200">${money(e.remediationToilCost)}</span></div>
+        <div>Total AI TCO <span class="text-slate-200">${money(e.totalAiMonthlyCost)}</span></div>
+        <div>Savings source <span class="text-slate-200">${e.savingsSource}</span> (${e.savedPct.toFixed(1)}%)</div>
+        <div>Incremental revenue (not in ROI) <span class="text-slate-200">${money(e.incrementalRevenue)}</span></div>`;
+    }
+
+    const radarLabels = ["FER", "Innovation", "Meetings*", "CFR*", "DER*", "MTTR*", "Goal hit", "Estimate", "AI-ROI"];
+    const radarKeys = ["fer", "innovation", "meetingLoad", "cfr", "der", "mttr", "goalHit", "estimateAccuracy", "aiRoi"];
+
+    function chartDefaults() {
+      Chart.defaults.color = "#94a3b8";
+      Chart.defaults.borderColor = "rgba(148,163,184,0.15)";
+      Chart.defaults.font.family = "ui-sans-serif, system-ui, sans-serif";
+    }
+
+    function updateCharts(model) {
+      const current = radarKeys.map((k) => model.radar[k]);
+      const gold = radarKeys.map((k) => model.goldRadar[k]);
+      if (!radarChart) {
+        radarChart = new Chart(document.getElementById("radar-chart"), {
+          type: "radar",
+          data: {
+            labels: radarLabels,
+            datasets: [
+              { label: "This org", data: current, borderColor: "#38bdf8", backgroundColor: "rgba(56,189,248,0.18)", pointBackgroundColor: "#38bdf8" },
+              { label: "Practical target", data: gold, borderColor: "#a78bfa", backgroundColor: "rgba(167,139,250,0.08)", pointBackgroundColor: "#a78bfa", borderDash: [4, 4] },
+            ],
+          },
+          options: {
+            responsive: true,
+            scales: { r: { min: 0, max: 100, ticks: { display: false }, grid: { color: "rgba(148,163,184,0.12)" }, angleLines: { color: "rgba(148,163,184,0.12)" } } },
+            plugins: { legend: { labels: { color: "#cbd5e1" } } },
+          },
+        });
+      } else {
+        radarChart.data.datasets[0].data = current;
+        radarChart.update("none");
+      }
+
+      const e = model.economics;
+      const barData = [e.licenseCost, e.inferenceCost, e.remediationToilCost, e.capacityValue];
+      if (!barChart) {
+        barChart = new Chart(document.getElementById("bar-chart"), {
+          type: "bar",
+          data: {
+            labels: ["Licenses", "Inference", "Toil", "Capacity value"],
+            datasets: [{ data: barData, backgroundColor: ["#64748b", "#38bdf8", "#f43f5e", "#34d399"] }],
+          },
+          options: {
+            responsive: true,
+            plugins: { legend: { display: false } },
+            scales: { y: { ticks: { callback: (v) => "$" + (v / 1000).toFixed(0) + "k" } } },
+          },
+        });
+      } else {
+        barChart.data.datasets[0].data = barData;
+        barChart.update("none");
+      }
+    }
+
+    function readInputs() {
+      const out = {};
+      INPUT_FIELDS.forEach((f) => {
+        const el = document.getElementById("in-" + f.key);
+        out[f.key] = Number(el.value);
+      });
+      return out;
+    }
+
+    function writeInputs(values) {
+      applyingPreset = true;
+      INPUT_FIELDS.forEach((f) => {
+        const n = document.getElementById("in-" + f.key);
+        const r = document.getElementById("rg-" + f.key);
+        n.value = values[f.key];
+        r.value = values[f.key];
+      });
+      applyingPreset = false;
+    }
+
+    function pushHistory(model) {
+      Object.keys(model.metrics).forEach((id) => {
+        if (!history[id]) history[id] = [];
+        history[id].push(model.metrics[id].value);
+        if (history[id].length > HISTORY_LEN) history[id].shift();
+      });
+    }
+
+    function refresh() {
+      const model = E.compute(readInputs());
+      pushHistory(model);
+      renderMaturity(model);
+      renderCards(model);
+      renderAlerts(model);
+      renderEcon(model);
+      updateCharts(model);
+      lucide.createIcons();
+    }
+
+    function buildInputs() {
+      const root = document.getElementById("inputs");
+      root.innerHTML = INPUT_FIELDS.map((f) => `
+        <label class="block">
+          <span class="flex justify-between text-xs text-slate-400 mb-1">
+            <span>${f.label}</span>
+          </span>
+          <div class="flex items-center gap-2">
+            <input id="rg-${f.key}" type="range" min="${f.min}" max="${f.max}" step="${f.step}" class="flex-1" />
+            <input id="in-${f.key}" type="number" min="${f.min}" max="${f.max}" step="${f.step}" class="w-28 bg-slate-900 border border-slate-600 rounded-md px-2 py-1 text-sm tabular-nums" />
+          </div>
+        </label>`).join("");
+      INPUT_FIELDS.forEach((f) => {
+        const n = document.getElementById("in-" + f.key);
+        const r = document.getElementById("rg-" + f.key);
+        const sync = (from, to) => {
+          to.value = from.value;
+          if (!applyingPreset) refresh();
+        };
+        n.addEventListener("input", () => sync(n, r));
+        r.addEventListener("input", () => sync(r, n));
+      });
+    }
+
+    document.querySelectorAll(".preset-btn").forEach((btn) => {
+      btn.addEventListener("click", () => {
+        const id = btn.getAttribute("data-preset");
+        writeInputs(E.PRESETS[id].inputs);
+        refresh();
+      });
+    });
+    document.getElementById("btn-print").addEventListener("click", () => window.print());
+
+    chartDefaults();
+    buildInputs();
+    writeInputs(E.PRESETS.l3.inputs);
+    refresh();
+  </script>
+</body>
+</html>

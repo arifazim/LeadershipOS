@@ -101,6 +101,14 @@ uvicorn dashboard.server:app --reload --port 8080
 
 Open http://localhost:8080
 
+Practical org-health model (FER, DORA CFR/MTTR, innovation ratio, forecast, observed AI-ROI — interactive, not ingest-backed):
+
+http://localhost:8080/org-health
+
+```bash
+node scripts/test_org_health_engine.js
+```
+
 Refresh data from the UI, or:
 
 ```bash

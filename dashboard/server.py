@@ -62,6 +62,14 @@ def serve_dashboard():
     raise HTTPException(status_code=404, detail="dashboard.html not found")
 
 
+@app.get("/org-health")
+def serve_org_health():
+    html_path = DASHBOARD_DIR / "org-health.html"
+    if html_path.exists():
+        return FileResponse(str(html_path), media_type="text/html")
+    raise HTTPException(status_code=404, detail="org-health.html not found")
+
+
 @app.get("/api/team")
 def get_team() -> dict:
     data = _read_json(TEAM_PATH)

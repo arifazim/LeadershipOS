@@ -37,6 +37,8 @@ LinearB, Jellyfish, and similar tools solve **visibility**. This repo solves **p
 
 Five views in the browser: Summary, Delivery & DORA, Incidents, Team Health, Risk Register. FastAPI on `:8080`. Integrations (GitHub, Jira, PagerDuty, Slack, Datadog) are **per-source**: live when tokens exist, mock otherwise — chips on every page so you never send mock DORA upward as fact.
 
+A separate executive model lives at `/org-health`: practical FER (40% green), DX innovation ratio, meeting load, DORA-aligned CFR/MTTR, forecast hit rate, and AI efficiency ROI from **observed cycle-time delta**. DLF/AOV indexes are gone. Guardrails and feature adoption display as controls, not as the health grade. Treat it as a **decision simulator**, not as live ingest.
+
 <p align="center">
   <img src="images/dashboard-delivery.jpg" alt="Delivery and DORA view with Accelerate bands and sprint signals vs 4-week baseline" width="920" />
 </p>
