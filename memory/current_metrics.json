@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-09-21T22:01:03.915032",
+  "timestamp": "2026-10-11T22:53:30.543746",
   "github": {
     "deployment_frequency": "daily",
     "lead_time_for_changes": "1.2 days",
@@ -33,6 +33,15 @@
     "configured": false,
     "ok": false,
     "monitor_count": 0,
+    "_source": "mock"
+  },
+  "product": {
+    "activation_rate": "24%",
+    "retention_rate": "91%",
+    "north_star_value": "142",
+    "north_star_name": "Agency cases completed via platform API",
+    "north_star_unit": "cases / week",
+    "north_star_owner": "Product",
     "_source": "mock"
   }
 }
