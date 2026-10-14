@@ -1,0 +1,68 @@
+{
+  "title": "Written Communication Coach",
+  "subtitle": "Short reminders. One action today. Write it so everyone sees the same picture.",
+  "levels": [
+    { "id": "em", "label": "EM" },
+    { "id": "sr-em", "label": "Sr. EM" },
+    { "id": "director", "label": "Director" },
+    { "id": "sr-director", "label": "Sr. Director" },
+    { "id": "vp", "label": "VP" }
+  ],
+  "reminders": [
+    {
+      "id": "em",
+      "level": "em",
+      "levelLabel": "EM",
+      "formula": "Clear goals → weekly rhythm → accountability",
+      "headline": "One week, one outcome",
+      "reminder": "Tasks are not the story. Name the outcome, then the work.",
+      "action": "Write three lines: this week’s outcome, the work that feeds it, what “done” looks like. Put it where the team already looks.",
+      "metric": "Cycle time on the work you named. If it grew, the week was busy, not aligned.",
+      "upgrade": "End Friday with “we shipped X” or “we did not, because Y.” That is your accountability loop."
+    },
+    {
+      "id": "sr-em",
+      "level": "sr-em",
+      "levelLabel": "Sr. EM",
+      "formula": "2 constraints → 3 options → 1 recommendation",
+      "headline": "Same risk, every team",
+      "reminder": "Cross-team work dies in private chats. Make the risk visible before it becomes a fire.",
+      "action": "One written note: the goal, two teams who must move, the risk if they do not, the owner. Send it before standup.",
+      "metric": "Change failure rate on the shared path to production. If it rises, you aligned on speed, not on a safe release.",
+      "upgrade": "When two teams disagree, write 2 constraints, 3 options, 1 recommendation. Do not host a debate with no write-up."
+    },
+    {
+      "id": "director",
+      "level": "director",
+      "levelLabel": "Director",
+      "formula": "Headline → Context → Action → Result",
+      "headline": "Why before the work",
+      "reminder": "Strategy is a tradeoff people can repeat. If they cannot say the “why,” they will invent one.",
+      "action": "Write Headline → Context → Action → Result for this quarter’s bet. One page. Share it with product and your EMs.",
+      "metric": "Activation and the North Star. Delivery that does not move those is the wrong bet.",
+      "upgrade": "Name what you will not do this quarter. Feature flags let you ship a small bet without a big-bang launch."
+    },
+    {
+      "id": "sr-director",
+      "level": "sr-director",
+      "levelLabel": "Sr. Director",
+      "formula": "Hypothesis → Metrics → Small bet → Instrument → Decide",
+      "headline": "Portfolio on one page",
+      "reminder": "Multi-quarter work needs one list of bets, owners, and what you starve. People cannot guess the allocation.",
+      "action": "Write four rows: bet, owner, this quarter’s proof, what you paused to fund it. Send it to EMs and the VP.",
+      "metric": "Retention plus deployment frequency. Fast deploys on a shrinking North Star means the portfolio is wrong.",
+      "upgrade": "On the largest unclear bet: hypothesis, metric, small bet, instrument, decide. Tests and flags beat a six-month plan."
+    },
+    {
+      "id": "vp",
+      "level": "vp",
+      "levelLabel": "VP",
+      "formula": "Goals → Written updates → Weekly rhythm → Risk reviews → Accountability",
+      "headline": "One picture for the company",
+      "reminder": "Vision is useless if orgs still optimize local goals. Write the company picture, then the org shape that serves it.",
+      "action": "Send a short note to execs and directors: the outcome that matters, how teams are shaped to deliver it, the one risk you want named in every weekly update.",
+      "metric": "MTTR and retention together. Slow restore plus falling users is a trust problem, not a tooling story.",
+      "upgrade": "Lock the five loops in writing. Ask directors to run them. AI coding tools and observability only scale if this picture is shared."
+    }
+  ]
+}

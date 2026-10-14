@@ -70,6 +70,14 @@ def serve_org_health():
     raise HTTPException(status_code=404, detail="org-health.html not found")
 
 
+@app.get("/coach")
+def serve_coach():
+    html_path = DASHBOARD_DIR / "coach.html"
+    if html_path.exists():
+        return FileResponse(str(html_path), media_type="text/html")
+    raise HTTPException(status_code=404, detail="coach.html not found")
+
+
 @app.get("/api/team")
 def get_team() -> dict:
     data = _read_json(TEAM_PATH)

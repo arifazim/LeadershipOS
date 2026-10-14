@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Written Communication Coach</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    .card-enter { animation: rise 220ms ease-out; }
+    @keyframes rise {
+      from { opacity: 0; transform: translateY(8px); }
+      to { opacity: 1; transform: none; }
+    }
+    .done-card { opacity: 0.72; }
+  </style>
+</head>
+<body class="bg-slate-900 text-slate-100 min-h-screen antialiased">
+  <header class="sticky top-0 z-20 border-b border-slate-700/80 bg-slate-900/95 backdrop-blur">
+    <div class="max-w-6xl mx-auto px-4 py-4 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+      <div>
+        <div class="flex items-center gap-2 text-sky-400 text-xs font-semibold uppercase tracking-widest">
+          <a href="/" class="hover:text-sky-300">EM-OS</a>
+          <span class="text-slate-600">/</span>
+          <a href="/org-health" class="hover:text-sky-300">Org health</a>
+          <span class="text-slate-600">/</span>
+          <span>Coach</span>
+        </div>
+        <h1 class="text-xl sm:text-2xl font-semibold mt-1">Written Communication Coach</h1>
+        <p class="text-slate-400 text-sm mt-0.5">Clear. Short. One action today. Write it so everyone sees the same picture.</p>
+      </div>
+      <div class="flex flex-wrap gap-2">
+        <button type="button" id="btn-today" class="px-3 py-1.5 rounded-md text-xs font-medium bg-slate-100 text-slate-900 hover:bg-white">Today’s card</button>
+        <button type="button" id="btn-reset" class="px-3 py-1.5 rounded-md text-xs font-medium border border-slate-600 hover:bg-slate-800">Clear today’s checks</button>
+      </div>
+    </div>
+  </header>
+
+  <main class="max-w-6xl mx-auto px-4 py-6 space-y-6">
+    <section class="rounded-xl border border-slate-700 bg-slate-800/50 px-4 py-3 text-sm text-slate-300">
+      Five loops: clear goals · written updates · weekly rhythm · risk reviews · accountability.
+      Pick your level. Do the action before your next meeting.
+    </section>
+
+    <div class="flex flex-wrap gap-2" id="filters" role="tablist" aria-label="Leader level"></div>
+    <p class="text-xs text-slate-500" id="status"></p>
+    <div id="board" class="grid md:grid-cols-2 xl:grid-cols-3 gap-4"></div>
+  </main>
+
+  <script>
+    const STORE = "emos-coach-v1";
+    let data = { reminders: [], levels: [] };
+    let filter = "all";
+    let focusId = null;
+
+    function todayKey() {
+      return new Date().toISOString().slice(0, 10);
+    }
+
+    function loadState() {
+      try {
+        return JSON.parse(localStorage.getItem(STORE) || "{}");
+      } catch (e) {
+        return {};
+      }
+    }
+
+    function saveState(state) {
+      localStorage.setItem(STORE, JSON.stringify(state));
+    }
+
+    function doneSet() {
+      const s = loadState();
+      return new Set(s.done && s.done[todayKey()] ? s.done[todayKey()] : []);
+    }
+
+    function toggleDone(id) {
+      const s = loadState();
+      if (!s.done) s.done = {};
+      const day = todayKey();
+      const list = new Set(s.done[day] || []);
+      if (list.has(id)) list.delete(id);
+      else list.add(id);
+      s.done[day] = Array.from(list);
+      saveState(s);
+      render();
+    }
+
+    function setFocus(id, force) {
+      const s = loadState();
+      s.focus = !force && s.focus === id ? null : id;
+      saveState(s);
+      focusId = s.focus;
+      filter = "all";
+      render();
+    }
+
+    function copyCard(r) {
+      const text = [
+        r.headline,
+        r.reminder,
+        "Today: " + r.action,
+        "Watch: " + r.metric,
+        "Upgrade: " + r.upgrade,
+      ].join("\n");
+      navigator.clipboard.writeText(text).then(() => {
+        document.getElementById("status").textContent = "Copied “" + r.headline + "”.";
+      });
+    }
+
+    function visible() {
+      const s = loadState();
+      focusId = s.focus || null;
+      let list = data.reminders;
+      if (focusId && filter === "all") {
+        const hit = list.find((r) => r.id === focusId);
+        if (hit) return [hit];
+      }
+      if (filter !== "all") list = list.filter((r) => r.level === filter);
+      return list;
+    }
+
+    function renderFilters() {
+      const root = document.getElementById("filters");
+      const items = [{ id: "all", label: "All levels" }].concat(data.levels);
+      root.innerHTML = items.map((lv) => {
+        const on = filter === lv.id;
+        return `<button type="button" role="tab" data-level="${lv.id}" aria-selected="${on}"
+          class="px-3 py-1.5 rounded-full text-xs font-medium border ${on ? "bg-sky-500 text-slate-950 border-sky-400" : "border-slate-600 text-slate-300 hover:bg-slate-800"}">${lv.label}</button>`;
+      }).join("");
+      root.querySelectorAll("button").forEach((btn) => {
+        btn.addEventListener("click", () => {
+          filter = btn.getAttribute("data-level");
+          if (filter !== "all") {
+            const s = loadState();
+            s.focus = null;
+            saveState(s);
+            focusId = null;
+          }
+          render();
+        });
+      });
+    }
+
+    function cardHtml(r, done, isFocus) {
+      return `
+        <article class="card-enter rounded-xl border ${isFocus ? "border-sky-400" : "border-slate-700"} bg-slate-800/70 p-5 flex flex-col gap-3 ${done ? "done-card" : ""}" data-id="${r.id}">
+          <div class="flex items-start justify-between gap-2">
+            <span class="text-[10px] uppercase tracking-widest text-sky-400 font-semibold">${r.levelLabel}</span>
+            <span class="text-[10px] text-slate-500 text-right leading-snug max-w-[14rem]">${r.formula}</span>
+          </div>
+          <h2 class="text-lg font-semibold leading-snug">${r.headline}</h2>
+          <p class="text-sm text-slate-300">${r.reminder}</p>
+          <div class="rounded-lg bg-slate-900/70 border border-slate-700 px-3 py-2">
+            <p class="text-[10px] uppercase tracking-wide text-slate-500">Today</p>
+            <p class="text-sm text-slate-200 mt-0.5">${r.action}</p>
+          </div>
+          <p class="text-xs text-slate-400"><span class="text-slate-500">Watch:</span> ${r.metric}</p>
+          <details class="text-sm">
+            <summary class="cursor-pointer text-sky-400 text-xs font-medium">Leadership upgrade</summary>
+            <p class="text-slate-300 mt-2">${r.upgrade}</p>
+          </details>
+          <div class="mt-auto flex flex-wrap gap-2 pt-1">
+            <button type="button" data-act="done" class="px-2.5 py-1 rounded-md text-xs font-medium ${done ? "bg-emerald-500/20 text-emerald-300 border border-emerald-500/40" : "border border-slate-600 hover:bg-slate-800"}">
+              ${done ? "Done today" : "Mark done today"}
+            </button>
+            <button type="button" data-act="copy" class="px-2.5 py-1 rounded-md text-xs border border-slate-600 hover:bg-slate-800">Copy</button>
+            <button type="button" data-act="focus" class="px-2.5 py-1 rounded-md text-xs border border-slate-600 hover:bg-slate-800">
+              ${isFocus ? "Show all" : "Focus"}
+            </button>
+          </div>
+        </article>`;
+    }
+
+    function render() {
+      const done = doneSet();
+      const s = loadState();
+      focusId = s.focus || null;
+      const list = visible();
+      document.getElementById("board").innerHTML = list.map((r) =>
+        cardHtml(r, done.has(r.id), focusId === r.id && filter === "all")
+      ).join("");
+      const n = done.size;
+      document.getElementById("status").textContent = n
+        ? n + " action" + (n === 1 ? "" : "s") + " marked done today."
+        : "No checks yet today. Pick a card and do the action.";
+      document.getElementById("board").querySelectorAll("article").forEach((el) => {
+        const id = el.getAttribute("data-id");
+        const rec = data.reminders.find((r) => r.id === id);
+        el.querySelector('[data-act="done"]').addEventListener("click", () => toggleDone(id));
+        el.querySelector('[data-act="copy"]').addEventListener("click", () => copyCard(rec));
+        el.querySelector('[data-act="focus"]').addEventListener("click", () => setFocus(id));
+      });
+      renderFilters();
+    }
+
+    document.getElementById("btn-today").addEventListener("click", () => {
+      const order = ["em", "sr-em", "director", "sr-director", "vp"];
+      const i = new Date().getDay() % 5;
+      setFocus(order[i], true);
+    });
+    document.getElementById("btn-reset").addEventListener("click", () => {
+      const s = loadState();
+      if (s.done) delete s.done[todayKey()];
+      saveState(s);
+      render();
+    });
+
+    fetch("/static/coach-reminders.json")
+      .then((r) => r.json())
+      .then((json) => {
+        data = json;
+        render();
+      })
+      .catch(() => {
+        document.getElementById("status").textContent = "Could not load reminders.";
+      });
+  </script>
+</body>
+</html>

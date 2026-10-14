@@ -105,6 +105,10 @@ Practical org-health model (FER, DORA CFR/MTTR, innovation ratio, forecast, obse
 
 http://localhost:8080/org-health
 
+Written Communication Coach (level cards, today’s action):
+
+http://localhost:8080/coach
+
 ```bash
 node scripts/test_org_health_engine.js
 ```

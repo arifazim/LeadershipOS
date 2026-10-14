@@ -39,6 +39,8 @@ Five views in the browser: Summary, Delivery & DORA, Incidents, Team Health, Ris
 
 A separate executive model lives at `/org-health`: practical FER (40% green), DX innovation ratio, meeting load, DORA-aligned CFR/MTTR, forecast hit rate, and AI efficiency ROI from **observed cycle-time delta**. DLF/AOV indexes are gone. Guardrails and feature adoption display as controls, not as the health grade. Treat it as a **decision simulator**, not as live ingest.
 
+Written Communication Coach at `/coach`: five interactive cards (EM → VP). Filter by level, mark today’s action done, copy, or focus one card.
+
 <p align="center">
   <img src="images/dashboard-delivery.jpg" alt="Delivery and DORA view with Accelerate bands and sprint signals vs 4-week baseline" width="920" />
 </p>
