@@ -34,5 +34,14 @@
     "ok": false,
     "monitor_count": 0,
     "_source": "mock"
+  },
+  "product": {
+    "activation_rate": "24%",
+    "retention_rate": "91%",
+    "north_star_value": "142",
+    "north_star_name": "Agency cases completed via platform API",
+    "north_star_unit": "cases / week",
+    "north_star_owner": "Product",
+    "_source": "mock"
   }
 }

@@ -94,7 +94,7 @@ def health_check() -> dict:
     raw = _read_json(METRICS_PATH)
     sources = {
         k: (raw.get(k) or {}).get("_source", "missing")
-        for k in ("github", "jira", "pagerduty", "slack", "datadog")
+        for k in ("github", "jira", "pagerduty", "slack", "datadog", "product")
     }
     return {
         "status": "ok" if (metrics_ok and team_ok) else "degraded",

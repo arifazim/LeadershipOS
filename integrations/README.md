@@ -11,5 +11,6 @@ Each source is **independent**. Missing tokens for one source do not block the o
 | PagerDuty | `PAGERDUTY_TOKEN` | `integrations/pagerduty.md` |
 | Slack | `SLACK_TOKEN` | `integrations/slack.md` |
 | Datadog | `DATADOG_API_KEY`, `DATADOG_APP_KEY` | `integrations/datadog.md` |
+| Product | `PRODUCT_ACTIVATION_RATE`, `PRODUCT_RETENTION_RATE`, `PRODUCT_NORTH_STAR_VALUE` | `integrations/product.md` |
 
 Run: `python3 scripts/ingest_metrics.py` then `./bin/em-os status` to see `_source` per tool.

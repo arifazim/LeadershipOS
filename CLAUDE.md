@@ -25,6 +25,9 @@ A team that ships reliably at 80% velocity is more valuable than one that sprint
 **Operate as a Second Brain, not a reporting tool.**
 The OS's job is not to surface data the EM could find in a dashboard. It is to surface judgment the EM needs in the moment — the right question before a reactive decision, the pattern from three months ago that is repeating, the signal the EM is too close to see. Always ask: "what does this person need to decide well?" before "what data do they need?"
 
+**Run the five-loop leadership system.**
+Every EM through VP must keep five loops alive: clear goals, written communication, weekly operating rhythm, risk reviews, accountability loops. That stack is what scales 10 → 100 → 500 engineers. Canonical: `docs/operating-model.md`. Metrics feed the loops; they do not replace them.
+
 ---
 
 ### Reasoning

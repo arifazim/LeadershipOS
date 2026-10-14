@@ -18,6 +18,10 @@
     "mttr": {
       "value_raw": 0.7,
       "band": "Elite"
+    },
+    "cycle_time": {
+      "value_raw": 18.0,
+      "band": "Yellow"
     }
   },
   "delivery": {
@@ -51,6 +55,19 @@
     "jira": "mock",
     "pagerduty": "mock",
     "slack": "mock",
-    "datadog": "mock"
+    "datadog": "mock",
+    "product": "mock"
+  },
+  "product": {
+    "included_in_executive_confidence": false,
+    "source": "mock",
+    "confidence": "Low",
+    "activation": { "value": 24.0 },
+    "retention": { "value": 91.0, "label": "Customer retention" },
+    "north_star": {
+      "name": "Agency cases completed via platform API",
+      "value": "142",
+      "owner": "Product"
+    }
   }
 }

@@ -2,6 +2,8 @@
 
 The authoritative reference for how this management practice operates. When facing a hard situation, open the relevant section. When a section no longer reflects reality, update it.
 
+**Start here if you are new to the role ladder:** `docs/operating-model.md` — the five loops (goals, writing, weekly rhythm, risk, accountability) that EM through VP must run. This playbook is the ceremony-level how; the operating model is the system.
+
 Sections are organized from ceremony to strategy. Use the headers to navigate.
 
 ---

@@ -285,6 +285,36 @@ class MetricsIngestor:
                 "_error": str(extra),
             }
 
+    def fetch_product_metrics(self):
+        nsm = self.config.get("north_star") or {}
+        name = nsm.get("name") or "Unspecified north star"
+        unit = nsm.get("unit") or ""
+        owner = nsm.get("owner") or "Product"
+        act = os.getenv("PRODUCT_ACTIVATION_RATE", "").strip()
+        ret = os.getenv("PRODUCT_RETENTION_RATE", "").strip()
+        val = os.getenv("PRODUCT_NORTH_STAR_VALUE", "").strip()
+        if act or ret or val:
+            print("Product: live (env PRODUCT_* rates)")
+            return {
+                "activation_rate": act or "24%",
+                "retention_rate": ret or "91%",
+                "north_star_value": val or "142",
+                "north_star_name": name,
+                "north_star_unit": unit,
+                "north_star_owner": owner,
+                "_source": "live",
+            }
+        print("Product: mock (set PRODUCT_ACTIVATION_RATE, PRODUCT_RETENTION_RATE, PRODUCT_NORTH_STAR_VALUE for live)")
+        return {
+            "activation_rate": "24%",
+            "retention_rate": "91%",
+            "north_star_value": "142",
+            "north_star_name": name,
+            "north_star_unit": unit,
+            "north_star_owner": owner,
+            "_source": "mock",
+        }
+
     def run(self):
         print(f"[{datetime.now()}] Starting metrics ingestion...")
         metrics = {
@@ -294,6 +324,7 @@ class MetricsIngestor:
             "pagerduty": self.fetch_pagerduty_metrics(),
             "slack": self.fetch_slack_metrics(),
             "datadog": self.fetch_datadog_metrics(),
+            "product": self.fetch_product_metrics(),
         }
         with open(OUTPUT_PATH, "w", encoding="utf-8") as f:
             json.dump(metrics, f, indent=2)

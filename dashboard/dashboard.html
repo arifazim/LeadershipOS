@@ -450,7 +450,7 @@
        DORA VISUAL BAND ROW
        ===================================================================== */
     .dora-bands {
-      display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px;
+      display: grid; grid-template-columns: repeat(5, 1fr); gap: 12px;
     }
 
     .dora-band-card {
@@ -535,6 +535,22 @@
     .one-thing-eyebrow { font-size: 9.5px; font-weight: 700; text-transform: uppercase; letter-spacing: .1em; color: var(--blue-500); margin-bottom: 4px; }
     .one-thing-title   { font-size: 14px; font-weight: 700; color: var(--text-primary); line-height: 1.4; }
     .one-thing-desc    { font-size: 12px; color: var(--text-secondary); margin-top: 5px; line-height: 1.6; }
+    .strip-label {
+      font-size: 11px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase;
+      color: var(--text-tertiary); margin: 4px 0 8px;
+    }
+    .nsm-hero {
+      background: var(--surface-1);
+      border: 1px solid var(--border);
+      border-radius: var(--r-lg);
+      padding: 22px 24px;
+      display: flex; align-items: flex-end; justify-content: space-between; gap: 24px;
+    }
+    .nsm-kicker { font-size: 10px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--text-tertiary); margin-bottom: 6px; }
+    .nsm-name { font-size: 13px; font-weight: 600; color: var(--text-secondary); margin-bottom: 8px; }
+    .nsm-value { font-size: 40px; font-weight: 800; letter-spacing: -.03em; font-variant-numeric: tabular-nums; line-height: 1; }
+    .nsm-unit { font-size: 13px; font-weight: 600; color: var(--text-tertiary); margin-top: 8px; }
+    .nsm-meta { font-size: 11px; color: var(--text-tertiary); text-align: right; line-height: 1.6; }
     .source-strip { display: flex; flex-wrap: wrap; gap: 8px; margin: 0 0 16px; }
     .source-chip { font-size: 10px; font-weight: 700; letter-spacing: .04em; text-transform: uppercase; padding: 4px 8px; border-radius: 999px; border: 1px solid var(--gray-700); color: var(--gray-300); }
     .source-chip.live { border-color: #166534; color: #86efac; }
@@ -747,6 +763,7 @@
     @media (max-width: 1100px) {
       .kpi-row.cols-4 { grid-template-columns: repeat(2, 1fr); }
       .dora-bands { grid-template-columns: repeat(2, 1fr); }
+      .nsm-hero { flex-direction: column; align-items: flex-start; }
       .confidence-dims { grid-template-columns: repeat(2, 1fr); }
       .two-col, .three-col { grid-template-columns: 1fr; }
     }
@@ -851,21 +868,55 @@
          ============================================================ -->
     <div class="view active" id="view-overview">
 
-      <!-- One Thing -->
+      <div class="nsm-hero" id="nsm-hero">
+        <div>
+          <div class="nsm-kicker">North Star</div>
+          <div class="nsm-name" id="nsm-name">Loading…</div>
+          <div class="nsm-value" id="nsm-value">—</div>
+          <div class="nsm-unit" id="nsm-unit"></div>
+        </div>
+        <div class="nsm-meta" id="nsm-meta"></div>
+      </div>
+
+      <div class="source-strip" id="source-strip"></div>
+
+      <div class="strip-label">Engineering (cycle time, deploy frequency, change failure, MTTR)</div>
+      <div class="kpi-row cols-4" id="summary-kpis">
+        <div class="kpi-card skeleton" style="min-height:90px"></div>
+        <div class="kpi-card skeleton" style="min-height:90px"></div>
+        <div class="kpi-card skeleton" style="min-height:90px"></div>
+        <div class="kpi-card skeleton" style="min-height:90px"></div>
+      </div>
+
+      <div class="strip-label">Product outcomes (customer activation, customer retention)</div>
+      <div class="kpi-row cols-4" id="product-kpis" style="grid-template-columns: repeat(2, 1fr);">
+        <div class="kpi-card skeleton" style="min-height:90px"></div>
+        <div class="kpi-card skeleton" style="min-height:90px"></div>
+      </div>
+
+      <div class="two-col">
       <div class="one-thing" id="one-thing">
         <div class="one-thing-icon">
           <svg fill="none" viewBox="0 0 24 24" stroke="white" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
         </div>
         <div class="one-thing-body">
-          <div class="one-thing-eyebrow">Priority action this week</div>
+          <div class="one-thing-eyebrow">Engineering — this week</div>
           <div class="one-thing-title" id="one-thing-title">Loading recommendation…</div>
           <div class="one-thing-desc"  id="one-thing-desc"></div>
         </div>
       </div>
+      <div class="table-card">
+        <div class="table-card-header">
+          <span class="table-card-title">Product checkpoints</span>
+          <span class="table-card-meta" id="product-check-meta">Customer outcomes — not engineer retention</span>
+        </div>
+        <div style="padding:16px 18px" id="product-checkpoints">
+          <div class="skeleton skel-line w-80"></div>
+        </div>
+      </div>
+      </div>
 
-      <div class="source-strip" id="source-strip"></div>
-
-      <!-- Confidence hero -->
+      <!-- Confidence hero (engineering only — excludes product NSM) -->
       <div class="confidence-hero">
         <div class="confidence-gauge">
           <svg viewBox="0 0 100 100">
@@ -883,7 +934,7 @@
         </div>
         <div class="confidence-body">
           <div class="confidence-title">Executive Confidence Score <span class="status-pill" id="conf-band-pill" style="margin-left:8px"></span></div>
-          <div class="confidence-desc">Composite of DORA delivery metrics, sprint predictability, and commitment accuracy. Answers: <em>"Can leadership trust this team to deliver?"</em></div>
+          <div class="confidence-desc">Engineering only: DORA, sprint predictability, commitment accuracy. Product North Star is not in this score. Answers: <em>"Can leadership trust this team to deliver?"</em></div>
           <div class="confidence-dims" id="conf-dims">
             <div class="conf-dim"><div class="conf-dim-label">Deployment Freq.</div><div class="conf-dim-value" id="cd-deploy">—</div></div>
             <div class="conf-dim"><div class="conf-dim-label">Lead Time</div><div class="conf-dim-value" id="cd-lt">—</div></div>
@@ -893,14 +944,6 @@
             <div class="conf-dim"><div class="conf-dim-label">DORA Overall</div><div class="conf-dim-value" id="cd-dora">—</div></div>
           </div>
         </div>
-      </div>
-
-      <!-- KPI row -->
-      <div class="kpi-row cols-4" id="summary-kpis">
-        <div class="kpi-card skeleton" style="min-height:90px"></div>
-        <div class="kpi-card skeleton" style="min-height:90px"></div>
-        <div class="kpi-card skeleton" style="min-height:90px"></div>
-        <div class="kpi-card skeleton" style="min-height:90px"></div>
       </div>
 
       <!-- Two-col: sprint + incidents -->
@@ -1299,6 +1342,8 @@ function kpiCard({ label, value, unit = "", band, trend, betterLower = false, ac
 // ---------------------------------------------------------------------------
 function renderAll(m) {
   if (!m) return;
+  renderNorthStar(m);
+  renderProductOutcomes(m);
   renderConfidence(m);
   renderSummaryKPIs(m);
   renderSprintPanel(m);
@@ -1322,7 +1367,7 @@ function renderSources(m) {
   const el = document.getElementById("source-strip");
   if (!el) return;
   const sources = m.sources || {};
-  const keys = ["github", "jira", "pagerduty", "slack", "datadog"];
+  const keys = ["github", "jira", "pagerduty", "slack", "datadog", "product"];
   el.innerHTML = keys.map((k) => {
     const v = String(sources[k] || "unknown");
     const live = v.startsWith("live");
@@ -1375,18 +1420,54 @@ function renderConfidence(m) {
 // ---------------------------------------------------------------------------
 // Summary KPIs
 // ---------------------------------------------------------------------------
+function renderNorthStar(m) {
+  const p = (m.product && m.product.north_star) || {};
+  const cfg = (teamData && teamData.north_star) || {};
+  const name = p.name || cfg.name || "Unspecified north star";
+  const value = p.value != null && p.value !== "" ? p.value : "—";
+  const unit = p.unit || cfg.unit || "";
+  const owner = p.owner || cfg.owner || "Product";
+  const src = (m.product && m.product.source) || "mock";
+  const conf = (m.product && m.product.confidence) || "Low";
+  const inScore = m.product && m.product.included_in_executive_confidence;
+  document.getElementById("nsm-name").textContent = name;
+  document.getElementById("nsm-value").textContent = value;
+  document.getElementById("nsm-unit").textContent = unit;
+  document.getElementById("nsm-meta").innerHTML =
+    `Owner: ${owner}<br>Source: ${src} · confidence ${conf}<br>` +
+    (inScore ? "Included in Executive Confidence" : "Not in Executive Confidence");
+}
+
+function renderProductOutcomes(m) {
+  const p = m.product || {};
+  const act = p.activation || {};
+  const ret = p.retention || {};
+  const el = document.getElementById("product-kpis");
+  if (el) {
+    el.innerHTML = [
+      { label: "Customer activation", value: act.value_display || "—", band: act.band },
+      { label: "Customer retention", value: ret.value_display || "—", band: ret.band },
+    ].map(kpiCard).join("");
+  }
+  const ck = document.getElementById("product-checkpoints");
+  if (ck) {
+    ck.innerHTML = `
+      <div style="font-size:12px;line-height:1.7;color:var(--text-secondary)">
+        <div><strong style="color:var(--text-primary)">Activation</strong> ${act.value_display || "—"} · ${act.band || "—"}</div>
+        <div><strong style="color:var(--text-primary)">Customer retention</strong> ${ret.value_display || "—"} · ${act.band ? "" : ""}${ret.band || "—"}</div>
+        <div style="margin-top:8px;font-size:11px;color:var(--text-tertiary)">Not engineer attrition. See skills/performance/retention-risk.md for people risk.</div>
+      </div>`;
+  }
+}
+
 function renderSummaryKPIs(m) {
   const dora = m.dora || {};
-  const del  = m.delivery || {};
-  const inc  = m.incidents || {};
-
   const cards = [
+    { label: "Cycle time (P50 PR)", value: dora.cycle_time?.value || "—", band: dora.cycle_time?.band, trend: dora.cycle_time?.trend, betterLower: true },
     { label: "Deploy Frequency", value: dora.deployment_frequency?.value || "—", band: dora.deployment_frequency?.band, trend: dora.deployment_frequency?.trend },
-    { label: "Commit Accuracy",  value: del.commitment_accuracy?.value_display || "—",  band: del.commitment_accuracy?.band,  trend: del.commitment_accuracy?.trend },
-    { label: "MTTR",             value: dora.mttr?.value || "—",             band: dora.mttr?.band,             trend: dora.mttr?.trend, betterLower: true },
-    { label: "Incidents (30d)",  value: inc.count_30d ?? "—",  band: inc.band,  trend: inc.trend_count, betterLower: true },
+    { label: "Change Failure Rate", value: dora.change_failure_rate?.value || "—", band: dora.change_failure_rate?.band, trend: dora.change_failure_rate?.trend, betterLower: true },
+    { label: "MTTR", value: dora.mttr?.value || "—", band: dora.mttr?.band, trend: dora.mttr?.trend, betterLower: true },
   ];
-
   document.getElementById("summary-kpis").innerHTML = cards.map(kpiCard).join("");
 }
 
@@ -1477,6 +1558,7 @@ function renderIncidentSnapshot(m) {
 function renderDoraCards(m) {
   const dora = m.dora || {};
   const defs = [
+    { key: "cycle_time",           label: "Cycle Time (P50 PR)",   desc: "Created → merged (not DORA overall)", higherBetter: false },
     { key: "deployment_frequency", label: "Deployment Frequency", desc: "How often code ships to prod", higherBetter: true },
     { key: "lead_time",            label: "Lead Time for Changes", desc: "Commit → production",          higherBetter: false },
     { key: "change_failure_rate",  label: "Change Failure Rate",   desc: "% of deployments causing failures", higherBetter: false },
@@ -1680,6 +1762,8 @@ function renderTeam(team) {
     ["Sprint cadence",cadenceLabel],
     ["On-call",       team.on_call ? "Yes" : "No"],
     ["OKR cycle",     team.okr_cycle || "—"],
+    ["North Star",    (team.north_star && team.north_star.name) || "—"],
+    ["NSM owner",     (team.north_star && team.north_star.owner) || "—"],
     ["Stakeholders",  (team.key_stakeholders || []).join(", ") || "—"],
   ];
 

@@ -146,6 +146,7 @@ Set env vars in `.env` (see `integrations/README.md`). Each source is independen
 | `slack.md` | `SLACK_TOKEN` (presence recorded; channel pulse not yet in DORA) |
 | `datadog.md` | `DATADOG_API_KEY`, `DATADOG_APP_KEY` (presence recorded) |
 | `pagerduty.md` | `PAGERDUTY_TOKEN` |
+| `product.md` | `PRODUCT_ACTIVATION_RATE`, `PRODUCT_RETENTION_RATE`, `PRODUCT_NORTH_STAR_VALUE`; definition in `config/team.json` `north_star` |
 
 ## Step 3: Customize Commands and Loops
 

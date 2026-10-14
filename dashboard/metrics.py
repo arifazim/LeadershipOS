@@ -89,11 +89,14 @@ def trend_indicator(current: float, baseline: float) -> str:
 
 
 def compute_confidence_score(metrics: dict) -> int:
+    """Engineering-only composite. Product NSM/activation/retention are never inputs."""
     score = 0
     weight_total = 0
     raw_github = metrics.get("github", {})
     raw_jira = metrics.get("jira", {})
     raw_pagerduty = metrics.get("pagerduty", {})
+    # Intentionally ignore metrics["product"] until product._source is live *and*
+    # a separate product-confidence model exists. Do not fold NSM into this score.
 
     df = raw_github.get("deployment_frequency", "")
     df_map = {"daily": 20, "weekly": 14, "monthly": 8, "": 0}
@@ -207,6 +210,7 @@ def build_dashboard_metrics(raw: dict, history: Optional[List[dict]] = None) -> 
     raw_pd = raw.get("pagerduty", {})
     raw_slack = raw.get("slack", {})
     raw_dd = raw.get("datadog", {})
+    raw_product = raw.get("product", {})
 
     pr_cycle_hours = parse_hours(raw_gh.get("pr_cycle_time", "0 hours"))
     lead_time_days = parse_days(raw_gh.get("lead_time_for_changes", "0 days"))
@@ -275,7 +279,12 @@ def build_dashboard_metrics(raw: dict, history: Optional[List[dict]] = None) -> 
         "pagerduty": raw_pd.get("_source", "unknown"),
         "slack": raw_slack.get("_source", "unknown"),
         "datadog": raw_dd.get("_source", "unknown"),
+        "product": raw_product.get("_source", "unknown"),
     }
+    product_source = str(raw_product.get("_source", "mock"))
+    activation_pct = parse_percentage(raw_product.get("activation_rate", "0%"))
+    customer_retention_pct = parse_percentage(raw_product.get("retention_rate", "0%"))
+    cycle_band = "Green" if pr_cycle_hours <= 12 else "Yellow" if pr_cycle_hours <= 24 else "Red"
     live_count = sum(1 for v in sources.values() if str(v).startswith("live"))
 
     return {
@@ -315,6 +324,15 @@ def build_dashboard_metrics(raw: dict, history: Optional[List[dict]] = None) -> 
                 "color": status_color(mttr_band),
                 "trend": trend_indicator(mttr_hours, b_pd.get("mttr_hours", mttr_hours)),
                 "better": "lower",
+            },
+            "cycle_time": {
+                "value": f"{pr_cycle_hours:.0f}h",
+                "value_raw": pr_cycle_hours,
+                "band": cycle_band,
+                "color": status_color("High" if cycle_band == "Green" else "Medium" if cycle_band == "Yellow" else "Low"),
+                "trend": trend_indicator(pr_cycle_hours, b_gh.get("pr_cycle_time_hours", pr_cycle_hours)),
+                "better": "lower",
+                "note": "P50 PR cycle (created→merged). Sibling of lead time (commit→prod), not a DORA overall input.",
             },
         },
         "delivery": {
@@ -379,5 +397,27 @@ def build_dashboard_metrics(raw: dict, history: Optional[List[dict]] = None) -> 
         "integrations": {
             "slack": {"configured": bool(raw_slack.get("configured")), "team": raw_slack.get("team", ""), "channel_count": raw_slack.get("channel_count", 0)},
             "datadog": {"configured": bool(raw_dd.get("configured")), "monitor_count": raw_dd.get("monitor_count", 0)},
+        },
+        "product": {
+            "source": product_source,
+            "confidence": "Medium" if product_source.startswith("live") else "Low",
+            "included_in_executive_confidence": False,
+            "activation": {
+                "value": activation_pct,
+                "value_display": f"{activation_pct:.0f}%",
+                "band": "Green" if activation_pct >= 30 else "Yellow" if activation_pct >= 15 else "Red",
+            },
+            "retention": {
+                "value": customer_retention_pct,
+                "value_display": f"{customer_retention_pct:.0f}%",
+                "label": "Customer retention",
+                "band": "Green" if customer_retention_pct >= 90 else "Yellow" if customer_retention_pct >= 80 else "Red",
+            },
+            "north_star": {
+                "name": raw_product.get("north_star_name") or "Unspecified north star",
+                "value": raw_product.get("north_star_value", "—"),
+                "unit": raw_product.get("north_star_unit") or "",
+                "owner": raw_product.get("north_star_owner") or "Product",
+            },
         },
     }

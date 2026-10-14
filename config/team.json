@@ -39,5 +39,10 @@
     "Social Security Agency",
     "Health care agency"
   ],
-  "okr_cycle": "6m"
+  "okr_cycle": "6m",
+  "north_star": {
+    "name": "Agency cases completed via platform API",
+    "unit": "cases / week",
+    "owner": "Product"
+  }
 }
